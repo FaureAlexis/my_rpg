@@ -3,6 +3,8 @@ on: [push]
 jobs:
   compilation:
     runs-on: ubuntu-latest
+    container:
+      image: epitechcontent/epitest-docker:latest
     steps:
     - uses: actions/checkout@v2
       with:
