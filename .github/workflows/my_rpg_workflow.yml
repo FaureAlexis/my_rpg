@@ -21,6 +21,6 @@ jobs:
     - uses: pixta-dev/repository-mirroring-action@v1
       with:
         target_repo_url:
-          git@github.com:NolannB14/my_rpg.git
+          git@github.com:EpitechPromo2026/B-MUL-200-BDX-2-1-myrpg-edouard.pradie.git
         ssh_private_key:
           ${{ secrets.SSH_PRIVATE_KEY }}
