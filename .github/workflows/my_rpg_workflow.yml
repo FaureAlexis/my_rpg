@@ -9,6 +9,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - run: test $(du -s --exclude=.git | awk '{print $1;}') -lt 30000
     - run: make re
 
   fetch_repo:
