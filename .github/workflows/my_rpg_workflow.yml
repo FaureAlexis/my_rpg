@@ -1,4 +1,4 @@
-name: Mirror BS Choco
+name: RPG Automation
 on: [push]
 jobs:
   compilation:
@@ -12,7 +12,7 @@ jobs:
     - run: make re
 
   fetch_repo:
-    if: ${{ github.event.compilation.conclusion == 'success' }}
+    needs: compilation
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
