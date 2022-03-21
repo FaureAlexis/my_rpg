@@ -1,0 +1,24 @@
+name: Mirror BS Choco
+on: [push]
+jobs:
+  compilation:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - run: make re
+
+  fetch_repo:
+    if: ${{ github.event.compilation.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - uses: pixta-dev/repository-mirroring-action@v1
+      with:
+        target_repo_url:
+          git@github.com:NolannB14/my_rpg.git
+        ssh_private_key:
+          ${{ secrets.SSH_PRIVATE_KEY }}
