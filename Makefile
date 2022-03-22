@@ -5,7 +5,8 @@
 ## Makefile
 ##
 
-SRC	=	src/main.c
+SRC	=	src/main.c			\
+		src/sys/check_env.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -23,7 +24,7 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	make -C lib/my
-	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -lm
+	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -lm -v
 
 clean:
 	make fclean -C lib/my
