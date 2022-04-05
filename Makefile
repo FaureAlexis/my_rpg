@@ -33,7 +33,7 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	make -C lib/my
-	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -lm -v
+	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(CSFML) -lm -v
 
 clean:
 	make fclean -C lib/my
