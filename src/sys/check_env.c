@@ -9,10 +9,12 @@
 
 static int check_line(char * str)
 {
+    int i = 0;
+    char *keyword = NULL;
+
     if (!str)
         return 84;
-    int i = 0;
-    char * keyword = malloc(sizeof(char) * my_strlen(str));
+    keyword = malloc(sizeof(char) * my_strlen(str) + 1);
     for (; str[i] != '='; i += 1)
         keyword[i] = str[i];
     keyword[i] = '\0';

@@ -18,7 +18,7 @@ CPPFLAGS	=	-I ./include
 
 CSFML	=	-l csfml-graphics -l csfml-audio -l csfml-system -l csfml-window
 
-LDFLAGS	=	-L ./lib -lmy -lcsfml-graphics -lcsfml-system -lcsfml-audio
+LDFLAGS	=	-L ./lib -lmy
 
 all:	$(NAME)
 
