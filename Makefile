@@ -7,6 +7,7 @@
 
 SRC	=	src/main.c	\
 		src/rpg.c	\
+		src/sys/check_env.c	\
 		src/scenes/manage_scenes.c	\
 		src/scenes/pause_scene.c	\
 		src/init/init_game.c	\
@@ -26,13 +27,13 @@ CPPFLAGS	=	-I ./include
 
 CSFML	=	-l csfml-graphics -l csfml-audio -l csfml-system -l csfml-window
 
-LDFLAGS	=	-L ./lib -lmy -lcsfml-graphics -lcsfml-system -lcsfml-audio
+LDFLAGS	=	-L ./lib -lmy
 
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	make -C lib/my
-	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -lm
+	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -lm -v
 
 clean:
 	make fclean -C lib/my

@@ -1,5 +1,6 @@
 /*
 ** EPITECH PROJECT, 2022
+<<<<<<< HEAD
 ** rpg
 ** File description:
 ** rpg
@@ -42,6 +43,10 @@ typedef struct scenes_s {
     scenes_name name;
     int (*go_scene)(main_game_t *);
 } scenes_t;
+
+    /* Check environnement */
+
+    int check_env(char **env);
 
     /* Inits */
 
