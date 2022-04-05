@@ -5,9 +5,11 @@
 ** main
 */
 
+#include "rpg.h"
+
 int main(int argc, const char * const *argv, char ** env)
 {
     if (!argv || !env)
         return 84;
-    return 0;
+    return rpg(argc, argv, env);
 }

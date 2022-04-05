@@ -1,0 +1,43 @@
+/*
+** EPITECH PROJECT, 2022
+** pause_scene
+** File description:
+** pause_scene
+*/
+
+#include "rpg.h"
+
+static const event_t event_array[] = {
+    {.type = sfEvtClosed, .events = &close_window},
+    {.type = -1, .events = NULL}
+};
+
+static int pause_scene_event(main_game_t *game)
+{
+    const event_t *event = get_event(game->event.type, event_array);
+
+    if (event)
+        return event->events(game);
+    return game->player->current_scene;
+}
+
+static int pause_check_events(main_game_t *game)
+{
+    while (sfRenderWindow_pollEvent(game->window, &game->event)) {
+        if (pause_scene_event(game) != game->player->current_scene)
+            return game->player->next_scene;
+    }
+    return game->player->current_scene;
+}
+
+int pause_scene(main_game_t *game)
+{
+    game->player->current_scene = PAUSE_SCENE;
+    while (sfRenderWindow_isOpen(game->window)) {
+        sfRenderWindow_clear(game->window, sfWhite);
+        if (pause_check_events(game) != game->player->current_scene)
+            return game->player->next_scene;
+        sfRenderWindow_display(game->window);
+    }
+    return 0;
+}

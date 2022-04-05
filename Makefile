@@ -5,7 +5,16 @@
 ## Makefile
 ##
 
-SRC	=	src/main.c
+SRC	=	src/main.c	\
+		src/rpg.c	\
+		src/scenes/manage_scenes.c	\
+		src/scenes/pause_scene.c	\
+		src/init/init_game.c	\
+		src/init/init_player.c	\
+		src/init/init_window.c	\
+		src/free/free_game_struct.c	\
+		src/events/get_event.c	\
+		src/events/event_close.c
 
 OBJ	=	$(SRC:.c=.o)
 
