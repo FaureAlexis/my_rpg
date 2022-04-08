@@ -26,8 +26,6 @@ int init_volume(vol_t **vol)
 
 int init_all(main_game_t *game)
 {
-    // if (create_menus(game) == EPITECH_ERROR)
-    //     return EPITECH_ERROR;
     if (init_all_buttons(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (init_volume(&game->vol) == EPITECH_ERROR)

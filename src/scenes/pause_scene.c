@@ -46,8 +46,8 @@ int pause_scene(main_game_t *game)
         manage_all_hover(game, mouse_pos);
         if (pause_check_events(game) != game->player->current_scene)
             return game->player->next_scene;
-        sfRenderWindow_drawSprite(game->window, game->btn->big->play_b->sprite, NULL);
-        //sfRenderWindow_drawRectangleShape(game->window, game->btn->pause_b->shape, NULL);
+        sfRenderWindow_drawSprite(game->window,
+        game->btn->big->play_b->sprite, NULL);
         sfRenderWindow_display(game->window);
     }
     return 0;

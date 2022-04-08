@@ -15,8 +15,6 @@
     #define BUTTON_SOUND "assets/sounds/click.ogg"
     #define BUTTON_SS "assets/button/button_spritesheet.png"
 
-
-
     typedef enum button_size_s {
         SMALL,
         MEDIUM,
