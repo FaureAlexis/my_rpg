@@ -39,7 +39,6 @@ SRC_MENU		=	menu/init_menus.c \
 					menu/display_game.c
 
 SRC 			=	$(SRC_BUTTON) \
-					$(SRC_ERROR) \
 					$(SRC_INIT) \
 					$(SRC_FREE) \
 					$(SRC_EVENT) \
