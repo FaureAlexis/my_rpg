@@ -13,8 +13,9 @@ int rpg(int argc, const char * const *argv, char ** env)
     scenes_name change_scene = PAUSE_SCENE;
     const scenes_t *scene = NULL;
 
-    if (!game)
-        return 84;
+    if (!game || game == NULL)
+        return EPITECH_ERROR;
+    init_all(game);
     while (change_scene != -1 && change_scene != 84) {
         scene = manage_scenes(0, change_scene);
         if (scene)

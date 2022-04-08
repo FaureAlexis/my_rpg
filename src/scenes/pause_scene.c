@@ -26,17 +26,28 @@ static int pause_check_events(main_game_t *game)
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
         if (pause_scene_event(game) != game->player->current_scene)
             return game->player->next_scene;
+        if (game->event.type == sfEvtClosed || (game->event.key.code == sfKeyQ
+        && game->event.type == sfEvtKeyPressed)) {
+            sfRenderWindow_close(game->window);
+            exit(0);
+        }
     }
     return game->player->current_scene;
 }
 
 int pause_scene(main_game_t *game)
 {
+    sfVector2i mouse_pos;
+
     game->player->current_scene = PAUSE_SCENE;
     while (sfRenderWindow_isOpen(game->window)) {
+        mouse_pos = sfMouse_getPositionRenderWindow(game->window);
         sfRenderWindow_clear(game->window, sfWhite);
+        manage_all_hover(game, mouse_pos);
         if (pause_check_events(game) != game->player->current_scene)
             return game->player->next_scene;
+        sfRenderWindow_drawSprite(game->window, game->btn->big->play_b->sprite, NULL);
+        //sfRenderWindow_drawRectangleShape(game->window, game->btn->pause_b->shape, NULL);
         sfRenderWindow_display(game->window);
     }
     return 0;
