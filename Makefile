@@ -46,7 +46,8 @@ SRC 			=	$(SRC_BUTTON) \
 					main.c	\
 					rpg.c \
 					scenes/manage_scenes.c \
-					scenes/pause_scene.c
+					scenes/pause_scene.c \
+					scenes/main_menu_scene.c
 
 OBJ				=    $(addprefix src/, $(SRC:.c=.o))
 

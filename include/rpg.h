@@ -14,6 +14,7 @@
     #define EPITECH_ERROR 84
     #define BUTTON_SOUND "assets/sounds/click.ogg"
     #define BUTTON_SS "assets/button/button_spritesheet.png"
+    #define MENU_BG "assets/menu/main_menu.jpg"
 
     typedef enum button_size_s {
         SMALL,
@@ -218,6 +219,7 @@
 
     const scenes_t *manage_scenes(sfKeyCode key, scenes_name name);
     int pause_scene(main_game_t *game);
+    int main_menu_scene(main_game_t *game);
 
     /* Free data */
 

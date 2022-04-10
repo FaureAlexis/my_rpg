@@ -17,9 +17,9 @@ char **tab)
     if ((*button)->shape == NULL)
         return EPITECH_ERROR;
     if (size == SMALL)
-        sfRectangleShape_setSize((*button)->shape, (sfVector2f){150, 150});
+        sfRectangleShape_setSize((*button)->shape, (sfVector2f){80, 80});
     if (size == MEDIUM)
-        sfRectangleShape_setSize((*button)->shape, (sfVector2f){200, 200});
+        sfRectangleShape_setSize((*button)->shape, (sfVector2f){120, 120});
     if (size == LARGE)
         sfRectangleShape_setSize((*button)->shape, (sfVector2f){330, 180});
     sfRectangleShape_setPosition((*button)->shape, (*button)->position);

@@ -10,7 +10,7 @@
 int rpg(int argc, const char * const *argv, char ** env)
 {
     main_game_t *game = init_game();
-    scenes_name change_scene = PAUSE_SCENE;
+    scenes_name change_scene = MENU_SCENE;
     const scenes_t *scene = NULL;
 
     if (!game || game == NULL)
