@@ -9,6 +9,7 @@
 
 static const scenes_t scenes_array[] = {
     {.key = sfKeyEscape, .name = PAUSE_SCENE, .go_scene = &pause_scene},
+    {.key = sfKeyM, .name = MENU_SCENE, .go_scene = &main_menu_scene},
     {.key = sfKeyUnknown, .name = UNKNOWN_SCENE, .go_scene = NULL}
 };
 
