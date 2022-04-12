@@ -1,16 +1,15 @@
 /*
 ** EPITECH PROJECT, 2021
-** lib
+** rpg
 ** File description:
-** lib
+** rpg
 */
 
-
-#include <math.h>
-#include "lib.h"
-#include "csfml.h"
-
 #ifndef RPG_H_
+    #include <math.h>
+    #include "lib.h"
+    #include "csfml.h"
+
     #define RPG_H_
     #define EPITECH_ERROR 84
     #define BUTTON_SOUND "assets/sounds/click.ogg"
