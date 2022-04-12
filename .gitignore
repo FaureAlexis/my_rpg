@@ -1,16 +1,18 @@
-#Compilation
+# Compilation
 *.a
 *.o
 .vscode/
+
 # Prerequisites
 *.d
 my_rpg
 
-#Unit tests
+# Unit tests
 *.gcda
 *.gcno
+*.gcov
 unit_tests
 
-#Visual Studio Code
+# Visual Studio Code
 .vscode
 *.tmp

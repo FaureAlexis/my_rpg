@@ -1,0 +1,2 @@
+sprites/map_2.png 0 0
+500 500 sprites/objects/objects.png 0 0 48 64

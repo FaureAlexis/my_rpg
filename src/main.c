@@ -5,7 +5,11 @@
 ** main
 */
 
-int main(int argc, char **argv)
+#include "rpg.h"
+
+int main(int argc, const char * const *argv, char ** env)
 {
-    return 0;
+    if (!argv || !env || check_env(env) == 84)
+        return 84;
+    return rpg(argc, argv, env);
 }
