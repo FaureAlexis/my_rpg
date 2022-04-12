@@ -38,6 +38,14 @@ SRC_MENU		=	menu/init_menus.c \
 					menu/display_menu.c \
 					menu/display_game.c
 
+SRC_EP			= 	src_ep/game_test.c 	\
+					src_ep/main.c 	   	\
+					src_ep/node.c 		\
+					src_ep/obstacle.c 	\
+					src_ep/open_file.c 	\
+					src_ep/pos.c 		\
+					src_ep/tab.c
+
 SRC 			=	$(SRC_BUTTON) \
 					$(SRC_INIT) \
 					$(SRC_FREE) \

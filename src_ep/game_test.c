@@ -9,7 +9,7 @@
 #include "rpg.h"
 #include <SFML/Graphics.h>
 
-void init_window(game_scene_t *src, char ***tab, int i)
+void init_map_window(game_scene_t *src, char ***tab, int i)
 {
     src->window = malloc(sizeof(wind_t));
     src->window->texture = sfTexture_createFromFile(tab[i][0], NULL);
@@ -20,7 +20,7 @@ void init_window(game_scene_t *src, char ***tab, int i)
 void parce_tab(game_scene_t *src, char ***tab, int i)
 {
     if (my_arraylen(tab[i]) == 3) {
-        init_window(src, tab, i);
+        init_map_window(src, tab, i);
     }
     if (my_arraylen(tab[i]) == 7) {
         init_obstacle(src, tab, i);
