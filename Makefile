@@ -57,7 +57,8 @@ SRC 			=	$(SRC_BUTTON) \
 					scenes/pause_scene.c \
 					scenes/main_menu_scene.c
 
-OBJ				=    $(addprefix src/, $(SRC:.c=.o))
+#OBJ				=    $(addprefix src/, $(SRC:.c=.o))
+OBJ 				=	$(SRC_EP:.c=.o)
 
 NAME	=	my_rpg
 

@@ -24,7 +24,7 @@ void display_obstacle(game_scene_t *src)
 void init_obstacle(game_scene_t *src, char ***tab, int i)
 {
     obstacle_t *node = malloc(sizeof(obstacle_t));
-    sfVector2f tall = {8, 8};
+    sfVector2f tall = {5, 5};
     sfIntRect rec = {my_atoi(tab[i][3]), my_atoi(tab[i][4]), \
     my_atoi(tab[i][5]), my_atoi(tab[i][6])};
 

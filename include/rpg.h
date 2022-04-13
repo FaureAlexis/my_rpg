@@ -5,7 +5,6 @@
 ** lib
 */
 
-
 #include <math.h>
 #include "lib.h"
 #include "csfml.h"
