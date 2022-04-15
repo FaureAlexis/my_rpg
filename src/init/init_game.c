@@ -12,7 +12,7 @@ int init_volume(vol_t **vol)
     (*vol) = malloc(sizeof(vol_t));
     if (!(*vol))
         return EPITECH_ERROR;
-    (*vol)->pos = (sfVector2f){600, 400};
+    (*vol)->pos = (sfVector2f){575, 320};
     (*vol)->volume = 10;
     (*vol)->size = (sfVector2f){(700 / (*vol)->volume), 30};
     (*vol)->volume_rect = sfRectangleShape_create();
@@ -26,6 +26,8 @@ int init_volume(vol_t **vol)
 
 int init_all(main_game_t *game)
 {
+    if (create_menus(game) == EPITECH_ERROR)
+        return EPITECH_ERROR;
     if (init_all_buttons(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (init_volume(&game->vol) == EPITECH_ERROR)
@@ -47,7 +49,7 @@ main_game_t *init_game(void)
     game->vol = malloc(sizeof(vol_t));
     if (!game->btn || !game->mnu || !game->vol)
         return NULL;
-    game->window = init_window();
+    game->w = init_window();
     game->player = init_player();
     return game;
 }

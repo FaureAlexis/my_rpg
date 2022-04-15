@@ -13,12 +13,12 @@
 char *open_file(char const *filepath)
 {
     struct stat info;
-    if (stat(filepath, &info) == -1)
-            return NULL;
     int fd = open(filepath, O_RDONLY);
     int size = 0;
     char *buff = NULL;
 
+    if (stat(filepath, &info) == -1)
+        return NULL;
     size = info.st_size;
     if (size == 0)
         return NULL;

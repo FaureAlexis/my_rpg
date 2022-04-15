@@ -1,46 +1,26 @@
 /*
-** EPITECH PROJECT, 2021
+** EPITECH PROJECT, 2022
 ** rpg
 ** File description:
 ** rpg
 */
 
 #ifndef RPG_H_
+#define RPG_H_
     #include <math.h>
     #include "lib.h"
+    #include "button.h"
+    #include "menu.h"
     #include "csfml.h"
 
-    #define RPG_H_
     #define EPITECH_ERROR 84
     #define BUTTON_SOUND "assets/sounds/click.ogg"
     #define BUTTON_SS "assets/button/button_spritesheet.png"
     #define MENU_BG "assets/menu/main_menu.jpg"
-
-    typedef enum button_size_s {
-        SMALL,
-        MEDIUM,
-        LARGE
-    } bt_size_t;
-
-    typedef struct menu_s {
-        sfMusic *theme;
-        sfIntRect rect;
-        sfSprite *sprite;
-        sfTexture *texture;
-        sfSprite *bg_sprite;
-        sfTexture *bg_texture;
-    } menu_t;
-
-    typedef struct button_s {
-        int bsize;
-        sfMusic *sound;
-        sfVector2f position;
-        sfVector2f size;
-        sfVector2f sprite_pos;
-        sfRectangleShape *shape;
-        sfSprite *sprite;
-        sfTexture *texture;
-    } button_t;
+    #define GAME_EX "assets/menu/game_example.jpg"
+    #define SETTINGS_BG "assets/menu/settings_menu.png"
+    #define SETTINGS_SS "assets/window/settings_sprite.png"
+    #define PLAYER_SS "assets/player/player.png"
 
     typedef struct volume_s {
         float volume;
@@ -49,75 +29,27 @@
         sfRectangleShape *volume_rect;
     } vol_t;
 
-    typedef struct big_button_s {
-        button_t *score_b;
-        button_t *resume_b;
-        button_t *help_b;
-        button_t *settings_b;
-        button_t *return_b;
-        button_t *play_b;
-        button_t *exit_b;
-    } big_btn_t;
-
-    typedef struct medium_button_s {
-        button_t *main_b;
-        button_t *top_sc_b;
-        button_t *save_b;
-        button_t *pause_b;
-        button_t *right_b;
-        button_t *mute_b;
-        button_t *help_b;
-        button_t *settings_b;
-        button_t *exit_b;
-        button_t *resume_b;
-        button_t *left_b;
-        button_t *unmute_b;
-    } mid_btn_t;
-
-    typedef struct small_button_s {
-        button_t *plus_b;
-        button_t *minus_b;
-        button_t *talk_b;
-        button_t *accept_b;
-        button_t *deny_b;
-        button_t *left_b;
-        button_t *right_b;
-        button_t *top_b;
-        button_t *bot_b;
-    } sml_btn_t;
-
-    typedef struct all_buttons_s {
-        big_btn_t *big;
-        mid_btn_t *mid;
-        sml_btn_t *sml;
-    } btn_t;
-
-    typedef struct all_menu_s {
-        menu_t *main;
-        menu_t *shop;
-        menu_t *scoreboard;
-        menu_t *gameplay;
-        menu_t *settings;
-        menu_t *help_play;
-        menu_t *pause_m;
-    } mnu_t;
-
-    typedef enum {
-        UNKNOWN_SCENE = -1,
-        MENU_SCENE,
-        GAME_SCENE,
-        PAUSE_SCENE
-    } scenes_name;
+    typedef struct my_clock_s {
+        sfClock *clock;
+        sfTime time;
+        float seconds;
+    } my_clock_t;
 
     typedef struct player_s {
         scenes_name current_scene;
         scenes_name next_scene;
         int life;
         int attack;
+        sfSprite *sprite;
+        sfTexture *texture;
+        sfVector2f position;
+        sfVector2f scale;
+        sfIntRect rect;
+        my_clock_t *p_clock;
     } player_t;
 
     typedef struct main_game_s {
-        sfRenderWindow *window;
+        sfRenderWindow *w;
         sfEvent event;
         vol_t *vol;
         btn_t *btn;
@@ -136,58 +68,22 @@
         int (*go_scene)(main_game_t *);
     } scenes_t;
 
+    typedef struct movements_s {
+        sfKeyCode key;
+        int height_ss;
+        int flip;
+    } movements_t;
+
     /* Check environnement */
 
-    typedef struct game_object
-    {
-        sfVector2f cord;
-        sfTexture *texture;
-        sfSprite *sprite;
-        sfIntRect frame;
-    } game_object_s;
-
-    typedef struct cloc
-    {
-        sfClock *clock1;
-        sfTime time1;
-        float seconds1;
-    }cloc_s;
-
-    typedef struct obstacle_s
-    {
-        game_object_s *src;
-        struct obstacle_s *next;
-    }obstacle_t;
-
-    typedef struct wind_s
-    {
-        sfRenderWindow* window;
-        sfEvent event;
-        sfTexture *texture;
-        sfSprite *sprite;
-        sfMusic *music;
-    }wind_t;
-
-    typedef struct game_scene_s
-    {
-        wind_t *window;
-        obstacle_t *obstacle;
-    }game_scene_t;
-
-    char *open_file(char const *filepath);
-    char **my_str_to_word_array_pos(char const *str, char pos, int idx);
-    char ***make_tab(char *filepath);
-    int my_arraylen(char *const *array);
-    void launch_rpg(char ***tab);
-    void init_obstacle(game_scene_t *src, char ***tab, int i);
-    void display_obstacle(game_scene_t *src);
-    obstacle_t *add_node_to_obstacle(obstacle_t *head, obstacle_t *node);
     int check_env(char **env);
 
     /* Inits */
+
     player_t *init_player(void);
     main_game_t *init_game(void);
     sfRenderWindow *init_window(void);
+    my_clock_t *init_clock(void);
     int init_all(main_game_t *game);
     int init_button(button_t **button, sfVector2f position, int size,
     char **tab);
@@ -198,42 +94,58 @@
     int init_volume(vol_t **vol);
     int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect);
 
+    /*Animations*/
+
+        /*Player animations*/
+        int player_animations(player_t *player);
+        int player_check_key(sfKeyCode key);
+        int set_player_movements(player_t *player, sfEvent event);
+
     /*Menu management*/
+
         /*Initalization*/
     sfRenderWindow *create_window(void);
     char **init_menu_rsc(char *sound, char *texture, char *texture_bg);
     char **init_button_rsc2(char *sound, char *texture);
     int create_menus(main_game_t *game);
+
         /*Button Position*/
-    void pos_button_settings(sfRenderWindow *window, main_game_t *game);
-    void pos_button_pause(sfRenderWindow *window, main_game_t *game);
-    void pos_button_game(sfRenderWindow *window, main_game_t *game);
-    void pos_button_main(sfRenderWindow *window, main_game_t *game);
-    void pos_button_scoreboard(sfRenderWindow *window, main_game_t *game);;
-        /*Display*/
-    int display_menu(sfRenderWindow *window, main_game_t *game);
-    int display_game(sfRenderWindow *window, main_game_t *game);
-    int display_pause_menu(sfRenderWindow *window, main_game_t *game);
-    int display_settings(sfRenderWindow *window, main_game_t *game);
-    int display_help_menu(sfRenderWindow *window, main_game_t *game);
-    int display_score_menu(sfRenderWindow *window, main_game_t *game);
-    int display_shop(sfRenderWindow *window, main_game_t *game);
+    void pos_button_settings(main_game_t *game);
+    void pos_button_pause(main_game_t *game);
+    void pos_button_help(main_game_t *game);
+    void pos_button_game(main_game_t *game);
+    void pos_button_main(main_game_t *game);
+    void pos_button_scoreboard(main_game_t *game);;
+
+    /*Display*/
+
+    int display_menu(main_game_t *game);
+    int display_game(main_game_t *game);
+    int display_pause(main_game_t *game);
+    int display_settings(main_game_t *game);
+    int display_help(main_game_t *game);
+    int display_score(main_game_t *game);
+    int display_shop(main_game_t *game);
     int change_menu(main_game_t *game, sfRenderWindow *window, sfVector2i
     mouse_pos);
     int manage_volume_right(main_game_t *game, sfVector2i mouse_pos);
+    int manage_volume_left(main_game_t *game, sfVector2i mouse_pos);
 
     /*Button management*/
+
         /*Create*/
     int create_all_big_buttons(main_game_t *game);
     int create_all_medium_buttons(main_game_t *game);
     int create_all_small_buttons(main_game_t *game);
     int create_all_buttons(main_game_t *game);
+
         /*Set Rect*/
     void set_rect_big_buttons(main_game_t *game);
     void set_rect_mid_buttons(main_game_t *game);
     void set_rect_mid_buttons2(main_game_t *game);
     void set_rect_small_buttons(main_game_t *game);
     void set_rect_all_buttons(main_game_t *game);
+
         /*Hover*/
     int manage_hover_big_buttons(main_game_t *game, sfVector2i mouse_pos);
     int manage_hover_medium_buttons(main_game_t *game, sfVector2i mouse_pos);
@@ -256,14 +168,19 @@
 
     /* Events */
 
+    bool button_is_clicked(button_t *button, sfVector2i mouse_pos);
     const event_t *get_event(sfEventType type, const event_t event_array[]);
     int close_window(main_game_t *game);
 
     /* Scenes */
 
+    int create_menus(main_game_t *game);
     const scenes_t *manage_scenes(sfKeyCode key, scenes_name name);
     int pause_scene(main_game_t *game);
     int main_menu_scene(main_game_t *game);
+    int game_scene(main_game_t *game);
+    int settings_scene(main_game_t *game);
+    int help_scene(main_game_t *game);
 
     /* Free data */
 

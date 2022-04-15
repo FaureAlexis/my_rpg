@@ -22,8 +22,7 @@ int len_tab(char *str)
 
 int get_next_array(char *tmp, int idx)
 {
-    while (tmp[idx] != '\n')
-    {
+    while (tmp[idx] != '\n') {
         idx += 1;
     }
     idx += 1;

@@ -9,7 +9,7 @@
 #include "rpg.h"
 #include <SFML/Graphics.h>
 
-void init_window(game_scene_t *src, char ***tab, int i)
+void init_map_window(game_scene_t *src, char ***tab, int i)
 {
     src->window = malloc(sizeof(wind_t));
     src->window->texture = sfTexture_createFromFile(tab[i][0], NULL);
@@ -20,7 +20,7 @@ void init_window(game_scene_t *src, char ***tab, int i)
 void parce_tab(game_scene_t *src, char ***tab, int i)
 {
     if (my_arraylen(tab[i]) == 3) {
-        init_window(src, tab, i);
+        init_map_window(src, tab, i);
     }
     if (my_arraylen(tab[i]) == 7) {
         init_obstacle(src, tab, i);
@@ -56,15 +56,16 @@ void launch_rpg(char ***tab)
     game_scene_t *src = init_param_scene(tab);
     sfVideoMode mode = {1920, 1080, 32};
 
-    src->window->window = sfRenderWindow_create(mode, "En Bas La"\
+    src->window->window = sfRenderWindow_create(mode, "En Bas La"
     , sfResize | sfClose, NULL);
     while (sfRenderWindow_isOpen(src->window->window)) {
         sfRenderWindow_clear(src->window->window, sfBlack);
-        while (sfRenderWindow_pollEvent(src->window->window, \
+        while (sfRenderWindow_pollEvent(src->window->window,
         &src->window->event)) {
             init_event(src->window);
         }
-        sfRenderWindow_drawSprite(src->window->window, src->window->sprite, NULL);
+        sfRenderWindow_drawSprite(src->window->window, src->window->sprite,
+        NULL);
         display_obstacle(src);
         sfRenderWindow_display(src->window->window);
     }

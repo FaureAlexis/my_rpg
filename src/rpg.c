@@ -15,7 +15,8 @@ int rpg(int argc, const char * const *argv, char ** env)
 
     if (!game || game == NULL)
         return EPITECH_ERROR;
-    init_all(game);
+    if (init_all(game) == EPITECH_ERROR)
+        return EPITECH_ERROR;
     while (change_scene != -1 && change_scene != 84) {
         scene = manage_scenes(0, change_scene);
         if (scene)
