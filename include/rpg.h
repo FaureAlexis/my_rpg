@@ -1,8 +1,8 @@
 /*
-** EPITECH PROJECT, 2021
-** lib
+** EPITECH PROJECT, 2022
+** rpg
 ** File description:
-** lib
+** rpg
 */
 
 #include <math.h>
@@ -15,6 +15,9 @@
     #define BUTTON_SOUND "assets/sounds/click.ogg"
     #define BUTTON_SS "assets/button/button_spritesheet.png"
     #define MENU_BG "assets/menu/main_menu.jpg"
+    #define GAME_EX "assets/menu/game_example.jpg"
+    #define SETTINGS_BG "assets/menu/settings_menu.png"
+    #define SETTINGS_SS "assets/window/settings_sprite.png"
 
     typedef enum button_size_s {
         SMALL,
@@ -94,7 +97,6 @@
 
     typedef struct all_menu_s {
         menu_t *main;
-        menu_t *shop;
         menu_t *scoreboard;
         menu_t *gameplay;
         menu_t *settings;
@@ -105,6 +107,9 @@
     typedef enum {
         UNKNOWN_SCENE = -1,
         MENU_SCENE,
+        SETTINGS_SCENE,
+        EXIT_SCENE,
+        HELP_SCENE,
         GAME_SCENE,
         PAUSE_SCENE
     } scenes_name;
@@ -117,7 +122,7 @@
     } player_t;
 
     typedef struct main_game_s {
-        sfRenderWindow *window;
+        sfRenderWindow *w;
         sfEvent event;
         vol_t *vol;
         btn_t *btn;
@@ -138,50 +143,6 @@
 
     /* Check environnement */
 
-    typedef struct game_object
-    {
-        sfVector2f cord;
-        sfTexture *texture;
-        sfSprite *sprite;
-        sfIntRect frame;
-    } game_object_s;
-
-    typedef struct cloc
-    {
-        sfClock *clock1;
-        sfTime time1;
-        float seconds1;
-    }cloc_s;
-
-    typedef struct obstacle_s
-    {
-        game_object_s *src;
-        struct obstacle_s *next;
-    }obstacle_t;
-
-    typedef struct wind_s
-    {
-        sfRenderWindow* window;
-        sfEvent event;
-        sfTexture *texture;
-        sfSprite *sprite;
-        sfMusic *music;
-    }wind_t;
-
-    typedef struct game_scene_s
-    {
-        wind_t *window;
-        obstacle_t *obstacle;
-    }game_scene_t;
-
-    char *open_file(char const *filepath);
-    char **my_str_to_word_array_pos(char const *str, char pos, int idx);
-    char ***make_tab(char *filepath);
-    int my_arraylen(char *const *array);
-    void launch_rpg(char ***tab);
-    void init_obstacle(game_scene_t *src, char ***tab, int i);
-    void display_obstacle(game_scene_t *src);
-    obstacle_t *add_node_to_obstacle(obstacle_t *head, obstacle_t *node);
     int check_env(char **env);
 
     /* Inits */
@@ -205,22 +166,24 @@
     char **init_button_rsc2(char *sound, char *texture);
     int create_menus(main_game_t *game);
         /*Button Position*/
-    void pos_button_settings(sfRenderWindow *window, main_game_t *game);
-    void pos_button_pause(sfRenderWindow *window, main_game_t *game);
-    void pos_button_game(sfRenderWindow *window, main_game_t *game);
-    void pos_button_main(sfRenderWindow *window, main_game_t *game);
-    void pos_button_scoreboard(sfRenderWindow *window, main_game_t *game);;
+    void pos_button_settings(main_game_t *game);
+    void pos_button_pause(main_game_t *game);
+    void pos_button_help(main_game_t *game);
+    void pos_button_game(main_game_t *game);
+    void pos_button_main(main_game_t *game);
+    void pos_button_scoreboard(main_game_t *game);;
         /*Display*/
-    int display_menu(sfRenderWindow *window, main_game_t *game);
-    int display_game(sfRenderWindow *window, main_game_t *game);
-    int display_pause_menu(sfRenderWindow *window, main_game_t *game);
-    int display_settings(sfRenderWindow *window, main_game_t *game);
-    int display_help_menu(sfRenderWindow *window, main_game_t *game);
-    int display_score_menu(sfRenderWindow *window, main_game_t *game);
-    int display_shop(sfRenderWindow *window, main_game_t *game);
+    int display_menu(main_game_t *game);
+    int display_game(main_game_t *game);
+    int display_pause(main_game_t *game);
+    int display_settings(main_game_t *game);
+    int display_help(main_game_t *game);
+    int display_score(main_game_t *game);
+    int display_shop(main_game_t *game);
     int change_menu(main_game_t *game, sfRenderWindow *window, sfVector2i
     mouse_pos);
     int manage_volume_right(main_game_t *game, sfVector2i mouse_pos);
+    int manage_volume_left(main_game_t *game, sfVector2i mouse_pos);
 
     /*Button management*/
         /*Create*/
@@ -255,15 +218,19 @@
     int manage_hover(button_t *button, sfVector2i mouse_pos);
 
     /* Events */
-
+    bool button_is_clicked(button_t *button, sfVector2i mouse_pos);
     const event_t *get_event(sfEventType type, const event_t event_array[]);
     int close_window(main_game_t *game);
 
     /* Scenes */
 
+    int create_menus(main_game_t *game);
     const scenes_t *manage_scenes(sfKeyCode key, scenes_name name);
     int pause_scene(main_game_t *game);
     int main_menu_scene(main_game_t *game);
+    int game_scene(main_game_t *game);
+    int settings_scene(main_game_t *game);
+    int help_scene(main_game_t *game);
 
     /* Free data */
 
