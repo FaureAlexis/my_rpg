@@ -193,6 +193,11 @@
     /* Events */
 
     bool button_is_clicked(button_t *button, sfVector2i mouse_pos);
+    void clicked_state_game(main_game_t *game, sfRectangleShape *shape);
+    void clicked_state_pause(main_game_t *game, sfRectangleShape *shape);
+    void clicked_state_settings(main_game_t *game, sfRectangleShape *shape);
+    void clicked_state_help(main_game_t *game, sfRectangleShape *shape);
+    void clicked_state_main(main_game_t *game, sfRectangleShape *shape);
     const event_t *get_event(sfEventType type, const event_t event_array[]);
     int close_window(main_game_t *game);
 

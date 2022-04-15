@@ -18,12 +18,18 @@ static int game_scene_event(main_game_t *game)
 
     if (event)
         return event->events(game);
+    if (game->event.key.code == sfKeyEscape
+    && game->event.type == sfEvtKeyPressed) {
+        game->player->next_scene = PAUSE_SCENE;
+        return game->player->next_scene;
+    }
     return game->player->current_scene;
 }
 
 static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->mid->pause_b, mouse_pos) == true) {
+        clicked_state_game(game, game->btn->mid->pause_b->shape);
         game->player->next_scene = PAUSE_SCENE;
         return game->player->next_scene;
     }

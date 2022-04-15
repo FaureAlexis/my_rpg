@@ -16,7 +16,12 @@ SRC_BUTTON		=	button/init_buttons.c \
 					button/set_rect/set_rect_big_buttons.c \
 					button/set_rect/set_rect_mid_buttons.c \
 					button/set_rect/set_rect_small_buttons.c \
-					button/create_and_set_buttons.c
+					button/create_and_set_buttons.c \
+					button/clicked/clicked_state_game.c \
+					button/clicked/clicked_state_help.c \
+					button/clicked/clicked_state_settings.c \
+					button/clicked/clicked_state_main.c \
+					button/clicked/clicked_state_pause.c
 
 SRC_SCENES =		scenes/display/display_main_menu.c \
 					scenes/display/display_help.c \

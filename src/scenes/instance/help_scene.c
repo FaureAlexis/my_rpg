@@ -24,10 +24,12 @@ static int help_scene_event(main_game_t *game)
 static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
+        clicked_state_help(game, game->btn->big->return_b->shape);
         game->player->next_scene = MENU_SCENE;
         return game->player->next_scene;
     }
     if (button_is_clicked(game->btn->big->exit_b, mouse_pos) == true) {
+        clicked_state_help(game, game->btn->big->exit_b->shape);
         return close_window(game);
     }
     return game->player->current_scene;

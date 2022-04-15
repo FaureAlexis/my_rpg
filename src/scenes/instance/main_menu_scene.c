@@ -24,18 +24,22 @@ static int main_scene_event(main_game_t *game)
 static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->big->settings_b, mouse_pos) == true) {
+        clicked_state_main(game, game->btn->big->settings_b->shape);
         game->player->next_scene = SETTINGS_SCENE;
         return game->player->next_scene;
     }
     if (button_is_clicked(game->btn->big->play_b, mouse_pos) == true) {
+        clicked_state_main(game, game->btn->big->play_b->shape);
         game->player->next_scene = GAME_SCENE;
         return game->player->next_scene;
     }
     if (button_is_clicked(game->btn->mid->help_b, mouse_pos) == true) {
+        clicked_state_main(game, game->btn->big->help_b->shape);
         game->player->next_scene = HELP_SCENE;
         return game->player->next_scene;
     }
     if (button_is_clicked(game->btn->big->exit_b, mouse_pos) == true) {
+        clicked_state_main(game, game->btn->big->exit_b->shape);
         return close_window(game);
     }
     return game->player->current_scene;

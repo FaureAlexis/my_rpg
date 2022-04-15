@@ -10,17 +10,17 @@
 void set_rect_big_buttons(main_game_t *game)
 {
     sfSprite_setTextureRect(game->btn->big->score_b->sprite,
-    (sfIntRect){15, 10, 350, 180});
+    (sfIntRect){35, 10, 330, 170});
     sfSprite_setTextureRect(game->btn->big->resume_b->sprite,
-    (sfIntRect){350, 10, 350, 170});
+    (sfIntRect){330, 10, 330, 170});
     sfSprite_setTextureRect(game->btn->big->help_b->sprite,
-    (sfIntRect){15, 200, 350, 170});
+    (sfIntRect){35, 195, 330, 170});
     sfSprite_setTextureRect(game->btn->big->settings_b->sprite,
-    (sfIntRect){350, 190, 350, 200});
+    (sfIntRect){365, 195, 330, 180});
     sfSprite_setTextureRect(game->btn->big->return_b->sprite,
-    (sfIntRect){690, 190, 350, 200});
+    (sfIntRect){705, 195, 330, 180});
     sfSprite_setTextureRect(game->btn->big->play_b->sprite,
-    (sfIntRect){15, 380, 350, 170});
+    (sfIntRect){35, 390, 330, 170});
     sfSprite_setTextureRect(game->btn->big->exit_b->sprite,
-    (sfIntRect){350, 380, 350, 170});
+    (sfIntRect){365, 390, 330, 170});
 }

@@ -19,12 +19,12 @@ char **tab)
     if (size == SMALL)
         sfRectangleShape_setSize((*button)->shape, (sfVector2f){80, 80});
     if (size == MEDIUM)
-        sfRectangleShape_setSize((*button)->shape, (sfVector2f){120, 120});
+        sfRectangleShape_setSize((*button)->shape, (sfVector2f){110, 110});
     if (size == LARGE)
-        sfRectangleShape_setSize((*button)->shape, (sfVector2f){330, 180});
+        sfRectangleShape_setSize((*button)->shape, (sfVector2f){305, 170});
     sfRectangleShape_setPosition((*button)->shape, (*button)->position);
     sfRectangleShape_setFillColor((*button)->shape,
-    sfColor_fromRGBA(0, 0, 255, 150));
+    sfColor_fromRGBA(0, 0, 0, 120));
     return EXIT_SUCCESS;
 }
 
