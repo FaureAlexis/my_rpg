@@ -25,7 +25,7 @@ void init_obstacle(game_scene_t *src, char ***tab, int i)
 {
     obstacle_t *node = malloc(sizeof(obstacle_t));
     sfVector2f tall = {5, 5};
-    sfIntRect rec = {my_atoi(tab[i][3]), my_atoi(tab[i][4]), \
+    sfIntRect rec = {my_atoi(tab[i][3]), my_atoi(tab[i][4]),
     my_atoi(tab[i][5]), my_atoi(tab[i][6])};
 
     node->src = malloc(sizeof(game_object_s));
@@ -36,7 +36,7 @@ void init_obstacle(game_scene_t *src, char ***tab, int i)
     node->src->sprite = sfSprite_create();
     node->next = NULL;
     sfSprite_setScale(node->src->sprite, tall);
-    sfSprite_setOrigin(node->src->sprite, (sfVector2f){my_atoi(tab[i][5]) / 2, \
+    sfSprite_setOrigin(node->src->sprite, (sfVector2f){my_atoi(tab[i][5]) / 2,
     my_atoi(tab[i][6]) / 2});
     sfSprite_setTexture(node->src->sprite, node->src->texture, sfFalse);
     sfSprite_setTextureRect(node->src->sprite, node->src->frame);
