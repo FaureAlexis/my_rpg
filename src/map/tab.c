@@ -41,10 +41,13 @@ int my_arraylen(char *const *array)
 
 char ***make_tab(char *filepath)
 {
-    char *tmp = open_file(filepath);
-    char ***result = malloc(sizeof(char **) * (len_tab(tmp) + 1));
+    char *tmp = open_file(MAP_TXT);
+    char ***result = NULL;
     int idx = 0;
 
+    if (!tmp)
+        return NULL;
+    result = malloc(sizeof(char **) * (len_tab(tmp) + 1));
     for (int tab = 0; tab < len_tab(tmp); tab += 1) {
         result[tab] = my_str_to_word_array_pos(tmp, ' ', idx);
         idx = get_next_array(tmp, idx);

@@ -8,6 +8,7 @@
 #ifndef MENU_H_
 #define MENU_H_
     #include "csfml.h"
+    #include "game_object.h"
 
     typedef enum {
         UNKNOWN_SCENE = -1,
@@ -21,11 +22,8 @@
 
     typedef struct menu_s {
         sfMusic *theme;
-        sfIntRect rect;
-        sfSprite *sprite;
-        sfTexture *texture;
-        sfSprite *bg_sprite;
-        sfTexture *bg_texture;
+        game_object_t *object;
+        game_object_t *bg_object;
     } menu_t;
 
     typedef struct all_menu_s {

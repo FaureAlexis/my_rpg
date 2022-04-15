@@ -12,20 +12,22 @@ int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect)
     (*menu) = malloc(sizeof(menu_t));
     if (!(*menu))
         return EPITECH_ERROR;
-    (*menu)->rect = rect;
+    (*menu)->object = malloc(sizeof(game_object_t));
+    (*menu)->bg_object = malloc(sizeof(game_object_t));
+    (*menu)->object->rect = rect;
     (*menu)->theme = sfMusic_createFromFile(theme);
     if ((*menu)->theme == NULL)
         return EPITECH_ERROR;
     sfMusic_setLoop((*menu)->theme, true);
-    (*menu)->bg_texture = sfTexture_createFromFile(SETTINGS_BG, NULL);
-    (*menu)->texture = sfTexture_createFromFile(texture, NULL);
-    if ((*menu)->bg_texture == NULL || (*menu)->texture == NULL)
+    (*menu)->bg_object->texture = sfTexture_createFromFile(SETTINGS_BG, NULL);
+    (*menu)->object->texture = sfTexture_createFromFile(texture, NULL);
+    if ((*menu)->bg_object->texture == NULL || (*menu)->object->texture == NULL)
         return EPITECH_ERROR;
-    (*menu)->sprite = sfSprite_create();
-    (*menu)->bg_sprite = sfSprite_create();
-    if ((*menu)->bg_sprite == NULL || (*menu)->sprite == NULL)
+    (*menu)->object->sprite = sfSprite_create();
+    (*menu)->bg_object->sprite = sfSprite_create();
+    if ((*menu)->bg_object->sprite == NULL || (*menu)->object->sprite == NULL)
         return EPITECH_ERROR;
-    sfSprite_setTexture((*menu)->sprite, (*menu)->texture, sfTrue);
-    sfSprite_setTexture((*menu)->bg_sprite, (*menu)->bg_texture, sfTrue);
+    sfSprite_setTexture((*menu)->object->sprite, (*menu)->object->texture, sfTrue);
+    sfSprite_setTexture((*menu)->bg_object->sprite, (*menu)->bg_object->texture, sfTrue);
     return EXIT_SUCCESS;
 }

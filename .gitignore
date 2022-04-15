@@ -8,9 +8,7 @@
 my_rpg
 
 # Unit tests
-*.gcda
-*.gcno
-*.gcov
+*.gc*
 unit_tests
 
 # Visual Studio Code

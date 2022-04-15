@@ -34,13 +34,14 @@ SRC_SCENES =		scenes/display/display_main_menu.c \
 					scenes/instance/volume_settings.c \
 					scenes/instance/main_menu_scene.c
 
-SRC_ANIMATIONS =	animations/player_animations.c	\
+SRC_ANIMATIONS =	animations/player_animations.c
 
 SRC_EVENT		=	events/get_event.c \
 					events/event_close.c
 
 SRC_INIT		=	init/init_clock.c \
 					init/init_game.c \
+					init/init_map.c \
 					init/init_player.c \
 					init/init_window.c
 
@@ -70,12 +71,20 @@ SRC_EP			= 	src_ep/game_test.c 	\
 					src_ep/pos.c 		\
 					src_ep/tab.c
 
+SRC_MAP	=	map/game_test.c	\
+			map/node.c	\
+			map/obstacle.c	\
+			map/open_file.c \
+			map/pos.c	\
+			map/tab.c
+
 SRC 			=	$(SRC_BUTTON) \
 					$(SRC_INIT) \
 					$(SRC_FREE) \
 					$(SRC_EVENT) \
 					$(SRC_SCENES) \
 					$(SRC_ANIMATIONS) \
+					$(SRC_MAP) \
 					sys/check_env.c \
 					main.c	\
 					rpg.c

@@ -22,7 +22,7 @@ int set_player_movements(player_t *player, sfEvent event)
     sfKeyCode key = event.key.code;
 
     if (event.type != sfEvtKeyPressed) {
-        player->rect.top = 0;
+        player->object->rect.top = 0;
         return player->current_scene;
     }
     for (int i = 0; movements_array[i].key != sfKeyUnknown; i++) {
@@ -30,13 +30,13 @@ int set_player_movements(player_t *player, sfEvent event)
             movements = &movements_array[i];
     }
     if (!movements) {
-        player->rect.top = 0;
+        player->object->rect.top = 0;
         return player->current_scene;
     }
     if (movements->flip != 0)
-        player->scale.x = movements->flip;
-    player->rect.top = movements->height_ss;
-    sfSprite_setScale(player->sprite, player->scale);
+        player->object->scale.x = movements->flip;
+    player->object->rect.top = movements->height_ss;
+    sfSprite_setScale(player->object->sprite, player->object->scale);
     return player->current_scene;
 }
 
@@ -46,12 +46,12 @@ int player_animations(player_t *player)
     player->p_clock->seconds =
         player->p_clock->time.microseconds / 1000000.0;
     if (player->p_clock->seconds >= 0.1) {
-        player->rect.left += 48;
-        sfSprite_setTextureRect(player->sprite, player->rect);
+        player->object->rect.left += 48;
+        sfSprite_setTextureRect(player->object->sprite, player->object->rect);
         sfClock_restart(player->p_clock->clock);
-    } else if (player->rect.left >= 240) {
-        player->rect.left = 0;
-        sfSprite_setTextureRect(player->sprite, player->rect);
+    } else if (player->object->rect.left >= 240) {
+        player->object->rect.left = 0;
+        sfSprite_setTextureRect(player->object->sprite, player->object->rect);
     }
     return 0;
 }

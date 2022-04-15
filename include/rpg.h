@@ -9,6 +9,7 @@
 #define RPG_H_
     #include <math.h>
     #include "lib.h"
+    #include "game_object.h"
     #include "button.h"
     #include "menu.h"
     #include "csfml.h"
@@ -21,6 +22,7 @@
     #define SETTINGS_BG "assets/menu/settings_menu.png"
     #define SETTINGS_SS "assets/window/settings_sprite.png"
     #define PLAYER_SS "assets/player/player.png"
+    #define MAP_TXT "assets/map/world.txt"
 
     typedef struct volume_s {
         float volume;
@@ -35,16 +37,24 @@
         float seconds;
     } my_clock_t;
 
+    typedef struct obstacle_s {
+        sfVector2f pos;
+        game_object_t *object;
+        struct obstacle_s *next;
+    } obstacle_t;
+
+    typedef struct map_s {
+        char ***tab;
+        obstacle_t *obstacle;
+        game_object_t *object;
+    } map_t;
+
     typedef struct player_s {
         scenes_name current_scene;
         scenes_name next_scene;
         int life;
         int attack;
-        sfSprite *sprite;
-        sfTexture *texture;
-        sfVector2f position;
-        sfVector2f scale;
-        sfIntRect rect;
+        game_object_t *object;
         my_clock_t *p_clock;
     } player_t;
 
@@ -55,6 +65,7 @@
         btn_t *btn;
         mnu_t *mnu;
         player_t *player;
+        map_t *map;
     } main_game_t;
 
     typedef struct event_s {
@@ -82,6 +93,7 @@
 
     player_t *init_player(void);
     main_game_t *init_game(void);
+    map_t *init_map(void);
     sfRenderWindow *init_window(void);
     my_clock_t *init_clock(void);
     int init_all(main_game_t *game);
@@ -93,6 +105,18 @@
     int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect);
     int init_volume(vol_t **vol);
     int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect);
+
+    /*Map Management*/
+
+    char *open_file(char const *filepath);
+    char **my_str_to_word_array_pos(char const *str, char pos, int idx);
+    char ***make_tab(char *filepath);
+    int my_arraylen(char *const *array);
+    void launch_rpg(char ***tab);
+    void init_obstacle(map_t *map, char ***tab, int i);
+    void display_obstacle(main_game_t *game);
+    obstacle_t *add_node_to_obstacle(obstacle_t *head, obstacle_t *node);
+    void parse_tab(map_t *map, char ***tab, int i);
 
     /*Animations*/
 
@@ -185,6 +209,7 @@
     /* Free data */
 
     void free_game_struct(main_game_t *game);
+    void free_tab(char ***tab);
 
     /* Main function */
 

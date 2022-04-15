@@ -41,6 +41,9 @@ main_game_t *init_game(void)
 
     if (!game)
         return NULL;
+    game->map = init_map();
+    if (!game->map)
+        return NULL;
     game->btn = malloc(sizeof(btn_t));
     game->btn->big = malloc(sizeof(big_btn_t));
     game->btn->mid = malloc(sizeof(mid_btn_t));
