@@ -22,7 +22,7 @@ void set_rect_small_buttons(main_game_t *game)
     sfSprite_setTextureRect(game->btn->sml->left_b->sprite,
     (sfIntRect){755, 940, 150, 150});
     sfSprite_setTextureRect(game->btn->sml->right_b->sprite,
-    (sfIntRect){895, 940, 150, 150});
+    (sfIntRect){890, 940, 150, 150});
     sfSprite_setTextureRect(game->btn->sml->top_b->sprite,
     (sfIntRect){1045, 940, 150, 150});
     sfSprite_setTextureRect(game->btn->sml->bot_b->sprite,

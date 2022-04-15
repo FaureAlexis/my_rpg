@@ -9,7 +9,7 @@
 
 int close_window(main_game_t *game)
 {
-    sfRenderWindow_close(game->window);
+    sfRenderWindow_close(game->w);
     game->player->next_scene = UNKNOWN_SCENE;
     return game->player->next_scene;
 }
