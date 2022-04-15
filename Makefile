@@ -85,8 +85,6 @@ OBJ				=    $(addprefix src/, $(SRC:.c=.o))
 
 NAME	=	my_rpg
 
-CFLAGS	=	-Wall -Werror -Wextra
-
 CPPFLAGS	=	-I ./include
 
 CSFML	=	-l csfml-graphics -l csfml-audio -l csfml-system -l csfml-window
@@ -97,7 +95,7 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	make -C lib/my
-	$(CC) -o $(NAME) $(OBJ) $(CPPFLAGS) $(LDFLAGS) $(CFLAGS) $(CSFML) -lm
+	$(CC) -o $(NAME) $(OBJ) $(CPPFLAGS) $(LDFLAGS) $(CSFML) -lm
 
 clean:
 	make fclean -C lib/my
