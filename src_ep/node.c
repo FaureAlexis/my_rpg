@@ -15,7 +15,7 @@ obstacle_t *add_node_to_obstacle(obstacle_t *head, obstacle_t *node)
     if (head == NULL) {
         head = node;
     } else {
-        while (tmp->next != NULL){
+        while (tmp->next != NULL) {
             tmp = tmp->next;
         }
         tmp->next = node;

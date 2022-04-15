@@ -16,7 +16,8 @@ void display_obstacle(game_scene_t *src)
     while (tmp) {
         sfSprite_setTextureRect(tmp->src->sprite, tmp->src->frame);
         sfSprite_setPosition(tmp->src->sprite, tmp->src->cord);
-        sfRenderWindow_drawSprite(src->window->window, tmp->src->sprite, NULL);
+        sfRenderWindow_drawSprite(src->window->window, tmp->src->sprite,
+                                  NULL);
         tmp = tmp->next;
     }
 }

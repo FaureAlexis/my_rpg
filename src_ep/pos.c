@@ -58,7 +58,7 @@ char **my_str_to_word_array_pos(char const *str, char pos, int idx)
     for (int j = 0; j != nb_words; j += 1) {
         s = my_lenword_pos(str, total, pos);
         dest[j] = malloc(sizeof(char) * (s + 1));
-        for (int f = 0; f != s; f += 1){
+        for (int f = 0; f != s; f += 1) {
             dest[j][f] = str[total + f];
         }
         dest[j][s] = '\0';
