@@ -10,6 +10,7 @@ my_rpg
 # Unit tests
 *.gc*
 unit_tests
+.gitignore
 
 # Visual Studio Code
 .vscode

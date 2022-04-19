@@ -81,7 +81,8 @@ SRC_MAP	=	map/game_test.c	\
 			map/obstacle.c	\
 			map/open_file.c \
 			map/pos.c	\
-			map/tab.c
+			map/tab.c	\
+			map/mobe.c
 
 SRC 			=	$(SRC_BUTTON) \
 					$(SRC_INIT) \

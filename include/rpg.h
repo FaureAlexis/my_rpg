@@ -38,14 +38,23 @@
     } my_clock_t;
 
     typedef struct obstacle_s {
-        sfVector2f pos;
         game_object_t *object;
         struct obstacle_s *next;
     } obstacle_t;
 
+    typedef struct mobe_s {
+        game_object_t *object;
+        my_clock_t *my_clock;
+        int hp;
+        int power;
+        int obj;
+        struct mobe_s *next;
+    }mobe_t;
+
     typedef struct map_s {
         char ***tab;
         obstacle_t *obstacle;
+        mobe_t *mobe;
         game_object_t *object;
     } map_t;
 
@@ -114,8 +123,11 @@
     int my_arraylen(char *const *array);
     void launch_rpg(char ***tab);
     void init_obstacle(map_t *map, char ***tab, int i);
+    void init_mobe(map_t *map, char ***tab, int i);
     void display_obstacle(main_game_t *game);
+    void display_mobe(main_game_t *game);
     obstacle_t *add_node_to_obstacle(obstacle_t *head, obstacle_t *node);
+    mobe_t *add_node_to_mobe(mobe_t *head, mobe_t *node);
     void parse_tab(map_t *map, char ***tab, int i);
 
     /*Animations*/
@@ -139,7 +151,7 @@
     void pos_button_help(main_game_t *game);
     void pos_button_game(main_game_t *game);
     void pos_button_main(main_game_t *game);
-    void pos_button_scoreboard(main_game_t *game);;
+    void pos_button_scoreboard(main_game_t *game);
 
     /*Display*/
 

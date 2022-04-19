@@ -31,3 +31,4 @@ assets/map/map_2.png 0 0
 808 575 assets/map/tilesets/fences.png 32 48 16 16
 888 575 assets/map/tilesets/fences.png 32 48 16 16
 968 575 assets/map/tilesets/fences.png 48 48 16 16
+200 200 assets/sprites/characters/slime.png 0 0 32 32 10 10

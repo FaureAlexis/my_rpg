@@ -25,4 +25,7 @@ void parse_tab(map_t *map, char ***tab, int i)
     if (my_arraylen(tab[i]) == 7) {
         init_obstacle(map, tab, i);
     }
+    if (my_arraylen(tab[i]) == 9) {
+        init_mobe(map, tab, i);
+    }
 }
