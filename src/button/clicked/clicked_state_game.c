@@ -9,10 +9,17 @@
 
 void clicked_state_game(main_game_t *game, sfRectangleShape *shape)
 {
-    for (int i = 0; i < 20; ++i) {
+    sfClock *clock = sfClock_create();
+    sfTime time = sfClock_getElapsedTime(clock);
+    float seconds = time.microseconds / 1000000.0;
+
+    while (seconds < 0.2) {
+        time = sfClock_getElapsedTime(clock);
+        seconds = time.microseconds / 1000000.0;
         player_animations(game->player);
         display_game(game);
         sfRenderWindow_drawRectangleShape(game->w, shape, NULL);
         sfRenderWindow_display(game->w);
     }
+    sfClock_destroy(clock);
 }
