@@ -13,7 +13,7 @@ sfRenderWindow *init_window(void)
     sfVideoMode mode = {1920, 1080, 32};
     sfImage *favicon = NULL;
 
-    window = sfRenderWindow_create(mode, "Hasbullah le roi",
+    window = sfRenderWindow_create(mode, "Hasbullah Quest",
         sfResize | sfClose, NULL);
     if (!window)
         return NULL;
