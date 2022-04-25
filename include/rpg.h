@@ -67,6 +67,13 @@
         my_clock_t *p_clock;
     } player_t;
 
+    typedef struct settings_s {
+        int fps;
+        int res_x;
+        int res_y;
+        sfText *fps_text;
+    } settings_t;
+
     typedef struct main_game_s {
         sfRenderWindow *w;
         sfEvent event;
@@ -75,6 +82,7 @@
         mnu_t *mnu;
         player_t *player;
         map_t *map;
+        settings_t *settings;
     } main_game_t;
 
     typedef struct event_s {
@@ -147,6 +155,7 @@
 
         /*Button Position*/
     void pos_button_settings(main_game_t *game);
+    void pos_button_settings_two(main_game_t *game);
     void pos_button_pause(main_game_t *game);
     void pos_button_help(main_game_t *game);
     void pos_button_game(main_game_t *game);
@@ -166,6 +175,7 @@
     mouse_pos);
     int manage_volume_right(main_game_t *game, sfVector2i mouse_pos);
     int manage_volume_left(main_game_t *game, sfVector2i mouse_pos);
+    int display_fps(main_game_t *game);
 
     /*Button management*/
 
