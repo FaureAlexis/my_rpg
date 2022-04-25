@@ -21,7 +21,7 @@ SRC_BUTTON		=	button/init_buttons.c \
 					button/clicked/clicked_state_help.c \
 					button/clicked/clicked_state_settings.c \
 					button/clicked/clicked_state_main.c \
-					button/clicked/clicked_state_pause.c
+					button/clicked/clicked_state_pause.c \
 
 SRC_SCENES =		scenes/display/display_main_menu.c \
 					scenes/display/display_help.c \
@@ -29,6 +29,7 @@ SRC_SCENES =		scenes/display/display_main_menu.c \
 					scenes/display/display_pause.c \
 					scenes/display/display_settings.c \
 					scenes/button_pos/button_pos_menu.c \
+					scenes/button_pos/button_pos_settings.c \
 					scenes/create/create_scenes.c \
 					scenes/create/init_scenes.c \
 					scenes/instance/manage_scenes.c \
@@ -37,7 +38,8 @@ SRC_SCENES =		scenes/display/display_main_menu.c \
 					scenes/instance/settings_scene.c \
 					scenes/instance/help_scene.c \
 					scenes/instance/volume_settings.c \
-					scenes/instance/main_menu_scene.c
+					scenes/instance/main_menu_scene.c \
+					scenes/instance/fps_settings.c
 
 SRC_ANIMATIONS =	animations/player_animations.c
 
@@ -100,7 +102,7 @@ OBJ				=    $(addprefix src/, $(SRC:.c=.o))
 
 NAME	=	my_rpg
 
-CPPFLAGS	=	-I ./include
+CPPFLAGS	=	-I ./include -g
 
 CSFML	=	-l csfml-graphics -l csfml-audio -l csfml-system -l csfml-window
 
