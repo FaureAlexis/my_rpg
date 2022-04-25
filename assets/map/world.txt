@@ -1,34 +1,37 @@
-assets/map/map_2.png 0 0
-115 807 assets/map/objects/objects.png 0 0 16 16
-1700 922 assets/map/objects/objects.png 0 79 48 64
-1020 192 assets/map/objects/objects.png 0 79 48 64
-524 72 assets/map/objects/objects.png 0 79 48 64
-1420 40 assets/map/tilesets/plains.png 16 80 16 16
-1420 120 assets/map/tilesets/plains.png 16 96 16 16
-1500 120 assets/map/tilesets/plains.png 80 64 16 16
-1500 200 assets/map/tilesets/plains.png 16 96 16 16
-1580 200 assets/map/tilesets/plains.png 32 96 16 16
-1660 200 assets/map/tilesets/plains.png 32 96 16 16
-1740 200 assets/map/tilesets/plains.png 80 64 16 16
-1740 280 assets/map/tilesets/plains.png 16 96 16 16
-1820 280 assets/map/tilesets/plains.png 32 96 16 16
-1900 280 assets/map/tilesets/plains.png 32 96 16 16
-1900 200 assets/map/tilesets/plains.png 32 80 16 16
-1820 200 assets/map/tilesets/plains.png 32 80 16 16
-1900 120 assets/map/tilesets/plains.png 32 80 16 16
-1820 120 assets/map/tilesets/plains.png 32 80 16 16
-1740 120 assets/map/tilesets/plains.png 32 80 16 16
-1660 120 assets/map/tilesets/plains.png 32 80 16 16
-1580 120 assets/map/tilesets/plains.png 32 80 16 16
-1900 40 assets/map/tilesets/plains.png 32 80 16 16
-1820 40 assets/map/tilesets/plains.png 32 80 16 16
-1740 40 assets/map/tilesets/plains.png 32 80 16 16
-1660 40 assets/map/tilesets/plains.png 32 80 16 16
-1580 40 assets/map/tilesets/plains.png 32 80 16 16
-1500 40 assets/map/tilesets/plains.png 32 80 16 16
-648 575 assets/map/tilesets/fences.png 16 48 16 16
-728 575 assets/map/tilesets/fences.png 32 48 16 16
-808 575 assets/map/tilesets/fences.png 32 48 16 16
-888 575 assets/map/tilesets/fences.png 32 48 16 16
-968 575 assets/map/tilesets/fences.png 48 48 16 16
-200 200 assets/sprites/characters/slime.png 0 0 32 32 10 10
+assets/map/map_B.png
+assets/map/map_F.png 1088 1463
+assets/map/objects/objects.png 115 807 0 0 16 16
+assets/map/objects/objects.png 1700 922 0 79 48 64
+assets/map/objects/objects.png 1020 192 0 79 48 64
+assets/map/objects/objects.png 524 72 0 79 48 64
+assets/map/tilesets/plains.png 1420 40 16 80 16 16
+assets/map/tilesets/plains.png 1420 120 16 96 16 16
+assets/map/tilesets/plains.png 1500 120 80 64 16 16
+assets/map/tilesets/plains.png 1500 200 16 96 16 16
+assets/map/tilesets/plains.png 1580 200 32 96 16 16
+assets/map/tilesets/plains.png 1660 200 32 96 16 16
+assets/map/tilesets/plains.png 1740 200 80 64 16 16
+assets/map/tilesets/plains.png 1740 280 16 96 16 16
+assets/map/tilesets/plains.png 1820 280 32 96 16 16
+assets/map/tilesets/plains.png 1900 280 32 96 16 16
+assets/map/tilesets/plains.png 1900 200 32 80 16 16
+assets/map/tilesets/plains.png 1820 200 32 80 16 16
+assets/map/tilesets/plains.png 1900 120 32 80 16 16
+assets/map/tilesets/plains.png 1820 120 32 80 16 16
+assets/map/tilesets/plains.png 1740 120 32 80 16 16
+assets/map/tilesets/plains.png 1660 120 32 80 16 16
+assets/map/tilesets/plains.png 1580 120 32 80 16 16
+assets/map/tilesets/plains.png 1900 40 32 80 16 16
+assets/map/tilesets/plains.png 1820 40 32 80 16 16
+assets/map/tilesets/plains.png 1740 40 32 80 16 16
+assets/map/tilesets/plains.png 1660 40 32 80 16 16
+assets/map/tilesets/plains.png 1580 40 32 80 16 16
+assets/map/tilesets/plains.png 1500 40 32 80 16 16
+assets/map/tilesets/fences.png 648 575 16 48 16 16
+assets/map/tilesets/fences.png 728 575 32 48 16 16
+assets/map/tilesets/fences.png 808 575 32 48 16 16
+assets/map/tilesets/fences.png 888 575 32 48 16 16
+assets/map/tilesets/fences.png 968 575 48 48 16 16
+assets/sprites/characters/slime.png 200 200 0 0 32 32 10 10
+assets/sprites/characters/slime.png 300 200 0 0 32 32 10 10
+assets/sprites/characters/slime.png 400 200 0 0 32 32 10 10
