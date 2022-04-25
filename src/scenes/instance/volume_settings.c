@@ -11,6 +11,8 @@ int manage_volume_left(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->sml->left_b, mouse_pos) == true
     && game->vol->volume > 0) {
+        sfMusic_stop(game->btn->sml->right_b->sound);
+        sfMusic_play(game->btn->sml->left_b->sound);
         sfMusic_setVolume(game->mnu->main->theme, (game->vol->volume - 10));
         sfMusic_setVolume(game->mnu->gameplay->theme,
         (game->vol->volume - 10));
@@ -26,6 +28,8 @@ int manage_volume_right(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->sml->right_b, mouse_pos) == true
     && game->vol->volume < 100) {
+        sfMusic_stop(game->btn->sml->left_b->sound);
+        sfMusic_play(game->btn->sml->right_b->sound);
         sfMusic_setVolume(game->mnu->main->theme, (game->vol->volume + 10));
         sfMusic_setVolume(game->mnu->gameplay->theme,
         (game->vol->volume + 10));

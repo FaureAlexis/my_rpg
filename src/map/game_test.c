@@ -29,7 +29,7 @@ void init_map_window(map_t *map, char ***tab, int i)
 
 void parse_tab(map_t *map, char ***tab, int i)
 {
-     if (my_arraylen(tab[i]) == 1) {
+    if (my_arraylen(tab[i]) == 1) {
         init_back_window(map, tab, i);
     }
     if (my_arraylen(tab[i]) == 3) {

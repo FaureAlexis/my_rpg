@@ -9,8 +9,8 @@
 
 void free_game_struct(main_game_t *game)
 {
-    sfMusic_destroy(game->mnu->main->theme);
-    sfMusic_destroy(game->mnu->gameplay->theme);
-    free(game->player);
-    free(game);
+    destroy_all_menu(game);
+    destroy_all_button(game);
+    // free(game->player);
+    // free(game);
 }

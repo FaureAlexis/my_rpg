@@ -21,16 +21,16 @@ void pos_button_main(main_game_t *game)
     (sfVector2f){960, 450});
     sfRectangleShape_setPosition(game->btn->big->settings_b->shape,
     (sfVector2f){960, 450});
-    sfSprite_setPosition(game->btn->mid->help_b->sprite, (sfVector2f){0, 0});
+    sfSprite_setPosition(game->btn->mid->help_b->sprite, (sfVector2f){10, 10});
     sfRectangleShape_setPosition(game->btn->mid->help_b->shape,
-    (sfVector2f){0, 0});
+    (sfVector2f){10, 10});
 }
 
 void pos_button_settings(main_game_t *game)
 {
-    sfSprite_setPosition(game->btn->mid->help_b->sprite, (sfVector2f){0, 0});
+    sfSprite_setPosition(game->btn->mid->help_b->sprite, (sfVector2f){10, 10});
     sfRectangleShape_setPosition(game->btn->mid->help_b->shape,
-    (sfVector2f){0, 0});
+    (sfVector2f){10, 10});
     sfSprite_setPosition(game->btn->sml->right_b->sprite,
     (sfVector2f){1000, 360});
     sfRectangleShape_setPosition(game->btn->sml->right_b->shape,
@@ -63,9 +63,10 @@ void pos_button_help(main_game_t *game)
 
 void pos_button_game(main_game_t *game)
 {
-    sfSprite_setPosition(game->btn->mid->pause_b->sprite, (sfVector2f){0, 0});
+    sfSprite_setPosition(game->btn->mid->pause_b->sprite,
+    (sfVector2f){10, 10});
     sfRectangleShape_setPosition(game->btn->mid->pause_b->shape,
-    (sfVector2f){0, 0});
+    (sfVector2f){10, 10});
 }
 
 void pos_button_pause(main_game_t *game)

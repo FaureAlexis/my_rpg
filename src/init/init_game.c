@@ -49,6 +49,8 @@ int init_all(main_game_t *game)
         return EPITECH_ERROR;
     if (init_settings(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
+    if (init_skin_custom(&game->skin) == EPITECH_ERROR)
+        return EPITECH_ERROR;
     return EXIT_SUCCESS;
 }
 

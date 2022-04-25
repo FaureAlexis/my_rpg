@@ -20,5 +20,6 @@ void clicked_state_help(main_game_t *game, sfRectangleShape *shape)
         sfRenderWindow_drawRectangleShape(game->w, shape, NULL);
         sfRenderWindow_display(game->w);
     }
+    sfMusic_stop(game->btn->big->help_b->sound);
     sfClock_destroy(clock);
 }

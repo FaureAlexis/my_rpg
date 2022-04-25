@@ -13,6 +13,7 @@ static const scenes_t scenes_array[] = {
     {.key = sfKeyS, .name = SETTINGS_SCENE, .go_scene = &settings_scene},
     {.key = sfKeyH, .name = HELP_SCENE, .go_scene = &help_scene},
     {.key = sfKeySpace, .name = GAME_SCENE, .go_scene = &game_scene},
+    {.key = sfKeyC, .name = SKIN_SCENE, .go_scene = &skin_scene},
     {.key = sfKeyUnknown, .name = UNKNOWN_SCENE, .go_scene = NULL}
 };
 

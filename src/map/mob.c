@@ -29,6 +29,16 @@ void display_mobe(main_game_t *game)
     }
 }
 
+static int set_texture_mob(mobe_t *node, char ***tab, int i)
+{
+    sfSprite_setScale(node->object->sprite, node->object->scale);
+    sfSprite_setOrigin(node->object->sprite, (sfVector2f){my_atoi(tab[i][5]) \
+    / 2, my_atoi(tab[i][6]) / 2});
+    sfSprite_setTexture(node->object->sprite, node->object->texture, sfFalse);
+    sfSprite_setTextureRect(node->object->sprite, node->object->rect);
+    return EXIT_SUCCESS;
+}
+
 void init_mobe(map_t *map, char ***tab, int i)
 {
     mobe_t *node = malloc(sizeof(mobe_t));
@@ -47,10 +57,6 @@ void init_mobe(map_t *map, char ***tab, int i)
     node->hp = my_atoi(tab[i][7]);
     node->power = my_atoi(tab[i][8]);
     node->next = NULL;
-    sfSprite_setScale(node->object->sprite, node->object->scale);
-    sfSprite_setOrigin(node->object->sprite, (sfVector2f){my_atoi(tab[i][5]) \
-    / 2, my_atoi(tab[i][6]) / 2});
-    sfSprite_setTexture(node->object->sprite, node->object->texture, sfFalse);
-    sfSprite_setTextureRect(node->object->sprite, node->object->rect);
+    set_texture_mob(node, tab, i);
     map->mobe = add_node_to_mobe(map->mobe, node);
 }

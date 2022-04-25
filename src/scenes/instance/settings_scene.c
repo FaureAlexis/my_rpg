@@ -25,6 +25,7 @@ static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
         clicked_state_settings(game, game->btn->big->return_b->shape);
+        sfMusic_play(game->btn->big->return_b->sound);
         game->player->next_scene = MENU_SCENE;
         return game->player->next_scene;
     }
@@ -33,7 +34,8 @@ static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
         return close_window(game);
     }
     if (button_is_clicked(game->btn->mid->help_b, mouse_pos) == true) {
-        clicked_state_settings(game, game->btn->big->help_b->shape);
+        clicked_state_settings(game, game->btn->mid->help_b->shape);
+        sfMusic_play(game->btn->mid->help_b->sound);
         game->player->next_scene = HELP_SCENE;
         return game->player->next_scene;
     }

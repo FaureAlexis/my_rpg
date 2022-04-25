@@ -18,6 +18,9 @@ static int create_menu2(main_game_t *game)
     if (init_menu(&game->mnu->pause_m, BUTTON_SOUND, SETTINGS_BG,
     (sfIntRect){200, 200}) == EPITECH_ERROR)
         return EPITECH_ERROR;
+    if (init_menu(&game->mnu->skin_m, BUTTON_SOUND, SKIN_CUS_SS,
+    (sfIntRect){200, 200}) == EPITECH_ERROR)
+        return EPITECH_ERROR;
     return EXIT_SUCCESS;
 }
 

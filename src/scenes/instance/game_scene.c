@@ -20,6 +20,8 @@ static int game_scene_event(main_game_t *game)
         return event->events(game);
     if (game->event.key.code == sfKeyEscape
     && game->event.type == sfEvtKeyPressed) {
+        clicked_state_game(game, game->btn->mid->pause_b->shape);
+        sfMusic_play(game->btn->mid->pause_b->sound);
         game->player->next_scene = PAUSE_SCENE;
         return game->player->next_scene;
     }
@@ -30,6 +32,7 @@ static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->mid->pause_b, mouse_pos) == true) {
         clicked_state_game(game, game->btn->mid->pause_b->shape);
+        sfMusic_play(game->btn->mid->pause_b->sound);
         game->player->next_scene = PAUSE_SCENE;
         return game->player->next_scene;
     }
@@ -44,7 +47,8 @@ static int game_check_events(main_game_t *game, sfVector2i mouse_pos)
             return manage_button_action(game, mouse_pos);
         if (game_scene_event(game) != game->player->current_scene)
             return game->player->next_scene;
-        if (game->event.key.code == sfKeyQ && game->event.type == sfEvtKeyPressed)
+        if (game->event.key.code == sfKeyQ && game->event.type
+        == sfEvtKeyPressed)
             return close_window(game);
     }
     return game->player->current_scene;
@@ -55,6 +59,7 @@ int game_scene(main_game_t *game)
     sfVector2i mouse_pos;
 
     game->player->current_scene = GAME_SCENE;
+    sfMusic_stop(game->btn->big->play_b->sound);
     while (sfRenderWindow_isOpen(game->w)) {
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);

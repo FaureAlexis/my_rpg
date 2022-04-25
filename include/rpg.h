@@ -21,6 +21,7 @@
     #define GAME_EX "assets/menu/game_example.jpg"
     #define SETTINGS_BG "assets/menu/settings_menu.png"
     #define SETTINGS_SS "assets/window/settings_sprite.png"
+    #define SKIN_CUS_SS "assets/window/custom_menu.png"
     #define PLAYER_SS "assets/player/player.png"
     #define MAP_TXT "assets/map/world.txt"
 
@@ -30,6 +31,21 @@
         sfVector2f pos;
         sfRectangleShape *volume_rect;
     } vol_t;
+
+    typedef struct skin_custom_s {
+        sfRectangleShape *red;
+        sfRectangleShape *green;
+        sfRectangleShape *blue;
+        sfVector2f pos_red;
+        sfVector2f pos_green;
+        sfVector2f pos_blue;
+        sfUint8 red_c;
+        sfUint8 green_c;
+        sfUint8 blue_c;
+        bool click_red;
+        bool click_green;
+        bool click_blue;
+    } cus_t;
 
     typedef struct my_clock_s {
         sfClock *clock;
@@ -79,6 +95,7 @@
         sfRenderWindow *w;
         sfEvent event;
         vol_t *vol;
+        cus_t *skin;
         btn_t *btn;
         mnu_t *mnu;
         player_t *player;
@@ -120,6 +137,7 @@
     int init_all_buttons(main_game_t *game);
     int init_button_shape(button_t **button, sfVector2f position, int size,
     char **tab);
+    int init_skin_custom(cus_t **cus);
     int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect);
     int init_volume(vol_t **vol);
     int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect);
@@ -161,11 +179,13 @@
     void pos_button_help(main_game_t *game);
     void pos_button_game(main_game_t *game);
     void pos_button_main(main_game_t *game);
+    void pos_button_skin_cus(main_game_t *game);
     void pos_button_scoreboard(main_game_t *game);
 
     /*Display*/
 
     int display_menu(main_game_t *game);
+    int display_skin_cus(main_game_t *game);
     int display_game(main_game_t *game);
     int display_pause(main_game_t *game);
     int display_settings(main_game_t *game);
@@ -217,12 +237,18 @@
     /* Events */
 
     bool button_is_clicked(button_t *button, sfVector2i mouse_pos);
+    bool shape_is_clicked(sfRectangleShape *shape, sfVector2i mouse_pos);
+    void shape_red_clicked(main_game_t *game);
+    void shape_green_clicked(main_game_t *game);
+    void shape_blue_clicked(main_game_t *game);
     void clicked_state_game(main_game_t *game, sfRectangleShape *shape);
     void clicked_state_pause(main_game_t *game, sfRectangleShape *shape);
     void clicked_state_settings(main_game_t *game, sfRectangleShape *shape);
     void clicked_state_help(main_game_t *game, sfRectangleShape *shape);
     void clicked_state_main(main_game_t *game, sfRectangleShape *shape);
+    void clicked_state_custom_skin(main_game_t *game, sfRectangleShape *shape);
     const event_t *get_event(sfEventType type, const event_t event_array[]);
+    int event_skin_choice(main_game_t *game, sfVector2i mouse_pos);
     int close_window(main_game_t *game);
 
     /* Scenes */
@@ -234,14 +260,21 @@
     int game_scene(main_game_t *game);
     int settings_scene(main_game_t *game);
     int help_scene(main_game_t *game);
+    int skin_scene(main_game_t *game);
 
     /* Free data */
 
     void free_game_struct(main_game_t *game);
+    void destroy_all_button(main_game_t *game);
+    void destroy_all_menu(main_game_t *game);
     void free_tab(char ***tab);
 
     /* Main function */
 
     int rpg(int argc, const char * const *argv, char ** env);
+
+    int set_rgb_right(main_game_t *game);
+    int set_rgb_left(main_game_t *game);
+    void set_rgb_shape(cus_t **cus);
 
 #endif /* !RPG_H_ */

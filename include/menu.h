@@ -13,6 +13,7 @@
     typedef enum {
         UNKNOWN_SCENE = -1,
         MENU_SCENE,
+        SKIN_SCENE,
         SETTINGS_SCENE,
         EXIT_SCENE,
         HELP_SCENE,
@@ -33,6 +34,7 @@
         menu_t *settings;
         menu_t *help_play;
         menu_t *pause_m;
+        menu_t *skin_m;
     } mnu_t;
 
 #endif /* !MENU_H_ */

@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2022
-** pause_scene
+** my_rpg
 ** File description:
-** pause_scene
+** main_menu_scene
 */
 
 #include "rpg.h"
@@ -12,7 +12,7 @@ static const event_t event_array[] = {
     {.type = -1, .events = NULL}
 };
 
-static int pause_scene_event(main_game_t *game)
+static int skin_scene_event(main_game_t *game)
 {
     const event_t *event = get_event(game->event.type, event_array);
 
@@ -23,55 +23,57 @@ static int pause_scene_event(main_game_t *game)
 
 static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 {
+    event_skin_choice(game, mouse_pos);
     if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
-        clicked_state_pause(game, game->btn->big->return_b->shape);
-        sfMusic_play(game->btn->big->return_b->sound);
-        game->player->next_scene = GAME_SCENE;
-        return game->player->next_scene;
-    }
-    if (button_is_clicked(game->btn->mid->main_b, mouse_pos) == true) {
-        clicked_state_pause(game, game->btn->mid->main_b->shape);
-        sfMusic_play(game->btn->mid->main_b->sound);
-        game->player->next_scene = MENU_SCENE;
+        clicked_state_custom_skin(game, game->btn->big->return_b->shape);
         sfSprite_setColor(game->player->object->sprite,
         sfColor_fromRGB(255, 255, 255));
-        return game->player->next_scene;
+        return game->player->next_scene = MENU_SCENE;
     }
-    if (button_is_clicked(game->btn->big->exit_b, mouse_pos) == true) {
-        clicked_state_pause(game, game->btn->big->exit_b->shape);
+    if (button_is_clicked(game->btn->big->play_b, mouse_pos) == true) {
+        clicked_state_custom_skin(game, game->btn->big->play_b->shape);
+        return game->player->next_scene = GAME_SCENE;
+    }
+    if (button_is_clicked(game->btn->mid->exit_b, mouse_pos) == true) {
+        clicked_state_custom_skin(game, game->btn->mid->exit_b->shape);
         return close_window(game);
     }
+    if (button_is_clicked(game->btn->sml->right_b, mouse_pos) == true)
+        set_rgb_right(game);
+    if (button_is_clicked(game->btn->sml->left_b, mouse_pos) == true)
+        set_rgb_left(game);
     return game->player->current_scene;
 }
 
-static int pause_check_events(main_game_t *game, sfVector2i mouse_pos)
+static int skin_check_events(main_game_t *game, sfVector2i mouse_pos)
 {
     while (sfRenderWindow_pollEvent(game->w, &game->event)) {
         if (game->event.type == sfEvtMouseButtonPressed)
             return manage_button_action(game, mouse_pos);
-        if (pause_scene_event(game) != game->player->current_scene)
+        if (skin_scene_event(game) != game->player->current_scene)
             return game->player->next_scene;
-        if (game->event.type == sfEvtClosed || (game->event.key.code == sfKeyQ
-        && game->event.type == sfEvtKeyPressed)) {
+        if (game->event.key.code == sfKeyQ && game->event.type
+        == sfEvtKeyPressed)
             return close_window(game);
-        }
     }
     return game->player->current_scene;
 }
 
-int pause_scene(main_game_t *game)
+int skin_scene(main_game_t *game)
 {
     sfVector2i mouse_pos;
 
-    sfMusic_stop(game->btn->mid->pause_b->sound);
-    game->player->current_scene = PAUSE_SCENE;
+    game->player->current_scene = SKIN_SCENE;
+    sfMusic_stop(game->btn->big->settings_b->sound);
+    shape_red_clicked(game);
+    set_rgb_shape(&game->skin);
     while (sfRenderWindow_isOpen(game->w)) {
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);
-        if (pause_check_events(game, mouse_pos) != game->player->current_scene)
+        if (skin_check_events(game, mouse_pos) != game->player->current_scene)
             return game->player->next_scene;
-        display_pause(game);
+        display_skin_cus(game);
         sfRenderWindow_display(game->w);
     }
     return 0;

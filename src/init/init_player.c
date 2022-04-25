@@ -7,6 +7,18 @@
 
 #include "rpg.h"
 
+static int set_sprite(player_t *player)
+{
+    sfSprite_setOrigin(player->object->sprite, (sfVector2f){24, 24});
+    sfSprite_setTexture(player->object->sprite, player->object->texture,
+    sfTrue);
+    sfSprite_setTextureRect(player->object->sprite, player->object->rect);
+    sfSprite_setScale(player->object->sprite, player->object->scale);
+    sfSprite_setPosition(player->object->sprite, player->object->position);
+    sfSprite_setOrigin(player->object->sprite, (sfVector2f){24, 24});
+    return 0;
+}
+
 player_t *init_player(void)
 {
     player_t *player = malloc(sizeof(player_t));
@@ -26,10 +38,6 @@ player_t *init_player(void)
     player->object->sprite = sfSprite_create();
     if (!player->object->sprite)
         return NULL;
-    sfSprite_setOrigin(player->object->sprite, (sfVector2f){24, 24});
-    sfSprite_setTexture(player->object->sprite, player->object->texture, sfTrue);
-    sfSprite_setTextureRect(player->object->sprite, player->object->rect);
-    sfSprite_setScale(player->object->sprite, player->object->scale);
-    sfSprite_setPosition(player->object->sprite, player->object->position);
+    set_sprite(player);
     return player;
 }

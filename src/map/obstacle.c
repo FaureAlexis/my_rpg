@@ -36,8 +36,8 @@ void init_obstacle(map_t *map, char ***tab, int i)
     node->object->sprite = sfSprite_create();
     node->next = NULL;
     sfSprite_setScale(node->object->sprite, node->object->scale);
-    sfSprite_setOrigin(node->object->sprite, (sfVector2f){my_atoi(tab[i][5]) / 2,
-    my_atoi(tab[i][6]) / 2});
+    sfSprite_setOrigin(node->object->sprite,
+    (sfVector2f){my_atoi(tab[i][5]) / 2, my_atoi(tab[i][6]) / 2});
     sfSprite_setTexture(node->object->sprite, node->object->texture, sfFalse);
     sfSprite_setTextureRect(node->object->sprite, node->object->rect);
     map->obstacle = add_node_to_obstacle(map->obstacle, node);

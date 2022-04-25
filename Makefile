@@ -27,27 +27,34 @@ SRC_SCENES =		scenes/display/display_main_menu.c \
 					scenes/display/display_help.c \
 					scenes/display/display_game.c \
 					scenes/display/display_pause.c \
+					scenes/display/display_skin_cus.c \
 					scenes/display/display_settings.c \
 					scenes/button_pos/button_pos_menu.c \
 					scenes/button_pos/button_pos_settings.c \
+					scenes/button_pos/button_pos_skin_cus.c \
 					scenes/create/create_scenes.c \
 					scenes/create/init_scenes.c \
 					scenes/instance/manage_scenes.c \
 					scenes/instance/pause_scene.c \
 					scenes/instance/game_scene.c \
 					scenes/instance/settings_scene.c \
+					scenes/instance/skin_custom_scene.c \
 					scenes/instance/help_scene.c \
 					scenes/instance/volume_settings.c \
 					scenes/instance/main_menu_scene.c \
 					scenes/instance/fps_settings.c
 
-SRC_ANIMATIONS =	animations/player_animations.c
+SRC_ANIMATIONS	=	animations/player_animations.c \
+					animations/change_color_skin_left.c \
+					animations/change_color_skin_right.c
 
 SRC_EVENT		=	events/get_event.c \
-					events/event_close.c
+					events/event_close.c \
+					events/event_skin_choice.c
 
 SRC_INIT		=	init/init_clock.c \
 					init/init_game.c \
+					init/init_skin_custom.c \
 					init/init_map.c \
 					init/init_player.c \
 					init/init_window.c
@@ -55,7 +62,9 @@ SRC_INIT		=	init/init_clock.c \
 SRC_ERROR 		=	error/error.c \
 					error/help.c
 
-SRC_FREE		=	free/free_game_struct.c
+SRC_FREE		=	free/free_game_struct.c \
+					free/free_button.c \
+					free/free_menu.c
 
 SRC_EP			= 	src_ep/game_test.c 	\
 					src_ep/main.c 	   	\
@@ -78,13 +87,13 @@ SRC_EP			= 	src_ep/game_test.c 	\
 					src_ep/pos.c 		\
 					src_ep/tab.c
 
-SRC_MAP	=	map/game_test.c	\
-			map/node.c	\
-			map/obstacle.c	\
-			map/open_file.c \
-			map/pos.c	\
-			map/tab.c	\
-			map/mobe.c
+SRC_MAP			=	map/game_test.c	\
+					map/node.c	\
+					map/obstacle.c	\
+					map/open_file.c \
+					map/pos.c	\
+					map/tab.c	\
+					map/mob.c
 
 SRC 			=	$(SRC_BUTTON) \
 					$(SRC_INIT) \
@@ -98,7 +107,6 @@ SRC 			=	$(SRC_BUTTON) \
 					rpg.c
 
 OBJ				=    $(addprefix src/, $(SRC:.c=.o))
-#OBJ 				=	$(SRC_EP:.c=.o)
 
 NAME	=	my_rpg
 
