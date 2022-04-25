@@ -47,6 +47,7 @@ void pos_button_settings(main_game_t *game)
     (sfVector2f){520, 780});
     sfRectangleShape_setPosition(game->btn->big->return_b->shape,
     (sfVector2f){520, 780});
+    pos_button_settings_two(game);
 }
 
 void pos_button_help(main_game_t *game)
