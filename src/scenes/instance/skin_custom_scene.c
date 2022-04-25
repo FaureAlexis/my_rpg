@@ -67,10 +67,12 @@ int skin_scene(main_game_t *game)
     sfMusic_stop(game->btn->big->settings_b->sound);
     shape_red_clicked(game);
     set_rgb_shape(&game->skin);
+    sfSprite_setScale(game->player->object->sprite, (sfVector2f){8, 8});
     while (sfRenderWindow_isOpen(game->w)) {
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);
+        player_animations(game->player);
         if (skin_check_events(game, mouse_pos) != game->player->current_scene)
             return game->player->next_scene;
         display_skin_cus(game);
