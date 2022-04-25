@@ -30,9 +30,9 @@ void init_obstacle(map_t *map, char ***tab, int i)
     node->object = malloc(sizeof(game_object_t));
     node->object->scale = (sfVector2f){5, 5};
     node->object->rect = rec;
-    node->object->position.x = my_atoi(tab[i][0]);
-    node->object->position.y = my_atoi(tab[i][1]);
-    node->object->texture = sfTexture_createFromFile(tab[i][2], NULL);
+    node->object->position.x = my_atoi(tab[i][1]);
+    node->object->position.y = my_atoi(tab[i][2]);
+    node->object->texture = sfTexture_createFromFile(tab[i][0], NULL);
     node->object->sprite = sfSprite_create();
     node->next = NULL;
     sfSprite_setScale(node->object->sprite, node->object->scale);

@@ -1,0 +1,20 @@
+For world.txt:
+For itch line we asign a type whit the size of the line.
+If the line get 1 word:
+    Its the back map for the end of the morld.
+    Its an asset.
+If the line get 3 words:
+    Its the front map. Its a flate map where we can mouve easely.
+    The first is an asset.
+    The second and the theard is the position x and y of the sprite.
+If the line get 7 words:
+    Its a obstacle. The player can't tuch this.
+    The first is an asset.
+    The second and the theard is the position x and y of the sprite.
+    The four next caractère is the frame of the asset.
+If the line get 9 words:
+    Its a mobe. You can kill I'm and he attack you
+    The first is an asset.
+    The second and the theard is the position x and y of the sprite.
+    The four next caractère is the frame of the asset.
+    The two other words it HP and power of the mobe.

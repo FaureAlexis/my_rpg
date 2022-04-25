@@ -55,7 +55,8 @@
         char ***tab;
         obstacle_t *obstacle;
         mobe_t *mobe;
-        game_object_t *object;
+        game_object_t *map;
+        game_object_t *back;
     } map_t;
 
     typedef struct player_s {

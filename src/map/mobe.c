@@ -40,9 +40,9 @@ void init_mobe(map_t *map, char ***tab, int i)
     node->my_clock->clock = sfClock_create();
     node->object->scale = (sfVector2f){5, 5};
     node->object->rect = rec;
-    node->object->position.x = my_atoi(tab[i][0]);
-    node->object->position.y = my_atoi(tab[i][1]);
-    node->object->texture = sfTexture_createFromFile(tab[i][2], NULL);
+    node->object->position.x = my_atoi(tab[i][1]);
+    node->object->position.y = my_atoi(tab[i][2]);
+    node->object->texture = sfTexture_createFromFile(tab[i][0], NULL);
     node->object->sprite = sfSprite_create();
     node->hp = my_atoi(tab[i][7]);
     node->power = my_atoi(tab[i][8]);
