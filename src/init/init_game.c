@@ -24,6 +24,21 @@ int init_volume(vol_t **vol)
     return EXIT_SUCCESS;
 }
 
+int init_settings(main_game_t *game)
+{
+    game->settings = malloc(sizeof(settings_t));
+    if (!game->settings)
+        return EPITECH_ERROR;
+    game->settings->fps = 60;
+    game->settings->res_x = 1920;
+    game->settings->res_y = 1080;
+    game->settings->fps_text = sfText_create();
+    sfText_setPosition(game->settings->fps_text, (sfVector2f){1040, 600});
+    sfText_setCharacterSize(game->settings->fps_text, 24);
+    sfText_setColor(game->settings->fps_text, sfWhite);
+    return EXIT_SUCCESS;
+}
+
 int init_all(main_game_t *game)
 {
     if (create_menus(game) == EPITECH_ERROR)
@@ -31,6 +46,8 @@ int init_all(main_game_t *game)
     if (init_all_buttons(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (init_volume(&game->vol) == EPITECH_ERROR)
+        return EPITECH_ERROR;
+    if (init_settings(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
     return EXIT_SUCCESS;
 }
