@@ -208,6 +208,7 @@
     int manage_volume_left(main_game_t *game, sfVector2i mouse_pos);
     int manage_fps_plus(main_game_t *game, sfVector2i mouse_pos);
     int display_fps(main_game_t *game);
+    int manage_reso_plus(main_game_t *game, sfVector2i mouse_pos);
 
 /*Button management*/
 

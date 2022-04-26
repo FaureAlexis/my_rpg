@@ -41,6 +41,7 @@ static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
     }
     manage_volume_right(game, mouse_pos);
     manage_fps_plus(game, mouse_pos);
+    manage_reso_plus(game, mouse_pos);
     return game->player->current_scene;
 }
 
