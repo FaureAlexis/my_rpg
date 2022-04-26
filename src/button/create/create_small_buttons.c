@@ -32,7 +32,6 @@ static int create_small_buttons(main_game_t *game)
 static int create_small_buttons2(main_game_t *game)
 {
     char **tab = init_button_rsc2(BUTTON_SOUND, BUTTON_SS);
-
     if (init_button(&(game->btn->sml->left_b), (sfVector2f){750, 700},
     SMALL, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
@@ -43,6 +42,12 @@ static int create_small_buttons2(main_game_t *game)
     SMALL, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (init_button(&(game->btn->sml->bot_b), (sfVector2f){750, 700},
+    SMALL, tab) == EPITECH_ERROR)
+        return EPITECH_ERROR;
+    if (init_button(&(game->btn->sml->plus_r_b), (sfVector2f){750, 700},
+    SMALL, tab) == EPITECH_ERROR)
+        return EPITECH_ERROR;
+    if (init_button(&(game->btn->sml->minus_r_b), (sfVector2f){750, 700},
     SMALL, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
     return EXIT_SUCCESS;

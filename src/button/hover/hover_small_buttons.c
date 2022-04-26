@@ -11,6 +11,8 @@ int manage_hover_small_buttons(main_game_t *game, sfVector2i mouse_pos)
 {
     manage_hover(game->btn->sml->plus_b, mouse_pos);
     manage_hover(game->btn->sml->minus_b, mouse_pos);
+    manage_hover(game->btn->sml->plus_r_b, mouse_pos);
+    manage_hover(game->btn->sml->minus_r_b, mouse_pos);
     manage_hover(game->btn->sml->talk_b, mouse_pos);
     manage_hover(game->btn->sml->accept_b, mouse_pos);
     manage_hover(game->btn->sml->deny_b, mouse_pos);

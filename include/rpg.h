@@ -89,6 +89,7 @@
         int res_x;
         int res_y;
         sfText *fps_text;
+        sfText *res_text;
     } settings_t;
 
     typedef struct main_game_s {

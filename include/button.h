@@ -61,6 +61,8 @@
         button_t *right_b;
         button_t *top_b;
         button_t *bot_b;
+        button_t *plus_r_b;
+        button_t *minus_r_b;
     } sml_btn_t;
 
     typedef struct all_buttons_s {

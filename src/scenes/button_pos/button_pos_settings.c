@@ -17,4 +17,12 @@ void pos_button_settings_two(main_game_t *game)
     (sfVector2f){950, 600});
     sfRectangleShape_setPosition(game->btn->sml->minus_b->shape,
     (sfVector2f){950, 600});
+    sfSprite_setPosition(game->btn->sml->plus_r_b->sprite,
+    (sfVector2f){1200, 440});
+    sfRectangleShape_setPosition(game->btn->sml->plus_r_b->shape,
+    (sfVector2f){1200, 440});
+    sfSprite_setPosition(game->btn->sml->minus_r_b->sprite,
+    (sfVector2f){950, 440});
+    sfRectangleShape_setPosition(game->btn->sml->minus_r_b->shape,
+    (sfVector2f){950, 440});
 }

@@ -16,6 +16,24 @@ int display_fps(main_game_t *game)
     return EXIT_SUCCESS;
 }
 
+int display_resolution(main_game_t *game)
+{
+    char *x_txt = my_int_to_str(game->settings->res_x);
+    char *y_txt = my_int_to_str(game->settings->res_y);
+
+    my_strcat(x_txt, "x");
+    my_strcat(x_txt, y_txt);
+    sfText_setString(game->settings->res_text, x_txt);
+    sfRenderWindow_drawText(game->w, game->settings->res_text, NULL);
+    return display_fps(game);
+}
+
+int display_settings2(main_game_t *game)
+{
+    sfRenderWindow_drawSprite(game->w, game->btn->sml->plus_r_b->sprite, NULL);
+    sfRenderWindow_drawSprite(game->w, game->btn->sml->minus_r_b->sprite, NULL);
+}
+
 int display_settings(main_game_t *game)
 {
     sfSprite_setScale(game->mnu->settings->object->sprite,
@@ -35,6 +53,7 @@ int display_settings(main_game_t *game)
     sfRenderWindow_drawRectangleShape(game->w, game->vol->volume_rect, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->sml->plus_b->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->sml->minus_b->sprite, NULL);
-    display_fps(game);
+    display_settings2(game);
+    display_resolution(game);
     return EXIT_SUCCESS;
 }

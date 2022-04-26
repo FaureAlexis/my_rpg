@@ -7,6 +7,14 @@
 
 #include "rpg.h"
 
+void set_rect_small_buttons2(main_game_t *game)
+{
+    sfSprite_setTextureRect(game->btn->sml->plus_r_b->sprite,
+    (sfIntRect){25, 940, 150, 150});
+    sfSprite_setTextureRect(game->btn->sml->minus_r_b->sprite,
+    (sfIntRect){175, 940, 150, 150});
+}
+
 void set_rect_small_buttons(main_game_t *game)
 {
     sfSprite_setTextureRect(game->btn->sml->plus_b->sprite,
@@ -27,4 +35,5 @@ void set_rect_small_buttons(main_game_t *game)
     (sfIntRect){1045, 940, 150, 150});
     sfSprite_setTextureRect(game->btn->sml->bot_b->sprite,
     (sfIntRect){1190, 940, 150, 150});
+    set_rect_small_buttons2(game);
 }
