@@ -54,6 +54,8 @@ static void destroy_sml(main_game_t *game)
     destroy_button(game->btn->sml->right_b);
     destroy_button(game->btn->sml->top_b);
     destroy_button(game->btn->sml->bot_b);
+    destroy_button(game->btn->sml->plus_r_b);
+    destroy_button(game->btn->sml->minus_r_b);
 }
 
 void destroy_all_button(main_game_t *game)
