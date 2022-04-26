@@ -11,6 +11,7 @@ void free_game_struct(main_game_t *game)
 {
     destroy_all_menu(game);
     destroy_all_button(game);
+    destroy_all_texts(game);
     // free(game->player);
     // free(game);
 }

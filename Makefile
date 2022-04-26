@@ -69,7 +69,8 @@ SRC_ERROR 		=	error/error.c \
 
 SRC_FREE		=	free/free_game_struct.c \
 					free/free_button.c \
-					free/free_menu.c
+					free/free_menu.c	\
+					free/free_text.c    \
 
 SRC_EP			= 	src_ep/game_test.c 	\
 					src_ep/main.c 	   	\

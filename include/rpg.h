@@ -279,6 +279,7 @@
     void destroy_all_button(main_game_t *game);
     void destroy_all_menu(main_game_t *game);
     void free_tab(char ***tab);
+    void destroy_all_texts(main_game_t *game);
 
 /* Main function */
 
