@@ -16,7 +16,19 @@ static const movements_t movements_array[] = {
     {.key = sfKeyUnknown, .height_ss = 0, .flip = 0}
 };
 
-int set_player_movements(player_t *player, sfEvent event)
+int move_player(main_game_t *game, const movements_t *movements)
+{
+    if (movements->key == sfKeyUp)
+        move_up(game->map);
+    if (movements->key == sfKeyDown)
+        move_down(game->map);
+    if (movements->key == sfKeyRight)
+        move_right(game->map);
+    if (movements->key == sfKeyLeft)
+        move_left(game->map);
+}
+
+int set_player_movements(main_game_t *game, player_t *player, sfEvent event)
 {
     const movements_t *movements = NULL;
     sfKeyCode key = event.key.code;
@@ -35,6 +47,7 @@ int set_player_movements(player_t *player, sfEvent event)
     }
     if (movements->flip != 0)
         player->object->scale.x = movements->flip;
+    move_player(game, movements);
     player->object->rect.top = movements->height_ss;
     sfSprite_setScale(player->object->sprite, player->object->scale);
     return player->current_scene;

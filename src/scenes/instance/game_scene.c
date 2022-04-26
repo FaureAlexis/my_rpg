@@ -42,7 +42,7 @@ static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 static int game_check_events(main_game_t *game, sfVector2i mouse_pos)
 {
     while (sfRenderWindow_pollEvent(game->w, &game->event)) {
-        set_player_movements(game->player, game->event);
+        set_player_movements(game, game->player, game->event);
         if (game->event.type == sfEvtMouseButtonPressed)
             return manage_button_action(game, mouse_pos);
         if (game_scene_event(game) != game->player->current_scene)
@@ -62,6 +62,7 @@ int game_scene(main_game_t *game)
     sfMusic_stop(game->btn->big->play_b->sound);
     sfSprite_setScale(game->player->object->sprite, (sfVector2f){4, 4});
     while (sfRenderWindow_isOpen(game->w)) {
+        sfRenderWindow_setView(game->w, game->view);
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);

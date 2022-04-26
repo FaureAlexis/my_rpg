@@ -93,6 +93,9 @@
 
     typedef struct main_game_s {
         sfRenderWindow *w;
+        sfView *view;
+        float view_zoom;
+        sfVector2f view_pos;
         sfEvent event;
         vol_t *vol;
         cus_t *skin;
@@ -120,16 +123,17 @@
         int flip;
     } movements_t;
 
-    /* Check environnement */
+/* Check environnement */
 
     int check_env(char **env);
 
-    /* Inits */
+/* Inits */
 
     player_t *init_player(void);
     main_game_t *init_game(void);
     map_t *init_map(void);
     sfRenderWindow *init_window(void);
+    sfView *init_view(sfRenderWindow *window);
     my_clock_t *init_clock(void);
     int init_all(main_game_t *game);
     int init_button(button_t **button, sfVector2f position, int size,
@@ -142,7 +146,7 @@
     int init_volume(vol_t **vol);
     int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect);
 
-    /*Map Management*/
+/*Map Management*/
 
     char *open_file(char const *filepath);
     char **my_str_to_word_array_pos(char const *str, char pos, int idx);
@@ -157,22 +161,27 @@
     mobe_t *add_node_to_mobe(mobe_t *head, mobe_t *node);
     void parse_tab(map_t *map, char ***tab, int i);
 
-    /*Animations*/
+/*Animations*/
 
-        /*Player animations*/
+/*Player animations*/
         int player_animations(player_t *player);
         int player_check_key(sfKeyCode key);
-        int set_player_movements(player_t *player, sfEvent event);
+        int set_player_movements(main_game_t *game, player_t *player,
+        sfEvent event);
+        void move_up(map_t *map);
+        void move_down(map_t *map);
+        void move_right(map_t *map);
+        void move_left(map_t *map);
 
-    /*Menu management*/
+/*Menu management*/
 
-        /*Initalization*/
+/*Initalization*/
     sfRenderWindow *create_window(void);
     char **init_menu_rsc(char *sound, char *texture, char *texture_bg);
     char **init_button_rsc2(char *sound, char *texture);
     int create_menus(main_game_t *game);
 
-        /*Button Position*/
+/*Button Position*/
     void pos_button_settings(main_game_t *game);
     void pos_button_settings_two(main_game_t *game);
     void pos_button_pause(main_game_t *game);
@@ -182,7 +191,7 @@
     void pos_button_skin_cus(main_game_t *game);
     void pos_button_scoreboard(main_game_t *game);
 
-    /*Display*/
+/*Display*/
 
     int display_menu(main_game_t *game);
     int display_skin_cus(main_game_t *game);
@@ -199,22 +208,22 @@
     int manage_fps_plus(main_game_t *game, sfVector2i mouse_pos);
     int display_fps(main_game_t *game);
 
-    /*Button management*/
+/*Button management*/
 
-        /*Create*/
+/*Create*/
     int create_all_big_buttons(main_game_t *game);
     int create_all_medium_buttons(main_game_t *game);
     int create_all_small_buttons(main_game_t *game);
     int create_all_buttons(main_game_t *game);
 
-        /*Set Rect*/
+/*Set Rect*/
     void set_rect_big_buttons(main_game_t *game);
     void set_rect_mid_buttons(main_game_t *game);
     void set_rect_mid_buttons2(main_game_t *game);
     void set_rect_small_buttons(main_game_t *game);
     void set_rect_all_buttons(main_game_t *game);
 
-        /*Hover*/
+/*Hover*/
     int manage_hover_big_buttons(main_game_t *game, sfVector2i mouse_pos);
     int manage_hover_medium_buttons(main_game_t *game, sfVector2i mouse_pos);
     int manage_hover_small_buttons(main_game_t *game, sfVector2i mouse_pos);
@@ -234,7 +243,7 @@
     int manage_hover_buttons(main_game_t *game, sfVector2i mouse_pos);
     int manage_hover(button_t *button, sfVector2i mouse_pos);
 
-    /* Events */
+/* Events */
 
     bool button_is_clicked(button_t *button, sfVector2i mouse_pos);
     bool shape_is_clicked(sfRectangleShape *shape, sfVector2i mouse_pos);
@@ -251,7 +260,7 @@
     int event_skin_choice(main_game_t *game, sfVector2i mouse_pos);
     int close_window(main_game_t *game);
 
-    /* Scenes */
+/* Scenes */
 
     int create_menus(main_game_t *game);
     const scenes_t *manage_scenes(sfKeyCode key, scenes_name name);
@@ -262,14 +271,14 @@
     int help_scene(main_game_t *game);
     int skin_scene(main_game_t *game);
 
-    /* Free data */
+/* Free data */
 
     void free_game_struct(main_game_t *game);
     void destroy_all_button(main_game_t *game);
     void destroy_all_menu(main_game_t *game);
     void free_tab(char ***tab);
 
-    /* Main function */
+/* Main function */
 
     int rpg(int argc, const char * const *argv, char ** env);
 
@@ -277,4 +286,4 @@
     int set_rgb_left(main_game_t *game);
     void set_rgb_shape(cus_t **cus);
 
-#endif /* !RPG_H_ */
+#endif/* !RPG_H_ */

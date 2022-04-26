@@ -46,7 +46,8 @@ SRC_SCENES =		scenes/display/display_main_menu.c \
 
 SRC_ANIMATIONS	=	animations/player_animations.c \
 					animations/change_color_skin_left.c \
-					animations/change_color_skin_right.c
+					animations/change_color_skin_right.c \
+					animations/env_move.c
 
 SRC_EVENT		=	events/get_event.c \
 					events/event_close.c \

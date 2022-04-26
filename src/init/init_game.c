@@ -72,6 +72,9 @@ main_game_t *init_game(void)
     if (!game->btn || !game->mnu || !game->vol)
         return NULL;
     game->w = init_window();
+    game->view = init_view(game->w);
+    game->view_zoom = 1;
+    game->view_pos = (sfVector2f){960, 600};
     game->player = init_player();
     return game;
 }
