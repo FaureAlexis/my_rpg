@@ -5,6 +5,10 @@
 ## Makefile
 ##
 
+ifndef VERBOSE
+.SILENT:
+endif
+
 SRC_BUTTON		=	button/init_buttons.c \
 					button/create/create_big_buttons.c \
 					button/create/create_mid_buttons.c \
@@ -42,7 +46,7 @@ SRC_SCENES =		scenes/display/display_main_menu.c \
 					scenes/instance/help_scene.c \
 					scenes/instance/volume_settings.c \
 					scenes/instance/main_menu_scene.c \
-					scenes/instance/fps_settings.c
+					scenes/instance/screen_settings.c \
 
 SRC_ANIMATIONS	=	animations/player_animations.c \
 					animations/change_color_skin_left.c \
@@ -120,15 +124,21 @@ LDFLAGS	=	 -L ./lib -lmy
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	make -C lib/my
-	$(CC) -o $(NAME) $(OBJ) $(CPPFLAGS) $(LDFLAGS) $(CSFML) -lm
+	@echo -e "\e[92mBuilding librairy : \e[34mmy\e[5m . \e[0m\e[5m . \e[34m . \e[0m"
+	@make -C lib/my &> /dev/null
+	@echo -e "\e[92mBuilding sources : \e[34m$(NAME)\e[5m . \e[0m\e[5m . \e[34m . \e[0m"
+	@$(CC) -o $(NAME) $(OBJ) $(CPPFLAGS) $(LDFLAGS) $(CSFML) -lm
+	@echo -e "\e[92m\e[1mBuild successfull !\e[0m"
+
 
 clean:
-	make fclean -C lib/my
-	rm -f $(OBJ)
+	@echo -e "\e[95mCleaning librairy : \e[34mmy\e[0m"
+	@make fclean -C lib/my &> /dev/null
+	@echo -e "\e[95mCleaning sources : \e[34m$(NAME)\e[0m"
+	@rm -f $(OBJ)
 
 fclean:	clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re:	fclean all
 
