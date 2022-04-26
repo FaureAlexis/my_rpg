@@ -123,13 +123,15 @@ LDFLAGS	=	 -L ./lib -lmy
 
 all:	$(NAME)
 
-$(NAME):	$(OBJ)
+PREBUILD: 
+	@echo -e "\e[92mCompiling sources : \e[34m$(NAME)\e[5m . \e[0m\e[5m . \e[34m . \e[0m"
+
+$(NAME):	PREBUILD $(OBJ)
 	@echo -e "\e[92mBuilding librairy : \e[34mmy\e[5m . \e[0m\e[5m . \e[34m . \e[0m"
 	@make -C lib/my &> /dev/null
 	@echo -e "\e[92mBuilding sources : \e[34m$(NAME)\e[5m . \e[0m\e[5m . \e[34m . \e[0m"
 	@$(CC) -o $(NAME) $(OBJ) $(CPPFLAGS) $(LDFLAGS) $(CSFML) -lm
 	@echo -e "\e[92m\e[1mBuild successfull !\e[0m"
-
 
 clean:
 	@echo -e "\e[95mCleaning librairy : \e[34mmy\e[0m"
