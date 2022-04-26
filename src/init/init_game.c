@@ -33,15 +33,20 @@ int init_settings(main_game_t *game)
     game->settings->res_x = 1920;
     game->settings->res_y = 1080;
     game->settings->res_text = sfText_create();
-    sfText_setPosition(game->settings->res_text, (sfVector2f){940, 600});
-    sfText_setCharacterSize(game->settings->res_text, 24);
+    sfFont *gravity = sfFont_createFromFile("./assets/font/fs-gravity.ttf");
+    if (!gravity)
+        return EPITECH_ERROR;
+    sfText_setPosition(game->settings->res_text, (sfVector2f){1060, 450});
+    sfText_setCharacterSize(game->settings->res_text, 34);
     sfText_setColor(game->settings->res_text, sfWhite);
-    
+    sfText_setFont(game->settings->res_text, gravity);
     game->settings->fps = 60;
     game->settings->fps_text = sfText_create();
-    sfText_setPosition(game->settings->fps_text, (sfVector2f){1040, 600});
-    sfText_setCharacterSize(game->settings->fps_text, 24);
+    sfText_setPosition(game->settings->fps_text, (sfVector2f){1100, 600});
+    sfText_setCharacterSize(game->settings->fps_text, 58);
     sfText_setColor(game->settings->fps_text, sfWhite);
+    sfText_setFont(game->settings->fps_text, gravity);
+
     return EXIT_SUCCESS;
 }
 
