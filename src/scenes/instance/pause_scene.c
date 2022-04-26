@@ -47,6 +47,13 @@ static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 static int pause_check_events(main_game_t *game, sfVector2i mouse_pos)
 {
     while (sfRenderWindow_pollEvent(game->w, &game->event)) {
+        if (game->event.type == sfEvtKeyPressed &&
+         game->event.key.code == sfKeyEscape) {
+             clicked_state_pause(game, game->btn->big->return_b->shape);
+            sfMusic_play(game->btn->big->return_b->sound);
+            game->player->next_scene = GAME_SCENE;
+            return game->player->next_scene;
+         }
         if (game->event.type == sfEvtMouseButtonPressed)
             return manage_button_action(game, mouse_pos);
         if (pause_scene_event(game) != game->player->current_scene)
