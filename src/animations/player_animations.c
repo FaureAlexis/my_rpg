@@ -18,14 +18,18 @@ static const movements_t movements_array[] = {
 
 int move_player(main_game_t *game, const movements_t *movements)
 {
-    if (movements->key == sfKeyUp)
-        move_up(game->map);
-    if (movements->key == sfKeyDown)
-        move_down(game->map);
-    if (movements->key == sfKeyRight)
-        move_right(game->map);
-    if (movements->key == sfKeyLeft)
-        move_left(game->map);
+    if (movements->key == sfKeyUp) {
+        move_up(game->map, game->player);
+    }
+    if (movements->key == sfKeyDown) {
+        move_down(game->map, game->player);
+    }
+    if (movements->key == sfKeyRight) {
+        move_right(game->map, game->player);
+    }
+    if (movements->key == sfKeyLeft) {
+        move_left(game->map, game->player);
+    }
 }
 
 int set_player_movements(main_game_t *game, player_t *player, sfEvent event)

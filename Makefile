@@ -51,7 +51,8 @@ SRC_SCENES =		scenes/display/display_main_menu.c \
 SRC_ANIMATIONS	=	animations/player_animations.c \
 					animations/change_color_skin_left.c \
 					animations/change_color_skin_right.c \
-					animations/env_move.c
+					animations/env_move.c				\
+					animations/anim_particle.c
 
 SRC_EVENT		=	events/get_event.c \
 					events/event_close.c \
@@ -62,7 +63,8 @@ SRC_INIT		=	init/init_clock.c \
 					init/init_skin_custom.c \
 					init/init_map.c \
 					init/init_player.c \
-					init/init_window.c
+					init/init_window.c	\
+					init/creat_particle.c
 
 SRC_ERROR 		=	error/error.c \
 					error/help.c

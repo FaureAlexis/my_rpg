@@ -7,11 +7,15 @@
 
 #include "rpg.h"
 
-void move_up(map_t *map)
+void move_up(map_t *map, player_t *player)
 {
     obstacle_t *obstacle = map->obstacle;
     mobe_t *mobe = map->mobe;
+    particles_t *dust = creat_particles(0, player->object->position, 10,
+    (sfVector2f){6, 10});
 
+    player->dust = add_particle_to_list(player->dust, dust,
+    (sfVector2f){0, 10});
     map->map->position.y += 10;
     while (obstacle != NULL) {
         obstacle->object->position.y += 10;
@@ -28,11 +32,15 @@ void move_up(map_t *map)
     sfSprite_setPosition(map->map->sprite, map->map->position);
 }
 
-void move_down(map_t *map)
+void move_down(map_t *map, player_t *player)
 {
     obstacle_t *obstacle = map->obstacle;
     mobe_t *mobe = map->mobe;
+    particles_t *dust = creat_particles(0, player->object->position, 10,
+    (sfVector2f){6, -10});
 
+    player->dust = add_particle_to_list(player->dust, dust,
+    (sfVector2f){0, -10});
     map->map->position.y -= 10;
     while (obstacle != NULL) {
         obstacle->object->position.y -= 10;
@@ -49,11 +57,15 @@ void move_down(map_t *map)
     sfSprite_setPosition(map->map->sprite, map->map->position);
 }
 
-void move_right(map_t *map)
+void move_right(map_t *map, player_t *player)
 {
     obstacle_t *obstacle = map->obstacle;
     mobe_t *mobe = map->mobe;
+    particles_t *dust = creat_particles(0, player->object->position, 10,
+    (sfVector2f){0, -10});
 
+    player->dust = add_particle_to_list(player->dust, dust,
+    (sfVector2f){-10, 0});
     map->map->position.x -= 10;
     while (obstacle != NULL) {
         obstacle->object->position.x -= 10;
@@ -70,11 +82,15 @@ void move_right(map_t *map)
     sfSprite_setPosition(map->map->sprite, map->map->position);
 }
 
-void move_left(map_t *map)
+void move_left(map_t *map, player_t *player)
 {
     obstacle_t *obstacle = map->obstacle;
     mobe_t *mobe = map->mobe;
+    particles_t *dust = creat_particles(0, player->object->position, 10,
+    (sfVector2f){0, -10});
 
+    player->dust = add_particle_to_list(player->dust, dust,
+    (sfVector2f){10, 0});
     map->map->position.x += 10;
     while (obstacle != NULL) {
         obstacle->object->position.x += 10;
