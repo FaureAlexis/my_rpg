@@ -92,6 +92,11 @@
         sfText *res_text;
     } settings_t;
 
+    typedef struct help_s {
+        sfText *goal_text;
+        sfText *help_text;
+    } help_t;
+
     typedef struct main_game_s {
         sfRenderWindow *w;
         sfView *view;
@@ -105,6 +110,7 @@
         player_t *player;
         map_t *map;
         settings_t *settings;
+        help_t *help;
     } main_game_t;
 
     typedef struct event_s {
