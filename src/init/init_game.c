@@ -29,7 +29,6 @@ int init_settings(main_game_t *game)
     game->settings = malloc(sizeof(settings_t));
     if (!game->settings)
         return EPITECH_ERROR;
-    
     game->settings->res_x = 1920;
     game->settings->res_y = 1080;
     game->settings->res_text = sfText_create();
@@ -46,7 +45,6 @@ int init_settings(main_game_t *game)
     sfText_setCharacterSize(game->settings->fps_text, 58);
     sfText_setColor(game->settings->fps_text, sfWhite);
     sfText_setFont(game->settings->fps_text, gravity);
-
     return EXIT_SUCCESS;
 }
 
