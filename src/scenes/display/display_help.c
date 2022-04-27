@@ -7,6 +7,18 @@
 
 #include "rpg.h"
 
+static int display_help_text(main_game_t *game)
+{
+    if (!game->help)
+        return EPITECH_ERROR;
+    sfText_setString(game->help->goal_text, GAME_GOAL);
+    sfText_setString(game->help->help_text, GAME_HELP);
+    sfRenderWindow_drawText(game->w, game->help->goal_text, NULL);
+    sfRenderWindow_drawText(game->w, game->help->help_text, NULL);
+
+    return EXIT_SUCCESS;
+}
+
 int display_help(main_game_t *game)
 {
     pos_button_help(game);
@@ -16,5 +28,5 @@ int display_help(main_game_t *game)
     NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->big->return_b->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->big->exit_b->sprite, NULL);
-    return EXIT_SUCCESS;
+    return display_help_text(game);
 }

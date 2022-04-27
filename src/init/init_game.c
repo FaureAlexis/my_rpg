@@ -60,8 +60,11 @@ int init_help(main_game_t *game)
     sfText_setFont(game->help->help_text, gravity);
     sfText_setColor(game->help->goal_text, sfWhite);
     sfText_setColor(game->help->help_text, sfWhite);
-    sfText_setCharacterSize(game->help->goal_text, 34);
+    sfText_setCharacterSize(game->help->goal_text, 54);
     sfText_setCharacterSize(game->help->help_text, 34);
+    sfText_setPosition(game->help->goal_text, (sfVector2f){550, 20});
+    sfText_setPosition(game->help->help_text, (sfVector2f){940, 150});
+
     return EXIT_SUCCESS;
 }
 
@@ -74,6 +77,8 @@ int init_all(main_game_t *game)
     if (init_volume(&game->vol) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (init_settings(game) == EPITECH_ERROR)
+        return EPITECH_ERROR;
+    if (init_help(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (init_skin_custom(&game->skin) == EPITECH_ERROR)
         return EPITECH_ERROR;

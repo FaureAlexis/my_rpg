@@ -24,6 +24,8 @@
     #define SKIN_CUS_SS "assets/window/custom_menu.png"
     #define PLAYER_SS "assets/player/player.png"
     #define MAP_TXT "assets/map/world.txt"
+    #define GAME_GOAL "The goal of this game is to defeat the king Hasbulla.\nExplore, talk to NPC, complete quests, enjoy !"
+    #define GAME_HELP "How to play :"
 
     typedef struct volume_s {
         float volume;
