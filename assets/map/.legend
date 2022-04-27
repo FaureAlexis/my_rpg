@@ -13,8 +13,8 @@ If the line get 7 words:
     The second and the theard is the position x and y of the sprite.
     The four next caractère is the frame of the asset.
 If the line get 9 words:
-    Its a mobe. You can kill I'm and he attack you
+    Its a mob. You can kill I'm and he attack you
     The first is an asset.
     The second and the theard is the position x and y of the sprite.
     The four next caractère is the frame of the asset.
-    The two other words it HP and power of the mobe.
+    The two other words it HP and power of the mob.

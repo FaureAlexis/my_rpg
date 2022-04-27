@@ -15,7 +15,6 @@ static int set_sprite(player_t *player)
     sfSprite_setTextureRect(player->object->sprite, player->object->rect);
     sfSprite_setScale(player->object->sprite, player->object->scale);
     sfSprite_setPosition(player->object->sprite, player->object->position);
-    sfSprite_setOrigin(player->object->sprite, (sfVector2f){24, 24});
     return 0;
 }
 
@@ -27,6 +26,7 @@ player_t *init_player(void)
         return NULL;
     player->life = 20;
     player->attack = 5;
+    player->dust = NULL;
     player->object = malloc(sizeof(game_object_t));
     player->object->position = (sfVector2f){960, 600};
     player->object->scale = (sfVector2f){4, 4};

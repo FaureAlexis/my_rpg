@@ -48,7 +48,7 @@ void init_mobe(map_t *map, char ***tab, int i)
     node->object = malloc(sizeof(game_object_t));
     node->my_clock = malloc(sizeof(my_clock_t));
     node->my_clock->clock = sfClock_create();
-    node->object->scale = (sfVector2f){5, 5};
+    node->object->scale = (sfVector2f){4, 4};
     node->object->rect = rec;
     node->object->position.x = my_atoi(tab[i][1]);
     node->object->position.y = my_atoi(tab[i][2]);

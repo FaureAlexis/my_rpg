@@ -75,6 +75,19 @@
         game_object_t *back;
     } map_t;
 
+    typedef struct particles_s {
+        sfVector2f cord;
+        sfVector2f direction;
+        my_clock_t *timer;
+        int size;
+        float end;
+        float y;
+        sfUint8 *pixels;
+        sfSprite *sprite;
+        sfTexture *texture;
+        struct particles_s *next;
+    }particles_t;
+
     typedef struct player_s {
         scenes_name current_scene;
         scenes_name next_scene;
@@ -82,6 +95,7 @@
         int attack;
         game_object_t *object;
         my_clock_t *p_clock;
+        particles_t *dust;
     } player_t;
 
     typedef struct settings_s {
@@ -152,6 +166,9 @@
     int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect);
     int init_volume(vol_t **vol);
     int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect);
+    particles_t *creat_particles(int enuma, sfVector2f cord, int size,
+    sfVector2f direction);
+    int draw_circle(particles_t *particle, int radius);
 
 /*Map Management*/
 
@@ -175,10 +192,13 @@
         int player_check_key(sfKeyCode key);
         int set_player_movements(main_game_t *game, player_t *player,
         sfEvent event);
-        void move_up(map_t *map);
-        void move_down(map_t *map);
-        void move_right(map_t *map);
-        void move_left(map_t *map);
+        void move_up(map_t *map, player_t *player);
+        void move_down(map_t *map, player_t *player);
+        void move_right(map_t *map, player_t *player);
+        void move_left(map_t *map, player_t *player);
+        particles_t *anim_poussière(particles_t *head, sfRenderWindow *w);
+        particles_t *add_particle_to_list(particles_t *head, particles_t *node,
+        sfVector2f move);
 
 /*Menu management*/
 

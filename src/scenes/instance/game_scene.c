@@ -61,6 +61,8 @@ int game_scene(main_game_t *game)
     game->player->current_scene = GAME_SCENE;
     sfMusic_stop(game->btn->big->play_b->sound);
     sfSprite_setScale(game->player->object->sprite, (sfVector2f){4, 4});
+    sfSprite_setPosition(game->player->object->sprite,
+    game->player->object->position);
     while (sfRenderWindow_isOpen(game->w)) {
         sfRenderWindow_setView(game->w, game->view);
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
