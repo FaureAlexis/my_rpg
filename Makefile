@@ -106,6 +106,9 @@ SRC_MAP			=	map/game_test.c	\
 					map/tab.c	\
 					map/mob.c
 
+SRC_SAVE		=	save/open_file.c 		\
+					save/save_settings.c 	\
+
 SRC 			=	$(SRC_BUTTON) \
 					$(SRC_INIT) \
 					$(SRC_FREE) \
@@ -113,6 +116,7 @@ SRC 			=	$(SRC_BUTTON) \
 					$(SRC_SCENES) \
 					$(SRC_ANIMATIONS) \
 					$(SRC_MAP) \
+					$(SRC_SAVE) \
 					sys/check_env.c \
 					main.c	\
 					rpg.c

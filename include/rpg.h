@@ -317,6 +317,11 @@
     void free_tab(char ***tab);
     void destroy_all_texts(main_game_t *game);
 
+/* Load and Save progression/settings */
+
+    FILE *open_save(const char *path);
+    int save_settings(main_game_t *game);
+
 /* Main function */
 
     int rpg(int argc, const char * const *argv, char ** env);
