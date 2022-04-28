@@ -25,7 +25,7 @@ SRC_BUTTON		=	button/init_buttons.c \
 					button/clicked/clicked_state_help.c \
 					button/clicked/clicked_state_settings.c \
 					button/clicked/clicked_state_main.c \
-					button/clicked/clicked_state_pause.c \
+					button/clicked/clicked_state_pause.c
 
 SRC_SCENES =		scenes/display/display_main_menu.c \
 					scenes/display/display_help.c \
@@ -46,7 +46,7 @@ SRC_SCENES =		scenes/display/display_main_menu.c \
 					scenes/instance/help_scene.c \
 					scenes/instance/volume_settings.c \
 					scenes/instance/main_menu_scene.c \
-					scenes/instance/screen_settings.c \
+					scenes/instance/screen_settings.c
 
 SRC_ANIMATIONS	=	animations/player_animations.c \
 					animations/change_color_skin_left.c \
@@ -126,13 +126,16 @@ LDFLAGS	=	 -L ./lib -lmy
 
 all:	$(NAME)
 
-PREBUILD: 
-	@echo -e "\e[92mCompiling sources : \e[34m$(NAME)\e[5m . \e[0m\e[5m . \e[34m . \e[0m"
+PREBUILD:
+	@echo -e "\e[92mCompiling sources : \e[34m$(NAME)\e[5m . \e[0m\e[5m . \
+	\e[34m . \e[0m"
 
 $(NAME):	PREBUILD $(OBJ)
-	@echo -e "\e[92mBuilding librairy : \e[34mmy\e[5m . \e[0m\e[5m . \e[34m . \e[0m"
+	@echo -e "\e[92mBuilding librairy : \e[34mmy\e[5m . \e[0m\e[5m . \e[34m \
+	. \e[0m"
 	@make -C lib/my &> /dev/null
-	@echo -e "\e[92mBuilding sources : \e[34m$(NAME)\e[5m . \e[0m\e[5m . \e[34m . \e[0m"
+	@echo -e "\e[92mBuilding sources : \e[34m$(NAME)\e[5m . \e[0m\e[5m . \
+	\e[34m . \e[0m"
 	@$(CC) -o $(NAME) $(OBJ) $(CPPFLAGS) $(LDFLAGS) $(CSFML) -lm
 	@echo -e "\e[92m\e[1mBuild successfull !\e[0m"
 

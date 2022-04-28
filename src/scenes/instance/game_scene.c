@@ -12,6 +12,21 @@ static const event_t event_array[] = {
     {.type = -1, .events = NULL}
 };
 
+static int zoom_event(main_game_t *game)
+{
+    if (game->event.key.code == sfKeyPageUp
+    && game->event.type == sfEvtKeyPressed) {
+        sfView_zoom(game->view, 1.1);
+        return game->player->current_scene;
+    }
+    if (game->event.key.code == sfKeyPageDown
+    && game->event.type == sfEvtKeyPressed) {
+        sfView_zoom(game->view, 0.9);
+        return game->player->current_scene;
+    }
+    return game->player->current_scene;
+}
+
 static int game_scene_event(main_game_t *game)
 {
     const event_t *event = get_event(game->event.type, event_array);
@@ -20,18 +35,21 @@ static int game_scene_event(main_game_t *game)
         return event->events(game);
     if (game->event.key.code == sfKeyEscape
     && game->event.type == sfEvtKeyPressed) {
-        clicked_state_game(game, game->btn->mid->pause_b->shape);
+        clicked_state_game(game, game->btn->mid->pause_b->shape,
+        (sfVector2f){10, 10});
         sfMusic_play(game->btn->mid->pause_b->sound);
         game->player->next_scene = PAUSE_SCENE;
         return game->player->next_scene;
     }
+    zoom_event(game);
     return game->player->current_scene;
 }
 
 static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->mid->pause_b, mouse_pos) == true) {
-        clicked_state_game(game, game->btn->mid->pause_b->shape);
+        clicked_state_game(game, game->btn->mid->pause_b->shape,
+        (sfVector2f){10, 10});
         sfMusic_play(game->btn->mid->pause_b->sound);
         game->player->next_scene = PAUSE_SCENE;
         return game->player->next_scene;

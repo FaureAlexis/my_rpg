@@ -21,23 +21,34 @@ static int skin_scene_event(main_game_t *game)
     return game->player->current_scene;
 }
 
-static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
+static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
 {
-    event_skin_choice(game, mouse_pos);
     if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
-        clicked_state_custom_skin(game, game->btn->big->return_b->shape);
+        clicked_state_custom_skin(game, game->btn->big->return_b->shape,
+        (sfVector2f){540, 780});
         sfSprite_setColor(game->player->object->sprite,
         sfColor_fromRGB(255, 255, 255));
         return game->player->next_scene = MENU_SCENE;
     }
     if (button_is_clicked(game->btn->big->play_b, mouse_pos) == true) {
-        clicked_state_custom_skin(game, game->btn->big->play_b->shape);
+        clicked_state_custom_skin(game, game->btn->big->play_b->shape,
+        (sfVector2f){960, 780});
         return game->player->next_scene = GAME_SCENE;
     }
     if (button_is_clicked(game->btn->mid->exit_b, mouse_pos) == true) {
-        clicked_state_custom_skin(game, game->btn->mid->exit_b->shape);
+        clicked_state_custom_skin(game, game->btn->mid->exit_b->shape,
+        (sfVector2f){10, 10});
         return close_window(game);
     }
+    return game->player->current_scene;
+}
+
+static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
+{
+    event_skin_choice(game, mouse_pos);
+    if (manage_button_action_scene(game, mouse_pos)
+    != game->player->current_scene)
+        return game->player->next_scene;
     if (button_is_clicked(game->btn->sml->right_b, mouse_pos) == true)
         set_rgb_right(game);
     if (button_is_clicked(game->btn->sml->left_b, mouse_pos) == true)

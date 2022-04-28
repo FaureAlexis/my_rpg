@@ -35,14 +35,13 @@ int move_player(main_game_t *game, const movements_t *movements)
 int set_player_movements(main_game_t *game, player_t *player, sfEvent event)
 {
     const movements_t *movements = NULL;
-    sfKeyCode key = event.key.code;
 
     if (event.type != sfEvtKeyPressed) {
         player->object->rect.top = 0;
         return player->current_scene;
     }
     for (int i = 0; movements_array[i].key != sfKeyUnknown; i++) {
-        if (movements_array[i].key == key)
+        if (movements_array[i].key == event.key.code)
             movements = &movements_array[i];
     }
     if (!movements) {

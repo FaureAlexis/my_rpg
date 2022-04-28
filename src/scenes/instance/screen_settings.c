@@ -31,12 +31,12 @@ int manage_fps_plus(main_game_t *game, sfVector2i mouse_pos)
 int manage_reso_minus(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->sml->minus_r_b, mouse_pos) == true
-    && game->settings->res_x > 1279) {
+    && game->settings->res_x > 1440) {
         int x = game->settings->res_x;
-        int new_y = ((x - 640) * game->settings->res_y) / x;
-        game->settings->res_x -= 640;
+        int new_y = ((x - 960 / 2) * game->settings->res_y) / x;
+        game->settings->res_x -= 960 / 2;
         game->settings->res_y = new_y;
-        x -= 640;
+        x -= 960 / 2;
         sfRenderWindow_setSize(game->w, (sfVector2u){x, new_y});
     }
     return EXIT_SUCCESS;
@@ -45,12 +45,12 @@ int manage_reso_minus(main_game_t *game, sfVector2i mouse_pos)
 int manage_reso_plus(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->sml->plus_r_b, mouse_pos) == true
-    && game->settings->res_x < 1921) {
+    && game->settings->res_x < 1920) {
         int x = game->settings->res_x;
-        int new_y = ((x + 640) * game->settings->res_y) / x;
-        game->settings->res_x += 640;
+        int new_y = ((x + 960 / 2) * game->settings->res_y) / x;
+        game->settings->res_x += 960 / 2;
         game->settings->res_y = new_y;
-        x += 640;
+        x += 960 / 2;
         sfRenderWindow_setSize(game->w, (sfVector2u){x, new_y});
     }
     manage_reso_minus(game, mouse_pos);

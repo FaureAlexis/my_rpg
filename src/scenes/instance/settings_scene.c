@@ -21,24 +21,38 @@ static int settings_scene_event(main_game_t *game)
     return game->player->current_scene;
 }
 
-static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
+static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
-        clicked_state_settings(game, game->btn->big->return_b->shape);
+        clicked_state_settings(game, game->btn->big->return_b->shape,
+        (sfVector2f){520, 780});
         sfMusic_play(game->btn->big->return_b->sound);
-        game->player->next_scene = MENU_SCENE;
+        if (game->settings->prev_is_main == true)
+            game->player->next_scene = MENU_SCENE;
+        else
+            game->player->next_scene = PAUSE_SCENE;
         return game->player->next_scene;
     }
     if (button_is_clicked(game->btn->big->exit_b, mouse_pos) == true) {
-        clicked_state_settings(game, game->btn->big->exit_b->shape);
+        clicked_state_settings(game, game->btn->big->exit_b->shape,
+        (sfVector2f){1000, 780});
         return close_window(game);
     }
     if (button_is_clicked(game->btn->mid->help_b, mouse_pos) == true) {
-        clicked_state_settings(game, game->btn->mid->help_b->shape);
+        clicked_state_settings(game, game->btn->mid->help_b->shape,
+        (sfVector2f){10, 10});
         sfMusic_play(game->btn->mid->help_b->sound);
         game->player->next_scene = HELP_SCENE;
         return game->player->next_scene;
     }
+    return game->player->current_scene;
+}
+
+static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
+{
+    if (manage_button_action_scene(game, mouse_pos)
+    != game->player->current_scene)
+        return game->player->next_scene;
     manage_volume_right(game, mouse_pos);
     manage_fps_plus(game, mouse_pos);
     manage_reso_plus(game, mouse_pos);

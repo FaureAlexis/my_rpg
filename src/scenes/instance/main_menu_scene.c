@@ -21,25 +21,38 @@ static int main_scene_event(main_game_t *game)
     return game->player->current_scene;
 }
 
-static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
+static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->big->settings_b, mouse_pos) == true) {
-        clicked_state_main(game, game->btn->big->settings_b->shape);
+        clicked_state_main(game, game->btn->big->settings_b->shape,
+        (sfVector2f){960, 450});
         sfMusic_play(game->btn->big->settings_b->sound);
+        game->settings->prev_is_main = true;
         return game->player->next_scene = SETTINGS_SCENE;
     }
     if (button_is_clicked(game->btn->big->play_b, mouse_pos) == true) {
-        clicked_state_main(game, game->btn->big->play_b->shape);
+        clicked_state_main(game, game->btn->big->play_b->shape,
+        (sfVector2f){540, 450});
         sfMusic_play(game->btn->big->settings_b->sound);
         return game->player->next_scene = SKIN_SCENE;
     }
     if (button_is_clicked(game->btn->mid->help_b, mouse_pos) == true) {
-        clicked_state_main(game, game->btn->mid->help_b->shape);
+        clicked_state_main(game, game->btn->mid->help_b->shape,
+        (sfVector2f){10, 10});
         sfMusic_play(game->btn->big->settings_b->sound);
         return game->player->next_scene = HELP_SCENE;
     }
+    return game->player->current_scene;
+}
+
+static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
+{
+    if (manage_button_action_scene(game, mouse_pos)
+    != game->player->current_scene)
+        return game->player->next_scene;
     if (button_is_clicked(game->btn->big->exit_b, mouse_pos) == true) {
-        clicked_state_main(game, game->btn->big->exit_b->shape);
+        clicked_state_main(game, game->btn->big->exit_b->shape,
+        (sfVector2f){750, 700});
         return close_window(game);
     }
     return game->player->current_scene;

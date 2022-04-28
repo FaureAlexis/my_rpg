@@ -10,7 +10,6 @@
 particles_t *creat_poussière(sfVector2f *cord, int size,
 sfVector2f direction)
 {
-    
 }
 
 particles_t *creat_particles(int enum, sfVector2f *cord, int size,
