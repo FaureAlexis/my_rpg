@@ -23,8 +23,7 @@ sfRenderWindow *init_window(void)
     sfVideoMode mode = {1920, 1080, 32};
     sfImage *favicon = NULL;
 
-    window = sfRenderWindow_create(mode, "Hasbullah Quest",
-    sfResize | sfClose, NULL);
+    window = sfRenderWindow_create(mode, "Hasbullah Quest", sfClose, NULL);
     if (!window)
         return NULL;
     sfRenderWindow_setFramerateLimit(window, 60);

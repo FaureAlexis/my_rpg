@@ -29,7 +29,8 @@ int draw_circle(particles_t *particle, int radius)
     while (start_x <= end_x) {
         while (start_y <= end_y) {
             if ((((start_x - ((particle->size / 2 + 1))) * (start_x -
-            ((particle->size / 2 + 1)))) + ((start_y - ((particle->size / 2 + 1))) *
+            ((particle->size / 2 + 1)))) +
+            ((start_y - ((particle->size / 2 + 1))) *
             (start_y - ((particle->size / 2 + 1))))) <= (radius * radius))
                 my_put_pixel(particle, start_y, start_x);
             start_y += 1;
@@ -80,23 +81,23 @@ sfVector2f move)
 
 particles_t *anim_poussière(particles_t *head, sfRenderWindow *w)
 {
-    particles_t *particle = head;
+    particles_t *part = head;
 
-    while (particle) {
-        particle->timer->time = sfClock_getElapsedTime(particle->timer->clock);
-        particle->timer->seconds =
-            particle->timer->time.microseconds / 1000000.0;
-        if (particle->direction.x == 6)
-            particle->y = particle->cord.y;
-        if (particle->timer->seconds > 0.01) {
-            particle->end += 0.01;
-            particle->cord.y = particle->y + (particle->direction.y /
-            sqrt(pow(particle->direction.y, 2))) * ((8 - particle->direction.x)* sqrt(pow(cos((particle->direction.y) * particle->end), 2)));
-            sfClock_restart(particle->timer->clock);
+    while (part) {
+        part->timer->time = sfClock_getElapsedTime(part->timer->clock);
+        part->timer->seconds = part->timer->time.microseconds / 1000000.0;
+        if (part->direction.x == 6)
+            part->y = part->cord.y;
+        if (part->timer->seconds > 0.01) {
+            part->end += 0.01;
+            part->cord.y = part->y + (part->direction.y /
+            sqrt(pow(part->direction.y, 2))) * ((8 - part->direction.x)
+            * sqrt(pow(cos((part->direction.y) * part->end), 2)));
+            sfClock_restart(part->timer->clock);
         }
-        sfSprite_setPosition(particle->sprite, particle->cord);
-        sfRenderWindow_drawSprite(w, particle->sprite, NULL);
-        particle = particle->next;
+        sfSprite_setPosition(part->sprite, part->cord);
+        sfRenderWindow_drawSprite(w, part->sprite, NULL);
+        part = part->next;
     }
     head = free_a_particule(head);
     return head;

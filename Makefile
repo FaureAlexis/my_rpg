@@ -34,6 +34,9 @@ SRC_SCENES =		scenes/display/display_main_menu.c \
 					scenes/display/display_skin_cus.c \
 					scenes/display/display_settings.c \
 					scenes/button_pos/button_pos_menu.c \
+					scenes/button_pos/button_pos_game.c \
+					scenes/button_pos/button_pos_help.c \
+					scenes/button_pos/button_pos_pause.c \
 					scenes/button_pos/button_pos_settings.c \
 					scenes/button_pos/button_pos_skin_cus.c \
 					scenes/create/create_scenes.c \

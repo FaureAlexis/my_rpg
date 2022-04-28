@@ -24,7 +24,8 @@
     #define SKIN_CUS_SS "assets/window/custom_menu.png"
     #define PLAYER_SS "assets/player/player.png"
     #define MAP_TXT "assets/map/world.txt"
-    #define GAME_GOAL "The goal of this game is to defeat the king Hasbulla.\nExplore, talk to NPC, complete quests, enjoy !"
+    #define GAME_GOAL "The goal of this game is to defeat the king \
+    Hasbulla.\n Explore, talk to NPC, complete quests, enjoy !"
     #define GAME_HELP "How to play :"
 
     typedef struct volume_s {
@@ -101,6 +102,7 @@
     } player_t;
 
     typedef struct settings_s {
+        bool prev_is_main;
         int fps;
         int res_x;
         int res_y;
@@ -280,12 +282,18 @@
     void shape_red_clicked(main_game_t *game);
     void shape_green_clicked(main_game_t *game);
     void shape_blue_clicked(main_game_t *game);
-    void clicked_state_game(main_game_t *game, sfRectangleShape *shape);
-    void clicked_state_pause(main_game_t *game, sfRectangleShape *shape);
-    void clicked_state_settings(main_game_t *game, sfRectangleShape *shape);
-    void clicked_state_help(main_game_t *game, sfRectangleShape *shape);
-    void clicked_state_main(main_game_t *game, sfRectangleShape *shape);
-    void clicked_state_custom_skin(main_game_t *game, sfRectangleShape *shape);
+    void clicked_state_game(main_game_t *game, sfRectangleShape *shape,
+    sfVector2f position);
+    void clicked_state_pause(main_game_t *game, sfRectangleShape *shape,
+    sfVector2f position);
+    void clicked_state_settings(main_game_t *game, sfRectangleShape *shape,
+    sfVector2f position);
+    void clicked_state_help(main_game_t *game, sfRectangleShape *shape,
+    sfVector2f position);
+    void clicked_state_main(main_game_t *game, sfRectangleShape *shape,
+    sfVector2f position);
+    void clicked_state_custom_skin(main_game_t *game, sfRectangleShape *shape,
+    sfVector2f position);
     const event_t *get_event(sfEventType type, const event_t event_array[]);
     int event_skin_choice(main_game_t *game, sfVector2i mouse_pos);
     int close_window(main_game_t *game);
