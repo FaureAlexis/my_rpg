@@ -28,10 +28,10 @@ int display_resolution(main_game_t *game)
     return display_fps(game);
 }
 
-int display_settings2(main_game_t *game)
+int display_settings2(main_game_t *gme)
 {
-    sfRenderWindow_drawSprite(game->w, game->btn->sml->plus_r_b->sprite, NULL);
-    sfRenderWindow_drawSprite(game->w, game->btn->sml->minus_r_b->sprite, NULL);
+    sfRenderWindow_drawSprite(gme->w, gme->btn->sml->plus_r_b->sprite, NULL);
+    sfRenderWindow_drawSprite(gme->w, gme->btn->sml->minus_r_b->sprite, NULL);
 }
 
 int display_settings(main_game_t *game)

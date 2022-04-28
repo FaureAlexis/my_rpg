@@ -7,7 +7,8 @@
 
 #include "rpg.h"
 
-void clicked_state_game(main_game_t *game, sfRectangleShape *shape)
+void clicked_state_game(main_game_t *game, sfRectangleShape *shape,
+sfVector2f position)
 {
     sfClock *clock = sfClock_create();
     sfTime time = sfClock_getElapsedTime(clock);
@@ -19,6 +20,7 @@ void clicked_state_game(main_game_t *game, sfRectangleShape *shape)
         sfMusic_play(game->btn->big->play_b->sound);
         player_animations(game->player);
         display_game(game);
+        sfRectangleShape_setPosition(shape, position);
         sfRenderWindow_drawRectangleShape(game->w, shape, NULL);
         sfRenderWindow_display(game->w);
     }
