@@ -15,7 +15,6 @@ static int display_help_text(main_game_t *game)
     sfText_setString(game->help->help_text, GAME_HELP);
     sfRenderWindow_drawText(game->w, game->help->goal_text, NULL);
     sfRenderWindow_drawText(game->w, game->help->help_text, NULL);
-
     return EXIT_SUCCESS;
 }
 
@@ -26,7 +25,8 @@ int display_help(main_game_t *game)
     NULL);
     sfRenderWindow_drawSprite(game->w, game->mnu->help_play->object->sprite,
     NULL);
-    sfRenderWindow_drawSprite(game->w, game->btn->big->return_b->sprite, NULL);
+    sfRenderWindow_drawSprite(game->w, game->btn->big->return_b->sprite,
+    NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->big->exit_b->sprite, NULL);
     return display_help_text(game);
 }
