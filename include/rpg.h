@@ -321,6 +321,7 @@
 
     FILE *open_save(const char *path);
     int save_settings(main_game_t *game);
+    int load_settings();
 
 /* Main function */
 

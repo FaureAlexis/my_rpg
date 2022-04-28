@@ -106,8 +106,9 @@ SRC_MAP			=	map/game_test.c	\
 					map/tab.c	\
 					map/mob.c
 
-SRC_SAVE		=	save/open_file.c 		\
-					save/save_settings.c 	\
+SRC_SAVE		=	save/open_file.c 				\
+					save/saving/save_settings.c 	\
+					save/load/load_settings.c 		\
 
 SRC 			=	$(SRC_BUTTON) \
 					$(SRC_INIT) \
