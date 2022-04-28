@@ -53,6 +53,8 @@ char **my_str_to_word_array_pos(char const *str, char pos, int idx)
     int s = 0;
     int nb_words = get_nb_words_pos(str, pos, idx);
 
+    if (nb_words == 0)
+        return NULL;
     dest = malloc(sizeof(char *) * (nb_words + 1));
     dest[nb_words] = NULL;
     for (int j = 0; j != nb_words; j += 1) {

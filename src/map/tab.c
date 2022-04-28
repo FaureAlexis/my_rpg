@@ -50,6 +50,8 @@ char ***make_tab(char *filepath)
     result = malloc(sizeof(char **) * (len_tab(tmp) + 1));
     for (int tab = 0; tab < len_tab(tmp); tab += 1) {
         result[tab] = my_str_to_word_array_pos(tmp, ' ', idx);
+        if (result[tab] == NULL)
+            return NULL;
         idx = get_next_array(tmp, idx);
     }
     return result;
