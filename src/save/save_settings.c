@@ -7,6 +7,13 @@
 
 #include "rpg.h"
 
+void free_settings(char *fps, char *x, char *y)
+{
+    free(fps);
+    free(x);
+    free(y);
+}
+
 int write_data(char *key, char *value, FILE *file)
 {
     ssize_t block = 1;
@@ -29,6 +36,7 @@ int write_settings(FILE *file, char *fps, char *x, char *y)
         return EPITECH_ERROR;
     if (write_data("resoltionY", y, file) == 84)
         return EPITECH_ERROR;
+    free_settings(fps, x, y);
     return EXIT_SUCCESS;
 }
 
