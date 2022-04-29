@@ -6,27 +6,16 @@
 */
 
 #ifndef RPG_H_
-#define RPG_H_
+    #define RPG_H_
+    #define EPITECH_ERROR 84
+
     #include <math.h>
     #include "lib.h"
     #include "game_object.h"
     #include "button.h"
     #include "menu.h"
     #include "csfml.h"
-
-    #define EPITECH_ERROR 84
-    #define BUTTON_SOUND "assets/sounds/click.ogg"
-    #define BUTTON_SS "assets/button/button_spritesheet.png"
-    #define MENU_BG "assets/menu/main_menu.jpg"
-    #define GAME_EX "assets/menu/game_example.jpg"
-    #define SETTINGS_BG "assets/menu/settings_menu.png"
-    #define SETTINGS_SS "assets/window/settings_sprite.png"
-    #define SKIN_CUS_SS "assets/window/custom_menu.png"
-    #define PLAYER_SS "assets/player/player.png"
-    #define MAP_TXT "assets/map/world.txt"
-    #define GAME_GOAL "The goal of this game is to defeat the king \
-    Hasbulla.\n Explore, talk to NPC, complete quests, enjoy !"
-    #define GAME_HELP "How to play :"
+    #include "assets.h"
 
     typedef struct volume_s {
         float volume;
@@ -148,11 +137,11 @@
         int flip;
     } movements_t;
 
-/* Check environnement */
+    /* Check environnement */
 
     int check_env(char **env);
 
-/* Inits */
+    /* Inits */
 
     player_t *init_player(void);
     main_game_t *init_game(void);
@@ -170,11 +159,11 @@
     int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect);
     int init_volume(vol_t **vol);
     int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect);
-    particles_t *creat_particles(int enuma, sfVector2f cord, int size,
+    particles_t *creat_particles(int enum_type, sfVector2f cord, int size,
     sfVector2f direction);
     int draw_circle(particles_t *particle, int radius);
 
-/*Map Management*/
+        /*Map Management*/
 
     char *open_file(char const *filepath);
     char **my_str_to_word_array_pos(char const *str, char pos, int idx);
@@ -189,30 +178,30 @@
     mobe_t *add_node_to_mobe(mobe_t *head, mobe_t *node);
     void parse_tab(map_t *map, char ***tab, int i);
 
-/*Animations*/
+    /*Animations*/
 
-/*Player animations*/
-        int player_animations(player_t *player);
-        int player_check_key(sfKeyCode key);
-        int set_player_movements(main_game_t *game, player_t *player,
-        sfEvent event);
-        void move_up(map_t *map, player_t *player);
-        void move_down(map_t *map, player_t *player);
-        void move_right(map_t *map, player_t *player);
-        void move_left(map_t *map, player_t *player);
-        particles_t *anim_poussière(particles_t *head, sfRenderWindow *w);
-        particles_t *add_particle_to_list(particles_t *head, particles_t *node,
-        sfVector2f move);
+    /*Player animations*/
+    int player_animations(player_t *player);
+    int player_check_key(sfKeyCode key);
+    int set_player_movements(main_game_t *game, player_t *player,
+    sfEvent event);
+    void move_up(map_t *map, player_t *player);
+    void move_down(map_t *map, player_t *player);
+    void move_right(map_t *map, player_t *player);
+    void move_left(map_t *map, player_t *player);
+    particles_t *anim_dust(particles_t *head, sfRenderWindow *w);
+    particles_t *add_particle_to_list(particles_t *head, particles_t *node,
+    sfVector2f move);
 
-/*Menu management*/
+    /*Menu management*/
 
-/*Initalization*/
+    /*Initalization*/
     sfRenderWindow *create_window(void);
     char **init_menu_rsc(char *sound, char *texture, char *texture_bg);
     char **init_button_rsc2(char *sound, char *texture);
     int create_menus(main_game_t *game);
 
-/*Button Position*/
+    /*Button Position*/
     void pos_button_settings(main_game_t *game);
     void pos_button_settings_two(main_game_t *game);
     void pos_button_pause(main_game_t *game);
@@ -222,7 +211,7 @@
     void pos_button_skin_cus(main_game_t *game);
     void pos_button_scoreboard(main_game_t *game);
 
-/*Display*/
+    /*Display*/
 
     int display_menu(main_game_t *game);
     int display_skin_cus(main_game_t *game);
@@ -240,22 +229,22 @@
     int display_fps(main_game_t *game);
     int manage_reso_plus(main_game_t *game, sfVector2i mouse_pos);
 
-/*Button management*/
+    /*Button management*/
 
-/*Create*/
+    /*Create*/
     int create_all_big_buttons(main_game_t *game);
     int create_all_medium_buttons(main_game_t *game);
     int create_all_small_buttons(main_game_t *game);
     int create_all_buttons(main_game_t *game);
 
-/*Set Rect*/
+    /*Set Rect*/
     void set_rect_big_buttons(main_game_t *game);
     void set_rect_mid_buttons(main_game_t *game);
     void set_rect_mid_buttons2(main_game_t *game);
     void set_rect_small_buttons(main_game_t *game);
     void set_rect_all_buttons(main_game_t *game);
 
-/*Hover*/
+    /*Hover*/
     int manage_hover_big_buttons(main_game_t *game, sfVector2i mouse_pos);
     int manage_hover_medium_buttons(main_game_t *game, sfVector2i mouse_pos);
     int manage_hover_small_buttons(main_game_t *game, sfVector2i mouse_pos);
@@ -275,7 +264,7 @@
     int manage_hover_buttons(main_game_t *game, sfVector2i mouse_pos);
     int manage_hover(button_t *button, sfVector2i mouse_pos);
 
-/* Events */
+    /* Events */
 
     bool button_is_clicked(button_t *button, sfVector2i mouse_pos);
     bool shape_is_clicked(sfRectangleShape *shape, sfVector2i mouse_pos);
@@ -296,9 +285,12 @@
     sfVector2f position);
     const event_t *get_event(sfEventType type, const event_t event_array[]);
     int event_skin_choice(main_game_t *game, sfVector2i mouse_pos);
+    int set_rgb_right(main_game_t *game);
+    int set_rgb_left(main_game_t *game);
+    void set_rgb_shape(cus_t **cus);
     int close_window(main_game_t *game);
 
-/* Scenes */
+    /* Scenes */
 
     int create_menus(main_game_t *game);
     const scenes_t *manage_scenes(sfKeyCode key, scenes_name name);
@@ -309,7 +301,7 @@
     int help_scene(main_game_t *game);
     int skin_scene(main_game_t *game);
 
-/* Free data */
+    /* Free data */
 
     void free_game_struct(main_game_t *game);
     void destroy_all_button(main_game_t *game);
@@ -317,18 +309,14 @@
     void free_tab(char ***tab);
     void destroy_all_texts(main_game_t *game);
 
-/* Load and Save progression/settings */
+    /* Load and Save progression/settings */
 
     FILE *open_save(const char *path);
     int save_settings(main_game_t *game);
     int load_settings();
 
-/* Main function */
+    /* Main function */
 
     int rpg(int argc, const char * const *argv, char ** env);
-
-    int set_rgb_right(main_game_t *game);
-    int set_rgb_left(main_game_t *game);
-    void set_rgb_shape(cus_t **cus);
 
 #endif/* !RPG_H_ */
