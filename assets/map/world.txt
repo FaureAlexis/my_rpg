@@ -41,11 +41,11 @@ assets/map/tilesets/plains.png 1740 40 32 80 16 16
 assets/map/tilesets/plains.png 1660 40 32 80 16 16
 assets/map/tilesets/plains.png 1580 40 32 80 16 16
 assets/map/tilesets/plains.png 1500 40 32 80 16 16
-assets/map/tilesets/fences.png 648 575 16 48 16 16
-assets/map/tilesets/fences.png 728 575 32 48 16 16
-assets/map/tilesets/fences.png 808 575 32 48 16 16
-assets/map/tilesets/fences.png 888 575 32 48 16 16
-assets/map/tilesets/fences.png 968 575 48 48 16 16
+assets/map/tilesets/fences.png 648 495 16 48 16 16
+assets/map/tilesets/fences.png 728 495 32 48 16 16
+assets/map/tilesets/fences.png 808 495 32 48 16 16
+assets/map/tilesets/fences.png 888 495 32 48 16 16
+assets/map/tilesets/fences.png 968 495 48 48 16 16
 assets/map/tilesets/walls/walls.png 576 1805 16 48 16 16
 assets/map/tilesets/walls/walls.png 576 1885 16 64 16 16
 assets/map/tilesets/walls/walls.png 576 1965 0 64 16 16
