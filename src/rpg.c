@@ -22,7 +22,8 @@ int rpg(int argc, const char * const *argv, char ** env)
         if (scene)
             change_scene = scene->go_scene(game);
     }
-    save_settings(game);
+    if (save_settings(game) == EPITECH_ERROR)
+        return EPITECH_ERROR;
     free_game_struct(game);
     if (change_scene == 84)
         return change_scene;
