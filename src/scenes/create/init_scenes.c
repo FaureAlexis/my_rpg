@@ -27,16 +27,16 @@ int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect)
         return EPITECH_ERROR;
     (*menu)->object = malloc(sizeof(game_object_t));
     (*menu)->bg_object = malloc(sizeof(game_object_t));
+    if (!(*menu)->object || !(*menu)->bg_object)
+        return EPITECH_ERROR;
     (*menu)->object->rect = rect;
     (*menu)->theme = sfMusic_createFromFile(theme);
-    if ((*menu)->theme == NULL)
-        return EPITECH_ERROR;
-    sfMusic_setLoop((*menu)->theme, true);
     (*menu)->bg_object->texture = sfTexture_createFromFile(SETTINGS_BG, NULL);
     (*menu)->object->texture = sfTexture_createFromFile(texture, NULL);
-    if ((*menu)->bg_object->texture == NULL
+    if ((*menu)->bg_object->texture == NULL || (*menu)->theme == NULL
     || (*menu)->object->texture == NULL)
         return EPITECH_ERROR;
+    sfMusic_setLoop((*menu)->theme, true);
     if (init_menu_sprite(menu) == EPITECH_ERROR)
         return EPITECH_ERROR;
     return EXIT_SUCCESS;

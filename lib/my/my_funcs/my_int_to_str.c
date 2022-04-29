@@ -14,6 +14,8 @@ char *my_int_to_str(int nb)
     char *dest = malloc(sizeof(char) * length + 1);
     int k = 0;
 
+    if (!dest)
+        return NULL;
     if (nb == 0) {
         dest[0] = '0';
         dest[1] = '\0';

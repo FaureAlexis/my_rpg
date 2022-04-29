@@ -9,7 +9,7 @@
 #include "rpg.h"
 #include <SFML/Graphics.h>
 
-void display_mobe(main_game_t *game)
+void display_mob(main_game_t *game)
 {
     mobe_t *tmp = game->map->mobe;
 
@@ -29,34 +29,41 @@ void display_mobe(main_game_t *game)
     }
 }
 
-static int set_texture_mob(mobe_t *node, char ***tab, int i)
+static mobe_t *set_info_mob(mobe_t *node, char ***tab, int i)
 {
+    node->object->scale = (sfVector2f){4, 4};
+    node->object->position.x = my_atoi(tab[i][1]);
+    node->object->position.y = my_atoi(tab[i][2]);
+    node->hp = my_atoi(tab[i][7]);
+    node->power = my_atoi(tab[i][8]);
     sfSprite_setScale(node->object->sprite, node->object->scale);
     sfSprite_setOrigin(node->object->sprite, (sfVector2f){my_atoi(tab[i][5]) \
     / 2, my_atoi(tab[i][6]) / 2});
     sfSprite_setTexture(node->object->sprite, node->object->texture, sfFalse);
     sfSprite_setTextureRect(node->object->sprite, node->object->rect);
-    return EXIT_SUCCESS;
+    return node;
 }
 
-void init_mobe(map_t *map, char ***tab, int i)
+int init_mob(map_t *map, char ***tab, int i)
 {
-    mobe_t *node = malloc(sizeof(mobe_t));
+    mobe_t *nde = malloc(sizeof(mobe_t));
     sfIntRect rec = {my_atoi(tab[i][3]), my_atoi(tab[i][4]),
     my_atoi(tab[i][5]), my_atoi(tab[i][6])};
 
-    node->object = malloc(sizeof(game_object_t));
-    node->my_clock = malloc(sizeof(my_clock_t));
-    node->my_clock->clock = sfClock_create();
-    node->object->scale = (sfVector2f){4, 4};
-    node->object->rect = rec;
-    node->object->position.x = my_atoi(tab[i][1]);
-    node->object->position.y = my_atoi(tab[i][2]);
-    node->object->texture = sfTexture_createFromFile(tab[i][0], NULL);
-    node->object->sprite = sfSprite_create();
-    node->hp = my_atoi(tab[i][7]);
-    node->power = my_atoi(tab[i][8]);
-    node->next = NULL;
-    set_texture_mob(node, tab, i);
-    map->mobe = add_node_to_mobe(map->mobe, node);
+    if (!nde)
+        return EPITECH_ERROR;
+    nde->object = malloc(sizeof(game_object_t));
+    nde->my_clock = malloc(sizeof(my_clock_t));
+    if (!nde->object || !nde->my_clock)
+        return EPITECH_ERROR;
+    nde->my_clock->clock = sfClock_create();
+    nde->object->rect = rec;
+    nde->object->texture = sfTexture_createFromFile(tab[i][0], NULL);
+    nde->object->sprite = sfSprite_create();
+    if (!nde->my_clock->clock || !nde->object->texture || !nde->object->sprite)
+        return EPITECH_ERROR;
+    nde->next = NULL;
+    nde = set_info_mob(nde, tab, i);
+    map->mobe = add_node_to_mobe(map->mobe, nde);
+    return EXIT_SUCCESS;
 }

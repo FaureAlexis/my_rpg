@@ -7,6 +7,17 @@
 
 #include "rpg.h"
 
+static int launch_win(main_game_t *game)
+{
+    game->w = init_window();
+    if (game->w == NULL)
+        return EPITECH_ERROR;
+    game->view = init_view(game->w);
+    if (game->view == NULL)
+        return EPITECH_ERROR;
+    return EXIT_SUCCESS;
+}
+
 int rpg(int argc, const char * const *argv, char ** env)
 {
     main_game_t *game = init_game();
@@ -15,7 +26,7 @@ int rpg(int argc, const char * const *argv, char ** env)
 
     if (!game || game == NULL)
         return EPITECH_ERROR;
-    if (init_all(game) == EPITECH_ERROR)
+    if (init_all(game) == EPITECH_ERROR || launch_win(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
     while (change_scene != -1 && change_scene != 84) {
         scene = manage_scenes(0, change_scene);

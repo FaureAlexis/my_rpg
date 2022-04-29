@@ -7,6 +7,16 @@
 
 #include "rpg.h"
 
+static player_t *set_player_stats(player_t *player)
+{
+    player->life = 20;
+    player->attack = 5;
+    player->dust = NULL;
+    player->object->position = (sfVector2f){960, 600};
+    player->object->scale = (sfVector2f){4, 4};
+    player->object->rect = (sfIntRect){0, 0, 48, 48};
+    return player;
+}
 static int set_sprite(player_t *player)
 {
     sfSprite_setOrigin(player->object->sprite, (sfVector2f){24, 24});
@@ -24,14 +34,13 @@ player_t *init_player(void)
 
     if (!player)
         return NULL;
-    player->life = 20;
-    player->attack = 5;
-    player->dust = NULL;
     player->object = malloc(sizeof(game_object_t));
-    player->object->position = (sfVector2f){960, 600};
-    player->object->scale = (sfVector2f){4, 4};
-    player->object->rect = (sfIntRect){0, 0, 48, 48};
+    if (!player->object)
+        return NULL;
+    player = set_player_stats(player);
     player->p_clock = init_clock();
+    if (!player->p_clock)
+        return NULL;
     player->object->texture = sfTexture_createFromFile(PLAYER_SS, NULL);
     if (!player->object->texture)
         return NULL;

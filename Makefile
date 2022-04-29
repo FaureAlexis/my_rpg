@@ -63,6 +63,9 @@ SRC_EVENT		=	events/get_event.c \
 
 SRC_INIT		=	init/init_clock.c \
 					init/init_game.c \
+					init/init_help.c \
+					init/init_settings.c \
+					init/init_volume.c \
 					init/init_skin_custom.c \
 					init/init_map.c \
 					init/init_player.c \
@@ -119,6 +122,7 @@ SRC 			=	$(SRC_BUTTON) \
 					$(SRC_MAP) \
 					$(SRC_SAVE) \
 					sys/check_env.c \
+					sys/check_ressources.c \
 					main.c	\
 					rpg.c
 

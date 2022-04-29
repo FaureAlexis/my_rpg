@@ -78,7 +78,7 @@ void move_right(map_t *map, player_t *player)
     while (obstacle != NULL) {
         if (map->map->position.x >= -3098) {
             obstacle->object->position.x -= 10;
-            sfSprite_setPosition(obstacle->object->sprite, \
+            sfSprite_setPosition(obstacle->object->sprite,
             obstacle->object->position);
         }
         obstacle = obstacle->next;
@@ -107,7 +107,7 @@ void move_left(map_t *map, player_t *player)
     while (obstacle != NULL) {
         if (map->map->position.x <= 922) {
             obstacle->object->position.x += 10;
-            sfSprite_setPosition(obstacle->object->sprite, \
+            sfSprite_setPosition(obstacle->object->sprite,
             obstacle->object->position);
         }
         obstacle = obstacle->next;
