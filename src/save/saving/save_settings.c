@@ -16,7 +16,8 @@ void free_settings(char *fps, char *x, char *y)
 
 int write_data(char *key, char *value, FILE *file)
 {
-    ssize_t block = 1;
+    size_t block = 1;
+
     if (fwrite(key, my_strlen(key), block, file) != block)
         return EPITECH_ERROR;
     if (fwrite("=", 1, block, file) != block)
@@ -45,12 +46,11 @@ int save_settings(main_game_t *game)
     char *fps = my_int_to_str(game->settings->fps);
     char *res_x = my_int_to_str(game->settings->res_x);
     char *res_y = my_int_to_str(game->settings->res_y);
-    FILE *file = open_save("config/settings.rpg");
-    
+    FILE *file = open_save(".settings.rpg");
+
     if (!file)
         return EPITECH_ERROR;
-    if (write_settings(file, fps, res_x, res_y) == 84 ||
-        fclose(file) == EOF)
+    if (write_settings(file, fps, res_x, res_y) == 84 || fclose(file) == EOF)
         return EPITECH_ERROR;
     return EXIT_SUCCESS;
 }

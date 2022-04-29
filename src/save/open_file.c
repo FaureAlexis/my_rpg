@@ -9,9 +9,12 @@
 
 FILE *open_save(const char *path)
 {
+    FILE *file = NULL;
+
     if (!path)
         return NULL;
-    FILE *file = fopen(path, "w");
+    file = fopen(path, "w+");
+
     if (!file)
         return NULL;
     return file;
