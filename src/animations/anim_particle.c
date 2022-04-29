@@ -45,7 +45,7 @@ particles_t *free_a_particule(particles_t *head)
 {
     particles_t *tmp = NULL;
 
-    if (head && head->end > 1) {
+    if (head && head->end > 0.75) {
         tmp = head->next;
         free(head->timer);
         free(head->pixels);

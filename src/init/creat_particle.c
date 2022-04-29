@@ -24,7 +24,7 @@ particles_t *create_dust(sfVector2f cord, int size, sfVector2f direction)
     node->sprite = sfSprite_create();
     node->pixels = malloc(((node->size + 2) * (node->size + 2)) * 4);
     draw_circle(node, (node->size / 2));
-    sfTexture_updateFromPixels(node->texture,node->pixels, node->size,
+    sfTexture_updateFromPixels(node->texture, node->pixels, node->size,
     node->size, 0, 0);
     sfSprite_setTexture(node->sprite, node->texture, sfFalse);
     sfSprite_setTextureRect(node->sprite, (sfIntRect){0, 0, node->size, \
@@ -38,7 +38,7 @@ sfVector2f direction)
     particles_t *node = NULL;
 
     srand(rand());
-    if (enuma == 0 && (rand() % 2 == 0))
+    if (enuma == 0 && (rand() % 3 == 0))
         node = create_dust(cord, size, direction);
     return node;
 }

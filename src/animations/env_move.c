@@ -16,8 +16,7 @@ void move_up(map_t *map, player_t *player)
 
     player->dust = add_particle_to_list(player->dust, dust,
     (sfVector2f){0, 10});
-    if (map->map->position.y <= 597)
-        map->map->position.y += 10;
+    map->map->position.y += 10;
     while (obstacle != NULL) {
         if (map->map->position.y <= 607) {
             obstacle->object->position.y += 10;
@@ -46,8 +45,7 @@ void move_down(map_t *map, player_t *player)
 
     player->dust = add_particle_to_list(player->dust, dust,
     (sfVector2f){0, -10});
-    if (map->map->position.y >= -3393)
-        map->map->position.y -= 10;
+    map->map->position.y -= 10;
     while (obstacle != NULL) {
         if (map->map->position.y >= -3403) {
             obstacle->object->position.y -= 10;
@@ -76,8 +74,7 @@ void move_right(map_t *map, player_t *player)
 
     player->dust = add_particle_to_list(player->dust, dust,
     (sfVector2f){-10, 0});
-    if (map->map->position.x >= -3088)
-        map->map->position.x -= 10;
+    map->map->position.x -= 10;
     while (obstacle != NULL) {
         if (map->map->position.x >= -3098) {
             obstacle->object->position.x -= 10;
@@ -106,8 +103,7 @@ void move_left(map_t *map, player_t *player)
 
     player->dust = add_particle_to_list(player->dust, dust,
     (sfVector2f){10, 0});
-    if (map->map->position.x <= 912)
-        map->map->position.x += 10;
+    map->map->position.x += 10;
     while (obstacle != NULL) {
         if (map->map->position.x <= 922) {
             obstacle->object->position.x += 10;

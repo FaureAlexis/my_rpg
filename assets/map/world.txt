@@ -101,3 +101,33 @@ assets/sprites/characters/slime.png 200 200 0 0 32 32 10 10
 assets/sprites/characters/slime.png 300 200 0 0 32 32 10 10
 assets/sprites/characters/slime.png 400 200 0 0 32 32 10 10
 assets/map/tilesets/walls/wooden_door.png 576 2205 0 0 16 16
+assets/map/tilesets/walls/walls.png -1041 34 16 48 16 16
+assets/map/tilesets/walls/walls.png -1041 114 16 64 16 16
+assets/map/tilesets/walls/walls.png -961 34 32 48 16 16
+assets/map/tilesets/walls/walls.png -961 114 32 64 16 16
+assets/map/tilesets/walls/walls.png -881 34 32 48 16 16
+assets/map/tilesets/walls/walls.png -881 114 32 64 16 16
+assets/map/tilesets/walls/walls.png -801 34 32 48 16 16
+assets/map/tilesets/walls/walls.png -801 114 32 64 16 16
+assets/map/tilesets/walls/walls.png -721 34 32 48 16 16
+assets/map/tilesets/walls/walls.png -721 114 32 64 16 16
+assets/map/tilesets/walls/walls.png -641 34 32 48 16 16
+assets/map/tilesets/walls/walls.png -641 114 32 64 16 16
+assets/map/tilesets/walls/walls.png -576 34 48 48 16 16
+assets/map/tilesets/walls/walls.png -576 114 48 64 16 16
+assets/map/tilesets/walls/walls.png -576 194 0 64 16 16
+assets/map/tilesets/walls/walls.png -576 274 0 64 16 16
+assets/map/tilesets/walls/walls.png -576 354 0 64 16 16
+assets/map/tilesets/walls/walls.png -576 434 0 64 16 16
+assets/map/tilesets/walls/walls.png -1041 194 0 64 16 16
+assets/map/tilesets/walls/walls.png -1041 274 0 64 16 16
+assets/map/tilesets/walls/walls.png -1041 354 0 64 16 16
+assets/map/tilesets/walls/walls.png -1041 434 0 64 16 16
+assets/map/tilesets/walls/walls.png -1041 502 16 80 16 16
+assets/map/tilesets/walls/walls.png -961 502 32 80 16 16
+assets/map/tilesets/walls/walls.png -881 502 32 80 16 16
+assets/map/tilesets/walls/walls.png -801 502 32 80 16 16
+assets/map/tilesets/walls/walls.png -641 502 32 80 16 16
+assets/map/tilesets/walls/walls.png -576 502 48 80 16 16
+assets/map/tilesets/walls/wooden_door.png -721 502 0 0 16 16
+assets/map/objects/chest_01.png -881 194 0 0 16 16

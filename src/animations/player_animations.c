@@ -18,16 +18,16 @@ static const movements_t movements_array[] = {
 
 int move_player(main_game_t *game, const movements_t *movements)
 {
-    if (movements->key == sfKeyUp) {
+    if (movements->key == sfKeyUp && game->map->map->position.y <= 597) {
         move_up(game->map, game->player);
     }
-    if (movements->key == sfKeyDown) {
+    if (movements->key == sfKeyDown && game->map->map->position.y >= -3393) {
         move_down(game->map, game->player);
     }
-    if (movements->key == sfKeyRight) {
+    if (movements->key == sfKeyRight && game->map->map->position.x >= -3088) {
         move_right(game->map, game->player);
     }
-    if (movements->key == sfKeyLeft) {
+    if (movements->key == sfKeyLeft && game->map->map->position.x <= 912) {
         move_left(game->map, game->player);
     }
 }
