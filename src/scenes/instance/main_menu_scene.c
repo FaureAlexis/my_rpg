@@ -80,6 +80,9 @@ int main_menu_scene(main_game_t *game)
     game->player->current_scene = MENU_SCENE;
     sfMusic_stop(game->btn->big->return_b->sound);
     sfMusic_stop(game->btn->mid->main_b->sound);
+    game->skin->red_c = 255;
+    game->skin->green_c = 255;
+    game->skin->blue_c = 255;
     while (sfRenderWindow_isOpen(game->w)) {
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);

@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-particles_t *creat_poussiere(sfVector2f cord, int size, sfVector2f direction)
+particles_t *create_dust(sfVector2f cord, int size, sfVector2f direction)
 {
     particles_t *node = malloc(sizeof(particles_t));
 
@@ -39,6 +39,6 @@ sfVector2f direction)
 
     srand(rand());
     if (enuma == 0 && (rand() % 2 == 0))
-        node = creat_poussiere(cord, size, direction);
+        node = create_dust(cord, size, direction);
     return node;
 }

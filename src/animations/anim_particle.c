@@ -79,7 +79,7 @@ sfVector2f move)
     return head;
 }
 
-particles_t *anim_poussière(particles_t *head, sfRenderWindow *w)
+particles_t *anim_dust(particles_t *head, sfRenderWindow *w)
 {
     particles_t *part = head;
 
