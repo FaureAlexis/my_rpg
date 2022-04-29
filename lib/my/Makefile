@@ -66,7 +66,7 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	ar rc $(NAME) $(OBJ)
-	cp $(NAME) ..
+	mv $(NAME) ..
 	cp -r include ../..
 
 clean:

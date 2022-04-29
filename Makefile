@@ -130,7 +130,7 @@ CPPFLAGS	=	-I ./include -g
 
 CSFML	=	-l csfml-graphics -l csfml-audio -l csfml-system -l csfml-window
 
-LDFLAGS	=	 -L ./lib -lmy
+LDFLAGS	=	 -L ./lib/ -lmy
 
 all:	$(NAME)
 
@@ -141,7 +141,7 @@ PREBUILD:
 $(NAME):	PREBUILD $(OBJ)
 	@echo -e "\e[92mBuilding librairy : \e[34mmy\e[5m . \e[0m\e[5m . \e[34m \
 	. \e[0m"
-	@make -C lib/my &> /dev/null
+	@make -C lib/my > /dev/null
 	@echo -e "\e[92mBuilding sources : \e[34m$(NAME)\e[5m . \e[0m\e[5m . \
 	\e[34m . \e[0m"
 	@$(CC) -o $(NAME) $(OBJ) $(CPPFLAGS) $(LDFLAGS) $(CSFML) -lm
