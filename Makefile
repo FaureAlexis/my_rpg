@@ -75,7 +75,7 @@ SRC_ERROR 		=	error/error.c \
 SRC_FREE		=	free/free_game_struct.c \
 					free/free_button.c \
 					free/free_menu.c	\
-					free/free_text.c    \
+					free/free_text.c
 
 SRC_EP			= 	src_ep/game_test.c 	\
 					src_ep/main.c 	   	\
@@ -108,7 +108,7 @@ SRC_MAP			=	map/game_test.c	\
 
 SRC_SAVE		=	save/open_file.c 				\
 					save/saving/save_settings.c 	\
-					save/load/load_settings.c 		\
+					save/load/load_settings.c
 
 SRC 			=	$(SRC_BUTTON) \
 					$(SRC_INIT) \
@@ -130,7 +130,7 @@ CPPFLAGS	=	-I ./include -g
 
 CSFML	=	-l csfml-graphics -l csfml-audio -l csfml-system -l csfml-window
 
-LDFLAGS	=	 -L ./lib -lmy
+LDFLAGS	=	 -L ./lib/my -lmy
 
 all:	$(NAME)
 

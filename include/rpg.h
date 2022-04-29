@@ -200,7 +200,7 @@
         void move_down(map_t *map, player_t *player);
         void move_right(map_t *map, player_t *player);
         void move_left(map_t *map, player_t *player);
-        particles_t *anim_poussière(particles_t *head, sfRenderWindow *w);
+        particles_t *anim_poussiere(particles_t *head, sfRenderWindow *w);
         particles_t *add_particle_to_list(particles_t *head, particles_t *node,
         sfVector2f move);
 
