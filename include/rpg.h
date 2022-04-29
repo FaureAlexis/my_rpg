@@ -140,12 +140,15 @@
     /* Check environnement */
 
     int check_env(char **env);
+    int manage_errors(const int argc, char const *argv[], char **env);
 
     /* Inits */
 
     player_t *init_player(void);
     main_game_t *init_game(void);
     map_t *init_map(void);
+    int init_settings(main_game_t *game);
+    int init_help(main_game_t *game);
     sfRenderWindow *init_window(void);
     sfView *init_view(sfRenderWindow *window);
     my_clock_t *init_clock(void);
@@ -170,13 +173,13 @@
     char ***make_tab(char *filepath);
     int my_arraylen(char *const *array);
     void launch_rpg(char ***tab);
-    void init_obstacle(map_t *map, char ***tab, int i);
-    void init_mobe(map_t *map, char ***tab, int i);
+    int init_obstacle(map_t *map, char ***tab, int i);
+    int init_mob(map_t *map, char ***tab, int i);
     void display_obstacle(main_game_t *game);
-    void display_mobe(main_game_t *game);
+    void display_mob(main_game_t *game);
     obstacle_t *add_node_to_obstacle(obstacle_t *head, obstacle_t *node);
     mobe_t *add_node_to_mobe(mobe_t *head, mobe_t *node);
-    void parse_tab(map_t *map, char ***tab, int i);
+    int parse_tab(map_t *map, char ***tab, int i);
 
     /*Animations*/
 

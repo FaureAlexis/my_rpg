@@ -14,6 +14,8 @@ my_clock_t *init_clock(void)
     if (!my_clock)
         return NULL;
     my_clock->clock = sfClock_create();
+    if (!my_clock->clock)
+        return NULL;
     my_clock->seconds = 0;
     return my_clock;
 }

@@ -15,7 +15,7 @@ int display_game(main_game_t *game)
     sfRenderWindow_drawSprite(game->w, game->map->map->sprite, NULL);
     game->player->dust = anim_dust(game->player->dust, game->w);
     sfRenderWindow_drawSprite(game->w, game->player->object->sprite, NULL);
-    display_mobe(game);
+    display_mob(game);
     display_obstacle(game);
     sfRenderWindow_drawSprite(game->w, game->btn->mid->pause_b->sprite, NULL);
     return EXIT_SUCCESS;

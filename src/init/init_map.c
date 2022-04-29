@@ -17,6 +17,7 @@ map_t *init_map(void)
     if (!map->tab)
         return NULL;
     for (int i = 0; map->tab[i] != NULL; i += 1)
-        parse_tab(map, map->tab, i);
+        if (parse_tab(map, map->tab, i) == EPITECH_ERROR)
+            return NULL;
     return map;
 }

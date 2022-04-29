@@ -30,6 +30,7 @@ int move_player(main_game_t *game, const movements_t *movements)
     if (movements->key == sfKeyLeft) {
         move_left(game->map, game->player);
     }
+    return EXIT_SUCCESS;
 }
 
 int set_player_movements(main_game_t *game, player_t *player, sfEvent event)

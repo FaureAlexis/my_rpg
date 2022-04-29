@@ -48,7 +48,7 @@ int save_settings(main_game_t *game)
     char *res_y = my_int_to_str(game->settings->res_y);
     FILE *file = open_save(".settings.rpg");
 
-    if (!file)
+    if (fps == NULL || res_x == NULL || res_y == NULL || !file)
         return EPITECH_ERROR;
     if (write_settings(file, fps, res_x, res_y) == 84 || fclose(file) == EOF)
         return EPITECH_ERROR;

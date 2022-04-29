@@ -14,7 +14,6 @@ FILE *open_save(const char *path)
     if (!path)
         return NULL;
     file = fopen(path, "w+");
-
     if (!file)
         return NULL;
     return file;

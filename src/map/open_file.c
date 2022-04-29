@@ -17,15 +17,18 @@ char *open_file(char const *filepath)
     int size = 0;
     char *buff = NULL;
 
-    if (stat(filepath, &info) == -1)
+    if (fd == -1 || stat(filepath, &info) == -1)
         return NULL;
     size = info.st_size;
     if (size == 0)
         return NULL;
     buff = malloc(sizeof(char) * (size + 1));
+    if (!buff)
+        return NULL;
     read(fd, buff, size);
     if (!buff)
         return NULL;
     buff[size] = '\0';
+    close(fd);
     return buff;
 }

@@ -28,6 +28,8 @@ sfRenderWindow *init_window(void)
         return NULL;
     sfRenderWindow_setFramerateLimit(window, 60);
     favicon = sfImage_createFromFile("./assets/window/favicon.png");
+    if (!favicon)
+        return NULL;
     sfRenderWindow_setIcon(window, 514, 528, sfImage_getPixelsPtr(favicon));
     sfImage_destroy(favicon);
     return window;
