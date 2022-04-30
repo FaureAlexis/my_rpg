@@ -30,6 +30,9 @@ int move_player(main_game_t *game, const movements_t *movements)
     if (movements->key == sfKeyLeft && game->map->map->position.x <= 912) {
         move_left(game->map, game->player);
     }
+    if (game->event.type == sfEvtMouseButtonPressed ) {
+        move_left(game->map, game->player);
+    }
     return EXIT_SUCCESS;
 }
 

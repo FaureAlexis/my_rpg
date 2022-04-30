@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-int load_settings()
+int load_settings(void)
 {
     return EXIT_SUCCESS;
 }

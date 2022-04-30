@@ -9,19 +9,51 @@
 #include "rpg.h"
 #include <SFML/Graphics.h>
 
+void attack_slime(mobe_t *mob, player_t *player)
+{
+    if (mob->attack == true) {
+        if(mob->object->rect.left >= 160 && mob->object->rect.top == 64) {
+            mob->object->rect.left = 0;
+            mob->object->rect.top -= 32;
+        }
+        if(mob->object->rect.left >= 128 && mob->object->rect.top == 32) {
+            mob->object->rect.left = 0;
+            mob->object->rect.top -= 32;
+        }
+        mob->object->position.x += (player->object->position.x -
+        mob->object->position.x) / (sqrt(pow(player->object->position.x -
+        mob->object->position.x, 2) + pow(player->object->position.y -
+        mob->object->position.y, 2)));
+        mob->object->position.y += (player->object->position.y -
+        mob->object->position.y) / (sqrt(pow(player->object->position.x -
+        mob->object->position.x, 2) + pow(player->object->position.y -
+        mob->object->position.y, 2)));
+    } else {
+        if (mob->object->rect.left >= 96)
+            mob->object->rect.left = 0;
+    }
+    if (mob->object->rect.top == 0)
+        mob->attack = false;
+}
+
 void display_mob(main_game_t *game)
 {
     mobe_t *tmp = game->map->mobe;
 
     while (tmp) {
+        if (sqrt(pow(game->player->object->position.x - tmp->object->position.x,
+        2) + pow(game->player->object->position.y - tmp->object->position.y, 2))
+        < 80 * 5) {
+            tmp->object->rect.top = 64;
+            tmp->attack = true;
+        }
         tmp->my_clock->time = sfClock_getElapsedTime(tmp->my_clock->clock);
         tmp->my_clock->seconds = tmp->my_clock->time.microseconds / 1000000.0;
         if (tmp->my_clock->seconds >= 0.1) {
             tmp->object->rect.left += 32;
             sfClock_restart(tmp->my_clock->clock);
-        } else if (tmp->object->rect.left >= 96) {
-            tmp->object->rect.left = 0;
         }
+        attack_slime(tmp, game->player);
         sfSprite_setTextureRect(tmp->object->sprite, tmp->object->rect);
         sfSprite_setPosition(tmp->object->sprite, tmp->object->position);
         sfRenderWindow_drawSprite(game->w, tmp->object->sprite, NULL);
@@ -58,6 +90,7 @@ int init_mob(map_t *map, char ***tab, int i)
         return EPITECH_ERROR;
     nde->my_clock->clock = sfClock_create();
     nde->object->rect = rec;
+    nde->attack = false;
     nde->object->texture = sfTexture_createFromFile(tab[i][0], NULL);
     nde->object->sprite = sfSprite_create();
     if (!nde->my_clock->clock || !nde->object->texture || !nde->object->sprite)

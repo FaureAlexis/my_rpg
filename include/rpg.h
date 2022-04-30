@@ -53,6 +53,7 @@
     typedef struct mobe_s {
         game_object_t *object;
         my_clock_t *my_clock;
+        bool attack;
         int hp;
         int power;
         int obj;

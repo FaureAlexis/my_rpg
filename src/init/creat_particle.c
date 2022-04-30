@@ -38,7 +38,7 @@ sfVector2f direction)
     particles_t *node = NULL;
 
     srand(rand());
-    if (enuma == 0 && (rand() % 3 == 0))
+    if (enuma == 0 && (rand() % 4 == 0))
         node = create_dust(cord, size, direction);
     return node;
 }
