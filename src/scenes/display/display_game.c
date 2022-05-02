@@ -34,7 +34,7 @@ int display_game(main_game_t *game)
     sfRenderWindow_drawSprite(game->w, game->btn->mid->pause_b->sprite, NULL);
     if (game->inv_open == true) {
         sfSprite_setScale(game->mnu->gameplay->object->sprite, (sfVector2f){0.3, 0.3});
-        sfSprite_setPosition(game->mnu->gameplay->object->sprite, (sfVector2f){400, 100});
+        sfSprite_setPosition(game->mnu->gameplay->object->sprite, (sfVector2f){80, 100});
         sfRenderWindow_drawSprite(game->w, game->mnu->gameplay->object->sprite, NULL);
     }
     return EXIT_SUCCESS;
