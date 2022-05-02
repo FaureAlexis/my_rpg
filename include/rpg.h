@@ -64,14 +64,6 @@
         struct mobe_s *next;
     }mobe_t;
 
-    typedef struct map_s {
-        char ***tab;
-        obstacle_t *obstacle;
-        mobe_t *mobe;
-        game_object_t *map;
-        game_object_t *back;
-    } map_t;
-
     typedef struct particles_s {
         sfVector2f cord;
         sfVector2f direction;
@@ -84,6 +76,16 @@
         sfTexture *texture;
         struct particles_s *next;
     }particles_t;
+
+    typedef struct map_s {
+        char ***tab;
+        obstacle_t *obstacle;
+        mobe_t *mobe;
+        game_object_t *map;
+        game_object_t *back;
+        my_clock_t *artificlock;
+        particles_t *artific;
+    } map_t;
 
     typedef struct player_s {
         scenes_name current_scene;
@@ -172,6 +174,7 @@
     particles_t *creat_particles(int enum_type, sfVector2f cord, int size,
     sfVector2f direction);
     int draw_circle(particles_t *particle, int radius);
+    particles_t *gen_artific(sfRenderWindow *w);
 
         /*Map Management*/
 
@@ -188,11 +191,13 @@
     mobe_t *add_node_to_mobe(mobe_t *head, mobe_t *node);
     int parse_tab(map_t *map, char ***tab, int i);
         /*Collision*/
-    bool obstacle_collision(main_game_t *game);
+    bool obstacle_collision(main_game_t *game, sfVector2f next);
     bool mob_collision(main_game_t *game);
 
     /*Animations*/
 
+    particles_t *anim_artific(particles_t *head, sfRenderWindow *w);
+    void my_put_pixel(particles_t *particle, unsigned int x, unsigned int y);
     /*Player animations*/
     int player_animations(player_t *player);
     int player_check_key(sfKeyCode key);
