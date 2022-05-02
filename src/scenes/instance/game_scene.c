@@ -41,6 +41,16 @@ static int game_scene_event(main_game_t *game)
         game->player->next_scene = PAUSE_SCENE;
         return game->player->next_scene;
     }
+    if (game->event.key.code == sfKeyI
+    && game->event.type == sfEvtKeyPressed && game->inv_open == false) {
+        game->inv_open = true;
+        return game->player->current_scene;
+    }
+    if (game->event.key.code == sfKeyI
+    && game->event.type == sfEvtKeyPressed && game->inv_open == true) {
+        game->inv_open = false;
+        return game->player->current_scene;
+    }
     zoom_event(game);
     return game->player->current_scene;
 }

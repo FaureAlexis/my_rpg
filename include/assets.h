@@ -17,6 +17,7 @@
     #define SKIN_CUS_SS "assets/window/custom_menu.png"
     #define PLAYER_SS "assets/player/player.png"
     #define MAP_TXT "assets/map/world.txt"
+    #define INV_SS "assets/window/inventory.png"
     #define GAME_GOAL "The goal of this game is to defeat the king \
     Hasbulla.\n Explore, talk to NPC, complete quests, enjoy !"
     #define GAME_HELP "How to play :"

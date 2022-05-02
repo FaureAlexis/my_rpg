@@ -36,7 +36,7 @@ int create_menus(main_game_t *game)
     if (init_menu(&game->mnu->scoreboard, BUTTON_SOUND, MENU_BG,
     (sfIntRect){0, 0}) == EPITECH_ERROR)
         return EPITECH_ERROR;
-    if (init_menu(&game->mnu->gameplay, BUTTON_SOUND, GAME_EX,
+    if (init_menu(&game->mnu->gameplay, BUTTON_SOUND, INV_SS,
     (sfIntRect){0, 0}) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (create_menu2(game) == EPITECH_ERROR)

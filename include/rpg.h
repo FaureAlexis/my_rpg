@@ -127,6 +127,7 @@
         map_t *map;
         settings_t *settings;
         help_t *help;
+        bool inv_open;
     } main_game_t;
 
     typedef struct event_s {
@@ -192,7 +193,7 @@
     int parse_tab(map_t *map, char ***tab, int i);
         /*Collision*/
     bool obstacle_collision(main_game_t *game, sfVector2f next);
-    bool mob_collision(main_game_t *game);
+    bool mob_collision(main_game_t *game, sfVector2f next);
 
     /*Animations*/
 
