@@ -58,6 +58,7 @@ SRC_ANIMATIONS	=	animations/player_animations.c \
 					animations/anim_particle.c
 
 SRC_EVENT		=	events/get_event.c \
+					events/player_collision.c \
 					events/event_close.c \
 					events/event_skin_choice.c
 

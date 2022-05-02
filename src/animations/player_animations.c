@@ -19,18 +19,31 @@ static const movements_t movements_array[] = {
 int move_player(main_game_t *game, const movements_t *movements)
 {
     if (movements->key == sfKeyUp && game->map->map->position.y <= 597) {
+        if (obstacle_collision(game) == true) {
+            move_down(game->map, game->player);
+            return move_down(game->map, game->player);
+        }
         move_up(game->map, game->player);
     }
     if (movements->key == sfKeyDown && game->map->map->position.y >= -3393) {
+        if (obstacle_collision(game) == true) {
+            move_up(game->map, game->player);
+            return move_up(game->map, game->player);
+        }
         move_down(game->map, game->player);
     }
     if (movements->key == sfKeyRight && game->map->map->position.x >= -3088) {
+        if (obstacle_collision(game) == true) {
+            move_left(game->map, game->player);
+            return move_left(game->map, game->player);
+        }
         move_right(game->map, game->player);
     }
     if (movements->key == sfKeyLeft && game->map->map->position.x <= 912) {
-        move_left(game->map, game->player);
-    }
-    if (game->event.type == sfEvtMouseButtonPressed ) {
+        if (obstacle_collision(game) == true) {
+            move_right(game->map, game->player);
+            return move_right(game->map, game->player);
+        }
         move_left(game->map, game->player);
     }
     return EXIT_SUCCESS;
@@ -54,6 +67,7 @@ int set_player_movements(main_game_t *game, player_t *player, sfEvent event)
     }
     if (movements->flip != 0)
         player->object->scale.x = movements->flip;
+    player->hitbox = sfRectangleShape_getGlobalBounds(player->hitbox_shape);
     move_player(game, movements);
     player->object->rect.top = movements->height_ss;
     sfSprite_setScale(player->object->sprite, player->object->scale);

@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-void move_up(map_t *map, player_t *player)
+int move_up(map_t *map, player_t *player)
 {
     obstacle_t *obstacle = map->obstacle;
     mobe_t *mobe = map->mobe;
@@ -21,6 +21,9 @@ void move_up(map_t *map, player_t *player)
             obstacle->object->position.y += 10;
             sfSprite_setPosition(obstacle->object->sprite,
             obstacle->object->position);
+            sfRectangleShape_setPosition(obstacle->hitbox_shape,
+            (sfVector2f){obstacle->object->position.x - 30,
+            obstacle->object->position.y - 20});
         }
         obstacle = obstacle->next;
     }
@@ -29,13 +32,16 @@ void move_up(map_t *map, player_t *player)
             mobe->object->position.y += 10;
             sfSprite_setPosition(map->mobe->object->sprite,
             mobe->object->position);
+            sfRectangleShape_setPosition(mobe->hitbox_shape,
+            (sfVector2f){mobe->object->position.x - 30,
+            mobe->object->position.y - 20});
         }
         mobe = mobe->next;
     }
     sfSprite_setPosition(map->map->sprite, map->map->position);
 }
 
-void move_down(map_t *map, player_t *player)
+int move_down(map_t *map, player_t *player)
 {
     obstacle_t *obstacle = map->obstacle;
     mobe_t *mobe = map->mobe;
@@ -49,6 +55,9 @@ void move_down(map_t *map, player_t *player)
             obstacle->object->position.y -= 10;
             sfSprite_setPosition(obstacle->object->sprite,
             obstacle->object->position);
+            sfRectangleShape_setPosition(obstacle->hitbox_shape,
+            (sfVector2f){obstacle->object->position.x - 30,
+            obstacle->object->position.y - 20});
         }
         obstacle = obstacle->next;
     }
@@ -57,13 +66,16 @@ void move_down(map_t *map, player_t *player)
             mobe->object->position.y -= 10;
             sfSprite_setPosition(map->mobe->object->sprite,
             mobe->object->position);
+            sfRectangleShape_setPosition(mobe->hitbox_shape,
+            (sfVector2f){mobe->object->position.x - 30,
+            mobe->object->position.y - 20});
         }
         mobe = mobe->next;
     }
     sfSprite_setPosition(map->map->sprite, map->map->position);
 }
 
-void move_right(map_t *map, player_t *player)
+int move_right(map_t *map, player_t *player)
 {
     obstacle_t *obstacle = map->obstacle;
     mobe_t *mobe = map->mobe;
@@ -77,6 +89,9 @@ void move_right(map_t *map, player_t *player)
             obstacle->object->position.x -= 10;
             sfSprite_setPosition(obstacle->object->sprite,
             obstacle->object->position);
+            sfRectangleShape_setPosition(obstacle->hitbox_shape,
+            (sfVector2f){obstacle->object->position.x - 30,
+            obstacle->object->position.y - 20});
         }
         obstacle = obstacle->next;
     }
@@ -85,13 +100,16 @@ void move_right(map_t *map, player_t *player)
             mobe->object->position.x -= 10;
             sfSprite_setPosition(mobe->object->sprite,
             mobe->object->position);
+            sfRectangleShape_setPosition(mobe->hitbox_shape,
+            (sfVector2f){mobe->object->position.x - 30,
+            mobe->object->position.y - 20});
         }
         mobe = mobe->next;
     }
     sfSprite_setPosition(map->map->sprite, map->map->position);
 }
 
-void move_left(map_t *map, player_t *player)
+int move_left(map_t *map, player_t *player)
 {
     obstacle_t *obstacle = map->obstacle;
     mobe_t *mobe = map->mobe;
@@ -105,6 +123,9 @@ void move_left(map_t *map, player_t *player)
             obstacle->object->position.x += 10;
             sfSprite_setPosition(obstacle->object->sprite,
             obstacle->object->position);
+            sfRectangleShape_setPosition(obstacle->hitbox_shape,
+            (sfVector2f){obstacle->object->position.x - 30,
+            obstacle->object->position.y - 20});
         }
         obstacle = obstacle->next;
     }
@@ -113,6 +134,9 @@ void move_left(map_t *map, player_t *player)
             mobe->object->position.x += 10;
             sfSprite_setPosition(mobe->object->sprite,
             mobe->object->position);
+            sfRectangleShape_setPosition(mobe->hitbox_shape,
+            (sfVector2f){mobe->object->position.x - 30,
+            mobe->object->position.y - 20});
         }
         mobe = mobe->next;
     }

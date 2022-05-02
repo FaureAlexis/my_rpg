@@ -47,11 +47,15 @@
 
     typedef struct obstacle_s {
         game_object_t *object;
+        sfFloatRect hitbox;
+        sfRectangleShape *hitbox_shape;
         struct obstacle_s *next;
     } obstacle_t;
 
     typedef struct mobe_s {
         game_object_t *object;
+        sfFloatRect hitbox;
+        sfRectangleShape *hitbox_shape;
         my_clock_t *my_clock;
         bool attack;
         int hp;
@@ -86,6 +90,8 @@
         scenes_name next_scene;
         int life;
         int attack;
+        sfFloatRect hitbox;
+        sfRectangleShape *hitbox_shape;
         game_object_t *object;
         my_clock_t *p_clock;
         particles_t *dust;
@@ -181,6 +187,9 @@
     obstacle_t *add_node_to_obstacle(obstacle_t *head, obstacle_t *node);
     mobe_t *add_node_to_mobe(mobe_t *head, mobe_t *node);
     int parse_tab(map_t *map, char ***tab, int i);
+        /*Collision*/
+    bool obstacle_collision(main_game_t *game);
+    bool mob_collision(main_game_t *game);
 
     /*Animations*/
 
@@ -189,10 +198,10 @@
     int player_check_key(sfKeyCode key);
     int set_player_movements(main_game_t *game, player_t *player,
     sfEvent event);
-    void move_up(map_t *map, player_t *player);
-    void move_down(map_t *map, player_t *player);
-    void move_right(map_t *map, player_t *player);
-    void move_left(map_t *map, player_t *player);
+    int move_up(map_t *map, player_t *player);
+    int move_down(map_t *map, player_t *player);
+    int move_right(map_t *map, player_t *player);
+    int move_left(map_t *map, player_t *player);
     particles_t *anim_dust(particles_t *head, sfRenderWindow *w);
     particles_t *add_particle_to_list(particles_t *head, particles_t *node,
     sfVector2f move);
@@ -291,7 +300,7 @@
     int event_skin_choice(main_game_t *game, sfVector2i mouse_pos);
     int set_rgb_right(main_game_t *game);
     int set_rgb_left(main_game_t *game);
-    void set_rgb_shape(cus_t **cus);
+    int set_rgb_shape(cus_t **cus);
     int close_window(main_game_t *game);
 
     /* Scenes */
