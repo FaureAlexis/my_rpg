@@ -7,8 +7,10 @@
 
 #include "rpg.h"
 
-void set_rgb_shape(cus_t **cus)
+int set_rgb_shape(cus_t **cus)
 {
+    if (cus == NULL)
+        return EPITECH_ERROR;
     sfRectangleShape_setFillColor((*cus)->red, sfRed);
     sfRectangleShape_setFillColor((*cus)->green, sfGreen);
     sfRectangleShape_setFillColor((*cus)->blue, sfBlue);
@@ -39,6 +41,7 @@ int init_skin_custom(cus_t **cus)
     (*cus)->blue = sfRectangleShape_create();
     if ((*cus)->red == NULL || (*cus)->green == NULL || (*cus)->blue == NULL)
         return EPITECH_ERROR;
-    set_rgb_shape(cus);
+    if (set_rgb_shape(cus) == EPITECH_ERROR)
+        return EPITECH_ERROR;
     return EXIT_SUCCESS;
 }

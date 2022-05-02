@@ -9,7 +9,7 @@
 
 static int display_help_text(main_game_t *game)
 {
-    if (!game->help)
+    if (!game || !game->help)
         return EPITECH_ERROR;
     sfText_setString(game->help->goal_text, GAME_GOAL);
     sfText_setString(game->help->help_text, GAME_HELP);
@@ -20,6 +20,8 @@ static int display_help_text(main_game_t *game)
 
 int display_help(main_game_t *game)
 {
+    if (!game || !game->help)
+        return EPITECH_ERROR;
     pos_button_help(game);
     sfRenderWindow_drawSprite(game->w, game->mnu->help_play->bg_object->sprite,
     NULL);

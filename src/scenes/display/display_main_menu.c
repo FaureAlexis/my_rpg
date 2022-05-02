@@ -9,6 +9,8 @@
 
 int display_menu(main_game_t *game)
 {
+    if (!game)
+        return EPITECH_ERROR;
     pos_button_main(game);
     sfRenderWindow_drawSprite(game->w, game->mnu->main->object->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->big->play_b->sprite, NULL);

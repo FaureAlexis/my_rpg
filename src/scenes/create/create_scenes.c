@@ -9,6 +9,8 @@
 
 static int create_menu2(main_game_t *game)
 {
+    if (!game)
+        return EPITECH_ERROR;
     if (init_menu(&game->mnu->settings, BUTTON_SOUND, SETTINGS_SS,
     (sfIntRect){200, 200}) == EPITECH_ERROR)
         return EPITECH_ERROR;
@@ -26,6 +28,8 @@ static int create_menu2(main_game_t *game)
 
 int create_menus(main_game_t *game)
 {
+    if (!game)
+        return EPITECH_ERROR;
     if (init_menu(&game->mnu->main, BUTTON_SOUND, MENU_BG,
     (sfIntRect){0, 0}) == EPITECH_ERROR)
         return EPITECH_ERROR;

@@ -9,6 +9,8 @@
 
 static int init_menu_sprite(menu_t **menu)
 {
+    if (menu == NULL)
+        return EPITECH_ERROR;
     (*menu)->object->sprite = sfSprite_create();
     (*menu)->bg_object->sprite = sfSprite_create();
     if ((*menu)->bg_object->sprite == NULL || (*menu)->object->sprite == NULL)
@@ -22,6 +24,8 @@ static int init_menu_sprite(menu_t **menu)
 
 int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect)
 {
+    if (!theme || !texture)
+        return EPITECH_ERROR;
     (*menu) = malloc(sizeof(menu_t));
     if (!(*menu))
         return EPITECH_ERROR;

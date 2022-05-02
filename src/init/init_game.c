@@ -9,6 +9,8 @@
 
 int init_all(main_game_t *game)
 {
+    if (!game)
+        return EPITECH_ERROR;
     if (create_menus(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (init_all_buttons(game) == EPITECH_ERROR)

@@ -11,7 +11,7 @@ sfView *init_view(sfRenderWindow *window)
 {
     sfView *view = sfView_createFromRect((sfFloatRect){0, 0, 1920, 1080});
 
-    if (view == NULL)
+    if (window == NULL || view == NULL)
         return NULL;
     sfRenderWindow_setView(window, view);
     return view;

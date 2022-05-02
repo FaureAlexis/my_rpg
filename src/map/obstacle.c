@@ -5,17 +5,26 @@
 ** test
 */
 
-#include "lib.h"
 #include "rpg.h"
-#include <SFML/Graphics.h>
 
-static void set_texture_obstacle(obstacle_t *node, char ***tab, int i)
+static int set_texture_obstacle(obstacle_t *node, char ***tab, int i)
 {
     sfSprite_setScale(node->object->sprite, node->object->scale);
     sfSprite_setOrigin(node->object->sprite,
     (sfVector2f){my_atoi(tab[i][5]) / 2, my_atoi(tab[i][6]) / 2});
     sfSprite_setTexture(node->object->sprite, node->object->texture, sfFalse);
     sfSprite_setTextureRect(node->object->sprite, node->object->rect);
+    node->hitbox = sfSprite_getGlobalBounds(node->object->sprite);
+    node->hitbox_shape = sfRectangleShape_create();
+    if (!node->hitbox_shape)
+        return EPITECH_ERROR;
+    sfRectangleShape_setSize(node->hitbox_shape,
+    (sfVector2f){node->hitbox.width, node->hitbox.height / 2});
+    sfRectangleShape_setPosition(node->hitbox_shape,
+    (sfVector2f){node->object->position.x - 40, node->object->position.y + 5});
+    sfRectangleShape_setFillColor(node->hitbox_shape,
+    sfColor_fromRGBA(0, 255, 0, 100));
+    return EXIT_SUCCESS;
 }
 
 void display_obstacle(main_game_t *game)
@@ -25,7 +34,19 @@ void display_obstacle(main_game_t *game)
     while (tmp) {
         sfSprite_setTextureRect(tmp->object->sprite, tmp->object->rect);
         sfSprite_setPosition(tmp->object->sprite, tmp->object->position);
+        tmp->hitbox = sfSprite_getGlobalBounds(tmp->object->sprite);
+        sfRectangleShape_setPosition(tmp->hitbox_shape,
+        (sfVector2f){tmp->object->position.x - 40, tmp->object->position.y + 5});
+        if (tmp->object->rect.left == 0 && tmp->object->rect.top == 79
+        && tmp->object->rect.width == 48 && tmp->object->rect.height == 64) {
+            sfRectangleShape_setSize(tmp->hitbox_shape,
+            (sfVector2f){tmp->hitbox.width / 1.5, tmp->hitbox.height / 4});
+            sfRectangleShape_setPosition(tmp->hitbox_shape,
+            (sfVector2f){tmp->object->position.x - 80, tmp->object->position.y + 65});
+        }
+        tmp->hitbox = sfRectangleShape_getGlobalBounds(tmp->hitbox_shape);
         sfRenderWindow_drawSprite(game->w, tmp->object->sprite, NULL);
+        sfRenderWindow_drawRectangleShape(game->w, tmp->hitbox_shape, NULL);
         tmp = tmp->next;
     }
 }
@@ -50,6 +71,7 @@ int init_obstacle(map_t *map, char ***tab, int i)
     if (!node->object->texture || !node->object->sprite)
         return EPITECH_ERROR;
     node->next = NULL;
-    set_texture_obstacle(node, tab, i);
+    if (set_texture_obstacle(node, tab, i) == EPITECH_ERROR)
+        return EPITECH_ERROR;
     map->obstacle = add_node_to_obstacle(map->obstacle, node);
 }

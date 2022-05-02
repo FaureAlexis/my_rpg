@@ -13,17 +13,18 @@
 char *open_file(char const *filepath)
 {
     struct stat info;
-    int fd = open(filepath, O_RDONLY);
+    int fd = 0;
     int size = 0;
     char *buff = NULL;
 
+    if (!filepath)
+        return NULL;
+    fd = open(filepath, O_RDONLY);
     if (fd == -1 || stat(filepath, &info) == -1)
         return NULL;
     size = info.st_size;
-    if (size == 0)
-        return NULL;
     buff = malloc(sizeof(char) * (size + 1));
-    if (!buff)
+    if (size == 0 || !buff)
         return NULL;
     read(fd, buff, size);
     if (!buff)

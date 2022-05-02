@@ -24,7 +24,7 @@ int rpg(int argc, const char * const *argv, char ** env)
     scenes_name change_scene = MENU_SCENE;
     const scenes_t *scene = NULL;
 
-    if (!game || game == NULL)
+    if (game == NULL)
         return EPITECH_ERROR;
     if (init_all(game) == EPITECH_ERROR || launch_win(game) == EPITECH_ERROR)
         return EPITECH_ERROR;

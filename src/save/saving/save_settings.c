@@ -7,8 +7,10 @@
 
 #include "rpg.h"
 
-void free_settings(char *fps, char *x, char *y)
+int free_settings(char *fps, char *x, char *y)
 {
+    if (!fps || !x || !y)
+        return EPITECH_ERROR;
     free(fps);
     free(x);
     free(y);
@@ -31,23 +33,32 @@ int write_data(char *key, char *value, FILE *file)
 
 int write_settings(FILE *file, char *fps, char *x, char *y)
 {
+    if (!file || !fps || !x || !y)
+        return EPITECH_ERROR;
     if (write_data("FPS", fps, file) == 84)
         return EPITECH_ERROR;
     if (write_data("resolutionX", x, file) == 84)
         return EPITECH_ERROR;
     if (write_data("resoltionY", y, file) == 84)
         return EPITECH_ERROR;
-    free_settings(fps, x, y);
+    if (free_settings(fps, x, y) == EPITECH_ERROR)
+        return EPITECH_ERROR;
     return EXIT_SUCCESS;
 }
 
 int save_settings(main_game_t *game)
 {
-    char *fps = my_int_to_str(game->settings->fps);
-    char *res_x = my_int_to_str(game->settings->res_x);
-    char *res_y = my_int_to_str(game->settings->res_y);
-    FILE *file = open_save(".settings.rpg");
+    char *fps = NULL;
+    char *res_x = NULL;
+    char *res_y = NULL;
+    FILE *file = NULL;
 
+    if (!game)
+        return EPITECH_ERROR;
+    fps = my_int_to_str(game->settings->fps);
+    res_x = my_int_to_str(game->settings->res_x);
+    res_y = my_int_to_str(game->settings->res_y);
+    file = open_save(".settings.rpg");
     if (fps == NULL || res_x == NULL || res_y == NULL || !file)
         return EPITECH_ERROR;
     if (write_settings(file, fps, res_x, res_y) == 84 || fclose(file) == EOF)

@@ -5,7 +5,6 @@
 ** lemin
 */
 
-#include "lib.h"
 #include "rpg.h"
 
 obstacle_t *add_node_to_obstacle(obstacle_t *head, obstacle_t *node)

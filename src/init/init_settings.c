@@ -9,6 +9,8 @@
 
 static int set_text_settings(main_game_t *game, sfFont *gravity)
 {
+    if (!game || !gravity)
+        return EPITECH_ERROR;
     sfText_setPosition(game->settings->res_text, (sfVector2f){1060, 450});
     sfText_setCharacterSize(game->settings->res_text, 34);
     sfText_setColor(game->settings->res_text, sfWhite);
@@ -24,6 +26,8 @@ int init_settings(main_game_t *game)
 {
     sfFont *gravity = NULL;
 
+    if (!game)
+        return EPITECH_ERROR;
     game->settings = malloc(sizeof(settings_t));
     if (!game->settings)
         return EPITECH_ERROR;
@@ -36,6 +40,7 @@ int init_settings(main_game_t *game)
     if (!game->settings->res_text || !game->settings->fps_text || !gravity)
         return EPITECH_ERROR;
     game->settings->fps = 60;
-    set_text_settings(game, gravity);
+    if (set_text_settings(game, gravity) == EPITECH_ERROR)
+        return EPITECH_ERROR;
     return EXIT_SUCCESS;
 }

@@ -5,9 +5,7 @@
 ** rpg
 */
 
-#include "lib.h"
 #include "rpg.h"
-#include <SFML/Graphics.h>
 
 void attack_slime(mobe_t *mob, player_t *player)
 {
@@ -28,6 +26,9 @@ void attack_slime(mobe_t *mob, player_t *player)
         mob->object->position.y) / (sqrt(pow(player->object->position.x -
         mob->object->position.x, 2) + pow(player->object->position.y -
         mob->object->position.y, 2)));
+        sfRectangleShape_setPosition(mob->hitbox_shape,
+        (sfVector2f){mob->object->position.x - 30,
+        mob->object->position.y - 20});
     } else {
         if (mob->object->rect.left >= 96)
             mob->object->rect.left = 0;
@@ -57,6 +58,7 @@ void display_mob(main_game_t *game)
         sfSprite_setTextureRect(tmp->object->sprite, tmp->object->rect);
         sfSprite_setPosition(tmp->object->sprite, tmp->object->position);
         sfRenderWindow_drawSprite(game->w, tmp->object->sprite, NULL);
+        sfRenderWindow_drawRectangleShape(game->w, tmp->hitbox_shape, NULL);
         tmp = tmp->next;
     }
 }
@@ -73,6 +75,17 @@ static mobe_t *set_info_mob(mobe_t *node, char ***tab, int i)
     / 2, my_atoi(tab[i][6]) / 2});
     sfSprite_setTexture(node->object->sprite, node->object->texture, sfFalse);
     sfSprite_setTextureRect(node->object->sprite, node->object->rect);
+    node->hitbox = sfSprite_getGlobalBounds(node->object->sprite);
+    node->hitbox_shape = sfRectangleShape_create();
+    if (!node->hitbox_shape)
+        return NULL;
+    sfRectangleShape_setSize(node->hitbox_shape,
+    (sfVector2f){node->hitbox.width / 2.2, node->hitbox.height / 2.4});
+    sfRectangleShape_setPosition(node->hitbox_shape,
+    (sfVector2f){node->object->position.x - 30,
+    node->object->position.y - 20});
+    sfRectangleShape_setFillColor(node->hitbox_shape,
+    sfColor_fromRGBA(255, 0, 0, 100));
     return node;
 }
 
