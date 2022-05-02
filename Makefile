@@ -55,7 +55,8 @@ SRC_ANIMATIONS	=	animations/player_animations.c \
 					animations/change_color_skin_left.c \
 					animations/change_color_skin_right.c \
 					animations/env_move.c				\
-					animations/anim_particle.c
+					animations/anim_particle.c			\
+					animations/anim_artific.c
 
 SRC_EVENT		=	events/get_event.c \
 					events/player_collision.c \
