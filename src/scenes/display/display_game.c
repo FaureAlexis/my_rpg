@@ -31,7 +31,6 @@ int display_game(main_game_t *game)
     sfRenderWindow_drawSprite(game->w, game->player->object->sprite, NULL);
     display_mob(game);
     display_obstacle(game);
-    sfRenderWindow_drawRectangleShape(game->w, game->player->hitbox_shape, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->mid->pause_b->sprite, NULL);
     return EXIT_SUCCESS;
 }

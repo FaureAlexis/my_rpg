@@ -58,7 +58,6 @@ void display_mob(main_game_t *game)
         sfSprite_setTextureRect(tmp->object->sprite, tmp->object->rect);
         sfSprite_setPosition(tmp->object->sprite, tmp->object->position);
         sfRenderWindow_drawSprite(game->w, tmp->object->sprite, NULL);
-        sfRenderWindow_drawRectangleShape(game->w, tmp->hitbox_shape, NULL);
         tmp = tmp->next;
     }
 }

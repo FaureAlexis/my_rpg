@@ -46,7 +46,6 @@ void display_obstacle(main_game_t *game)
         }
         tmp->hitbox = sfRectangleShape_getGlobalBounds(tmp->hitbox_shape);
         sfRenderWindow_drawSprite(game->w, tmp->object->sprite, NULL);
-        sfRenderWindow_drawRectangleShape(game->w, tmp->hitbox_shape, NULL);
         tmp = tmp->next;
     }
 }
