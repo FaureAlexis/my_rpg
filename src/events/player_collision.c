@@ -7,12 +7,16 @@
 
 #include "rpg.h"
 
-bool obstacle_collision(main_game_t *game)
+bool obstacle_collision(main_game_t *game, sfVector2f next)
 {
     obstacle_t *tmp = game->map->obstacle;
+    sfFloatRect hitbox = {0, 0, 0, 0};
 
     while (tmp->next != NULL) {
-        if (sfFloatRect_intersects(&tmp->hitbox, &game->player->hitbox, NULL))
+        hitbox = tmp->hitbox;
+        hitbox.left = tmp->hitbox.left + next.x;
+        hitbox.top = tmp->hitbox.top + next.y;
+        if (sfFloatRect_intersects(&hitbox, &game->player->hitbox, NULL))
             return (true);
         tmp = tmp->next;
     }

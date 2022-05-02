@@ -13,9 +13,11 @@ map_t *init_map(void)
 
     if (!map)
         return NULL;
+    map->artificlock = malloc(sizeof(my_clock_t));
     map->tab = make_tab(MAP_TXT);
-    if (!map->tab)
+    if (!map->tab || !map->artificlock)
         return NULL;
+    map->artificlock->clock = sfClock_create();
     for (int i = 0; map->tab[i] != NULL; i += 1)
         if (parse_tab(map, map->tab, i) == EPITECH_ERROR)
             return NULL;

@@ -7,6 +7,20 @@
 
 #include "rpg.h"
 
+void add_atrific(map_t *map, main_game_t *game)
+{
+    particles_t *tmp = NULL;
+
+    map->artificlock->time = sfClock_getElapsedTime(map->artificlock->clock);
+    map->artificlock->seconds = map->artificlock->time.microseconds / 1000000.0;
+    if (map->artificlock->seconds >= 0.1) {
+        tmp = gen_artific(game->w);
+        sfClock_restart(map->artificlock->clock);
+    }
+    map->artific = add_particle_to_list(map->artific, tmp, (sfVector2f){0, 0});
+    anim_artific(map->artific, game->w);
+}
+
 int display_game(main_game_t *game)
 {
     pos_button_game(game);
