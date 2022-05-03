@@ -21,5 +21,6 @@ int manage_hover_medium_buttons(main_game_t *game, sfVector2i mouse_pos)
     manage_hover(game->btn->mid->resume_b, mouse_pos);
     manage_hover(game->btn->mid->left_b, mouse_pos);
     manage_hover(game->btn->mid->unmute_b, mouse_pos);
+    manage_hover(game->btn->mid->keybind_b, mouse_pos);
     return EXIT_SUCCESS;
 }

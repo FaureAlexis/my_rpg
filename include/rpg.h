@@ -8,6 +8,20 @@
 #ifndef RPG_H_
     #define RPG_H_
     #define EPITECH_ERROR 84
+    #define ASSET 0
+    #define CORD_X 1
+    #define CORD_Y 2
+    #define REC_LEFT 3
+    #define REC_TOP 4
+    #define REC_WIDTH 5
+    #define REC_HEIGHT 6
+    #define HP 7
+    #define POWER 8
+    #define TYPE 9
+    #define MAP_X_MIN -3098
+    #define MAP_X_MAX 922
+    #define MAP_Y_MIN -3403
+    #define MAP_Y_MAX 607
 
     #include <math.h>
     #include "lib.h"
@@ -52,6 +66,14 @@
         struct obstacle_s *next;
     } obstacle_t;
 
+    typedef struct speobstacle_s {
+        game_object_t *object;
+        sfFloatRect hitbox;
+        sfRectangleShape *hitbox_shape;
+        int hp;
+        struct speobstacle_s *next;
+    } speobstacle_t;
+
     typedef struct mobe_s {
         game_object_t *object;
         sfFloatRect hitbox;
@@ -61,6 +83,7 @@
         int hp;
         int power;
         int obj;
+        int type;
         struct mobe_s *next;
     }mobe_t;
 
@@ -72,13 +95,13 @@
         float end;
         float y;
         sfUint8 *pixels;
-        sfSprite *sprite;
-        sfTexture *texture;
+        sfRectangleShape *shape;
         struct particles_s *next;
     }particles_t;
 
     typedef struct map_s {
         char ***tab;
+        speobstacle_t *speobstacle;
         obstacle_t *obstacle;
         mobe_t *mobe;
         game_object_t *map;
@@ -100,7 +123,6 @@
     } player_t;
 
     typedef struct settings_s {
-        bool prev_is_main;
         int fps;
         int res_x;
         int res_y;
@@ -127,6 +149,7 @@
         map_t *map;
         settings_t *settings;
         help_t *help;
+        int menu_depth;
         bool inv_open;
     } main_game_t;
 
@@ -186,12 +209,20 @@
     void launch_rpg(char ***tab);
     int init_obstacle(map_t *map, char ***tab, int i);
     int init_mob(map_t *map, char ***tab, int i);
+    int init_speobstacle(map_t *map, char ***tab, int i);
+    void display_speobstacle(main_game_t *game);
     void display_obstacle(main_game_t *game);
     void display_mob(main_game_t *game);
+    void display_skeleton(mobe_t *tmp, main_game_t *game);
+    speobstacle_t *add_node_to_speobstacle(speobstacle_t *head,
+    speobstacle_t *node);
     obstacle_t *add_node_to_obstacle(obstacle_t *head, obstacle_t *node);
     mobe_t *add_node_to_mobe(mobe_t *head, mobe_t *node);
     int parse_tab(map_t *map, char ***tab, int i);
         /*Collision*/
+    int set_big_tree_hitbox(obstacle_t *tmp);
+    int set_long_tree_hitbox(obstacle_t *tmp);
+    int set_small_tree_hitbox(obstacle_t *tmp);
     bool obstacle_collision(main_game_t *game, sfVector2f next);
     bool mob_collision(main_game_t *game, sfVector2f next);
 
@@ -204,6 +235,10 @@
     int player_check_key(sfKeyCode key);
     int set_player_movements(main_game_t *game, player_t *player,
     sfEvent event);
+    void limit_slime(mobe_t *mob, player_t *player);
+    void move_obstacle(map_t *map, player_t *player, sfVector2f move);
+    void move_speobstacle(map_t *map, player_t *player, sfVector2f move);
+    void move_mob(map_t *map, player_t *player, sfVector2f move);
     int move_up(map_t *map, player_t *player);
     int move_down(map_t *map, player_t *player);
     int move_right(map_t *map, player_t *player);
@@ -229,6 +264,8 @@
     void pos_button_main(main_game_t *game);
     void pos_button_skin_cus(main_game_t *game);
     void pos_button_scoreboard(main_game_t *game);
+    void pos_button_save(main_game_t *game);
+    void pos_button_keybind(main_game_t *game);
 
     /*Display*/
 
@@ -238,8 +275,8 @@
     int display_pause(main_game_t *game);
     int display_settings(main_game_t *game);
     int display_help(main_game_t *game);
-    int display_score(main_game_t *game);
-    int display_shop(main_game_t *game);
+    int display_save(main_game_t *game);
+    int display_keybind(main_game_t *game);
     int change_menu(main_game_t *game, sfRenderWindow *window, sfVector2i
     mouse_pos);
     int manage_volume_right(main_game_t *game, sfVector2i mouse_pos);
@@ -302,6 +339,10 @@
     sfVector2f position);
     void clicked_state_custom_skin(main_game_t *game, sfRectangleShape *shape,
     sfVector2f position);
+    void clicked_state_keybind(main_game_t *game, sfRectangleShape *shape,
+    sfVector2f position);
+    void clicked_state_save(main_game_t *game, sfRectangleShape *shape,
+    sfVector2f position);
     const event_t *get_event(sfEventType type, const event_t event_array[]);
     int event_skin_choice(main_game_t *game, sfVector2i mouse_pos);
     int set_rgb_right(main_game_t *game);
@@ -311,12 +352,22 @@
 
     /* Scenes */
 
-    int create_menus(main_game_t *game);
+    int starting_pause_scene(main_game_t *game);
+    int starting_main_menu_scene(main_game_t *game);
+    int starting_game_scene(main_game_t *game);
+    int starting_settings_scene(main_game_t *game);
+    int starting_keybind_scene(main_game_t *game);
+    int starting_save_scene(main_game_t *game);
+    int starting_help_scene(main_game_t *game);
+    int starting_skin_scene(main_game_t *game);
+    int starting_create_menus(main_game_t *game);
     const scenes_t *manage_scenes(sfKeyCode key, scenes_name name);
     int pause_scene(main_game_t *game);
     int main_menu_scene(main_game_t *game);
     int game_scene(main_game_t *game);
     int settings_scene(main_game_t *game);
+    int keybind_scene(main_game_t *game);
+    int save_scene(main_game_t *game);
     int help_scene(main_game_t *game);
     int skin_scene(main_game_t *game);
 
@@ -332,10 +383,13 @@
 
     FILE *open_save(const char *path);
     int save_settings(main_game_t *game);
-    int load_settings();
+    int load_settings(main_game_t *game);
+    char **buffer_to_array(char buffer[41]);
+    char *get_key(char *line);
+    char *get_value(char *line);
 
     /* Main function */
 
-    int rpg(int argc, const char * const *argv, char ** env);
+    int rpg(void);
 
 #endif/* !RPG_H_ */

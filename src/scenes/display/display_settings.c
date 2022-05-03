@@ -32,6 +32,7 @@ int display_settings2(main_game_t *gme)
 {
     sfRenderWindow_drawSprite(gme->w, gme->btn->sml->plus_r_b->sprite, NULL);
     sfRenderWindow_drawSprite(gme->w, gme->btn->sml->minus_r_b->sprite, NULL);
+    return EXIT_SUCCESS;
 }
 
 int display_settings(main_game_t *game)
@@ -46,6 +47,7 @@ int display_settings(main_game_t *game)
     sfRenderWindow_drawSprite(game->w, game->mnu->settings->object->sprite,
     NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->mid->help_b->sprite, NULL);
+    sfRenderWindow_drawSprite(game->w, game->btn->mid->keybind_b->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->big->return_b->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->big->exit_b->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->sml->right_b->sprite, NULL);

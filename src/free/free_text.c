@@ -26,5 +26,6 @@ static void destroy_settings_text(main_game_t *game)
 
 void destroy_all_texts(main_game_t *game)
 {
+    destroy_help_text(game);
     destroy_settings_text(game);
 }

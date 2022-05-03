@@ -27,16 +27,18 @@ static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
         clicked_state_settings(game, game->btn->big->return_b->shape,
         (sfVector2f){520, 780});
         sfMusic_play(game->btn->big->return_b->sound);
-        if (game->settings->prev_is_main == true)
+        if (game->menu_depth == 1)
             game->player->next_scene = MENU_SCENE;
         else
             game->player->next_scene = PAUSE_SCENE;
         return game->player->next_scene;
     }
-    if (button_is_clicked(game->btn->big->exit_b, mouse_pos) == true) {
-        clicked_state_settings(game, game->btn->big->exit_b->shape,
-        (sfVector2f){1000, 780});
-        return close_window(game);
+    if (button_is_clicked(game->btn->mid->keybind_b, mouse_pos) == true) {
+        clicked_state_settings(game, game->btn->mid->keybind_b->shape,
+        (sfVector2f){1500, 400});
+        sfMusic_play(game->btn->mid->help_b->sound);
+        game->player->next_scene = KEYBIND_SCENE;
+        return game->player->next_scene;
     }
     if (button_is_clicked(game->btn->mid->help_b, mouse_pos) == true) {
         clicked_state_settings(game, game->btn->mid->help_b->shape,
@@ -53,6 +55,11 @@ static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
     if (manage_button_action_scene(game, mouse_pos)
     != game->player->current_scene)
         return game->player->next_scene;
+    if (button_is_clicked(game->btn->big->exit_b, mouse_pos) == true) {
+        clicked_state_settings(game, game->btn->big->exit_b->shape,
+        (sfVector2f){1000, 780});
+        return close_window(game);
+    }
     manage_volume_right(game, mouse_pos);
     manage_fps_plus(game, mouse_pos);
     manage_reso_plus(game, mouse_pos);
@@ -78,7 +85,7 @@ int settings_scene(main_game_t *game)
 {
     sfVector2i mouse_pos;
 
-    game->player->current_scene = SETTINGS_SCENE;
+    starting_settings_scene(game);
     while (sfRenderWindow_isOpen(game->w)) {
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);

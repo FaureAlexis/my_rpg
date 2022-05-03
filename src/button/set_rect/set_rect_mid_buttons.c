@@ -37,4 +37,6 @@ void set_rect_mid_buttons2(main_game_t *game)
     (sfIntRect){825, 755, 190, 180});
     sfSprite_setTextureRect(game->btn->mid->unmute_b->sprite,
     (sfIntRect){1025, 755, 190, 180});
+    sfSprite_setTextureRect(game->btn->mid->keybind_b->sprite,
+    (sfIntRect){1220, 570, 190, 180});
 }

@@ -25,6 +25,8 @@ static void destroy_big(main_game_t *game)
     destroy_button(game->btn->big->return_b);
     destroy_button(game->btn->big->play_b);
     destroy_button(game->btn->big->exit_b);
+    destroy_button(game->btn->big->newsave_b);
+    destroy_button(game->btn->big->load_b);
 }
 
 static void destroy_mid(main_game_t *game)
@@ -41,6 +43,7 @@ static void destroy_mid(main_game_t *game)
     destroy_button(game->btn->mid->resume_b);
     destroy_button(game->btn->mid->left_b);
     destroy_button(game->btn->mid->unmute_b);
+    destroy_button(game->btn->mid->keybind_b);
 }
 
 static void destroy_sml(main_game_t *game)

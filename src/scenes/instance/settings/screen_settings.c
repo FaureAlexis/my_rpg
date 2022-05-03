@@ -38,6 +38,7 @@ int manage_reso_minus(main_game_t *game, sfVector2i mouse_pos)
         game->settings->res_y = new_y;
         x -= 960 / 2;
         sfRenderWindow_setSize(game->w, (sfVector2u){x, new_y});
+        sfView_setSize(game->view, (sfVector2f){x, new_y});
     }
     return EXIT_SUCCESS;
 }
@@ -52,6 +53,7 @@ int manage_reso_plus(main_game_t *game, sfVector2i mouse_pos)
         game->settings->res_y = new_y;
         x += 960 / 2;
         sfRenderWindow_setSize(game->w, (sfVector2u){x, new_y});
+        sfView_setSize(game->view, (sfVector2f){x, new_y});
     }
     manage_reso_minus(game, mouse_pos);
     return EXIT_SUCCESS;

@@ -23,4 +23,8 @@ void set_rect_big_buttons(main_game_t *game)
     (sfIntRect){35, 390, 330, 170});
     sfSprite_setTextureRect(game->btn->big->exit_b->sprite,
     (sfIntRect){365, 390, 330, 170});
+    sfSprite_setTextureRect(game->btn->big->newsave_b->sprite,
+    (sfIntRect){710, 390, 330, 170});
+    sfSprite_setTextureRect(game->btn->big->load_b->sprite,
+    (sfIntRect){1040, 10, 330, 170});
 }

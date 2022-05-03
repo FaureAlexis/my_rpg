@@ -55,8 +55,6 @@ static int create_small_buttons2(main_game_t *game)
 
 int create_all_small_buttons(main_game_t *game)
 {
-    char **tab = init_button_rsc2(BUTTON_SOUND, BUTTON_SS);
-
     if (create_small_buttons(game) == EPITECH_ERROR
     || create_small_buttons2(game) == EPITECH_ERROR)
         return EPITECH_ERROR;

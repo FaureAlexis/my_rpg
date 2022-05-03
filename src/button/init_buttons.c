@@ -22,7 +22,7 @@ char **tab)
         sfRectangleShape_setSize((*button)->shape, (sfVector2f){110, 110});
     if (size == LARGE)
         sfRectangleShape_setSize((*button)->shape, (sfVector2f){305, 170});
-    sfRectangleShape_setPosition((*button)->shape, (*button)->position);
+    sfRectangleShape_setPosition((*button)->shape, position);
     sfRectangleShape_setFillColor((*button)->shape,
     sfColor_fromRGBA(0, 0, 0, 120));
     return EXIT_SUCCESS;

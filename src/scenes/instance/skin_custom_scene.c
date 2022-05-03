@@ -28,7 +28,7 @@ static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
         (sfVector2f){540, 780});
         sfSprite_setColor(game->player->object->sprite,
         sfColor_fromRGB(255, 255, 255));
-        return game->player->next_scene = MENU_SCENE;
+        return game->player->next_scene = SAVE_SCENE;
     }
     if (button_is_clicked(game->btn->big->play_b, mouse_pos) == true) {
         clicked_state_custom_skin(game, game->btn->big->play_b->shape,
@@ -74,11 +74,7 @@ int skin_scene(main_game_t *game)
 {
     sfVector2i mouse_pos;
 
-    game->player->current_scene = SKIN_SCENE;
-    sfMusic_stop(game->btn->big->settings_b->sound);
-    shape_red_clicked(game);
-    set_rgb_shape(&game->skin);
-    sfSprite_setScale(game->player->object->sprite, (sfVector2f){8, 8});
+    starting_skin_scene(game);
     while (sfRenderWindow_isOpen(game->w)) {
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);

@@ -35,7 +35,6 @@ static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
         (sfVector2f){1010, 330});
         sfMusic_play(game->btn->big->settings_b->sound);
         game->player->next_scene = SETTINGS_SCENE;
-        game->settings->prev_is_main = false;
         return game->player->next_scene;
     }
     if (button_is_clicked(game->btn->mid->main_b, mouse_pos) == true) {
@@ -90,8 +89,7 @@ int pause_scene(main_game_t *game)
 {
     sfVector2i mouse_pos;
 
-    sfMusic_stop(game->btn->mid->pause_b->sound);
-    game->player->current_scene = PAUSE_SCENE;
+    starting_pause_scene(game);
     while (sfRenderWindow_isOpen(game->w)) {
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);

@@ -26,8 +26,6 @@ int write_data(char *key, char *value, FILE *file)
         return EPITECH_ERROR;
     if (fwrite(value, my_strlen(value), block, file) != block)
         return EPITECH_ERROR;
-    if (fwrite("\n", 1, block, file) != block)
-        return EPITECH_ERROR;
     return EXIT_SUCCESS;
 }
 
@@ -37,9 +35,9 @@ int write_settings(FILE *file, char *fps, char *x, char *y)
         return EPITECH_ERROR;
     if (write_data("FPS", fps, file) == 84)
         return EPITECH_ERROR;
-    if (write_data("resolutionX", x, file) == 84)
+    if (write_data("\nresolutionX", x, file) == 84)
         return EPITECH_ERROR;
-    if (write_data("resoltionY", y, file) == 84)
+    if (write_data("\nresolutionY", y, file) == 84)
         return EPITECH_ERROR;
     if (free_settings(fps, x, y) == EPITECH_ERROR)
         return EPITECH_ERROR;

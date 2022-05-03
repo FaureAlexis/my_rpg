@@ -18,7 +18,6 @@ void add_atrific(map_t *map, main_game_t *game)
         sfClock_restart(map->artificlock->clock);
     }
     map->artific = add_particle_to_list(map->artific, tmp, (sfVector2f){0, 0});
-    anim_artific(map->artific, game->w);
 }
 
 int display_game(main_game_t *game)
@@ -30,6 +29,7 @@ int display_game(main_game_t *game)
     game->player->dust = anim_dust(game->player->dust, game->w);
     sfRenderWindow_drawSprite(game->w, game->player->object->sprite, NULL);
     display_mob(game);
+    display_speobstacle(game);
     display_obstacle(game);
     sfRenderWindow_drawSprite(game->w, game->btn->mid->pause_b->sprite, NULL);
     if (game->inv_open == true) {
