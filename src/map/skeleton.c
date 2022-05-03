@@ -22,18 +22,6 @@ void limit_skeleton(mobe_t *mob, player_t *player)
     }
 }
 
-void limit_slime(mobe_t *mob, player_t *player)
-{
-    if(mob->object->rect.left >= 160 && mob->object->rect.top == 64) {
-        mob->object->rect.left = 0;
-        mob->object->rect.top -= 32;
-    }
-    if(mob->object->rect.left >= 128 && mob->object->rect.top == 32) {
-        mob->object->rect.left = 0;
-        mob->object->rect.top -= 32;
-    }
-}
-
 void attack_skeleton(mobe_t *mob, player_t *player)
 {
     if (mob->attack == true) {

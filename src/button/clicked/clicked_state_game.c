@@ -18,7 +18,7 @@ sfVector2f position)
         time = sfClock_getElapsedTime(clock);
         seconds = time.microseconds / 1000000.0;
         sfMusic_play(game->btn->big->play_b->sound);
-        player_animations(game->player);
+        player_animations(game->player, game->map->mobe);
         display_game(game);
         sfRectangleShape_setPosition(shape, position);
         sfRenderWindow_drawRectangleShape(game->w, shape, NULL);

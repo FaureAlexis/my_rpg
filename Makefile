@@ -94,6 +94,7 @@ SRC_EVENT				=	events/get_event.c \
 SRC_INIT				=	init/init_clock.c \
 							init/init_game.c \
 							init/init_help.c \
+							init/init_inventory.c \
 							init/init_settings.c \
 							init/init_volume.c \
 							init/init_skin_custom.c \
@@ -132,6 +133,7 @@ SRC_MAP					=	map/game_test.c \
 							map/tab.c \
 							map/mob.c \
 							map/skeleton.c \
+							map/slime.c \
 							map/spe_obstacle.c \
 							map/move.c
 

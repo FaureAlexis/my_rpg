@@ -31,6 +31,14 @@
     #include "csfml.h"
     #include "assets.h"
 
+    #define INV_CASE_MAX_X 3550
+    #define INV_CASE_MAX_Y 2445
+    #define INV_CASE_X 2540
+    #define INV_CASE_Y 795
+    #define INV_CASE_OFFSET 310
+    #define INV_CASE_SPACE 20
+    #define INV_CASE_NB 15
+
     typedef struct volume_s {
         float volume;
         sfVector2f size;
@@ -79,11 +87,13 @@
         sfFloatRect hitbox;
         sfRectangleShape *hitbox_shape;
         my_clock_t *my_clock;
+        my_clock_t *attack_clock;
         bool attack;
         int hp;
         int power;
         int obj;
         int type;
+        bool dead;
         struct mobe_s *next;
     }mobe_t;
 
@@ -120,6 +130,7 @@
         game_object_t *object;
         my_clock_t *p_clock;
         particles_t *dust;
+        bool attack_action;
     } player_t;
 
     typedef struct settings_s {
@@ -134,6 +145,35 @@
         sfText *goal_text;
         sfText *help_text;
     } help_t;
+
+    typedef struct armor_s {
+        game_object_t *object;
+        struct armor_s *next;
+    } armor_t;
+
+    typedef struct case_inventory_s {
+        int x;
+        int y;
+        game_object_t *object;
+        struct case_inventory_s *next;
+    } case_inventory_t;
+
+    typedef struct inventory_s {
+        bool inv_open;
+        int armor_x;
+        int armor_y;
+        int offset_armor;
+        int nb_armor;
+        int case_inventory_max_x;
+        int case_inventory_max_y;
+        int case_inventory_x;
+        int case_inventory_y;
+        int offset_case_inventory;
+        int space_case;
+        int nb_case_inventory;
+        armor_t *armor;
+        case_inventory_t *case_inventory;
+    } inventory_t;
 
     typedef struct main_game_s {
         sfRenderWindow *w;
@@ -150,6 +190,7 @@
         settings_t *settings;
         help_t *help;
         int menu_depth;
+        inventory_t *inventory;
         bool inv_open;
     } main_game_t;
 
@@ -180,6 +221,7 @@
     player_t *init_player(void);
     main_game_t *init_game(void);
     map_t *init_map(void);
+    int init_inventory(main_game_t *game);
     int init_settings(main_game_t *game);
     int init_help(main_game_t *game);
     sfRenderWindow *init_window(void);
@@ -214,6 +256,7 @@
     void display_obstacle(main_game_t *game);
     void display_mob(main_game_t *game);
     void display_skeleton(mobe_t *tmp, main_game_t *game);
+    void display_slime(mobe_t *tmp, main_game_t *game);
     speobstacle_t *add_node_to_speobstacle(speobstacle_t *head,
     speobstacle_t *node);
     obstacle_t *add_node_to_obstacle(obstacle_t *head, obstacle_t *node);
@@ -231,11 +274,10 @@
     particles_t *anim_artific(particles_t *head, sfRenderWindow *w);
     void my_put_pixel(particles_t *particle, unsigned int x, unsigned int y);
     /*Player animations*/
-    int player_animations(player_t *player);
+    int player_animations(player_t *player, mobe_t *mob);
     int player_check_key(sfKeyCode key);
     int set_player_movements(main_game_t *game, player_t *player,
     sfEvent event);
-    void limit_slime(mobe_t *mob, player_t *player);
     void move_obstacle(map_t *map, player_t *player, sfVector2f move);
     void move_speobstacle(map_t *map, player_t *player, sfVector2f move);
     void move_mob(map_t *map, player_t *player, sfVector2f move);

@@ -94,7 +94,7 @@ int game_scene(main_game_t *game)
         manage_all_hover(game, mouse_pos);
         if (game_check_events(game, mouse_pos) != game->player->current_scene)
             return game->player->next_scene;
-        player_animations(game->player);
+        player_animations(game->player, game->map->mobe);
         display_game(game);
         sfRenderWindow_display(game->w);
     }

@@ -7,49 +7,6 @@
 
 #include "rpg.h"
 
-void attack_slime(mobe_t *mob, player_t *player)
-{
-    if (mob->attack == true) {
-        limit_slime(mob, player);
-        mob->object->position.x += (player->object->position.x -
-        mob->object->position.x) / (sqrt(pow(player->object->position.x -
-        mob->object->position.x, 2) + pow(player->object->position.y -
-        mob->object->position.y, 2)));
-        mob->object->position.y += (player->object->position.y -
-        mob->object->position.y) / (sqrt(pow(player->object->position.x -
-        mob->object->position.x, 2) + pow(player->object->position.y -
-        mob->object->position.y, 2)));
-        sfRectangleShape_setPosition(mob->hitbox_shape,
-        (sfVector2f){mob->object->position.x - 30,
-        mob->object->position.y - 20});
-    } else {
-        if (mob->object->rect.left >= 96)
-            mob->object->rect.left = 0;
-    }
-    if (mob->object->rect.top == 0)
-        mob->attack = false;
-}
-
-void display_slime(mobe_t *tmp, main_game_t *game)
-{
-    if (sqrt(pow(game->player->object->position.x - tmp->object->position.x,
-    2) + pow(game->player->object->position.y - tmp->object->position.y, 2))
-    < 80 * 5) {
-        tmp->object->rect.top = 64;
-        tmp->attack = true;
-    }
-    tmp->my_clock->time = sfClock_getElapsedTime(tmp->my_clock->clock);
-    tmp->my_clock->seconds = tmp->my_clock->time.microseconds / 1000000.0;
-    if (tmp->my_clock->seconds >= 0.1) {
-        tmp->object->rect.left += 32;
-        sfClock_restart(tmp->my_clock->clock);
-    }
-    attack_slime(tmp, game->player);
-    sfSprite_setTextureRect(tmp->object->sprite, tmp->object->rect);
-    sfSprite_setPosition(tmp->object->sprite, tmp->object->position);
-    sfRenderWindow_drawSprite(game->w, tmp->object->sprite, NULL);
-}
-
 void display_mob(main_game_t *game)
 {
     mobe_t *tmp = game->map->mobe;
@@ -59,6 +16,24 @@ void display_mob(main_game_t *game)
             display_slime(tmp, game);
         if (tmp->type == 1)
             display_skeleton(tmp, game);
+        // else if (sqrt(pow(game->player->object->position.x - tmp->object->position.x,
+        // 2) + pow(game->player->object->position.y - tmp->object->position.y, 2))
+        // < 80 * 5) {
+        //     tmp->object->rect.top = 64;
+        //     tmp->attack = true;
+        // }
+        // tmp->my_clock->time = sfClock_getElapsedTime(tmp->my_clock->clock);
+        // tmp->my_clock->seconds = tmp->my_clock->time.microseconds / 1000000.0;
+        // if (tmp->my_clock->seconds >= 0.1) {
+        //     tmp->object->rect.left += 32;
+        //     sfClock_restart(tmp->my_clock->clock);
+        // }
+        // attack_slime(tmp, game->player);
+        // if (!tmp->dead) {
+        //     sfSprite_setTextureRect(tmp->object->sprite, tmp->object->rect);
+        //     sfSprite_setPosition(tmp->object->sprite, tmp->object->position);
+        // }
+        // sfRenderWindow_drawSprite(game->w, tmp->object->sprite, NULL);
         tmp = tmp->next;
     }
 }
@@ -100,15 +75,19 @@ int init_mob(map_t *map, char ***tab, int i)
         return EPITECH_ERROR;
     nde->object = malloc(sizeof(game_object_t));
     nde->my_clock = malloc(sizeof(my_clock_t));
-    if (!nde->object || !nde->my_clock)
+    nde->attack_clock = malloc(sizeof(my_clock_t));
+    if (!nde->object || !nde->my_clock || !nde->attack_clock)
         return EPITECH_ERROR;
     nde->my_clock->clock = sfClock_create();
+    nde->attack_clock->clock = sfClock_create();
     nde->object->rect = rec;
     nde->attack = false;
     nde->object->texture = sfTexture_createFromFile(tab[i][ASSET], NULL);
     nde->object->sprite = sfSprite_create();
-    if (!nde->my_clock->clock || !nde->object->texture || !nde->object->sprite)
+    if (!nde->my_clock->clock || !nde->attack_clock->clock
+        || !nde->object->texture || !nde->object->sprite)
         return EPITECH_ERROR;
+    nde->dead = 0;
     nde->next = NULL;
     nde = set_info_mob(nde, tab, i);
     map->mobe = add_node_to_mobe(map->mobe, nde);

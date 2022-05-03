@@ -79,7 +79,7 @@ int skin_scene(main_game_t *game)
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);
-        player_animations(game->player);
+        player_animations(game->player, game->map->mobe);
         if (skin_check_events(game, mouse_pos) != game->player->current_scene)
             return game->player->next_scene;
         display_skin_cus(game);
