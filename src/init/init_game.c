@@ -46,6 +46,7 @@ main_game_t *init_game(void)
     if (!game->btn->big || !game->btn->mid || !game->btn->sml)
         return NULL;
     game->view_zoom = 1;
+    game->inv_open = false;
     game->view_pos = (sfVector2f){960, 600};
     game->player = init_player();
     return game;
