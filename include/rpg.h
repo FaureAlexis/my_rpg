@@ -8,6 +8,20 @@
 #ifndef RPG_H_
     #define RPG_H_
     #define EPITECH_ERROR 84
+    #define ASSET 0
+    #define CORD_X 1
+    #define CORD_Y 2
+    #define REC_LEFT 3
+    #define REC_TOP 4
+    #define REC_WIDTH 5
+    #define REC_HEIGHT 6
+    #define HP 7
+    #define POWER 8
+    #define TYPE 9
+    #define MAP_X_MIN -3098
+    #define MAP_X_MAX 922
+    #define MAP_Y_MIN -3403
+    #define MAP_Y_MAX 607
 
     #include <math.h>
     #include "lib.h"
@@ -69,6 +83,7 @@
         int hp;
         int power;
         int obj;
+        int type;
         struct mobe_s *next;
     }mobe_t;
 
@@ -199,6 +214,7 @@
     void display_speobstacle(main_game_t *game);
     void display_obstacle(main_game_t *game);
     void display_mob(main_game_t *game);
+    void display_skeleton(mobe_t *tmp, main_game_t *game);
     speobstacle_t *add_node_to_speobstacle(speobstacle_t *head,
     speobstacle_t *node);
     obstacle_t *add_node_to_obstacle(obstacle_t *head, obstacle_t *node);
@@ -217,6 +233,7 @@
     int player_check_key(sfKeyCode key);
     int set_player_movements(main_game_t *game, player_t *player,
     sfEvent event);
+    void limit_slime(mobe_t *mob, player_t *player);
     void move_obstacle(map_t *map, player_t *player, sfVector2f move);
     void move_speobstacle(map_t *map, player_t *player, sfVector2f move);
     void move_mob(map_t *map, player_t *player, sfVector2f move);
