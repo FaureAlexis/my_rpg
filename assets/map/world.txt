@@ -2,16 +2,23 @@ assets/map/map_B.png
 assets/map/map_F.png 1088 1463
 assets/map/objects/objects.png 115 807 0 0 16 16
 assets/map/objects/objects.png -165 987 128 96 32 48
+assets/map/objects/objects.png -245 1747 128 96 32 48
+assets/map/objects/objects.png -5 1787 128 96 32 48
+assets/map/objects/objects.png 235 1827 128 96 32 48
 assets/map/objects/objects.png 1700 922 0 79 48 64
 assets/map/objects/objects.png 1020 192 0 79 48 64
-assets/map/objects/objects.png 2040 1262 0 79 48 64
+assets/map/objects/objects.png 2040 1262 48 79 48 64
 assets/map/objects/objects.png 848 1222 96 112 32 32
+assets/map/objects/objects.png 2680 550 96 112 32 32
 assets/map/objects/objects.png 1380 1102 0 79 48 64
 assets/map/objects/objects.png 360 1142 0 79 48 64
-assets/map/objects/objects.png 40 -160 0 79 48 64
+assets/map/objects/objects.png 40 -160 48 79 48 64
 assets/map/objects/objects.png -120 -560 0 79 48 64
 assets/map/objects/objects.png 800 -80 0 79 48 64
-assets/map/objects/objects.png 524 72 0 79 48 64
+assets/map/objects/objects.png 524 72 48 79 48 64
+assets/map/objects/objects.png 2735 2380 0 79 48 64
+assets/map/objects/objects.png 2495 2060 48 79 48 64
+assets/map/objects/objects.png 1825 2200 48 79 48 64
 assets/map/tilesets/plains.png 1980 -40 48 80 16 16
 assets/map/tilesets/plains.png 1980 40 48 80 16 16
 assets/map/tilesets/plains.png 1980 120 48 80 16 16
@@ -105,14 +112,22 @@ assets/map/tilesets/walls/walls.png 1056 1805 32 48 16 16
 assets/map/tilesets/walls/walls.png 1136 1805 32 48 16 16
 assets/map/tilesets/walls/walls.png 1216 1805 32 48 16 16
 assets/map/tilesets/walls/walls.png 1271 1805 48 48 16 16
-assets/sprites/characters/slime.png 300 200 0 0 32 32 10 10
-assets/sprites/characters/slime.png 500 -200 0 0 32 32 10 10
-assets/sprites/characters/slime.png 800 -600 0 0 32 32 10 10
-assets/sprites/characters/slime.png -300 -1200 0 0 32 32 10 10
-assets/sprites/characters/slime.png 0 -900 0 0 32 32 10 10
-assets/sprites/characters/slime.png -400 750 0 0 32 32 10 10
-assets/sprites/characters/slime.png 1700 1300 0 0 32 32 10 10
+assets/sprites/characters/slime.png 300 200 0 0 32 32 10 10 0
+assets/sprites/characters/slime.png 500 -200 0 0 32 32 10 10 0
+assets/sprites/characters/slime.png 800 -600 0 0 32 32 10 10 0
+assets/sprites/characters/slime.png -300 -1200 0 0 32 32 10 10 0
+assets/sprites/characters/slimered.png -700 -1100 0 0 32 32 10 10 0
+assets/sprites/characters/slimered.png 2195 2280 0 0 32 32 10 10 0
+assets/sprites/characters/slime.png 0 -900 0 0 32 32 10 10 0
+assets/sprites/characters/slime.png -400 750 0 0 32 32 10 10 0
+assets/sprites/characters/slime.png 1700 1300 0 0 32 32 10 10 0
+assets/sprites/characters/slimered.png 2000 -800 0 0 32 32 10 10 0
+assets/sprites/characters/skeleton.png 2360 710 16 16 48 48 20 20 1
+assets/sprites/characters/skeleton.png -585 1167 16 16 48 48 20 20 1
 assets/map/tilesets/walls/wooden_door.png 576 2205 0 0 16 16 1
+assets/sprites/characters/skeleton.png 476 2205 16 16 48 48 20 20 1
+assets/sprites/characters/skeleton.png 376 2205 16 16 48 48 20 20 1
+assets/sprites/characters/skeleton.png 426 2155 16 16 48 48 20 20 1
 assets/map/tilesets/walls/walls.png -1041 34 16 48 16 16
 assets/map/tilesets/walls/walls.png -1041 114 16 64 16 16
 assets/map/tilesets/walls/walls.png -961 34 32 48 16 16

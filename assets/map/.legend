@@ -18,9 +18,10 @@ If the line get 8 words:
     The second and the theard is the position x and y of the sprite.
     The four next caractère is the frame of the asset.
     THe last characters is HP;
-If the line get 9 words:
+If the line get 10 words:
     Its a mob. You can kill I'm and he attack you
     The first is an asset.
     The second and the theard is the position x and y of the sprite.
     The four next caractère is the frame of the asset.
     The two other words it HP and power of the mob.
+    The last is for the type.
