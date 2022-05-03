@@ -47,4 +47,6 @@ void destroy_all_menu(main_game_t *game)
     destroy_menu(game->mnu->help_play);
     destroy_menu(game->mnu->pause_m);
     destroy_menu(game->mnu->skin_m);
+    destroy_menu(game->mnu->save_m);
+    destroy_menu(game->mnu->keybind_m);
 }
