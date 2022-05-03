@@ -11,7 +11,8 @@ static int set_texture_speobstacle(speobstacle_t *node, char ***tab, int i)
 {
     sfSprite_setScale(node->object->sprite, node->object->scale);
     sfSprite_setOrigin(node->object->sprite,
-    (sfVector2f){my_atoi(tab[i][5]) / 2, my_atoi(tab[i][6]) / 2});
+    (sfVector2f){my_atoi(tab[i][REC_WIDTH]) / 2, my_atoi(tab[i][REC_HEIGHT])
+    / 2});
     sfSprite_setTexture(node->object->sprite, node->object->texture, sfFalse);
     sfSprite_setTextureRect(node->object->sprite, node->object->rect);
     node->hitbox = sfSprite_getGlobalBounds(node->object->sprite);
@@ -46,8 +47,8 @@ void display_speobstacle(main_game_t *game)
 int init_speobstacle(map_t *map, char ***tab, int i)
 {
     speobstacle_t *node = malloc(sizeof(speobstacle_t));
-    sfIntRect rec = {my_atoi(tab[i][3]), my_atoi(tab[i][4]),
-    my_atoi(tab[i][5]), my_atoi(tab[i][6])};
+    sfIntRect rec = {my_atoi(tab[i][REC_LEFT]), my_atoi(tab[i][REC_TOP]),
+    my_atoi(tab[i][REC_WIDTH]), my_atoi(tab[i][REC_HEIGHT])};
 
     if (!node)
         return EPITECH_ERROR;
@@ -56,13 +57,13 @@ int init_speobstacle(map_t *map, char ***tab, int i)
         return EPITECH_ERROR;
     node->object->scale = (sfVector2f){5, 5};
     node->object->rect = rec;
-    node->object->position.x = my_atoi(tab[i][1]);
-    node->object->position.y = my_atoi(tab[i][2]);
-    node->object->texture = sfTexture_createFromFile(tab[i][0], NULL);
+    node->object->position.x = my_atoi(tab[i][CORD_X]);
+    node->object->position.y = my_atoi(tab[i][CORD_Y]);
+    node->object->texture = sfTexture_createFromFile(tab[i][ASSET], NULL);
     node->object->sprite = sfSprite_create();
     if (!node->object->sprite || !node->object->texture)
         return EPITECH_ERROR;
-    node->hp = my_atoi(tab[i][7]);
+    node->hp = my_atoi(tab[i][HP]);
     node->next = NULL;
     if (set_texture_speobstacle(node, tab, i) == EPITECH_ERROR)
         return EPITECH_ERROR;

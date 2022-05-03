@@ -11,7 +11,8 @@ static int set_texture_obstacle(obstacle_t *node, char ***tab, int i)
 {
     sfSprite_setScale(node->object->sprite, node->object->scale);
     sfSprite_setOrigin(node->object->sprite,
-    (sfVector2f){my_atoi(tab[i][5]) / 2, my_atoi(tab[i][6]) / 2});
+    (sfVector2f){my_atoi(tab[i][REC_WIDTH]) / 2, my_atoi(tab[i][REC_HEIGHT])
+    / 2});
     sfSprite_setTexture(node->object->sprite, node->object->texture, sfFalse);
     sfSprite_setTextureRect(node->object->sprite, node->object->rect);
     node->hitbox = sfSprite_getGlobalBounds(node->object->sprite);
@@ -37,12 +38,13 @@ void display_obstacle(main_game_t *game)
         tmp->hitbox = sfSprite_getGlobalBounds(tmp->object->sprite);
         sfRectangleShape_setPosition(tmp->hitbox_shape,
         (sfVector2f){tmp->object->position.x - 40, tmp->object->position.y + 5});
-        if (tmp->object->rect.left == 0 && tmp->object->rect.top == 79
-        && tmp->object->rect.width == 48 && tmp->object->rect.height == 64) {
+        if (tmp->object->rect.top == 79 && tmp->object->rect.width == 48 &&
+        tmp->object->rect.height == 64) {
             sfRectangleShape_setSize(tmp->hitbox_shape,
             (sfVector2f){tmp->hitbox.width / 1.5, tmp->hitbox.height / 4});
             sfRectangleShape_setPosition(tmp->hitbox_shape,
-            (sfVector2f){tmp->object->position.x - 80, tmp->object->position.y + 65});
+            (sfVector2f){tmp->object->position.x - 80, tmp->object->position.y +
+            65});
         }
         tmp->hitbox = sfRectangleShape_getGlobalBounds(tmp->hitbox_shape);
         sfRenderWindow_drawSprite(game->w, tmp->object->sprite, NULL);
@@ -53,8 +55,8 @@ void display_obstacle(main_game_t *game)
 int init_obstacle(map_t *map, char ***tab, int i)
 {
     obstacle_t *node = malloc(sizeof(obstacle_t));
-    sfIntRect rec = {my_atoi(tab[i][3]), my_atoi(tab[i][4]),
-    my_atoi(tab[i][5]), my_atoi(tab[i][6])};
+    sfIntRect rec = {my_atoi(tab[i][REC_LEFT]), my_atoi(tab[i][REC_TOP]),
+    my_atoi(tab[i][REC_WIDTH]), my_atoi(tab[i][REC_HEIGHT])};
 
     if (!node)
         return EPITECH_ERROR;
@@ -63,9 +65,9 @@ int init_obstacle(map_t *map, char ***tab, int i)
         return EPITECH_ERROR;
     node->object->scale = (sfVector2f){5, 5};
     node->object->rect = rec;
-    node->object->position.x = my_atoi(tab[i][1]);
-    node->object->position.y = my_atoi(tab[i][2]);
-    node->object->texture = sfTexture_createFromFile(tab[i][0], NULL);
+    node->object->position.x = my_atoi(tab[i][CORD_X]);
+    node->object->position.y = my_atoi(tab[i][CORD_Y]);
+    node->object->texture = sfTexture_createFromFile(tab[i][ASSET], NULL);
     node->object->sprite = sfSprite_create();
     if (!node->object->texture || !node->object->sprite)
         return EPITECH_ERROR;

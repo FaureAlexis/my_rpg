@@ -12,8 +12,9 @@ void move_obstacle(map_t *map, player_t *player, sfVector2f move)
     obstacle_t *obstacle = map->obstacle;
 
     while (obstacle != NULL) {
-        if (map->map->position.x >= -3098 && map->map->position.x <= 922 &&
-        map->map->position.y >= -3403 && map->map->position.y <= 607) {
+        if (map->map->position.x >= MAP_X_MIN && map->map->position.x <= \
+        MAP_X_MAX && map->map->position.y >= MAP_Y_MIN && map->map->position.y \
+        <= MAP_Y_MAX) {
             obstacle->object->position.x += move.x;
             obstacle->object->position.y += move.y;
             sfSprite_setPosition(obstacle->object->sprite,
@@ -31,8 +32,9 @@ void move_speobstacle(map_t *map, player_t *player, sfVector2f move)
     speobstacle_t *speobstacle = map->speobstacle;
 
     while (speobstacle != NULL) {
-        if (map->map->position.x >= -3098 && map->map->position.x <= 922 &&
-        map->map->position.y >= -3403 && map->map->position.y <= 607) {
+        if (map->map->position.x >= MAP_X_MIN && map->map->position.x <= \
+        MAP_X_MAX && map->map->position.y >= MAP_Y_MIN && map->map->position.y \
+        <= MAP_Y_MAX) {
             speobstacle->object->position.x += move.x;
             speobstacle->object->position.y += move.y;
             sfSprite_setPosition(speobstacle->object->sprite,
@@ -50,8 +52,9 @@ void move_mob(map_t *map, player_t *player, sfVector2f move)
     mobe_t *mobe = map->mobe;
 
     while (mobe != NULL) {
-        if (map->map->position.x >= -3098 && map->map->position.x <= 922 &&
-        map->map->position.y >= -3403 && map->map->position.y <= 607) {
+        if (map->map->position.x >= MAP_X_MIN && map->map->position.x <= \
+        MAP_X_MAX && map->map->position.y >= MAP_Y_MIN && map->map->position.y \
+        <= MAP_Y_MAX) {
             mobe->object->position.x += move.x;
             mobe->object->position.y += move.y;
             sfSprite_setPosition(mobe->object->sprite,

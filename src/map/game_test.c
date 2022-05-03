@@ -41,7 +41,7 @@ int init_map_window(map_t *map, char ***tab, int i)
 
 int parse_tab_suit(map_t *map, char ***tab, int i)
 {
-    if (my_arraylen(tab[i]) == 9) {
+    if (my_arraylen(tab[i]) == 10) {
         if (init_mob(map, tab, i) == EPITECH_ERROR)
             return EPITECH_ERROR;
     }
