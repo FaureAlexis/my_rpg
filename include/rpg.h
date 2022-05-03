@@ -52,6 +52,14 @@
         struct obstacle_s *next;
     } obstacle_t;
 
+    typedef struct speobstacle_s {
+        game_object_t *object;
+        sfFloatRect hitbox;
+        sfRectangleShape *hitbox_shape;
+        int hp;
+        struct speobstacle_s *next;
+    } speobstacle_t;
+
     typedef struct mobe_s {
         game_object_t *object;
         sfFloatRect hitbox;
@@ -79,6 +87,7 @@
 
     typedef struct map_s {
         char ***tab;
+        speobstacle_t *speobstacle;
         obstacle_t *obstacle;
         mobe_t *mobe;
         game_object_t *map;
@@ -186,8 +195,12 @@
     void launch_rpg(char ***tab);
     int init_obstacle(map_t *map, char ***tab, int i);
     int init_mob(map_t *map, char ***tab, int i);
+    int init_speobstacle(map_t *map, char ***tab, int i);
+    void display_speobstacle(main_game_t *game);
     void display_obstacle(main_game_t *game);
     void display_mob(main_game_t *game);
+    speobstacle_t *add_node_to_speobstacle(speobstacle_t *head,
+    speobstacle_t *node);
     obstacle_t *add_node_to_obstacle(obstacle_t *head, obstacle_t *node);
     mobe_t *add_node_to_mobe(mobe_t *head, mobe_t *node);
     int parse_tab(map_t *map, char ***tab, int i);
@@ -204,6 +217,9 @@
     int player_check_key(sfKeyCode key);
     int set_player_movements(main_game_t *game, player_t *player,
     sfEvent event);
+    void move_obstacle(map_t *map, player_t *player, sfVector2f move);
+    void move_speobstacle(map_t *map, player_t *player, sfVector2f move);
+    void move_mob(map_t *map, player_t *player, sfVector2f move);
     int move_up(map_t *map, player_t *player);
     int move_down(map_t *map, player_t *player);
     int move_right(map_t *map, player_t *player);

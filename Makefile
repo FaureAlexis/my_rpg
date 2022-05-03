@@ -109,7 +109,9 @@ SRC_MAP			=	map/game_test.c	\
 					map/open_file.c \
 					map/pos.c	\
 					map/tab.c	\
-					map/mob.c
+					map/mob.c	\
+					map/spe_obstacle.c	\
+					map/move.c
 
 SRC_SAVE		=	save/saving/open_file.c 		\
 					save/saving/save_settings.c 	\

@@ -30,6 +30,7 @@ int display_game(main_game_t *game)
     game->player->dust = anim_dust(game->player->dust, game->w);
     sfRenderWindow_drawSprite(game->w, game->player->object->sprite, NULL);
     display_mob(game);
+    display_speobstacle(game);
     display_obstacle(game);
     sfRenderWindow_drawSprite(game->w, game->btn->mid->pause_b->sprite, NULL);
     if (game->inv_open == true) {
