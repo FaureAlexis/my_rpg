@@ -96,6 +96,7 @@
         float y;
         sfUint8 *pixels;
         sfRectangleShape *shape;
+        sfTexture *texture;
         struct particles_s *next;
     }particles_t;
 
@@ -229,7 +230,8 @@
     /*Animations*/
 
     particles_t *anim_artific(particles_t *head, sfRenderWindow *w);
-    void my_put_pixel(particles_t *particle, unsigned int x, unsigned int y);
+    void my_put_pixel(particles_t *particle, unsigned int x, unsigned int y,
+    sfColor color);
     /*Player animations*/
     int player_animations(player_t *player);
     int player_check_key(sfKeyCode key);

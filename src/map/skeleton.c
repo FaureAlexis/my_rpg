@@ -11,12 +11,12 @@ void limit_skeleton(mobe_t *mob, player_t *player)
 {
     if (sqrt(pow(player->object->position.x - mob->object->position.x,
     2) + pow(player->object->position.y - mob->object->position.y, 2)) < 10)
-         mob->object->rect.top += 64;
-    if(mob->object->rect.left >= 336 && mob->object->rect.top == 80 + 64) {
+        mob->object->rect.top += 64;
+    if (mob->object->rect.left >= 336 && mob->object->rect.top == 80 + 64) {
         mob->object->rect.left = 16;
         mob->object->rect.top -= 64;
     }
-    if(mob->object->rect.left >= 368 && mob->object->rect.top == 80) {
+    if (mob->object->rect.left >= 368 && mob->object->rect.top == 80) {
         mob->object->rect.left = 16;
         mob->object->rect.top -= 64;
     }
@@ -24,11 +24,11 @@ void limit_skeleton(mobe_t *mob, player_t *player)
 
 void limit_slime(mobe_t *mob, player_t *player)
 {
-    if(mob->object->rect.left >= 160 && mob->object->rect.top == 64) {
+    if (mob->object->rect.left >= 160 && mob->object->rect.top == 64) {
         mob->object->rect.left = 0;
         mob->object->rect.top -= 32;
     }
-    if(mob->object->rect.left >= 128 && mob->object->rect.top == 32) {
+    if (mob->object->rect.left >= 128 && mob->object->rect.top == 32) {
         mob->object->rect.left = 0;
         mob->object->rect.top -= 32;
     }

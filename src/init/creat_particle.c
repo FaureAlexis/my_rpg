@@ -21,10 +21,14 @@ particles_t *create_dust(sfVector2f cord, int size, sfVector2f direction)
     node->direction.x = direction.x;
     node->direction.y = direction.y;
     node->shape = sfRectangleShape_create();
-    sfRectangleShape_setSize(node->shape, (sfVector2f){node->size + 2, node->size + 2});
+    sfRectangleShape_setSize(node->shape, (sfVector2f){node->size + 2,
+    node->size + 2});
     node->pixels = malloc(((node->size + 2) * (node->size + 2)) * 4);
-    sfRectangleShape_setFillColor(node->shape, sfColor_fromRGB(153, 150, 146));
     draw_circle(node, (node->size / 2));
+    node->texture = sfTexture_create(node->size + 2, node->size + 2);
+    sfTexture_updateFromPixels(node->texture, node->pixels, node->size + 2,
+    node->size + 2, 0, 0);
+    sfRectangleShape_setTexture(node->shape, node->texture, false);
     return node;
 }
 

@@ -7,36 +7,30 @@
 
 #include "rpg.h"
 
-void my_put_pixel(particles_t *particle, unsigned int x, unsigned int y)
+void my_put_pixel(particles_t *particle, unsigned int x, unsigned int y,
+sfColor color)
 {
     int open = 0;
-    int idx = 1;
 
-    open = (particle->size * x + y) * 4;
-    particle->pixels[open + 0] = 255;
-    particle->pixels[open + 1] = 255;
-    particle->pixels[open + 2] = 255;
-    particle->pixels[open + 3] = 255;
+    open = ((particle->size + 2) * y + x) * 4;
+    particle->pixels[open + 0] = color.r;
+    particle->pixels[open + 1] = color.g;
+    particle->pixels[open + 2] = color.b;
+    particle->pixels[open + 3] = color.a;
 }
 
 int draw_circle(particles_t *particle, int radius)
 {
-    int start_x = ((particle->size / 2 + 1) - radius);
-    int start_y = ((particle->size / 2 + 1) - radius);
-    int end_x = ((particle->size / 2 + 1) + radius);
-    int end_y = ((particle->size / 2 + 1) + radius);
+    int end_x = particle->size + 1;
+    int end_y = particle->size + 1;
 
-    while (start_x <= end_x) {
-        while (start_y <= end_y) {
-            if ((((start_x - ((particle->size / 2 + 1))) * (start_x -
-            ((particle->size / 2 + 1)))) +
-            ((start_y - ((particle->size / 2 + 1))) *
-            (start_y - ((particle->size / 2 + 1))))) <= (radius * radius))
-                my_put_pixel(particle, start_y, start_x);
-            start_y += 1;
+    for (int start_x = 1; start_x <= end_x; start_x += 1) {
+        for (int start_y = 1; start_y <= end_y; start_y += 1) {
+            if ((pow(start_x - (particle->size / 2 + 1), 2) + pow(start_y -
+            (particle->size / 2 + 1), 2)) <= pow(radius, 2))
+                my_put_pixel(particle, start_y, start_x, (sfColor){153, 150,
+                146, 180});
         }
-        start_x += 1;
-        start_y = (((particle->size / 2 + 1)) - radius);
     }
     return 0;
 }
