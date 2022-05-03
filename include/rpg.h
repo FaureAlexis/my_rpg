@@ -332,7 +332,10 @@
 
     FILE *open_save(const char *path);
     int save_settings(main_game_t *game);
-    int load_settings();
+    int load_settings(main_game_t *game);
+    char **buffer_to_array(char buffer[41]);
+    char *get_key(char *line);
+    char *get_value(char *line);
 
     /* Main function */
 
