@@ -50,6 +50,7 @@ player_t *init_player(void)
 
     if (!player)
         return NULL;
+    player->attack_action = 0;
     player->object = malloc(sizeof(game_object_t));
     if (!player->object)
         return NULL;

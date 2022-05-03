@@ -57,9 +57,29 @@ int set_player_movements(main_game_t *game, player_t *player, sfEvent event)
         player->object->scale.x = movements->flip;
     player->hitbox = sfRectangleShape_getGlobalBounds(player->hitbox_shape);
     move_player(game, movements);
+    if (movements->height_ss == 96 && !player->attack_action) {
+        player->attack_action = 1;
+        player->object->rect.left = 0;
+    }
     player->object->rect.top = movements->height_ss;
     sfSprite_setScale(player->object->sprite, player->object->scale);
     return player->current_scene;
+}
+
+static int player_attack_animations(player_t *player)
+{
+    player->object->rect.top = 96;
+    if (player->object->rect.left >= 144) {
+        player->attack_action = 0;
+        player->object->rect.left = 0;
+        sfSprite_setTextureRect(player->object->sprite, player->object->rect);
+        player->object->rect.top = 0;
+    } else if (player->p_clock->seconds >= 0.1) {
+        player->object->rect.left += 48;
+        sfSprite_setTextureRect(player->object->sprite, player->object->rect);
+        sfClock_restart(player->p_clock->clock);
+    }
+    return 0;
 }
 
 int player_animations(player_t *player)
@@ -67,6 +87,9 @@ int player_animations(player_t *player)
     player->p_clock->time = sfClock_getElapsedTime(player->p_clock->clock);
     player->p_clock->seconds =
         player->p_clock->time.microseconds / 1000000.0;
+    if (player->attack_action) {
+        return player_attack_animations(player);
+    }
     if (player->p_clock->seconds >= 0.1) {
         player->object->rect.left += 48;
         sfSprite_setTextureRect(player->object->sprite, player->object->rect);
