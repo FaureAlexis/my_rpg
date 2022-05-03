@@ -18,7 +18,6 @@ void add_atrific(map_t *map, main_game_t *game)
         sfClock_restart(map->artificlock->clock);
     }
     map->artific = add_particle_to_list(map->artific, tmp, (sfVector2f){0, 0});
-    anim_artific(map->artific, game->w);
 }
 
 int display_game(main_game_t *game)

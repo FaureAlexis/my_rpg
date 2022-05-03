@@ -13,8 +13,10 @@
     typedef enum {
         UNKNOWN_SCENE = -1,
         MENU_SCENE,
+        SAVE_SCENE,
         SKIN_SCENE,
         SETTINGS_SCENE,
+        KEYBIND_SCENE,
         EXIT_SCENE,
         HELP_SCENE,
         GAME_SCENE,
@@ -29,9 +31,11 @@
 
     typedef struct all_menu_s {
         menu_t *main;
+        menu_t *save_m;
         menu_t *scoreboard;
         menu_t *gameplay;
         menu_t *settings;
+        menu_t *keybind_m;
         menu_t *help_play;
         menu_t *pause_m;
         menu_t *skin_m;

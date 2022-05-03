@@ -38,16 +38,12 @@ void display_obstacle(main_game_t *game)
         tmp->hitbox = sfSprite_getGlobalBounds(tmp->object->sprite);
         sfRectangleShape_setPosition(tmp->hitbox_shape,
         (sfVector2f){tmp->object->position.x - 40, tmp->object->position.y + 5});
-        if (tmp->object->rect.top == 79 && tmp->object->rect.width == 48 &&
-        tmp->object->rect.height == 64) {
-            sfRectangleShape_setSize(tmp->hitbox_shape,
-            (sfVector2f){tmp->hitbox.width / 1.5, tmp->hitbox.height / 4});
-            sfRectangleShape_setPosition(tmp->hitbox_shape,
-            (sfVector2f){tmp->object->position.x - 80, tmp->object->position.y +
-            65});
-        }
+        set_small_tree_hitbox(tmp);
+        set_long_tree_hitbox(tmp);
+        set_big_tree_hitbox(tmp);
         tmp->hitbox = sfRectangleShape_getGlobalBounds(tmp->hitbox_shape);
         sfRenderWindow_drawSprite(game->w, tmp->object->sprite, NULL);
+        sfRenderWindow_drawRectangleShape(game->w, tmp->hitbox_shape, NULL);
         tmp = tmp->next;
     }
 }

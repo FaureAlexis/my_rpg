@@ -34,6 +34,8 @@
         button_t *return_b;
         button_t *play_b;
         button_t *exit_b;
+        button_t *newsave_b;
+        button_t *load_b;
     } big_btn_t;
 
     typedef struct medium_button_s {
@@ -49,6 +51,7 @@
         button_t *resume_b;
         button_t *left_b;
         button_t *unmute_b;
+        button_t *keybind_b;
     } mid_btn_t;
 
     typedef struct small_button_s {

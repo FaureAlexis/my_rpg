@@ -31,12 +31,9 @@ int init_settings(main_game_t *game)
     game->settings = malloc(sizeof(settings_t));
     if (!game->settings)
         return EPITECH_ERROR;
-    game->settings->prev_is_main = true;
-    if (load_settings(game) == EPITECH_ERROR) {
-        game->settings->res_x = 1920;
-        game->settings->res_y = 1080;
-        game->settings->fps = 60;
-    }
+    game->settings->res_x = 1920;
+    game->settings->res_y = 1080;
+    game->settings->fps = 60;
     game->settings->res_text = sfText_create();
     game->settings->fps_text = sfText_create();
     gravity = sfFont_createFromFile("./assets/font/fs-gravity.ttf");

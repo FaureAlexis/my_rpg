@@ -95,8 +95,7 @@
         float end;
         float y;
         sfUint8 *pixels;
-        sfSprite *sprite;
-        sfTexture *texture;
+        sfRectangleShape *shape;
         struct particles_s *next;
     }particles_t;
 
@@ -124,7 +123,6 @@
     } player_t;
 
     typedef struct settings_s {
-        bool prev_is_main;
         int fps;
         int res_x;
         int res_y;
@@ -151,6 +149,7 @@
         map_t *map;
         settings_t *settings;
         help_t *help;
+        int menu_depth;
         bool inv_open;
     } main_game_t;
 
@@ -221,6 +220,9 @@
     mobe_t *add_node_to_mobe(mobe_t *head, mobe_t *node);
     int parse_tab(map_t *map, char ***tab, int i);
         /*Collision*/
+    int set_big_tree_hitbox(obstacle_t *tmp);
+    int set_long_tree_hitbox(obstacle_t *tmp);
+    int set_small_tree_hitbox(obstacle_t *tmp);
     bool obstacle_collision(main_game_t *game, sfVector2f next);
     bool mob_collision(main_game_t *game, sfVector2f next);
 
@@ -262,6 +264,8 @@
     void pos_button_main(main_game_t *game);
     void pos_button_skin_cus(main_game_t *game);
     void pos_button_scoreboard(main_game_t *game);
+    void pos_button_save(main_game_t *game);
+    void pos_button_keybind(main_game_t *game);
 
     /*Display*/
 
@@ -271,8 +275,8 @@
     int display_pause(main_game_t *game);
     int display_settings(main_game_t *game);
     int display_help(main_game_t *game);
-    int display_score(main_game_t *game);
-    int display_shop(main_game_t *game);
+    int display_save(main_game_t *game);
+    int display_keybind(main_game_t *game);
     int change_menu(main_game_t *game, sfRenderWindow *window, sfVector2i
     mouse_pos);
     int manage_volume_right(main_game_t *game, sfVector2i mouse_pos);
@@ -335,6 +339,10 @@
     sfVector2f position);
     void clicked_state_custom_skin(main_game_t *game, sfRectangleShape *shape,
     sfVector2f position);
+    void clicked_state_keybind(main_game_t *game, sfRectangleShape *shape,
+    sfVector2f position);
+    void clicked_state_save(main_game_t *game, sfRectangleShape *shape,
+    sfVector2f position);
     const event_t *get_event(sfEventType type, const event_t event_array[]);
     int event_skin_choice(main_game_t *game, sfVector2i mouse_pos);
     int set_rgb_right(main_game_t *game);
@@ -344,12 +352,22 @@
 
     /* Scenes */
 
-    int create_menus(main_game_t *game);
+    int starting_pause_scene(main_game_t *game);
+    int starting_main_menu_scene(main_game_t *game);
+    int starting_game_scene(main_game_t *game);
+    int starting_settings_scene(main_game_t *game);
+    int starting_keybind_scene(main_game_t *game);
+    int starting_save_scene(main_game_t *game);
+    int starting_help_scene(main_game_t *game);
+    int starting_skin_scene(main_game_t *game);
+    int starting_create_menus(main_game_t *game);
     const scenes_t *manage_scenes(sfKeyCode key, scenes_name name);
     int pause_scene(main_game_t *game);
     int main_menu_scene(main_game_t *game);
     int game_scene(main_game_t *game);
     int settings_scene(main_game_t *game);
+    int keybind_scene(main_game_t *game);
+    int save_scene(main_game_t *game);
     int help_scene(main_game_t *game);
     int skin_scene(main_game_t *game);
 
@@ -372,6 +390,6 @@
 
     /* Main function */
 
-    int rpg(int argc, const char * const *argv, char ** env);
+    int rpg(void);
 
 #endif/* !RPG_H_ */

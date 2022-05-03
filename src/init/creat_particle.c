@@ -20,15 +20,11 @@ particles_t *create_dust(sfVector2f cord, int size, sfVector2f direction)
     node->cord.y = node->y = cord.y + 50;
     node->direction.x = direction.x;
     node->direction.y = direction.y;
-    node->texture = sfTexture_create(node->size + 2, node->size + 2);
-    node->sprite = sfSprite_create();
+    node->shape = sfRectangleShape_create();
+    sfRectangleShape_setSize(node->shape, (sfVector2f){node->size + 2, node->size + 2});
     node->pixels = malloc(((node->size + 2) * (node->size + 2)) * 4);
+    sfRectangleShape_setFillColor(node->shape, sfColor_fromRGB(153, 150, 146));
     draw_circle(node, (node->size / 2));
-    sfTexture_updateFromPixels(node->texture, node->pixels, node->size,
-    node->size, 0, 0);
-    sfSprite_setTexture(node->sprite, node->texture, sfFalse);
-    sfSprite_setTextureRect(node->sprite, (sfIntRect){0, 0, node->size, \
-    node->size});
     return node;
 }
 
@@ -45,16 +41,6 @@ particles_t *create_artific(sfVector2f cord, int size, sfVector2f direction)
     node->end = 0;
     node->direction.x = direction.x;
     node->direction.y = direction.y;
-    node->texture = sfTexture_create(node->size + 2, node->size + 2);
-    node->sprite = sfSprite_create();
-    node->pixels = malloc(((node->size + 2) * (node->size + 2)) * 4);
-    sfTexture_updateFromPixels(node->texture, node->pixels, node->size,
-    node->size, 0, 0);
-    sfSprite_setOrigin(node->sprite, (sfVector2f){node->size / 2 + 1,
-    node->size / 2 + 1});
-    sfSprite_setTexture(node->sprite, node->texture, sfFalse);
-    sfSprite_setTextureRect(node->sprite, (sfIntRect){0, 0, node->size, \
-    node->size});
     return node;
 }
 
@@ -73,7 +59,6 @@ sfVector2f direction)
 
 particles_t *gen_artific(sfRenderWindow *w)
 {
-    particles_t *part = NULL;
     sfVector2i tmp = sfMouse_getPositionRenderWindow(w);
     sfVector2f cord = {tmp.x, tmp.y};
     int size = 30;

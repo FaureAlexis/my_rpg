@@ -18,7 +18,7 @@ static int launch_win(main_game_t *game)
     return EXIT_SUCCESS;
 }
 
-int rpg(int argc, const char * const *argv, char ** env)
+int rpg(void)
 {
     main_game_t *game = init_game();
     scenes_name change_scene = MENU_SCENE;

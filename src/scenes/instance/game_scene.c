@@ -14,12 +14,12 @@ static const event_t event_array[] = {
 
 static int zoom_event(main_game_t *game)
 {
-    if (game->event.key.code == sfKeyPageUp
+    if (game->event.key.code == sfKeyP
     && game->event.type == sfEvtKeyPressed) {
         sfView_zoom(game->view, 1.1);
         return game->player->current_scene;
     }
-    if (game->event.key.code == sfKeyPageDown
+    if (game->event.key.code == sfKeyM
     && game->event.type == sfEvtKeyPressed) {
         sfView_zoom(game->view, 0.9);
         return game->player->current_scene;
@@ -86,11 +86,7 @@ int game_scene(main_game_t *game)
 {
     sfVector2i mouse_pos;
 
-    game->player->current_scene = GAME_SCENE;
-    sfMusic_stop(game->btn->big->play_b->sound);
-    sfSprite_setScale(game->player->object->sprite, (sfVector2f){4, 4});
-    sfSprite_setPosition(game->player->object->sprite,
-    game->player->object->position);
+    starting_game_scene(game);
     while (sfRenderWindow_isOpen(game->w)) {
         sfRenderWindow_setView(game->w, game->view);
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);

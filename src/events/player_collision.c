@@ -42,7 +42,6 @@ bool mob_collision(main_game_t *game, sfVector2f next)
         hitbox.left = tmp->hitbox.left + next.x;
         hitbox.top = tmp->hitbox.top + next.y;
         if (sfFloatRect_intersects(&hitbox, &game->player->hitbox, NULL)) {
-            printf("hitbox\n");
             return (true);
         }
         tmp = tmp->next;

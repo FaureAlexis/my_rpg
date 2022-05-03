@@ -17,7 +17,7 @@ static int red_left(main_game_t *g)
         (sfVector2f){size.x - 20, size.y});
     }
     sfSprite_setColor(g->player->object->sprite,
-    sfColor_fromRGBA(g->skin->red_c, g->skin->green_c, g->skin->blue_c, 200));
+    sfColor_fromRGBA(g->skin->red_c, g->skin->green_c, g->skin->blue_c, 255));
     return 0;
 }
 
@@ -31,7 +31,7 @@ static int green_left(main_game_t *g)
         (sfVector2f){size.x - 20, size.y});
     }
     sfSprite_setColor(g->player->object->sprite,
-    sfColor_fromRGBA(g->skin->red_c, g->skin->green_c, g->skin->blue_c, 200));
+    sfColor_fromRGBA(g->skin->red_c, g->skin->green_c, g->skin->blue_c, 255));
     return 0;
 }
 
@@ -45,7 +45,7 @@ static int blue_left(main_game_t *g)
         (sfVector2f){size.x - 20, size.y});
     }
     sfSprite_setColor(g->player->object->sprite,
-    sfColor_fromRGBA(g->skin->red_c, g->skin->green_c, g->skin->blue_c, 200));
+    sfColor_fromRGBA(g->skin->red_c, g->skin->green_c, g->skin->blue_c, 255));
     return 0;
 }
 

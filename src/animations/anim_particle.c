@@ -49,8 +49,7 @@ particles_t *free_a_particule(particles_t *head)
         tmp = head->next;
         free(head->timer);
         free(head->pixels);
-        sfSprite_destroy(head->sprite);
-        sfTexture_destroy(head->texture);
+        sfRectangleShape_destroy(head->shape);
         free(head);
         head = tmp;
     }
@@ -95,8 +94,8 @@ particles_t *anim_dust(particles_t *head, sfRenderWindow *w)
             * sqrt(pow(cos((part->direction.y) * part->end), 2)));
             sfClock_restart(part->timer->clock);
         }
-        sfSprite_setPosition(part->sprite, part->cord);
-        sfRenderWindow_drawSprite(w, part->sprite, NULL);
+        sfRectangleShape_setPosition(part->shape, part->cord);
+        sfRenderWindow_drawRectangleShape(w, part->shape, NULL);
         part = part->next;
     }
     head = free_a_particule(head);

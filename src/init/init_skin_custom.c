@@ -20,6 +20,7 @@ int set_rgb_shape(cus_t **cus)
     sfRectangleShape_setPosition((*cus)->red, (*cus)->pos_red);
     sfRectangleShape_setPosition((*cus)->green, (*cus)->pos_green);
     sfRectangleShape_setPosition((*cus)->blue, (*cus)->pos_blue);
+    return EXIT_SUCCESS;
 }
 
 int init_skin_custom(cus_t **cus)
