@@ -22,7 +22,8 @@ obstacle_t *add_node_to_obstacle(obstacle_t *head, obstacle_t *node)
     return head;
 }
 
-speobstacle_t *add_node_to_speobstacle(speobstacle_t *head, speobstacle_t *node)
+speobstacle_t *add_node_to_speobstacle(speobstacle_t *head, speobstacle_t
+*node)
 {
     speobstacle_t *tmp = head;
 

@@ -14,7 +14,7 @@ int init_back_window(map_t *map, char ***tab, int i)
     map->back = malloc(sizeof(game_object_t));
     if (map->back == NULL)
         return EPITECH_ERROR;
-    map->back->texture = sfTexture_createFromFile(tab[i][0], NULL);
+    map->back->texture = sfTexture_createFromFile(tab[i][ASSET], NULL);
     map->back->sprite = sfSprite_create();
     if (map->back->texture == NULL || map->back->sprite == NULL)
         return EPITECH_ERROR;
@@ -29,12 +29,12 @@ int init_map_window(map_t *map, char ***tab, int i)
     map->map = malloc(sizeof(game_object_t));
     if (map->map == NULL)
         return EPITECH_ERROR;
-    map->map->texture = sfTexture_createFromFile(tab[i][0], NULL);
+    map->map->texture = sfTexture_createFromFile(tab[i][ASSET], NULL);
     map->map->sprite = sfSprite_create();
     if (map->map->texture == NULL || map->map->sprite == NULL)
         return EPITECH_ERROR;
-    map->map->position.x = (my_atoi(tab[i][1]) * -1);
-    map->map->position.y = (my_atoi(tab[i][2]) * -1);
+    map->map->position.x = (my_atoi(tab[i][CORD_X]) * -1);
+    map->map->position.y = (my_atoi(tab[i][CORD_Y]) * -1);
     sfSprite_setTexture(map->map->sprite, map->map->texture, sfFalse);
     return EXIT_SUCCESS;
 }
