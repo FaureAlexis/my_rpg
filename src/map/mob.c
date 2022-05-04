@@ -16,24 +16,6 @@ void display_mob(main_game_t *game)
             display_slime(tmp, game);
         if (tmp->type == 1)
             display_skeleton(tmp, game);
-        // else if (sqrt(pow(game->player->object->position.x - tmp->object->position.x,
-        // 2) + pow(game->player->object->position.y - tmp->object->position.y, 2))
-        // < 80 * 5) {
-        //     tmp->object->rect.top = 64;
-        //     tmp->attack = true;
-        // }
-        // tmp->my_clock->time = sfClock_getElapsedTime(tmp->my_clock->clock);
-        // tmp->my_clock->seconds = tmp->my_clock->time.microseconds / 1000000.0;
-        // if (tmp->my_clock->seconds >= 0.1) {
-        //     tmp->object->rect.left += 32;
-        //     sfClock_restart(tmp->my_clock->clock);
-        // }
-        // attack_slime(tmp, game->player);
-        // if (!tmp->dead) {
-        //     sfSprite_setTextureRect(tmp->object->sprite, tmp->object->rect);
-        //     sfSprite_setPosition(tmp->object->sprite, tmp->object->position);
-        // }
-        // sfRenderWindow_drawSprite(game->w, tmp->object->sprite, NULL);
         tmp = tmp->next;
     }
 }

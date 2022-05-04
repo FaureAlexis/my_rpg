@@ -63,6 +63,5 @@ int init_inventory(main_game_t *game)
     game->inventory->case_inventory = init_case_inventory(game->inventory);
     if (!game->inventory->case_inventory)
         return 84;
-    // game->armor = init_case_inventory(game);
     return 0;
 }
