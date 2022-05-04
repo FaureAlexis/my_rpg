@@ -25,6 +25,8 @@ int init_all(main_game_t *game)
         return EPITECH_ERROR;
     if (init_inventory(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
+    if (init_keys(game) == EPITECH_ERROR)
+        return EPITECH_ERROR;
     return EXIT_SUCCESS;
 }
 
