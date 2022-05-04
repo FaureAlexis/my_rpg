@@ -244,7 +244,7 @@
     int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect);
     particles_t *creat_particles(int enum_type, sfVector2f cord, int size,
     sfVector2f direction);
-    int draw_circle(particles_t *particle, int radius);
+    int draw_circle(particles_t *particle, int radius, sfColor color);
     void gen_artific(speobstacle_t *speobstacle);
     int init_keys(main_game_t *game);
 
@@ -277,7 +277,8 @@
 
     /*Animations*/
 
-    particles_t *anim_artific(particles_t *head, sfRenderWindow *w);
+    particles_t *anim_artific(particles_t *head, sfRenderWindow *w,
+    speobstacle_t *spe);
     void my_put_pixel(particles_t *particle, unsigned int x, unsigned int y,
     sfColor color);
     /*Player animations*/

@@ -12,7 +12,6 @@ sfColor color)
 {
     int open = 0;
 
-    printf("size=%d cord=%d %d \n", particle->size, x, y);
     open = ((particle->size + 2) * y + x) * 4;
     particle->pixels[open + 0] = color.r;
     particle->pixels[open + 1] = color.g;
@@ -20,7 +19,7 @@ sfColor color)
     particle->pixels[open + 3] = color.a;
 }
 
-int draw_circle(particles_t *particle, int radius)
+int draw_circle(particles_t *particle, int radius, sfColor color)
 {
     int end_x = particle->size + 1;
     int end_y = particle->size + 1;
@@ -29,8 +28,7 @@ int draw_circle(particles_t *particle, int radius)
         for (int start_y = 1; start_y <= end_y; start_y += 1) {
             if ((pow(start_x - (particle->size / 2 + 1), 2) + pow(start_y -
             (particle->size / 2 + 1), 2)) <= pow(radius, 2))
-                my_put_pixel(particle, start_y, start_x, (sfColor){153, 150,
-                146, 180});
+                my_put_pixel(particle, start_y, start_x, color);
         }
     }
     return 0;

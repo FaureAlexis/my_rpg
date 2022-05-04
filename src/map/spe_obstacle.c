@@ -34,16 +34,17 @@ void display_speobstacle(main_game_t *game)
     speobstacle_t *tmp = game->map->speobstacle;
 
     while (tmp) {
-        if (sqrt(pow(game->player->object->position.x - tmp->object->position.x,
-        2) + pow(game->player->object->position.y - tmp->object->position.y, 2))
+        if (sqrt(pow(game->player->object->position.x - tmp->object->position.x
+        , 2) + pow(game->player->object->position.y - tmp->object->position.y,
+        2))
         < 75) {
             tmp->object->rect.left = 16 * tmp->type;
             tmp->hp = tmp->type - 1;
+            gen_artific(tmp);
         } else {
             tmp->object->rect.left = 0;
             tmp->hp = tmp->type + 1;
         }
-        anim_artific(tmp->artific, game->w);
         sfSprite_setTextureRect(tmp->object->sprite, tmp->object->rect);
         sfSprite_setPosition(tmp->object->sprite, tmp->object->position);
         tmp->hitbox = sfSprite_getGlobalBounds(tmp->object->sprite);
@@ -52,6 +53,7 @@ void display_speobstacle(main_game_t *game)
         5});
         tmp->hitbox = sfRectangleShape_getGlobalBounds(tmp->hitbox_shape);
         sfRenderWindow_drawSprite(game->w, tmp->object->sprite, NULL);
+        anim_artific(tmp->artific, game->w, tmp);
         tmp = tmp->next;
     }
 }

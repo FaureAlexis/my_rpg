@@ -7,35 +7,29 @@
 
 #include "rpg.h"
 
-particles_t *free_a_artific(particles_t *head)
+void free_a_artific(speobstacle_t *spe)
 {
     particles_t *tmp = NULL;
 
-    if (head && head->end > 20) {
-        tmp = head->next;
-        free(head->timer);
-        free(head->pixels);
-        sfTexture_destroy(head->texture);
-        free(head);
-        head = tmp;
+    if (spe->artific && spe->object->rect.left == 0) {
+        tmp = spe->artific->next;
+        free(spe->artific->timer);
+        free(spe->artific->pixels);
+        free(spe->artific);
+        spe->artific = tmp;
     }
-    return head;
 }
 
-particles_t *anim_artific(particles_t *head, sfRenderWindow *w)
+particles_t *anim_artific(particles_t *head, sfRenderWindow *w,
+speobstacle_t *spe)
 {
     particles_t *part = head;
 
-    while (part) {
+    while (part && spe->object->rect.left != 0) {
         part->timer->time = sfClock_getElapsedTime(part->timer->clock);
         part->timer->seconds = part->timer->time.microseconds / 1000000.0;
-        if (part->timer->seconds > 0.01) {
-            if (part->size > part->end) {
-                my_put_pixel(part, 1, part->size - part->end, part->color);
-                sfTexture_updateFromPixels(part->texture, part->pixels, 2,
-                part->size + 1, 0, 0);
-                sfRectangleShape_setTexture(part->shape, part->texture, false);
-            }
+        if (part->timer->seconds > 0.1 && part->end <= 10) {
+            part->cord.y -= 1;
             part->end += 1;
             sfClock_restart(part->timer->clock);
         }
@@ -43,6 +37,6 @@ particles_t *anim_artific(particles_t *head, sfRenderWindow *w)
         sfRenderWindow_drawRectangleShape(w, part->shape, NULL);
         part = part->next;
     }
-    head = free_a_artific(head);
+    free_a_artific(spe);
     return head;
 }

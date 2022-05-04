@@ -4,6 +4,10 @@ assets/map/objects/objects.png 115 807 0 0 16 16
 assets/map/objects/objects.png -165 987 128 96 32 48
 assets/map/objects/objects.png -245 1747 128 96 32 48
 assets/map/objects/objects.png -5 1787 128 96 32 48
+assets/map/objects/objects.png 2234 -1187 128 96 32 48
+assets/map/objects/objects.png 2634 -627 128 96 32 48
+assets/map/objects/objects.png 2634 -147 128 96 32 48
+assets/map/objects/objects.png 1334 -587 128 96 32 48
 assets/map/objects/objects.png 235 1827 128 96 32 48
 assets/map/objects/objects.png 1700 922 0 79 48 64
 assets/map/objects/objects.png 1020 192 0 79 48 64
@@ -22,7 +26,8 @@ assets/map/objects/objects.png 1825 2200 48 79 48 64
 assets/map/tilesets/plains.png 1980 -40 48 80 16 16
 assets/map/tilesets/plains.png 1980 40 48 80 16 16
 assets/map/tilesets/plains.png 1980 120 48 80 16 16
-assets/map/tilesets/plains.png 1980 200 48 80 16 16
+assets/map/tilesets/plains.png 1980 200 64 80 16 16
+assets/map/tilesets/plains.png 2060 200 48 64 16 16
 assets/map/tilesets/plains.png 1980 -120 48 64 16 16
 assets/map/tilesets/plains.png 1900 -120 16 64 16 16
 assets/map/tilesets/plains.png 1900 -40 80 80 16 16
@@ -42,7 +47,8 @@ assets/map/tilesets/plains.png 1740 200 80 64 16 16
 assets/map/tilesets/plains.png 1740 280 16 96 16 16
 assets/map/tilesets/plains.png 1820 280 32 96 16 16
 assets/map/tilesets/plains.png 1900 280 32 96 16 16
-assets/map/tilesets/plains.png 1980 280 48 96 16 16
+assets/map/tilesets/plains.png 1980 280 32 96 16 16
+assets/map/tilesets/plains.png 2060 280 48 96 16 16
 assets/map/tilesets/plains.png 1900 200 32 80 16 16
 assets/map/tilesets/plains.png 1820 200 32 80 16 16
 assets/map/tilesets/plains.png 1900 120 32 80 16 16
