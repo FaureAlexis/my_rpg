@@ -90,3 +90,22 @@ Strength and Honor to you in your brand new aventure !!!
 | P_KEY  | Zoom up |
 | M_KEY  | Zoom down |
 | ESCAPE_KEY | Pause the game |
+
+## Commit norm
+
+The commits are normed thanks to a program made by [Adrien Ricou](https://github.com/Gradrien).
+
+| Commit type       | Description        |
+| --------- | --------------|
+| [ADD] :rocket: | Deploying new code |
+| [MODIFY] :sparkles: | Modifying code |
+| [COD.STY] :zap: | Improving performance |
+| [FIX] :bug: | Fixing a bug |
+| [HANDLE] :sparkles: | Handling new features |
+| [INCLUDE] :wrench: | Modifying user defined headers|
+| [LIB] :wrench: | Modifying libraries files |
+| [REMOVE] :fire: | Removing code or files |
+| [UNIT.TESTS] :white_check_mark: | Added tests |
+| [MERGE] :twisted_rightwards_arrows: | Merging branches |
+
+**Emoji are available thanks to the Gitmoji tool

@@ -28,8 +28,8 @@ int display_game(main_game_t *game)
     sfSprite_setPosition(game->map->map->sprite, game->map->map->position);
     sfRenderWindow_drawSprite(game->w, game->map->map->sprite, NULL);
     game->player->dust = anim_dust(game->player->dust, game->w);
-    sfRenderWindow_drawSprite(game->w, game->player->object->sprite, NULL);
     display_mob(game);
+    sfRenderWindow_drawSprite(game->w, game->player->object->sprite, NULL);
     display_speobstacle(game);
     display_obstacle(game);
     sfRenderWindow_drawSprite(game->w, game->btn->mid->pause_b->sprite, NULL);
