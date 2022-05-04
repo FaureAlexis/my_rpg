@@ -10,6 +10,14 @@ This project was made thanks to
 - [Nolann Bougrainville](https://github.com/NolannB14)
 - [Adrien Ricou](https://github.com/Gradrien)
 
+## Install game
+
+`git clone https://github.com/NolannB14/my_rpg.git Hasbulla_Quest`
+
+## Run game
+
+`make; ./my_rpg`
+
 ## Goal of the project
 
 The last CSFML project of the 1st EPITECH year consists on recreating a fully playable role play video game (RPG).
