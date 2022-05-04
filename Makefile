@@ -82,7 +82,7 @@ SRC_SCENES 				=	$(SRC_SCENES_DISPLAY) \
 SRC_ANIMATIONS			=	animations/player_animations.c \
 							animations/change_color_skin_left.c \
 							animations/change_color_skin_right.c \
-							animations/env_move.c \
+							animations/move_player.c \
 							animations/anim_particle.c \
 							animations/anim_artific.c
 

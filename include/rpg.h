@@ -293,6 +293,7 @@
     int move_down(map_t *map, player_t *player);
     int move_right(map_t *map, player_t *player);
     int move_left(map_t *map, player_t *player);
+    int move_player(main_game_t *game, const movements_t *movements);
     particles_t *anim_dust(particles_t *head, sfRenderWindow *w);
     particles_t *add_particle_to_list(particles_t *head, particles_t *node,
     sfVector2f move);

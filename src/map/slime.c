@@ -11,20 +11,23 @@ static void limit_slime(mobe_t *mob, player_t *player)
 {
     if (!mob || !player)
         return;
-    if (mob->object->rect.left >= 160 && mob->object->rect.top == 64) {
+    if (mob->object->rect.left >= 192 && mob->object->rect.top == 64) {
         mob->object->rect.left = 0;
-        mob->object->rect.top -= 32;
+        mob->object->rect.top = 0;
     }
     if (mob->object->rect.left >= 128 && mob->object->rect.top == 32) {
         mob->object->rect.left = 0;
-        mob->object->rect.top -= 32;
+        mob->object->rect.top = 0;
+    }
+    if (mob->object->rect.left >= 96 && mob->object->rect.top == 0) {
+        mob->object->rect.left = 0;
     }
 }
 
 void attack_slime(mobe_t *mob, player_t *player)
 {
+    limit_slime(mob, player);
     if (mob->hp > 0 && mob->attack == true) {
-        limit_slime(mob, player);
         mob->object->position.x += (player->object->position.x -
         mob->object->position.x) / (sqrt(pow(player->object->position.x -
         mob->object->position.x, 2) + pow(player->object->position.y -
@@ -36,11 +39,9 @@ void attack_slime(mobe_t *mob, player_t *player)
         sfRectangleShape_setPosition(mob->hitbox_shape,
         (sfVector2f){mob->object->position.x - 30,
         mob->object->position.y - 20});
-    } else if (mob->hp > 0 && mob->object->rect.left >= 96) {
-        mob->object->rect.left = 0;
     } else {
-        mob->attack = false;
         if (mob->hp <= 0) {
+            mob->attack = 0;
             if (!mob->dead) {
                 mob->dead = 1;
                 mob->object->rect.top = 128;
@@ -53,6 +54,8 @@ void attack_slime(mobe_t *mob, player_t *player)
             }
         }
     }
+    if (mob->object->rect.top >= 0)
+        mob->attack = false;
 }
 
 void display_slime(mobe_t *tmp, main_game_t *game)
@@ -66,15 +69,16 @@ void display_slime(mobe_t *tmp, main_game_t *game)
     }
     tmp->attack_clock->time = sfClock_getElapsedTime(tmp->my_clock->clock);
     tmp->attack_clock->seconds = tmp->my_clock->time.microseconds / 1000000.0;
-    if (tmp->attack_clock->seconds >= 0.08) {
+    if ((tmp->attack && tmp->attack_clock->seconds >= 0.08)
+        || (!tmp->attack && tmp->attack_clock->seconds >= 0.1)) {
         attack_slime(tmp, game->player);
         sfClock_restart(tmp->attack_clock->clock);
     }
     tmp->my_clock->time = sfClock_getElapsedTime(tmp->my_clock->clock);
     tmp->my_clock->seconds = tmp->my_clock->time.microseconds / 1000000.0;
-    if ((tmp->dead && tmp->object->rect.left != 128 &&
-    tmp->my_clock->seconds >= 0.1)
-        || !tmp->dead && tmp->my_clock->seconds >= 0.1) {
+    if ((tmp->dead && tmp->object->rect.left != 128
+        && tmp->my_clock->seconds >= 0.1)
+        || (!tmp->dead && tmp->my_clock->seconds >= 0.1)) {
         tmp->object->rect.left += 32;
         sfClock_restart(tmp->my_clock->clock);
     }
