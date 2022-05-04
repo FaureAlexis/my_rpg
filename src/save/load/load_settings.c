@@ -15,11 +15,11 @@ static void apply_settings(main_game_t *game, char *key, char *value)
     value_nb = my_atoi(value);
     if (value_nb < 30)
         return;
-    if (my_strcmp(key, "FPS") == 0)
+    if (my_strcmp(key, "FPS") == 0 && value_nb <= 120)
         game->settings->fps = value_nb;
-    if (my_strcmp(key, "resolutionX") == 0)
+    if (my_strcmp(key, "resolutionX" ) == 0 && value_nb <= 2440)
         game->settings->res_x = value_nb;
-    if (my_strcmp(key, "resolutionY") == 0)
+    if (my_strcmp(key, "resolutionY") == 0 && value_nb <= 1540)
         game->settings->res_y = value_nb;
 }
 
