@@ -74,11 +74,27 @@
         struct obstacle_s *next;
     } obstacle_t;
 
+    typedef struct particles_s {
+        sfVector2f cord;
+        sfVector2f direction;
+        my_clock_t *timer;
+        int size;
+        float end;
+        float y;
+        sfUint8 *pixels;
+        sfRectangleShape *shape;
+        sfTexture *texture;
+        sfColor color;
+        struct particles_s *next;
+    }particles_t;
+
     typedef struct speobstacle_s {
         game_object_t *object;
         sfFloatRect hitbox;
         sfRectangleShape *hitbox_shape;
         int hp;
+        int type;
+        particles_t *artific;
         struct speobstacle_s *next;
     } speobstacle_t;
 
@@ -97,19 +113,6 @@
         struct mobe_s *next;
     }mobe_t;
 
-    typedef struct particles_s {
-        sfVector2f cord;
-        sfVector2f direction;
-        my_clock_t *timer;
-        int size;
-        float end;
-        float y;
-        sfUint8 *pixels;
-        sfRectangleShape *shape;
-        sfTexture *texture;
-        struct particles_s *next;
-    }particles_t;
-
     typedef struct map_s {
         char ***tab;
         speobstacle_t *speobstacle;
@@ -118,7 +121,6 @@
         game_object_t *map;
         game_object_t *back;
         my_clock_t *artificlock;
-        particles_t *artific;
     } map_t;
 
     typedef struct player_s {
@@ -241,7 +243,7 @@
     particles_t *creat_particles(int enum_type, sfVector2f cord, int size,
     sfVector2f direction);
     int draw_circle(particles_t *particle, int radius);
-    particles_t *gen_artific(sfRenderWindow *w);
+    void gen_artific(speobstacle_t *chest);
 
         /*Map Management*/
 

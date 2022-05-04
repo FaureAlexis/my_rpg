@@ -12,6 +12,7 @@ sfColor color)
 {
     int open = 0;
 
+    printf("size=%d cord=%d %d \n", particle->size, x, y);
     open = ((particle->size + 2) * y + x) * 4;
     particle->pixels[open + 0] = color.r;
     particle->pixels[open + 1] = color.g;

@@ -39,10 +39,10 @@ void attack_slime(mobe_t *mob, player_t *player)
     } else if (mob->hp > 0 && mob->object->rect.left >= 96) {
         mob->object->rect.left = 0;
     } else {
+        mob->attack = false;
         if (mob->hp <= 0) {
             if (!mob->dead) {
                 mob->dead = 1;
-                mob->attack = false;
                 mob->object->rect.top = 128;
                 mob->object->rect.left = 0;
             } else if (mob->dead && mob->object->rect.left >= 96) {

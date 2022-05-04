@@ -40,11 +40,20 @@ particles_t *create_artific(sfVector2f cord, int size, sfVector2f direction)
     node->size = size;
     node->timer = malloc(sizeof(my_clock_t));
     node->timer->clock = sfClock_create();
+    node->direction.x = direction.x;
+    node->direction.y = direction.y;
+    node->texture = sfTexture_create(2, node->size + 1);
+    node->shape = sfRectangleShape_create();
+    sfRectangleShape_setSize(node->shape, (sfVector2f){2, node->size + 1});
+    node->pixels = malloc(((2 * (node->size + 1)) * 4));
     node->cord.x = cord.x;
     node->cord.y = cord.y;
     node->end = 0;
-    node->direction.x = direction.x;
-    node->direction.y = direction.y;
+    srand(rand());
+    if (rand() % 3 == 0)
+        node->color = sfYellow;
+    else
+        node->color = sfWhite;
     return node;
 }
 
@@ -61,26 +70,18 @@ sfVector2f direction)
     return node;
 }
 
-particles_t *gen_artific(sfRenderWindow *w)
+void gen_artific(speobstacle_t *chest)
 {
-    sfVector2i tmp = sfMouse_getPositionRenderWindow(w);
-    sfVector2f cord = {tmp.x, tmp.y};
-    int size = 30;
-    sfVector2f direction = {size / 2 - 1, size / 2 - 1};
+    particles_t *node = NULL;
+    sfVector2f lane = chest->object->position;
 
-    srand(rand());
-    if (rand() % 2 == 0) {
-        srand(rand());
-        direction.x = rand() % (size / 2 - 1);
-    } else {
-        srand(rand());
-        direction.y = rand() % (size / 2 - 1);
+    if (chest->type == 2 && chest->artific == NULL) {
+        for (int i = 0; i < chest->object->rect.width; i += 1) {
+            lane.x += 1;
+            node = creat_particles(1, lane, 19,
+            (sfVector2f){0, 20});
+            chest->artific = add_particle_to_list(chest->artific, node,
+            (sfVector2f){0, 0});
+        }
     }
-    srand(rand());
-    if (rand() % 2 == 0)
-        direction.x = direction.x * -1;
-    srand(rand());
-    if (rand() % 2 == 0)
-        direction.y = direction.y * -1;
-    return creat_particles(1, cord, size, direction);
 }

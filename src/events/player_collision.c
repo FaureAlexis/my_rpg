@@ -25,7 +25,8 @@ bool obstacle_collision(main_game_t *game, sfVector2f next)
         hitbox = spetmp->hitbox;
         hitbox.left = spetmp->hitbox.left + next.x;
         hitbox.top = spetmp->hitbox.top + next.y;
-        if (sfFloatRect_intersects(&hitbox, &game->player->hitbox, NULL))
+        if (sfFloatRect_intersects(&hitbox, &game->player->hitbox, NULL) &&
+        spetmp->hp > 0)
             return (true);
         spetmp = spetmp->next;
     }

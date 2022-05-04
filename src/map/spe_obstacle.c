@@ -19,6 +19,7 @@ static int set_texture_speobstacle(speobstacle_t *node, char ***tab, int i)
     node->hitbox_shape = sfRectangleShape_create();
     if (!node->hitbox_shape)
         return EPITECH_ERROR;
+    node->artific = NULL;
     sfRectangleShape_setSize(node->hitbox_shape,
     (sfVector2f){node->hitbox.width, node->hitbox.height / 2});
     sfRectangleShape_setPosition(node->hitbox_shape,
@@ -33,6 +34,16 @@ void display_speobstacle(main_game_t *game)
     speobstacle_t *tmp = game->map->speobstacle;
 
     while (tmp) {
+        if (sqrt(pow(game->player->object->position.x - tmp->object->position.x,
+        2) + pow(game->player->object->position.y - tmp->object->position.y, 2))
+        < 75) {
+            tmp->object->rect.left = 16 * tmp->type;
+            tmp->hp = tmp->type - 1;
+        } else {
+            tmp->object->rect.left = 0;
+            tmp->hp = tmp->type + 1;
+        }
+        anim_artific(tmp->artific, game->w);
         sfSprite_setTextureRect(tmp->object->sprite, tmp->object->rect);
         sfSprite_setPosition(tmp->object->sprite, tmp->object->position);
         tmp->hitbox = sfSprite_getGlobalBounds(tmp->object->sprite);
@@ -61,6 +72,7 @@ int init_speobstacle(map_t *map, char ***tab, int i)
     node->object->texture = sfTexture_createFromFile(tab[i][ASSET], NULL);
     node->object->sprite = sfSprite_create();
     node->hp = my_atoi(tab[i][HP]);
+    node->type = my_atoi(tab[i][POWER]);
     node->next = NULL;
     if (set_texture_speobstacle(node, tab, i) == EPITECH_ERROR ||
     !node->object->sprite || !node->object->texture || !node->object)

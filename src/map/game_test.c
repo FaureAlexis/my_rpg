@@ -66,7 +66,7 @@ int parse_tab(map_t *map, char ***tab, int i)
         if (init_obstacle(map, tab, i) == EPITECH_ERROR)
             return EPITECH_ERROR;
     }
-    if (my_arraylen(tab[i]) == 8) {
+    if (my_arraylen(tab[i]) == 9) {
         if (init_speobstacle(map, tab, i) == EPITECH_ERROR)
             return EPITECH_ERROR;
     }
