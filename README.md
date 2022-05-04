@@ -2,6 +2,17 @@
 ![Logo](https://studyadv.s3.amazonaws.com/production/schools/covers/000/005/919/original/Enseigne_Epitech_2.png)
 # My_rpg Project 
 
+## Table of contents
+
+* [Dev team](#dev-team)
+* [Install game](#install-game)
+* [Run game](#run-game)
+* [Goal of the project](#goal-of-the-project)
+* [Features](#features)
+* [History](#history)
+* [Key binding](#key-binding)
+* [Commit norm](#commit-norm)
+
 ## Dev Team
 
 This project was made thanks to 
@@ -12,11 +23,11 @@ This project was made thanks to
 
 ## Install game
 
-`git clone https://github.com/NolannB14/my_rpg.git Hasbulla_Quest`
+```git clone https://github.com/NolannB14/my_rpg.git Hasbulla_Quest```
 
 ## Run game
 
-`make; ./my_rpg`
+```make; ./my_rpg```
 
 ## Goal of the project
 
