@@ -30,6 +30,7 @@
     #include "menu.h"
     #include "csfml.h"
     #include "assets.h"
+    #include "keys.h"
 
     #define INV_CASE_MAX_X 3550
     #define INV_CASE_MAX_Y 2445
@@ -193,6 +194,7 @@
         int menu_depth;
         inventory_t *inventory;
         bool inv_open;
+        keys_t *keys;
     } main_game_t;
 
     typedef struct event_s {
@@ -242,6 +244,7 @@
     sfVector2f direction);
     int draw_circle(particles_t *particle, int radius);
     particles_t *gen_artific(sfRenderWindow *w);
+    int init_keys(main_game_t *game);
 
         /*Map Management*/
 
@@ -431,6 +434,8 @@
     char **buffer_to_array(char buffer[41]);
     char *get_key(char *line);
     char *get_value(char *line);
+
+    /* KeyBinding */
 
     /* Main function */
 
