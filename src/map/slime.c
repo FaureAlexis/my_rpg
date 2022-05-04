@@ -57,7 +57,8 @@ void attack_slime(mobe_t *mob, player_t *player)
 
 void display_slime(mobe_t *tmp, main_game_t *game)
 {
-    if (!tmp->dead && sqrt(pow(game->player->object->position.x - tmp->object->position.x,
+    if (!tmp->dead && sqrt(pow(game->player->object->position.x -
+    tmp->object->position.x,
     2) + pow(game->player->object->position.y - tmp->object->position.y, 2))
     < 80 * 5) {
         tmp->object->rect.top = 64;
@@ -71,7 +72,8 @@ void display_slime(mobe_t *tmp, main_game_t *game)
     }
     tmp->my_clock->time = sfClock_getElapsedTime(tmp->my_clock->clock);
     tmp->my_clock->seconds = tmp->my_clock->time.microseconds / 1000000.0;
-    if ((tmp->dead && tmp->object->rect.left != 128 && tmp->my_clock->seconds >= 0.1)
+    if ((tmp->dead && tmp->object->rect.left != 128 &&
+    tmp->my_clock->seconds >= 0.1)
         || !tmp->dead && tmp->my_clock->seconds >= 0.1) {
         tmp->object->rect.left += 32;
         sfClock_restart(tmp->my_clock->clock);

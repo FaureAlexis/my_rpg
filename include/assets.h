@@ -6,7 +6,7 @@
 */
 
 #ifndef ASSETS_H_
-#define ASSETS_H_
+    #define ASSETS_H_
 
     #define BUTTON_SOUND "assets/sounds/click.ogg"
     #define BUTTON_SS "assets/button/button_spritesheet.png"

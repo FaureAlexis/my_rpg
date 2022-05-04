@@ -6,7 +6,7 @@
 */
 
 #ifndef BUTTON_H_
-#define BUTTON_H_
+    #define BUTTON_H_
     #include "csfml.h"
 
     typedef enum button_size_s {

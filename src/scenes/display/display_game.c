@@ -12,7 +12,8 @@ void add_atrific(map_t *map, main_game_t *game)
     particles_t *tmp = NULL;
 
     map->artificlock->time = sfClock_getElapsedTime(map->artificlock->clock);
-    map->artificlock->seconds = map->artificlock->time.microseconds / 1000000.0;
+    map->artificlock->seconds = map->artificlock->time.microseconds /
+    1000000.0;
     if (map->artificlock->seconds >= 0.1) {
         tmp = gen_artific(game->w);
         sfClock_restart(map->artificlock->clock);
@@ -33,9 +34,12 @@ int display_game(main_game_t *game)
     display_obstacle(game);
     sfRenderWindow_drawSprite(game->w, game->btn->mid->pause_b->sprite, NULL);
     if (game->inv_open == true) {
-        sfSprite_setScale(game->mnu->gameplay->object->sprite, (sfVector2f){0.3, 0.3});
-        sfSprite_setPosition(game->mnu->gameplay->object->sprite, (sfVector2f){80, 100});
-        sfRenderWindow_drawSprite(game->w, game->mnu->gameplay->object->sprite, NULL);
+        sfSprite_setScale(game->mnu->gameplay->object->sprite,
+        (sfVector2f){0.3, 0.3});
+        sfSprite_setPosition(game->mnu->gameplay->object->sprite,
+        (sfVector2f){80, 100});
+        sfRenderWindow_drawSprite(game->w, game->mnu->gameplay->object->sprite,
+        NULL);
     }
     return EXIT_SUCCESS;
 }

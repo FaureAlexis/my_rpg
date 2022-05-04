@@ -59,7 +59,8 @@ static mobe_t *set_info_mob(mobe_t *node, char ***tab, int i)
     sfRectangleShape_setSize(node->hitbox_shape,
     (sfVector2f){node->hitbox.width / 2.2, node->hitbox.height / 2.4});
     sfRectangleShape_setPosition(node->hitbox_shape,
-    (sfVector2f){node->object->position.x - 30, node->object->position.y - 20});
+    (sfVector2f){node->object->position.x - 30,
+    node->object->position.y - 20});
     sfRectangleShape_setFillColor(node->hitbox_shape,
     sfColor_fromRGBA(255, 0, 0, 100));
     return node;

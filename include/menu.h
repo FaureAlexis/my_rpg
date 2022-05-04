@@ -6,7 +6,7 @@
 */
 
 #ifndef MENU_H_
-#define MENU_H_
+    #define MENU_H_
     #include "csfml.h"
     #include "game_object.h"
 
