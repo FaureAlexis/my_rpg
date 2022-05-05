@@ -29,6 +29,15 @@ int write_data(char *key, char *value, FILE *file)
     return EXIT_SUCCESS;
 }
 
+int write_settings2(FILE *file, char *vol)
+{
+    if (!file || !vol)
+        return EPITECH_ERROR;
+    if (write_data("\nvolume", vol, file) == 84)
+        return EPITECH_ERROR;
+    return EXIT_SUCCESS;
+}
+
 int write_settings(FILE *file, char *fps, char *x, char *y)
 {
     if (!file || !fps || !x || !y)
@@ -49,6 +58,7 @@ int save_settings(main_game_t *game)
     char *fps = NULL;
     char *res_x = NULL;
     char *res_y = NULL;
+    char *vol = NULL;
     FILE *file = NULL;
 
     if (!game)
@@ -56,10 +66,12 @@ int save_settings(main_game_t *game)
     fps = my_int_to_str(game->settings->fps);
     res_x = my_int_to_str(game->settings->res_x);
     res_y = my_int_to_str(game->settings->res_y);
+    vol = my_int_to_str(game->vol->volume);
     file = open_save(".settings.rpg");
     if (fps == NULL || res_x == NULL || res_y == NULL || !file)
         return EPITECH_ERROR;
-    if (write_settings(file, fps, res_x, res_y) == 84 || fclose(file) == EOF)
+    if (write_settings(file, fps, res_x, res_y) == 84 ||
+    write_settings2(file, vol) || fclose(file) == EOF)
         return EPITECH_ERROR;
     return EXIT_SUCCESS;
 }
