@@ -19,5 +19,7 @@ int starting_main_menu_scene(main_game_t *game)
     game->skin->red_c = 255;
     game->skin->green_c = 255;
     game->skin->blue_c = 255;
+    sfView_reset(game->basic_view, (sfFloatRect){0, 0, 1920, 1080});
+    sfRenderWindow_setView(game->w, game->basic_view);
     return 0;
 }

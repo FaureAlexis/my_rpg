@@ -8,8 +8,8 @@
 #include "rpg.h"
 
 static const event_t event_array[] = {
-    {.type = sfEvtClosed, .events = &close_window},
-    {.type = -1, .events = NULL}
+    {.type = sfEvtClosed, .events = &close_window, .index = 0},
+    {.type = -1, .events = NULL, .index = -1}
 };
 
 static int pause_scene_event(main_game_t *game)
@@ -63,7 +63,7 @@ static int pause_check_events(main_game_t *game, sfVector2i mouse_pos)
 {
     while (sfRenderWindow_pollEvent(game->w, &game->event)) {
         if (game->event.type == sfEvtKeyPressed &&
-        game->event.key.code == sfKeyEscape) {
+        game->event.key.code == game->keys->pause) {
             clicked_state_pause(game, game->btn->big->return_b->shape,
             (sfVector2f){500, 330});
             game->player->next_scene = GAME_SCENE;
@@ -73,8 +73,8 @@ static int pause_check_events(main_game_t *game, sfVector2i mouse_pos)
             return manage_button_action(game, mouse_pos);
         if (pause_scene_event(game) != game->player->current_scene)
             return game->player->next_scene;
-        if (game->event.type == sfEvtClosed || (game->event.key.code == sfKeyQ
-        && game->event.type == sfEvtKeyPressed)) {
+        if (game->event.type == sfEvtClosed || (game->event.key.code
+        == game->keys->quit && game->event.type == sfEvtKeyPressed)) {
             return close_window(game);
         }
     }

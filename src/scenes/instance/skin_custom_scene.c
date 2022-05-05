@@ -8,8 +8,8 @@
 #include "rpg.h"
 
 static const event_t event_array[] = {
-    {.type = sfEvtClosed, .events = &close_window},
-    {.type = -1, .events = NULL}
+    {.type = sfEvtClosed, .events = &close_window, .index = 0},
+    {.type = -1, .events = NULL, .index = -1}
 };
 
 static int skin_scene_event(main_game_t *game)
@@ -63,7 +63,7 @@ static int skin_check_events(main_game_t *game, sfVector2i mouse_pos)
             return manage_button_action(game, mouse_pos);
         if (skin_scene_event(game) != game->player->current_scene)
             return game->player->next_scene;
-        if (game->event.key.code == sfKeyQ && game->event.type
+        if (game->event.key.code == game->keys->quit && game->event.type
         == sfEvtKeyPressed)
             return close_window(game);
     }
