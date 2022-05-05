@@ -135,6 +135,9 @@
         my_clock_t *p_clock;
         particles_t *dust;
         bool attack_action;
+        sfMusic *walk;
+        sfMusic *death;
+        sfMusic *sword;
     } player_t;
 
     typedef struct settings_s {
@@ -334,6 +337,8 @@
     mouse_pos);
     int manage_volume_right(main_game_t *game, sfVector2i mouse_pos);
     int manage_volume_left(main_game_t *game, sfVector2i mouse_pos);
+    int mute_all(main_game_t *game, sfVector2i mouse_pos);
+    int unmute_all(main_game_t *game, sfVector2i mouse_pos);
     int manage_fps_plus(main_game_t *game, sfVector2i mouse_pos);
     int display_fps(main_game_t *game);
     int manage_reso_plus(main_game_t *game, sfVector2i mouse_pos);
@@ -426,7 +431,8 @@
 
     /* Free data */
 
-    void free_game_struct(main_game_t *game);
+    int free_game_struct(main_game_t *game);
+    int free_player(player_t *player);
     void destroy_all_button(main_game_t *game);
     void destroy_all_menu(main_game_t *game);
     void free_tab(char ***tab);
