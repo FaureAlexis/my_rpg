@@ -10,23 +10,21 @@
 static void pos_fullscreen(main_game_t *game)
 {
     sfRectangleShape_setPosition(game->btn->mid->pause_b->shape,
-    (sfVector2f){10, 10});
-}
-
-static void pos_screen(main_game_t *game)
-{
-    sfRectangleShape_setPosition(game->btn->mid->pause_b->shape,
-    (sfVector2f){7.5, 7.5});
+    game->btn->mid->pause_b->position);
 }
 
 void pos_button_game(main_game_t *game)
 {
+    float win_x = 1920;
+    float win_y = 1080;
     sfVector2u size = sfRenderWindow_getSize(game->w);
 
+    game->btn->mid->pause_b->position = (sfVector2f){10, 10};
     sfSprite_setPosition(game->btn->mid->pause_b->sprite,
-    (sfVector2f){10, 10});
-    if (size.x == 1920)
+    game->btn->mid->pause_b->position);
+    if (size.x == 1920 && size.y == 1080)
         pos_fullscreen(game);
     else
-        pos_screen(game);
+        resize_all_buttons(game, ((float){size.x} / win_x),
+        ((float){size.y} / win_y));
 }

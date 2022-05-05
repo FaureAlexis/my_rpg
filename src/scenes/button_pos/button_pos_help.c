@@ -10,29 +10,26 @@
 static void pos_fullscreen(main_game_t *game)
 {
     sfRectangleShape_setPosition(game->btn->big->exit_b->shape,
-    (sfVector2f){1000, 760});
+    game->btn->big->exit_b->position);
     sfRectangleShape_setPosition(game->btn->big->return_b->shape,
-    (sfVector2f){520, 760});
-}
-
-static void pos_screen(main_game_t *game)
-{
-    sfRectangleShape_setPosition(game->btn->big->exit_b->shape,
-    (sfVector2f){750, 570});
-    sfRectangleShape_setPosition(game->btn->big->return_b->shape,
-    (sfVector2f){390, 570});
+    game->btn->big->return_b->position);
 }
 
 void pos_button_help(main_game_t *game)
 {
+    float win_x = 1920;
+    float win_y = 1080;
     sfVector2u size = sfRenderWindow_getSize(game->w);
 
+    game->btn->big->exit_b->position = (sfVector2f){1000, 760};
+    game->btn->big->return_b->position = (sfVector2f){520, 760};
     sfSprite_setPosition(game->btn->big->exit_b->sprite,
-    (sfVector2f){1000, 760});
+    game->btn->big->exit_b->position);
     sfSprite_setPosition(game->btn->big->return_b->sprite,
-    (sfVector2f){520, 760});
-    if (size.x == 1920)
+    game->btn->big->return_b->position);
+    if (size.x == 1920 && size.y == 1080)
         pos_fullscreen(game);
     else
-        pos_screen(game);
+        resize_all_big_buttons(game, ((float){size.x} / win_x),
+        ((float){size.y} / win_y));
 }
