@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-void move_obstacle(map_t *map, player_t *player, sfVector2f move)
+void move_obstacle(map_t *map, sfVector2f move)
 {
     obstacle_t *obstacle = map->obstacle;
 

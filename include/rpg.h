@@ -297,7 +297,7 @@
     int player_check_key(sfKeyCode key);
     int set_player_movements(main_game_t *game, player_t *player,
     sfEvent event);
-    void move_obstacle(map_t *map, player_t *player, sfVector2f move);
+    void move_obstacle(map_t *map, sfVector2f move);
     void move_speobstacle(map_t *map, sfVector2f move);
     void move_mob(map_t *map, sfVector2f move);
     int move_up(map_t *map, player_t *player);
