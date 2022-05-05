@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-static const bool error_ressources(void)
+static bool error_ressources(void)
 {
     if (open(BUTTON_SOUND, O_RDONLY) == -1
     || open(BUTTON_SS, O_RDONLY) == -1
@@ -23,8 +23,10 @@ static const bool error_ressources(void)
     return false;
 }
 
-int manage_errors(const int argc, char const *argv[], char **env)
+int manage_errors(const int argc, char **env)
 {
+    if (argc != 1)
+        return EPITECH_ERROR;
     if (error_ressources() == true) {
         my_printf("my_rpg: Cannot open file.\n");
         return EPITECH_ERROR;

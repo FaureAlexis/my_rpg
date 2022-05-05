@@ -12,8 +12,9 @@ static int launch_win(main_game_t *game)
     game->w = init_window();
     if (game->w == NULL)
         return EPITECH_ERROR;
-    game->view = init_view(game->w);
-    if (game->view == NULL)
+    game->game_view = init_view(game->w, (sfFloatRect){0, 0, 1920, 1080});
+    game->basic_view = init_view(game->w, (sfFloatRect){0, 0, 1920, 1080});
+    if (game->basic_view == NULL || game->game_view == NULL)
         return EPITECH_ERROR;
     return EXIT_SUCCESS;
 }
