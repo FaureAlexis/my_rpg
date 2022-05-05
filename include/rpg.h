@@ -87,7 +87,7 @@
         sfTexture *texture;
         sfColor color;
         struct particles_s *next;
-    }particles_t;
+    } particles_t;
 
     typedef struct speobstacle_s {
         game_object_t *object;
@@ -101,6 +101,7 @@
 
     typedef struct mobe_s {
         game_object_t *object;
+        game_object_t *item;
         sfFloatRect hitbox;
         sfRectangleShape *hitbox_shape;
         my_clock_t *my_clock;
@@ -112,7 +113,7 @@
         int type;
         bool dead;
         struct mobe_s *next;
-    }mobe_t;
+    } mobe_t;
 
     typedef struct map_s {
         char ***tab;

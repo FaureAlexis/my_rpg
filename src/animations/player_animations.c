@@ -65,7 +65,7 @@ static int fight_enemy(player_t *player, mobe_t *mob)
             mob_pos = sfSprite_getPosition(tmp->object->sprite);
             offset = sqrt(pow(player_pos.x - mob_pos.x, 2)
             + pow(player_pos.y - mob_pos.y, 2));
-            if (offset <= 60)
+            if (offset <= 80)
                 tmp->hp -= player->attack;
         }
         tmp = tmp->next;
