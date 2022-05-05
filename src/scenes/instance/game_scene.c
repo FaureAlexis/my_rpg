@@ -37,7 +37,6 @@ static int game_scene_event(main_game_t *game)
     && game->event.type == sfEvtKeyPressed) {
         clicked_state_game(game, game->btn->mid->pause_b->shape,
         (sfVector2f){10, 10});
-        sfMusic_play(game->btn->mid->pause_b->sound);
         game->player->next_scene = PAUSE_SCENE;
         return game->player->next_scene;
     }
@@ -60,7 +59,6 @@ static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
     if (button_is_clicked(game->btn->mid->pause_b, mouse_pos) == true) {
         clicked_state_game(game, game->btn->mid->pause_b->shape,
         (sfVector2f){10, 10});
-        sfMusic_play(game->btn->mid->pause_b->sound);
         game->player->next_scene = PAUSE_SCENE;
         return game->player->next_scene;
     }
@@ -92,8 +90,11 @@ int game_scene(main_game_t *game)
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);
-        if (game_check_events(game, mouse_pos) != game->player->current_scene)
+        if (game_check_events(game, mouse_pos)
+        != game->player->current_scene) {
+            sfMusic_stop(game->btn->big->play_b->sound);
             return game->player->next_scene;
+        }
         player_animations(game->player, game->map->mobe);
         display_game(game);
         sfRenderWindow_display(game->w);

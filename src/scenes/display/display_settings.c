@@ -51,6 +51,8 @@ int display_settings(main_game_t *game)
     sfRenderWindow_drawSprite(game->w, game->btn->mid->help_b->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->mid->keybind_b->sprite,
     NULL);
+    sfRenderWindow_drawSprite(game->w, game->btn->mid->mute_b->sprite, NULL);
+    sfRenderWindow_drawSprite(game->w, game->btn->mid->unmute_b->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->big->return_b->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->big->exit_b->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->sml->right_b->sprite, NULL);

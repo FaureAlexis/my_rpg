@@ -46,7 +46,7 @@ sfVector2f next)
     return 0;
 }
 
-bool obstacle_collision(main_game_t *game, sfVector2f next)
+bool player_obstacle_collision(main_game_t *game, sfVector2f next)
 {
     sfFloatRect hitbox = {0, 0, 0, 0};
 

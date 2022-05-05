@@ -80,8 +80,11 @@ int skin_scene(main_game_t *game)
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);
         player_animations(game->player, game->map->mobe);
-        if (skin_check_events(game, mouse_pos) != game->player->current_scene)
+        if (skin_check_events(game, mouse_pos)
+        != game->player->current_scene) {
+            sfMusic_stop(game->btn->big->play_b->sound);
             return game->player->next_scene;
+        }
         display_skin_cus(game);
         sfRenderWindow_display(game->w);
     }

@@ -26,21 +26,18 @@ static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
     if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
         clicked_state_pause(game, game->btn->big->return_b->shape,
         (sfVector2f){500, 330});
-        sfMusic_play(game->btn->big->return_b->sound);
         game->player->next_scene = GAME_SCENE;
         return game->player->next_scene;
     }
     if (button_is_clicked(game->btn->big->settings_b, mouse_pos) == true) {
         clicked_state_pause(game, game->btn->big->settings_b->shape,
         (sfVector2f){1010, 330});
-        sfMusic_play(game->btn->big->settings_b->sound);
         game->player->next_scene = SETTINGS_SCENE;
         return game->player->next_scene;
     }
     if (button_is_clicked(game->btn->mid->main_b, mouse_pos) == true) {
         clicked_state_pause(game, game->btn->mid->main_b->shape,
         (sfVector2f){1800, 0});
-        sfMusic_play(game->btn->mid->main_b->sound);
         game->player->next_scene = MENU_SCENE;
         sfSprite_setColor(game->player->object->sprite,
         sfColor_fromRGB(255, 255, 255));
@@ -69,7 +66,6 @@ static int pause_check_events(main_game_t *game, sfVector2i mouse_pos)
         game->event.key.code == sfKeyEscape) {
             clicked_state_pause(game, game->btn->big->return_b->shape,
             (sfVector2f){500, 330});
-            sfMusic_play(game->btn->big->return_b->sound);
             game->player->next_scene = GAME_SCENE;
             return game->player->next_scene;
         }
@@ -94,8 +90,11 @@ int pause_scene(main_game_t *game)
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);
-        if (pause_check_events(game, mouse_pos) != game->player->current_scene)
+        if (pause_check_events(game, mouse_pos)
+        != game->player->current_scene) {
+            sfMusic_stop(game->btn->mid->pause_b->sound);
             return game->player->next_scene;
+        }
         display_pause(game);
         sfRenderWindow_display(game->w);
     }

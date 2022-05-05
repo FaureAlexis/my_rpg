@@ -72,19 +72,19 @@ int move_left(map_t *map, player_t *player)
 int move_player(main_game_t *game, const movements_t *movements)
 {
     if (movements->key == sfKeyUp && game->map->map->position.y <= 597 &&
-    obstacle_collision(game, (sfVector2f){0, 10}) == false) {
+    player_obstacle_collision(game, (sfVector2f){0, 10}) == false) {
         move_up(game->map, game->player);
     }
     if (movements->key == sfKeyDown && game->map->map->position.y >= -3393 &&
-    obstacle_collision(game, (sfVector2f){0, -10}) == false) {
+    player_obstacle_collision(game, (sfVector2f){0, -10}) == false) {
         move_down(game->map, game->player);
     }
     if (movements->key == sfKeyRight && game->map->map->position.x >= -3088 &&
-    obstacle_collision(game, (sfVector2f){-10, 0}) == false) {
+    player_obstacle_collision(game, (sfVector2f){-10, 0}) == false) {
         move_right(game->map, game->player);
     }
     if (movements->key == sfKeyLeft && game->map->map->position.x <= 912 &&
-    obstacle_collision(game, (sfVector2f){10, 0}) == false) {
+    player_obstacle_collision(game, (sfVector2f){10, 0}) == false) {
         move_left(game->map, game->player);
     }
     return EXIT_SUCCESS;
