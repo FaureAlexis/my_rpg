@@ -272,8 +272,10 @@
     int set_big_tree_hitbox(obstacle_t *tmp);
     int set_long_tree_hitbox(obstacle_t *tmp);
     int set_small_tree_hitbox(obstacle_t *tmp);
-    bool obstacle_collision(main_game_t *game, sfVector2f next);
-    bool mob_collision(main_game_t *game, sfVector2f next);
+    bool player_obstacle_collision(main_game_t *game, sfVector2f next);
+    bool all_player_obstacle_collision(main_game_t *game);
+    bool mob_obstacle_collision(main_game_t *game, sfVector2f next);
+    bool all_mob_obstacle_collision(main_game_t *game);
 
     /*Animations*/
 
