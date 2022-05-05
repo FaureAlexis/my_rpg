@@ -24,16 +24,11 @@ void limit_skeleton(mobe_t *mob, player_t *player)
 
 void attack_skeleton(mobe_t *mob, player_t *player)
 {
+    sfSprite_setOrigin(mob->object->sprite,
+    (sfVector2f){mob->object->rect.width / 3, mob->object->rect.height / 2});
     if (mob->attack == true) {
         limit_skeleton(mob, player);
-        mob->object->position.x += (player->object->position.x -
-        mob->object->position.x) / (sqrt(pow(player->object->position.x -
-        mob->object->position.x, 2) + pow(player->object->position.y -
-        mob->object->position.y, 2)));
-        mob->object->position.y += (player->object->position.y -
-        mob->object->position.y) / (sqrt(pow(player->object->position.x -
-        mob->object->position.x, 2) + pow(player->object->position.y -
-        mob->object->position.y, 2)));
+        mob_action_move(mob, player);
         sfRectangleShape_setPosition(mob->hitbox_shape,
         (sfVector2f){mob->object->position.x - 30,
         mob->object->position.y - 20});

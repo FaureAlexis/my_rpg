@@ -16,18 +16,20 @@ void display_mob(main_game_t *game)
             display_slime(tmp, game);
         if (tmp->type == 1)
             display_skeleton(tmp, game);
+        if (tmp->type == 10)
+            display_hasbulla(tmp, game);
         tmp = tmp->next;
     }
 }
 
 static mobe_t *set_info_mob(mobe_t *node, char ***tab, int i)
 {
-    node->object->scale = (sfVector2f){4, 4};
     node->object->position.x = my_atoi(tab[i][CORD_X]);
     node->object->position.y = my_atoi(tab[i][CORD_Y]);
     node->hp = my_atoi(tab[i][HP]);
     node->power = my_atoi(tab[i][POWER]);
     node->type = my_atoi(tab[i][TYPE]);
+    node->object->scale = (sfVector2f){-4, 4};
     sfSprite_setScale(node->object->sprite, node->object->scale);
     sfSprite_setOrigin(node->object->sprite,
     (sfVector2f){my_atoi(tab[i][REC_WIDTH]) / 2,

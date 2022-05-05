@@ -137,7 +137,8 @@ SRC_MAP					=	map/game_test.c \
 							map/skeleton.c \
 							map/slime.c \
 							map/spe_obstacle.c \
-							map/move.c
+							map/move.c			\
+							map/hasbulla.c
 
 SRC_SAVE				=	save/saving/open_file.c \
 							save/saving/save_settings.c \

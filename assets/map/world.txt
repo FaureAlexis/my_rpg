@@ -160,7 +160,29 @@ assets/map/tilesets/walls/walls.png -1041 502 16 80 16 16
 assets/map/tilesets/walls/walls.png -961 502 32 80 16 16
 assets/map/tilesets/walls/walls.png -881 502 32 80 16 16
 assets/map/tilesets/walls/walls.png -801 502 32 80 16 16
-assets/map/tilesets/walls/walls.png -641 502 32 80 16 16&
+assets/map/tilesets/walls/walls.png -641 502 32 80 16 16
 assets/map/tilesets/walls/walls.png -576 502 48 80 16 16
 assets/map/tilesets/walls/wooden_door.png -721 502 0 0 16 16 1 1
 assets/map/objects/chest_01.png -881 194 0 0 16 16 1 2
+assets/sprites/characters/Sans_titre.png 1031 2264 30 110 105 65 40 100 10
+assets/map/tilesets/plains.png -1048 2573 32 144 16 16
+assets/map/tilesets/plains.png -968 2573 32 144 16 16
+assets/map/tilesets/plains.png -888 2573 32 144 16 16
+assets/map/tilesets/plains.png -808 2573 32 144 16 16
+assets/map/tilesets/plains.png -728 2573 48 144 16 16
+assets/map/tilesets/plains.png -1048 2493 32 144 16 16
+assets/map/tilesets/plains.png -968 2493 64 144 16 16
+assets/map/tilesets/plains.png -888 2493 32 128 16 16
+assets/map/tilesets/plains.png -808 2493 32 128 16 16
+assets/map/tilesets/plains.png -728 2493 32 128 16 16
+assets/map/tilesets/plains.png -648 2493 48 160 16 16
+assets/map/tilesets/plains.png -1048 2413 64 144 16 16
+assets/map/tilesets/plains.png -968 2413 48 128 16 16
+assets/map/tilesets/plains.png -648 2413 16 128 16 16
+assets/map/tilesets/plains.png -568 2413 48 176 16 16
+assets/map/tilesets/plains.png -1048 2333 48 144 16 16
+assets/sprites/characters/slimered.png -808 2333 0 0 32 32 10 10 0
+assets/map/tilesets/plains.png -1048 2253 48 128 16 16
+assets/map/objects/objects.png -968 2173 0 16 16 16
+assets/map/objects/objects.png -488 2333 32 16 16 16
+assets/map/objects/objects.png -568 2173 16 16 16 16

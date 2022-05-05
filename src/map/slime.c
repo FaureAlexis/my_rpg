@@ -7,6 +7,23 @@
 
 #include "rpg.h"
 
+void mob_action_move(mobe_t *mob, player_t *player)
+{
+    float x = (player->object->position.x -
+    mob->object->position.x) / (sqrt(pow(player->object->position.x -
+    mob->object->position.x, 2) + pow(player->object->position.y -
+    mob->object->position.y, 2)));
+    float y = (player->object->position.y -
+    mob->object->position.y) / (sqrt(pow(player->object->position.x -
+    mob->object->position.x, 2) + pow(player->object->position.y -
+    mob->object->position.y, 2)));
+
+    mob->object->position.x += x;
+    mob->object->position.y += y;
+    mob->object->scale = (sfVector2f){4 * (x / sqrt(pow(x, 2))), 4};
+    sfSprite_setScale(mob->object->sprite, mob->object->scale);
+}
+
 static void limit_slime(mobe_t *mob, player_t *player)
 {
     if (!mob || !player)
@@ -28,14 +45,7 @@ void attack_slime(mobe_t *mob, player_t *player)
 {
     limit_slime(mob, player);
     if (mob->hp > 0 && mob->attack == true) {
-        mob->object->position.x += (player->object->position.x -
-        mob->object->position.x) / (sqrt(pow(player->object->position.x -
-        mob->object->position.x, 2) + pow(player->object->position.y -
-        mob->object->position.y, 2)));
-        mob->object->position.y += (player->object->position.y -
-        mob->object->position.y) / (sqrt(pow(player->object->position.x -
-        mob->object->position.x, 2) + pow(player->object->position.y -
-        mob->object->position.y, 2)));
+        mob_action_move(mob, player);
         sfRectangleShape_setPosition(mob->hitbox_shape,
         (sfVector2f){mob->object->position.x - 30,
         mob->object->position.y - 20});

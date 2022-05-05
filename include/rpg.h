@@ -268,11 +268,13 @@
     void display_mob(main_game_t *game);
     void display_skeleton(mobe_t *tmp, main_game_t *game);
     void display_slime(mobe_t *tmp, main_game_t *game);
+    void display_hasbulla(mobe_t *hasbulla, main_game_t *game);
     speobstacle_t *add_node_to_speobstacle(speobstacle_t *head,
     speobstacle_t *node);
     obstacle_t *add_node_to_obstacle(obstacle_t *head, obstacle_t *node);
     mobe_t *add_node_to_mobe(mobe_t *head, mobe_t *node);
     int parse_tab(map_t *map, char ***tab, int i);
+    void mob_action_move(mobe_t *mob, player_t *player);
         /*Collision*/
     int set_big_tree_hitbox(obstacle_t *tmp);
     int set_long_tree_hitbox(obstacle_t *tmp);
