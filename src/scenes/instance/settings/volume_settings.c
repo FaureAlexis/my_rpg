@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-static void change_volume(main_game_t *game)
+void change_volume(main_game_t *game)
 {
     sfMusic_setVolume(game->mnu->main->theme, game->vol->volume);
     sfMusic_setVolume(game->mnu->gameplay->theme, game->vol->volume);
@@ -58,11 +58,11 @@ int manage_volume_left(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->sml->left_b, mouse_pos) == true
     && game->vol->volume > 0) {
-        game->vol->volume -= 10;
+        game->vol->volume -= 5;
         sfMusic_stop(game->btn->sml->right_b->sound);
         sfMusic_play(game->btn->sml->left_b->sound);
         change_volume(game);
-        game->vol->size.x -= 70;
+        game->vol->size.x -= 35;
         sfRectangleShape_setSize(game->vol->volume_rect, game->vol->size);
         sfRectangleShape_setPosition(game->vol->volume_rect, game->vol->pos);
     }
@@ -73,11 +73,11 @@ int manage_volume_right(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->sml->right_b, mouse_pos) == true
     && game->vol->volume < 100) {
-        game->vol->volume += 10;
+        game->vol->volume += 5;
         sfMusic_stop(game->btn->sml->left_b->sound);
         sfMusic_play(game->btn->sml->right_b->sound);
         change_volume(game);
-        game->vol->size.x += 70;
+        game->vol->size.x += 35;
         sfRectangleShape_setSize(game->vol->volume_rect, game->vol->size);
         sfRectangleShape_setPosition(game->vol->volume_rect, game->vol->pos);
     }

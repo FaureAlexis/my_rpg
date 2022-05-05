@@ -45,6 +45,7 @@
         sfVector2f size;
         sfVector2f pos;
         sfRectangleShape *volume_rect;
+        sfRectangleShape *thickness;
     } vol_t;
 
     typedef struct skin_custom_s {
@@ -336,6 +337,7 @@
     int display_keybind(main_game_t *game);
     int change_menu(main_game_t *game, sfRenderWindow *window, sfVector2i
     mouse_pos);
+    void change_volume(main_game_t *game);
     int manage_volume_right(main_game_t *game, sfVector2i mouse_pos);
     int manage_volume_left(main_game_t *game, sfVector2i mouse_pos);
     int mute_all(main_game_t *game, sfVector2i mouse_pos);

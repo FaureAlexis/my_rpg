@@ -32,6 +32,13 @@ int display_settings2(main_game_t *gme)
 {
     sfRenderWindow_drawSprite(gme->w, gme->btn->sml->plus_r_b->sprite, NULL);
     sfRenderWindow_drawSprite(gme->w, gme->btn->sml->minus_r_b->sprite, NULL);
+    sfRenderWindow_drawSprite(gme->w, gme->btn->mid->help_b->sprite, NULL);
+    sfRenderWindow_drawSprite(gme->w, gme->btn->mid->keybind_b->sprite,
+    NULL);
+    sfRenderWindow_drawSprite(gme->w, gme->btn->mid->mute_b->sprite, NULL);
+    sfRenderWindow_drawSprite(gme->w, gme->btn->mid->unmute_b->sprite, NULL);
+    sfRenderWindow_drawSprite(gme->w, gme->btn->big->return_b->sprite, NULL);
+    sfRenderWindow_drawSprite(gme->w, gme->btn->big->exit_b->sprite, NULL);
     display_resolution(gme);
 
     return EXIT_SUCCESS;
@@ -48,18 +55,12 @@ int display_settings(main_game_t *game)
     NULL);
     sfRenderWindow_drawSprite(game->w, game->mnu->settings->object->sprite,
     NULL);
-    sfRenderWindow_drawSprite(game->w, game->btn->mid->help_b->sprite, NULL);
-    sfRenderWindow_drawSprite(game->w, game->btn->mid->keybind_b->sprite,
-    NULL);
-    sfRenderWindow_drawSprite(game->w, game->btn->mid->mute_b->sprite, NULL);
-    sfRenderWindow_drawSprite(game->w, game->btn->mid->unmute_b->sprite, NULL);
-    sfRenderWindow_drawSprite(game->w, game->btn->big->return_b->sprite, NULL);
-    sfRenderWindow_drawSprite(game->w, game->btn->big->exit_b->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->sml->right_b->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->sml->left_b->sprite, NULL);
-    sfRenderWindow_drawRectangleShape(game->w, game->vol->volume_rect, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->sml->plus_b->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->sml->minus_b->sprite, NULL);
+    sfRenderWindow_drawRectangleShape(game->w, game->vol->thickness, NULL);
+    sfRenderWindow_drawRectangleShape(game->w, game->vol->volume_rect, NULL);
     display_settings2(game);
     return EXIT_SUCCESS;
 }

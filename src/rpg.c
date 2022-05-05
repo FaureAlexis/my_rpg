@@ -28,6 +28,7 @@ int rpg(void)
         return EPITECH_ERROR;
     if (init_all(game) == EPITECH_ERROR || launch_win(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
+    change_volume(game);
     sfMusic_play(game->mnu->main->theme);
     while (change_scene != -1 && change_scene != 84) {
         scene = manage_scenes(0, change_scene);
