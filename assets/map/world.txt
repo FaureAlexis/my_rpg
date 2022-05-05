@@ -5,24 +5,33 @@ assets/map/objects/objects.png -165 987 128 96 32 48
 assets/map/objects/objects.png -245 1747 128 96 32 48
 assets/map/objects/objects.png -5 1787 128 96 32 48
 assets/map/objects/objects.png 2234 -1187 128 96 32 48
+assets/map/objects/objects.png 1914 -1107 128 96 32 48
 assets/map/objects/objects.png 2634 -627 128 96 32 48
 assets/map/objects/objects.png 2634 -147 128 96 32 48
-assets/map/objects/objects.png 1334 -587 128 96 32 48
 assets/map/objects/objects.png 235 1827 128 96 32 48
-assets/map/objects/objects.png 1700 922 0 79 48 64
-assets/map/objects/objects.png 1020 192 0 79 48 64
-assets/map/objects/objects.png 2040 1262 48 79 48 64
+assets/map/objects/objects.png 1334 -587 128 96 32 48
+assets/map/objects/objects.png 1214 -307 128 96 32 48
+assets/map/objects/objects.png 974 -467 96 112 32 32
+assets/map/objects/objects.png 1654 -747 96 112 32 32
+assets/map/objects/objects.png 1414 -987 96 112 32 32
+assets/map/objects/objects.png 1094 -867 96 112 32 32
+assets/map/objects/objects.png 1700 922 0 80 48 64
+assets/map/objects/objects.png 1020 192 0 80 48 64
+assets/map/objects/objects.png 2040 1262 48 80 48 64
 assets/map/objects/objects.png 848 1222 96 112 32 32
 assets/map/objects/objects.png 2680 550 96 112 32 32
-assets/map/objects/objects.png 1380 1102 0 79 48 64
-assets/map/objects/objects.png 360 1142 0 79 48 64
-assets/map/objects/objects.png 40 -160 48 79 48 64
-assets/map/objects/objects.png -120 -560 0 79 48 64
-assets/map/objects/objects.png 800 -80 0 79 48 64
-assets/map/objects/objects.png 524 72 48 79 48 64
-assets/map/objects/objects.png 2735 2380 0 79 48 64
-assets/map/objects/objects.png 2495 2060 48 79 48 64
-assets/map/objects/objects.png 1825 2200 48 79 48 64
+assets/map/objects/objects.png 1380 1102 0 80 48 64
+assets/map/objects/objects.png 360 1142 0 80 48 64
+assets/map/objects/objects.png 40 -160 48 80 48 64
+assets/map/objects/objects.png -120 -560 0 80 48 64
+assets/map/objects/objects.png 800 -80 0 80 48 64
+assets/map/objects/objects.png 524 72 48 80 48 64
+assets/map/objects/objects.png 2735 2380 0 80 48 64
+assets/map/objects/objects.png 2495 2060 48 80 48 64
+assets/map/objects/objects.png 1825 2200 48 80 48 64
+assets/map/objects/objects.png -536 -627 96 80 32 16
+assets/map/objects/objects.png -856 -1107 48 144 48 64
+assets/map/objects/chest_01.png -856 -1187 0 0 16 16 1 2
 assets/map/tilesets/plains.png 1980 -40 48 80 16 16
 assets/map/tilesets/plains.png 1980 40 48 80 16 16
 assets/map/tilesets/plains.png 1980 120 48 80 16 16
@@ -119,7 +128,8 @@ assets/map/tilesets/walls/walls.png 1136 1805 32 48 16 16
 assets/map/tilesets/walls/walls.png 1216 1805 32 48 16 16
 assets/map/tilesets/walls/walls.png 1271 1805 48 48 16 16
 assets/sprites/characters/slime.png 300 200 0 0 32 32 10 10 0
-assets/sprites/characters/slime.png 500 -200 0 0 32 32 10 10 0
+assets/sprites/characters/slime.png 650 -200 0 0 32 32 10 10 0
+assets/sprites/characters/slime.png 500 -400 0 0 32 32 10 10 0
 assets/sprites/characters/slime.png 800 -600 0 0 32 32 10 10 0
 assets/sprites/characters/slime.png -300 -1200 0 0 32 32 10 10 0
 assets/sprites/characters/slimered.png -700 -1100 0 0 32 32 10 10 0
