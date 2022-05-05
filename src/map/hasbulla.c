@@ -11,6 +11,7 @@ void limit_hasbulla(mobe_t *mob, player_t *player)
 {
     if (mob->object->rect.left >= 1920) {
         mob->object->rect.left = 30;
+        mob->object->position.x -= 18;
     }
 }
 
@@ -29,7 +30,8 @@ void display_hasbulla(mobe_t *mob, main_game_t *game)
         sfClock_restart(mob->attack_clock->clock);
     }
     if (mob->my_clock->seconds >= 0.1){
-        mob->object->rect.left += 105;
+        mob->object->rect.left += 106;
+        mob->object->position.x += 1;
         sfClock_restart(mob->my_clock->clock);
     }
     sfSprite_setTextureRect(mob->object->sprite, mob->object->rect);
