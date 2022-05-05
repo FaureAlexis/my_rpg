@@ -11,8 +11,11 @@ int starting_main_menu_scene(main_game_t *game)
 {
     game->player->current_scene = MENU_SCENE;
     game->menu_depth = 0;
-    sfMusic_stop(game->btn->big->return_b->sound);
-    sfMusic_stop(game->btn->mid->main_b->sound);
+    if (sfMusic_getStatus(game->mnu->gameplay->theme) == sfPaused) {
+        sfMusic_pause(game->mnu->gameplay->theme);
+        sfMusic_play(game->mnu->main->theme);
+    }
+    sfMusic_play(game->btn->mid->main_b->sound);
     game->skin->red_c = 255;
     game->skin->green_c = 255;
     game->skin->blue_c = 255;

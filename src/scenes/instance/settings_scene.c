@@ -26,7 +26,6 @@ static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
     if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
         clicked_state_settings(game, game->btn->big->return_b->shape,
         (sfVector2f){520, 780});
-        sfMusic_play(game->btn->big->return_b->sound);
         if (game->menu_depth == 1)
             game->player->next_scene = MENU_SCENE;
         else
@@ -35,15 +34,13 @@ static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
     }
     if (button_is_clicked(game->btn->mid->keybind_b, mouse_pos) == true) {
         clicked_state_settings(game, game->btn->mid->keybind_b->shape,
-        (sfVector2f){1500, 400});
-        sfMusic_play(game->btn->mid->help_b->sound);
+        (sfVector2f){1500, 600});
         game->player->next_scene = KEYBIND_SCENE;
         return game->player->next_scene;
     }
     if (button_is_clicked(game->btn->mid->help_b, mouse_pos) == true) {
         clicked_state_settings(game, game->btn->mid->help_b->shape,
         (sfVector2f){10, 10});
-        sfMusic_play(game->btn->mid->help_b->sound);
         game->player->next_scene = HELP_SCENE;
         return game->player->next_scene;
     }
@@ -60,6 +57,8 @@ static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
         (sfVector2f){1000, 780});
         return close_window(game);
     }
+    mute_all(game, mouse_pos);
+    unmute_all(game, mouse_pos);
     manage_volume_right(game, mouse_pos);
     manage_fps_plus(game, mouse_pos);
     manage_reso_plus(game, mouse_pos);
@@ -91,8 +90,10 @@ int settings_scene(main_game_t *game)
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);
         if (settings_check_events(game, mouse_pos)
-        != game->player->current_scene)
+        != game->player->current_scene) {
+            sfMusic_stop(game->btn->big->settings_b->sound);
             return game->player->next_scene;
+        }
         display_settings(game);
         sfRenderWindow_display(game->w);
     }

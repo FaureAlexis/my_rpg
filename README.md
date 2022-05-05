@@ -24,13 +24,13 @@ This project was made thanks to
 ## Install game
 
 ```
-$ git clone https://github.com/NolannB14/my_rpg.git Hasbulla_Quest
+$ git clone https://github.com/NolannB14/my_rpg.git
 ```
 
 ## Run game
 
 ```
-$make; ./my_rpg
+$ make ; ./my_rpg
 ```
 
 ## Goal of the project

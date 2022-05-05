@@ -26,7 +26,6 @@ static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
     if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
         clicked_state_help(game, game->btn->big->return_b->shape,
         (sfVector2f){520, 760});
-        sfMusic_play(game->btn->big->return_b->sound);
         if (game->menu_depth == 1)
             game->player->next_scene = MENU_SCENE;
         else
@@ -65,8 +64,11 @@ int help_scene(main_game_t *game)
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);
-        if (help_check_events(game, mouse_pos) != game->player->current_scene)
+        if (help_check_events(game, mouse_pos)
+        != game->player->current_scene) {
+            sfMusic_stop(game->btn->mid->help_b->sound);
             return game->player->next_scene;
+        }
         display_help(game);
         sfRenderWindow_display(game->w);
     }

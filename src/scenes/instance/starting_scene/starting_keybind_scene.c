@@ -14,5 +14,7 @@ int starting_keybind_scene(main_game_t *game)
         game->menu_depth = 5;
     else
         game->menu_depth = 1;
+    sfMusic_pause(game->mnu->gameplay->theme);
+    sfMusic_play(game->btn->mid->keybind_b->sound);
     return 0;
 }

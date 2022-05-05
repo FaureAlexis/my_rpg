@@ -26,19 +26,16 @@ static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
     if (button_is_clicked(game->btn->big->newsave_b, mouse_pos) == true) {
         clicked_state_save(game, game->btn->big->newsave_b->shape,
         (sfVector2f){540, 450});
-        sfMusic_play(game->btn->big->settings_b->sound);
         return game->player->next_scene = SKIN_SCENE;
     }
     if (button_is_clicked(game->btn->big->load_b, mouse_pos) == true) {
         clicked_state_save(game, game->btn->big->load_b->shape,
         (sfVector2f){960, 450});
-        sfMusic_play(game->btn->big->settings_b->sound);
         return game->player->next_scene = GAME_SCENE;
     }
     if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
         clicked_state_save(game, game->btn->big->return_b->shape,
         (sfVector2f){750, 700});
-        sfMusic_play(game->btn->big->settings_b->sound);
         return game->player->next_scene = MENU_SCENE;
     }
     return game->player->current_scene;
@@ -81,8 +78,11 @@ int save_scene(main_game_t *game)
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);
-        if (save_check_events(game, mouse_pos) != game->player->current_scene)
+        if (save_check_events(game, mouse_pos)
+        != game->player->current_scene) {
+            sfMusic_stop(game->btn->big->play_b->sound);
             return game->player->next_scene;
+        }
         display_save(game);
         sfRenderWindow_display(game->w);
     }

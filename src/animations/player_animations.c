@@ -83,7 +83,7 @@ static int player_attack_animations(player_t *player, mobe_t *mob)
         player->object->rect.left = 0;
         sfSprite_setTextureRect(player->object->sprite, player->object->rect);
         player->object->rect.top = 0;
-    } else if (player->p_clock->seconds >= 0.1) {
+    } else if (player->p_clock->seconds >= 0.15) {
         fight_enemy(player, mob);
         player->object->rect.left += 48;
         sfSprite_setTextureRect(player->object->sprite, player->object->rect);
@@ -101,12 +101,14 @@ int player_animations(player_t *player, mobe_t *mob)
         player->p_clock->time.microseconds / 1000000.0;
     if (player->attack_action)
         return player_attack_animations(player, mob);
-    if (player->p_clock->seconds >= 0.1) {
+    if (player->p_clock->seconds >= 0.15) {
         player->object->rect.left += 48;
+        sfMusic_play(player->sword);
         sfSprite_setTextureRect(player->object->sprite, player->object->rect);
         sfClock_restart(player->p_clock->clock);
     } else if (player->object->rect.left >= 240) {
         player->object->rect.left = 0;
+        sfMusic_stop(player->sword);
         sfSprite_setTextureRect(player->object->sprite, player->object->rect);
     }
     return 0;

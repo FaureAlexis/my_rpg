@@ -136,6 +136,9 @@
         my_clock_t *p_clock;
         particles_t *dust;
         bool attack_action;
+        sfMusic *walk;
+        sfMusic *death;
+        sfMusic *sword;
     } player_t;
 
     typedef struct settings_s {
@@ -273,8 +276,10 @@
     int set_big_tree_hitbox(obstacle_t *tmp);
     int set_long_tree_hitbox(obstacle_t *tmp);
     int set_small_tree_hitbox(obstacle_t *tmp);
-    bool obstacle_collision(main_game_t *game, sfVector2f next);
-    bool mob_collision(main_game_t *game, sfVector2f next);
+    bool player_obstacle_collision(main_game_t *game, sfVector2f next);
+    bool all_player_obstacle_collision(main_game_t *game);
+    bool mob_obstacle_collision(main_game_t *game, sfVector2f next);
+    bool all_mob_obstacle_collision(main_game_t *game);
 
     /*Animations*/
 
@@ -333,6 +338,8 @@
     mouse_pos);
     int manage_volume_right(main_game_t *game, sfVector2i mouse_pos);
     int manage_volume_left(main_game_t *game, sfVector2i mouse_pos);
+    int mute_all(main_game_t *game, sfVector2i mouse_pos);
+    int unmute_all(main_game_t *game, sfVector2i mouse_pos);
     int manage_fps_plus(main_game_t *game, sfVector2i mouse_pos);
     int display_fps(main_game_t *game);
     int manage_reso_plus(main_game_t *game, sfVector2i mouse_pos);
@@ -425,7 +432,8 @@
 
     /* Free data */
 
-    void free_game_struct(main_game_t *game);
+    int free_game_struct(main_game_t *game);
+    int free_player(player_t *player);
     void destroy_all_button(main_game_t *game);
     void destroy_all_menu(main_game_t *game);
     void free_tab(char ***tab);
