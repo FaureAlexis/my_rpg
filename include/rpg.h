@@ -186,7 +186,8 @@
 
     typedef struct main_game_s {
         sfRenderWindow *w;
-        sfView *view;
+        sfView *game_view;
+        sfView *basic_view;
         float view_zoom;
         sfVector2f view_pos;
         sfEvent event;
@@ -206,6 +207,7 @@
 
     typedef struct event_s {
         sfEventType type;
+        int index;
         int (*events)(main_game_t *);
     } event_t;
 
@@ -224,7 +226,7 @@
     /* Check environnement */
 
     int check_env(char **env);
-    int manage_errors(const int argc, char const *argv[], char **env);
+    int manage_errors(const int argc, char **env);
 
     /* Inits */
 
@@ -235,7 +237,7 @@
     int init_settings(main_game_t *game);
     int init_help(main_game_t *game);
     sfRenderWindow *init_window(void);
-    sfView *init_view(sfRenderWindow *window);
+    sfView *init_view(sfRenderWindow *window, sfFloatRect size);
     my_clock_t *init_clock(void);
     int init_all(main_game_t *game);
     int init_button(button_t **button, sfVector2f position, int size,
@@ -257,7 +259,7 @@
 
     char *open_file(char const *filepath);
     char **my_str_to_word_array_pos(char const *str, char pos, int idx);
-    char ***make_tab(char *filepath);
+    char ***make_tab(char const *filepath);
     int my_arraylen(char *const *array);
     void launch_rpg(char ***tab);
     int init_obstacle(map_t *map, char ***tab, int i);
@@ -296,8 +298,8 @@
     int set_player_movements(main_game_t *game, player_t *player,
     sfEvent event);
     void move_obstacle(map_t *map, player_t *player, sfVector2f move);
-    void move_speobstacle(map_t *map, player_t *player, sfVector2f move);
-    void move_mob(map_t *map, player_t *player, sfVector2f move);
+    void move_speobstacle(map_t *map, sfVector2f move);
+    void move_mob(map_t *map, sfVector2f move);
     int move_up(map_t *map, player_t *player);
     int move_down(map_t *map, player_t *player);
     int move_right(map_t *map, player_t *player);
@@ -382,6 +384,20 @@
     sfVector2i mouse_pos);
     int manage_hover_buttons(main_game_t *game, sfVector2i mouse_pos);
     int manage_hover(button_t *button, sfVector2i mouse_pos);
+    /*Resize*/
+    int resize_all_big_buttons(main_game_t *game, float x, float y);
+    int resize_all_mid_buttons(main_game_t *game, float x, float y);
+    int resize_all_sml_buttons(main_game_t *game, float x, float y);
+    int resize_all_buttons(main_game_t *game, float x, float y);
+    int resize_pos_big_buttons(main_game_t *game, float x, float y);
+    int resize_big_buttons(main_game_t *game, float x, float y);
+    int set_big_buttons_sprite_pos(main_game_t *game);
+    int resize_pos_mid_buttons(main_game_t *game, float x, float y);
+    int resize_mid_buttons(main_game_t *game, float x, float y);
+    int set_mid_buttons_sprite_pos(main_game_t *game);
+    int resize_pos_sml_buttons(main_game_t *game, float x, float y);
+    int resize_sml_buttons(main_game_t *game, float x, float y);
+    int set_sml_buttons_sprite_pos(main_game_t *game);
 
     /* Events */
 
@@ -407,6 +423,8 @@
     void clicked_state_save(main_game_t *game, sfRectangleShape *shape,
     sfVector2f position);
     const event_t *get_event(sfEventType type, const event_t event_array[]);
+    int zoom_event(main_game_t *game);
+    int trigger_inventory(main_game_t *game);
     int event_skin_choice(main_game_t *game, sfVector2i mouse_pos);
     int set_rgb_right(main_game_t *game);
     int set_rgb_left(main_game_t *game);
@@ -448,7 +466,7 @@
     FILE *open_save(const char *path);
     int save_settings(main_game_t *game);
     int load_settings(main_game_t *game);
-    char **buffer_to_array(char buffer[41]);
+    char **buffer_to_array(char *buffer);
     char *get_key(char *line);
     char *get_value(char *line);
 

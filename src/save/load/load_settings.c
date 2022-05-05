@@ -42,11 +42,11 @@ static int parse_settings(main_game_t * game, char buffer[41])
 
 int load_settings(main_game_t *game)
 {
-    char *buffer = malloc(41);
+    char *buffer = malloc(sizeof(char) * 41);
     FILE *file = fopen(".settings.rpg", "r");
     if (!file)
         return EPITECH_ERROR;
-    if (fread(buffer, 41, 1, file) == -1)
+    if (fread(buffer, 41, 1, file) == 1)
         return EPITECH_ERROR;
     buffer[41 + 1] = 0;
     if (fclose(file) == EOF)

@@ -66,7 +66,8 @@ bool mob_obstacle_collision(main_game_t *game, sfVector2f next)
         hitbox = tmp->hitbox;
         hitbox.left = tmp->hitbox.left + next.x;
         hitbox.top = tmp->hitbox.top + next.y;
-        for (mobe_t *mob = game->map->mobe; mob->next != NULL; mob = mob->next) {
+        for (mobe_t *mob = game->map->mobe; mob->next != NULL;
+        mob = mob->next) {
             if (sfFloatRect_intersects(&hitbox, &mob->hitbox, NULL))
                 return (true);
         }

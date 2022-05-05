@@ -27,7 +27,7 @@ bool shape_is_clicked(sfRectangleShape *shape, sfVector2i mouse_pos)
 
 const event_t *get_event(sfEventType type, const event_t event_array[])
 {
-    for (int i = 0; event_array[i].type != -1; i++) {
+    for (int i = 0; event_array[i].index != -1; i++) {
         if (event_array[i].type == type)
             return &event_array[i];
     }

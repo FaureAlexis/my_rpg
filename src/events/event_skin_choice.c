@@ -37,4 +37,5 @@ int event_skin_choice(main_game_t *game, sfVector2i mouse_pos)
         game->skin->click_blue = true;
         return game->player->current_scene;
     }
+    return game->player->current_scene;
 }

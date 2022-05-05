@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-void limit_hasbulla(mobe_t *mob, player_t *player)
+void limit_hasbulla(mobe_t *mob)
 {
     if (mob->object->rect.left >= 1920) {
         mob->object->rect.left = 30;
@@ -17,7 +17,7 @@ void limit_hasbulla(mobe_t *mob, player_t *player)
 
 void display_hasbulla(mobe_t *mob, main_game_t *game)
 {
-    limit_hasbulla(mob, game->player);
+    limit_hasbulla(mob);
     mob->attack_clock->time = sfClock_getElapsedTime(mob->my_clock->clock);
     mob->attack_clock->seconds = mob->my_clock->time.microseconds / 1000000.0;
     mob->my_clock->time = sfClock_getElapsedTime(mob->my_clock->clock);

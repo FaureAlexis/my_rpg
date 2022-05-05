@@ -71,4 +71,5 @@ int init_obstacle(map_t *map, char ***tab, int i)
     if (set_texture_obstacle(node, tab, i) == EPITECH_ERROR)
         return EPITECH_ERROR;
     map->obstacle = add_node_to_obstacle(map->obstacle, node);
+    return EXIT_SUCCESS;
 }

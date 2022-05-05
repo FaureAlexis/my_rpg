@@ -45,7 +45,11 @@ SRC_SCENES_BUTTON_POS	=	scenes/button_pos/button_pos_menu.c \
 							scenes/button_pos/button_pos_pause.c \
 							scenes/button_pos/button_pos_keybind.c \
 							scenes/button_pos/button_pos_settings.c \
-							scenes/button_pos/button_pos_skin_cus.c
+							scenes/button_pos/button_pos_skin_cus.c \
+							scenes/button_pos/resize_all_buttons.c \
+							scenes/button_pos/resize_big_buttons.c \
+							scenes/button_pos/resize_mid_buttons.c \
+							scenes/button_pos/resize_sml_buttons.c
 
 SRC_SCENES_CREATE		=	scenes/create/create_scenes.c \
 							scenes/create/init_scenes.c
@@ -88,6 +92,8 @@ SRC_ANIMATIONS			=	animations/player_animations.c \
 
 SRC_EVENT				=	events/get_event.c \
 							events/player_collision.c \
+							events/event_inventory.c \
+							events/event_zoom.c \
 							events/event_close.c \
 							events/event_skin_choice.c
 
@@ -162,9 +168,9 @@ OBJ						=	$(addprefix src/, $(SRC:.c=.o))
 
 NAME					=	my_rpg
 
-CPPFLAGS				=	-I ./include -g
+CPPFLAGS				=	-I ./include -g -Werror -Wall -Wextra
 
-CSFML					=	-l csfml-graphics -l csfml-audio -l csfml-system  \
+CSFML					=	-l csfml-graphics -l csfml-audio -l csfml-system \
 							-l csfml-window
 
 LDFLAGS					=	-L ./lib/ -lmy

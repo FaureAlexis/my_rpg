@@ -30,7 +30,8 @@ int draw_circle(particles_t *particle, int radius, sfColor color)
             (particle->size / 2), 2)) <= pow(radius, 2))
                 my_put_pixel(particle, start_y, start_x, color);
             else
-                my_put_pixel(particle, start_y, start_x, (sfColor){0, 0, 0, 0});
+                my_put_pixel(particle, start_y, start_x,
+                (sfColor){0, 0, 0, 0});
         }
     }
     return 0;

@@ -10,12 +10,17 @@
 
     /* Keysbind struct */
 typedef struct keys_s {
-    int up;
-    int down;
-    int right;
-    int left;
-    int attack;
-    int inventory;
+    sfKeyCode quit;
+    sfKeyCode pause;
+    sfKeyCode interact;
+    sfKeyCode zoom;
+    sfKeyCode unzoom;
+    sfKeyCode up;
+    sfKeyCode down;
+    sfKeyCode right;
+    sfKeyCode left;
+    sfKeyCode attack;
+    sfKeyCode inventory;
 } keys_t;
 
 #endif /* !KEYS_H */
