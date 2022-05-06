@@ -145,6 +145,7 @@ SRC_MAP					=	map/game_test.c \
 							map/pos.c \
 							map/tab.c \
 							map/mob.c \
+							map/display_skeleton.c \
 							map/skeleton.c \
 							map/display_slime.c \
 							map/slime.c \

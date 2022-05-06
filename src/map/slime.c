@@ -17,6 +17,7 @@ void mob_action_move(mobe_t *mob, player_t *player)
     mob->object->position.y) / (sqrt(pow(player->object->position.x -
     mob->object->position.x, 2) + pow(player->object->position.y -
     mob->object->position.y, 2)));
+
     mob->object->position.x += x;
     mob->object->position.y += y;
     mob->object->scale = (sfVector2f){4 * (x / sqrt(pow(x, 2))), 4};
@@ -40,7 +41,7 @@ static void limit_slime(mobe_t *mob, player_t *player)
     }
 }
 
-static mobe_t *dead_mob_animation(mobe_t *mob)
+static mobe_t *dead_slime_animation(mobe_t *mob)
 {
     if (!mob->dead) {
         mob->dead = 1;
@@ -66,7 +67,7 @@ void attack_slime(mobe_t *mob, player_t *player)
     } else {
         if (mob->hp <= 0) {
             mob->attack = 0;
-            mob = dead_mob_animation(mob);
+            mob = dead_slime_animation(mob);
         }
     }
     if (mob->object->rect.top >= 0)
