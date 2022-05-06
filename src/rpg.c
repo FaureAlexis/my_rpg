@@ -41,5 +41,5 @@ int rpg(void)
         return EPITECH_ERROR;
     if (change_scene == 84)
         return change_scene;
-    return 0;
+    return EXIT_SUCCESS;
 }

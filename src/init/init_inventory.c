@@ -17,7 +17,7 @@ static int add_node(case_inventory_t **case_inventory, int x, int y)
     node->y = y;
     node->object = NULL;
     if (!node)
-        return 84;
+        return EPITECH_ERROR;
     if (*case_inventory == NULL) {
         *case_inventory = node;
     } else {
@@ -26,7 +26,7 @@ static int add_node(case_inventory_t **case_inventory, int x, int y)
             lnode = lnode->next;
         lnode->next = node;
     }
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 static case_inventory_t *init_case_x_inventory(inventory_t *inventory,
@@ -73,6 +73,6 @@ int init_inventory(main_game_t *game)
     game->inventory->nb_case_inventory = INV_CASE_NB;
     game->inventory->case_inventory = init_case_inventory(game->inventory);
     if (!game->inventory->case_inventory)
-        return 84;
-    return 0;
+        return EPITECH_ERROR;
+    return EXIT_SUCCESS;
 }

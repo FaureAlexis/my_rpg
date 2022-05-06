@@ -58,7 +58,7 @@ static int fight_enemy(player_t *player, mobe_t *mob)
     int offset = 0;
 
     if (!player || !mob)
-        return 84;
+        return EPITECH_ERROR;
     tmp = mob;
     while (tmp) {
         if (tmp->hp > 0) {
@@ -70,13 +70,13 @@ static int fight_enemy(player_t *player, mobe_t *mob)
         }
         tmp = tmp->next;
     }
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 static int player_attack_animations(player_t *player, mobe_t *mob)
 {
     if (!player || !mob)
-        return 84;
+        return EPITECH_ERROR;
     player->object->rect.top = 96;
     if (player->object->rect.left >= 144) {
         player->attack_action = 0;
@@ -89,13 +89,13 @@ static int player_attack_animations(player_t *player, mobe_t *mob)
         sfSprite_setTextureRect(player->object->sprite, player->object->rect);
         sfClock_restart(player->p_clock->clock);
     }
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 int player_animations(player_t *player, mobe_t *mob)
 {
     if (!player || !mob)
-        return 84;
+        return EPITECH_ERROR;
     player->p_clock->time = sfClock_getElapsedTime(player->p_clock->clock);
     player->p_clock->seconds =
         player->p_clock->time.microseconds / 1000000.0;
@@ -111,5 +111,5 @@ int player_animations(player_t *player, mobe_t *mob)
         sfMusic_stop(player->sword);
         sfSprite_setTextureRect(player->object->sprite, player->object->rect);
     }
-    return 0;
+    return EXIT_SUCCESS;
 }

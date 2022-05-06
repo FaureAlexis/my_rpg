@@ -10,6 +10,6 @@
 int main(const int argc, char const *argv[], char **env)
 {
     if (!argv || !env || manage_errors(argc, env) == 84)
-        return 84;
+        return EPITECH_ERROR;
     return rpg();
 }

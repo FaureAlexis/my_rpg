@@ -13,23 +13,23 @@ static int check_line(char * str)
     char *keyword = NULL;
 
     if (!str)
-        return 84;
+        return EPITECH_ERROR;
     keyword = malloc(sizeof(char) * my_strlen(str) + 1);
     for (; str[i] != '='; i += 1)
         keyword[i] = str[i];
     keyword[i] = '\0';
     if (my_strcmp(keyword, "DISPLAY") != 0)
-        return 84;
-    return 0;
+        return EPITECH_ERROR;
+    return EXIT_SUCCESS;
 }
 
 int check_env(char **env)
 {
     if (!env)
-        return 84;
+        return EPITECH_ERROR;
     for (int i = 0; env[i] != NULL; i += 1) {
         if (check_line(env[i]) == 0)
-            return 0;
+            return EXIT_SUCCESS;
     }
-    return 84;
+    return EPITECH_ERROR;
 }

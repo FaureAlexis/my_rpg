@@ -52,6 +52,7 @@
         sfRectangleShape *red;
         sfRectangleShape *green;
         sfRectangleShape *blue;
+        sfVector2f size;
         sfVector2f pos_red;
         sfVector2f pos_green;
         sfVector2f pos_blue;
@@ -405,7 +406,8 @@
     /* Events */
 
     bool button_is_clicked(button_t *button, sfVector2i mouse_pos);
-    bool shape_is_clicked(sfRectangleShape *shape, sfVector2i mouse_pos);
+    bool shape_is_clicked(sfRenderWindow *win, sfRectangleShape *shape,
+    sfVector2i mouse_pos);
     void shape_red_clicked(main_game_t *game);
     void shape_green_clicked(main_game_t *game);
     void shape_blue_clicked(main_game_t *game);
