@@ -9,44 +9,68 @@
 
 void shape_red_clicked(main_game_t *game)
 {
-    game->btn->sml->right_b->sprite_pos = (sfVector2f){1250, 375};
-    game->btn->sml->left_b->sprite_pos = (sfVector2f){760, 375};
+    float win_x = 1920;
+    float win_y = 1080;
+    sfVector2u size = sfRenderWindow_getSize(game->w);
+
+    game->btn->sml->right_b->position = (sfVector2f){1250, 375};
+    game->btn->sml->left_b->position = (sfVector2f){760, 375};
     sfSprite_setPosition(game->btn->sml->right_b->sprite,
-    (sfVector2f){1250, 375});
+    game->btn->sml->right_b->position);
     sfRectangleShape_setPosition(game->btn->sml->right_b->shape,
-    (sfVector2f){1250, 375});
+    (sfVector2f){(game->btn->sml->right_b->position.x *
+    ((float){size.x} / win_x)), (game->btn->sml->right_b->position.y *
+    ((float){size.y} / win_y))});
     sfSprite_setPosition(game->btn->sml->left_b->sprite,
-    (sfVector2f){760, 375});
+    game->btn->sml->left_b->position);
     sfRectangleShape_setPosition(game->btn->sml->left_b->shape,
-    (sfVector2f){760, 375});
+    (sfVector2f){(game->btn->sml->left_b->position.x *
+    ((float){size.x} / win_x)), (game->btn->sml->left_b->position.y *
+    ((float){size.y} / win_y))});
 }
 
 void shape_green_clicked(main_game_t *game)
 {
-    game->btn->sml->right_b->sprite_pos = (sfVector2f){1250, 435};
-    game->btn->sml->left_b->sprite_pos = (sfVector2f){760, 435};
+    float win_x = 1920;
+    float win_y = 1080;
+    sfVector2u size = sfRenderWindow_getSize(game->w);
+
+    game->btn->sml->right_b->position = (sfVector2f){1250, 435};
+    game->btn->sml->left_b->position = (sfVector2f){760, 435};
     sfSprite_setPosition(game->btn->sml->right_b->sprite,
-    (sfVector2f){1250, 435});
+    game->btn->sml->right_b->position);
     sfRectangleShape_setPosition(game->btn->sml->right_b->shape,
-    (sfVector2f){1250, 435});
+    (sfVector2f){(game->btn->sml->right_b->position.x *
+    ((float){size.x} / win_x)), (game->btn->sml->right_b->position.y *
+    ((float){size.y} / win_y))});
     sfSprite_setPosition(game->btn->sml->left_b->sprite,
-    (sfVector2f){760, 435});
+    game->btn->sml->left_b->position);
     sfRectangleShape_setPosition(game->btn->sml->left_b->shape,
-    (sfVector2f){760, 435});
+    (sfVector2f){(game->btn->sml->left_b->position.x *
+    ((float){size.x} / win_x)), (game->btn->sml->left_b->position.y *
+    ((float){size.y} / win_y))});
 }
 
 void shape_blue_clicked(main_game_t *game)
 {
-    game->btn->sml->right_b->sprite_pos = (sfVector2f){1250, 495};
-    game->btn->sml->left_b->sprite_pos = (sfVector2f){760, 495};
+    float win_x = 1920;
+    float win_y = 1080;
+    sfVector2u size = sfRenderWindow_getSize(game->w);
+
+    game->btn->sml->right_b->position = (sfVector2f){1250, 495};
+    game->btn->sml->left_b->position = (sfVector2f){760, 495};
     sfSprite_setPosition(game->btn->sml->right_b->sprite,
-    (sfVector2f){1250, 495});
+    game->btn->sml->right_b->position);
     sfRectangleShape_setPosition(game->btn->sml->right_b->shape,
-    (sfVector2f){1250, 495});
+    (sfVector2f){(game->btn->sml->right_b->position.x *
+    ((float){size.x} / win_x)), (game->btn->sml->right_b->position.y *
+    ((float){size.y} / win_y))});
     sfSprite_setPosition(game->btn->sml->left_b->sprite,
-    (sfVector2f){760, 495});
+    game->btn->sml->left_b->position);
     sfRectangleShape_setPosition(game->btn->sml->left_b->shape,
-    (sfVector2f){760, 495});
+    (sfVector2f){(game->btn->sml->left_b->position.x *
+    ((float){size.x} / win_x)), (game->btn->sml->left_b->position.y *
+    ((float){size.y} / win_y))});
 }
 
 int display_skin_cus(main_game_t *g)

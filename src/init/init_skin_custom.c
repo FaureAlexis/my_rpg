@@ -14,9 +14,9 @@ int set_rgb_shape(cus_t **cus)
     sfRectangleShape_setFillColor((*cus)->red, sfRed);
     sfRectangleShape_setFillColor((*cus)->green, sfGreen);
     sfRectangleShape_setFillColor((*cus)->blue, sfBlue);
-    sfRectangleShape_setSize((*cus)->red, (sfVector2f){400, 30});
-    sfRectangleShape_setSize((*cus)->green, (sfVector2f){400, 30});
-    sfRectangleShape_setSize((*cus)->blue, (sfVector2f){400, 30});
+    sfRectangleShape_setSize((*cus)->red, (*cus)->size);
+    sfRectangleShape_setSize((*cus)->green, (*cus)->size);
+    sfRectangleShape_setSize((*cus)->blue, (*cus)->size);
     sfRectangleShape_setPosition((*cus)->red, (*cus)->pos_red);
     sfRectangleShape_setPosition((*cus)->green, (*cus)->pos_green);
     sfRectangleShape_setPosition((*cus)->blue, (*cus)->pos_blue);
@@ -34,6 +34,7 @@ int init_skin_custom(cus_t **cus)
     (*cus)->red_c = 255;
     (*cus)->green_c = 255;
     (*cus)->blue_c = 255;
+    (*cus)->size = (sfVector2f){400, 30};
     (*cus)->pos_red = (sfVector2f){850, 400};
     (*cus)->pos_green = (sfVector2f){850, 460};
     (*cus)->pos_blue = (sfVector2f){850, 520};

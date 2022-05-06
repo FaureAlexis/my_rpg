@@ -18,7 +18,7 @@ static int red_left(main_game_t *g)
     }
     sfSprite_setColor(g->player->object->sprite,
     sfColor_fromRGBA(g->skin->red_c, g->skin->green_c, g->skin->blue_c, 255));
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 static int green_left(main_game_t *g)
@@ -32,7 +32,7 @@ static int green_left(main_game_t *g)
     }
     sfSprite_setColor(g->player->object->sprite,
     sfColor_fromRGBA(g->skin->red_c, g->skin->green_c, g->skin->blue_c, 255));
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 static int blue_left(main_game_t *g)
@@ -46,7 +46,7 @@ static int blue_left(main_game_t *g)
     }
     sfSprite_setColor(g->player->object->sprite,
     sfColor_fromRGBA(g->skin->red_c, g->skin->green_c, g->skin->blue_c, 255));
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 int set_rgb_left(main_game_t *game)
@@ -57,5 +57,5 @@ int set_rgb_left(main_game_t *game)
         green_left(game);
     if (game->skin->click_blue == true)
         blue_left(game);
-    return 0;
+    return EXIT_SUCCESS;
 }

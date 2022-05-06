@@ -18,7 +18,7 @@ static int red_right(main_game_t *g)
     }
     sfSprite_setColor(g->player->object->sprite,
     sfColor_fromRGB(g->skin->red_c, g->skin->green_c, g->skin->blue_c));
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 static int green_right(main_game_t *g)
@@ -32,7 +32,7 @@ static int green_right(main_game_t *g)
     }
     sfSprite_setColor(g->player->object->sprite,
     sfColor_fromRGB(g->skin->red_c, g->skin->green_c, g->skin->blue_c));
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 static int blue_right(main_game_t *g)
@@ -46,7 +46,7 @@ static int blue_right(main_game_t *g)
     }
     sfSprite_setColor(g->player->object->sprite,
     sfColor_fromRGB(g->skin->red_c, g->skin->green_c, g->skin->blue_c));
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 int set_rgb_right(main_game_t *game)
@@ -57,5 +57,5 @@ int set_rgb_right(main_game_t *game)
         green_right(game);
     if (game->skin->click_blue == true)
         blue_right(game);
-    return 0;
+    return EXIT_SUCCESS;
 }
