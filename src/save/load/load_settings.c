@@ -22,7 +22,7 @@ static void apply_settings(main_game_t *game, char *key, char *value)
     if (my_strcmp(key, "resolutionY") == 0 && value_nb <= 1540)
         game->settings->res_y = value_nb;
     if (my_strcmp(key, "volume") == 0 && value_nb <= 100)
-        game->vol->volume = value_nb;
+        game->vol->volume = (float) value_nb;
 }
 
 static int parse_settings(main_game_t * game, char buffer[41])

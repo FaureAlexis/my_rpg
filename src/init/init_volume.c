@@ -13,7 +13,8 @@ int init_volume(vol_t **vol)
     if (!(*vol))
         return EPITECH_ERROR;
     (*vol)->pos = (sfVector2f){575, 320};
-    (*vol)->volume = 10;
+    if (!(*vol)->volume)
+        (*vol)->volume = 10;
     (*vol)->size = (sfVector2f){(700 / (*vol)->volume), 30};
     (*vol)->volume_rect = sfRectangleShape_create();
     if ((*vol)->volume_rect == NULL)
