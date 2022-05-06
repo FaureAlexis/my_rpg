@@ -277,6 +277,7 @@
     mobe_t *add_node_to_mobe(mobe_t *head, mobe_t *node);
     int parse_tab(map_t *map, char ***tab, int i);
     void mob_action_move(mobe_t *mob, player_t *player);
+    void attack_slime(mobe_t *mob, player_t *player);
         /*Collision*/
     int set_big_tree_hitbox(obstacle_t *tmp);
     int set_long_tree_hitbox(obstacle_t *tmp);
@@ -305,6 +306,7 @@
     int move_right(map_t *map, player_t *player);
     int move_left(map_t *map, player_t *player);
     int move_player(main_game_t *game, const movements_t *movements);
+    particles_t *create_dust(sfVector2f cord, int size, sfVector2f direction);
     particles_t *anim_dust(particles_t *head, sfRenderWindow *w);
     particles_t *add_particle_to_list(particles_t *head, particles_t *node,
     sfVector2f move);
@@ -459,6 +461,7 @@
     void destroy_all_button(main_game_t *game);
     void destroy_all_menu(main_game_t *game);
     void free_tab(char ***tab);
+    particles_t *free_a_particule(particles_t *head);
     void destroy_all_texts(main_game_t *game);
 
     /* Load and Save progression/settings */

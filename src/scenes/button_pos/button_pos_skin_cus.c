@@ -34,7 +34,8 @@ void pos_button_skin_cus(main_game_t *game)
     game->btn->big->return_b->position);
     if (size.x == 1920 && size.y == 1080)
         pos_fullscreen(game);
-    else
+    else {
         resize_all_buttons(game, ((float){size.x} / win_x),
         ((float){size.y} / win_y));
+    }
 }

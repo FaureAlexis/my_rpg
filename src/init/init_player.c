@@ -13,6 +13,7 @@ static player_t *set_player_stats(player_t *player)
         return NULL;
     player->life = 20;
     player->attack = 5;
+    player->attack_action = 0;
     player->dust = NULL;
     player->object->position = (sfVector2f){960, 600};
     player->object->scale = (sfVector2f){4, 4};
@@ -63,7 +64,6 @@ player_t *init_player(void)
 
     if (!player)
         return NULL;
-    player->attack_action = 0;
     player->object = malloc(sizeof(game_object_t));
     if (!player->object)
         return NULL;

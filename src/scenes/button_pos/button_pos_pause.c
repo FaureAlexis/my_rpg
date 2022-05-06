@@ -33,7 +33,8 @@ void pos_button_pause(main_game_t *game)
     set_big_buttons_sprite_pos(game);
     if (size.x == 1920 && size.y == 1080)
         pos_fullscreen(game);
-    else
+    else {
         resize_all_buttons(game, ((float){size.x} / win_x),
         ((float){size.y} / win_y));
+    }
 }

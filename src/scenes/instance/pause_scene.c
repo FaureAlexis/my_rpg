@@ -23,12 +23,6 @@ static int pause_scene_event(main_game_t *game)
 
 static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
 {
-    if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
-        clicked_state_pause(game, game->btn->big->return_b->shape,
-        (sfVector2f){500, 330});
-        game->player->next_scene = GAME_SCENE;
-        return game->player->next_scene;
-    }
     if (button_is_clicked(game->btn->big->settings_b, mouse_pos) == true) {
         clicked_state_pause(game, game->btn->big->settings_b->shape,
         (sfVector2f){1010, 330});
@@ -51,6 +45,12 @@ static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
     if (manage_button_action_scene(game, mouse_pos)
     != game->player->current_scene)
         return game->player->next_scene;
+    if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
+        clicked_state_pause(game, game->btn->big->return_b->shape,
+        (sfVector2f){500, 330});
+        game->player->next_scene = GAME_SCENE;
+        return game->player->next_scene;
+    }
     if (button_is_clicked(game->btn->big->exit_b, mouse_pos) == true) {
         clicked_state_pause(game, game->btn->big->exit_b->shape,
         (sfVector2f){750, 650});

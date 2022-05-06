@@ -35,14 +35,12 @@ static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
     if (button_is_clicked(game->btn->mid->keybind_b, mouse_pos) == true) {
         clicked_state_settings(game, game->btn->mid->keybind_b->shape,
         (sfVector2f){1500, 600});
-        game->player->next_scene = KEYBIND_SCENE;
-        return game->player->next_scene;
+        return game->player->next_scene = KEYBIND_SCENE;
     }
     if (button_is_clicked(game->btn->mid->help_b, mouse_pos) == true) {
         clicked_state_settings(game, game->btn->mid->help_b->shape,
         (sfVector2f){10, 10});
-        game->player->next_scene = HELP_SCENE;
-        return game->player->next_scene;
+        return game->player->next_scene = HELP_SCENE;
     }
     return game->player->current_scene;
 }

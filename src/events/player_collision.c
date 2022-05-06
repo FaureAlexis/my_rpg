@@ -57,6 +57,15 @@ bool player_obstacle_collision(main_game_t *game, sfVector2f next)
     return 0;
 }
 
+static bool collision_trigger(main_game_t *game, sfFloatRect hitbox)
+{
+    for (mobe_t *mob = game->map->mobe; mob->next != NULL; mob = mob->next) {
+        if (sfFloatRect_intersects(&hitbox, &mob->hitbox, NULL))
+            return true;
+    }
+    return false;
+}
+
 bool mob_obstacle_collision(main_game_t *game, sfVector2f next)
 {
     obstacle_t *tmp = game->map->obstacle;
@@ -66,22 +75,9 @@ bool mob_obstacle_collision(main_game_t *game, sfVector2f next)
         hitbox = tmp->hitbox;
         hitbox.left = tmp->hitbox.left + next.x;
         hitbox.top = tmp->hitbox.top + next.y;
-        for (mobe_t *mob = game->map->mobe; mob->next != NULL;
-        mob = mob->next) {
-            if (sfFloatRect_intersects(&hitbox, &mob->hitbox, NULL))
-                return (true);
-        }
+        if (collision_trigger(game, hitbox) == true)
+            return true;
         tmp = tmp->next;
     }
-    return (false);
-}
-
-bool all_mob_obstacle_collision(main_game_t *game)
-{
-    if (mob_obstacle_collision(game, (sfVector2f){0, 10}) == true
-    || mob_obstacle_collision(game, (sfVector2f){10, 0}) == true
-    || mob_obstacle_collision(game, (sfVector2f){0, -10}) == true
-    || mob_obstacle_collision(game, (sfVector2f){-10, 0}) == true)
-        return true;
     return false;
 }
