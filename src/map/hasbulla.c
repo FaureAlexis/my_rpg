@@ -11,8 +11,8 @@ static void limit_hasbulla(mobe_t *mob, player_t *player)
 {
     if (!mob || !player)
         return;
-    if ((mob->object->rect.left >= 1760 && mob->object->rect.top != 106) ||
-    mob->object->rect.left >= 2720) {
+    if ((mob->object->rect.left >= 1760 && mob->object->rect.top != 106 &&
+    mob->object->rect.top != 318) || mob->object->rect.left >= 2720) {
         mob->object->rect.left = 0;
         mob->object->rect.top = 0;
     }

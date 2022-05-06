@@ -22,7 +22,7 @@ static void dead_hasbulla_animation(mobe_t *tmp)
 {
     tmp->my_clock->time = sfClock_getElapsedTime(tmp->my_clock->clock);
     tmp->my_clock->seconds = tmp->my_clock->time.microseconds / 1000000.0;
-    if ((tmp->dead && tmp->object->rect.left <= 1760 && tmp->my_clock->seconds \
+    if ((tmp->dead && tmp->object->rect.left <= 1600 && tmp->my_clock->seconds \
     >= 0.1) || (!tmp->dead && tmp->my_clock->seconds >= 0.1)) {
         tmp->object->rect.left += 160;
         sfClock_restart(tmp->my_clock->clock);
