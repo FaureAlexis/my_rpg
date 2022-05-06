@@ -280,6 +280,7 @@
     void mob_action_move(mobe_t *mob, player_t *player);
     void attack_slime(mobe_t *mob, player_t *player);
     void attack_skeleton(mobe_t *mob, player_t *player);
+    void hasbulla_attack(mobe_t *mob, player_t *player);
         /*Collision*/
     int set_big_tree_hitbox(obstacle_t *tmp);
     int set_long_tree_hitbox(obstacle_t *tmp);

@@ -35,6 +35,10 @@ void move_speobstacle(map_t *map, sfVector2f move)
         if (map->map->position.x >= MAP_X_MIN && map->map->position.x <=
         MAP_X_MAX && map->map->position.y >= MAP_Y_MIN && map->map->position.y
         <= MAP_Y_MAX) {
+            if (speobstacle->artific) {
+                speobstacle->artific->cord.x += move.x;
+                speobstacle->artific->cord.y += move.y;
+            }
             speobstacle->object->position.x += move.x;
             speobstacle->object->position.y += move.y;
             sfSprite_setPosition(speobstacle->object->sprite,

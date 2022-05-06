@@ -27,8 +27,7 @@ void display_speobstacle(main_game_t *game)
     while (tmp) {
         if (sqrt(pow(game->player->object->position.x - tmp->object->position.x
         , 2) + pow(game->player->object->position.y - tmp->object->position.y,
-        2))
-        < 85) {
+        2)) < 90) {
             tmp->object->rect.left = 16 * tmp->type;
             tmp->hp = tmp->type - 1;
             gen_artific(tmp);

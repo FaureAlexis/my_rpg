@@ -16,7 +16,7 @@ particles_t *create_artific(sfVector2f cord, int size, sfVector2f direction)
     node->timer = malloc(sizeof(my_clock_t));
     node->timer->clock = sfClock_create();
     node->end = 0;
-    node->cord.x = cord.x - (size / 2) - 3;
+    node->cord.x = cord.x - (size / 2) - 1;
     node->cord.y = cord.y - 20;
     node->direction.x = direction.x;
     node->direction.y = direction.y;
@@ -49,7 +49,7 @@ void gen_artific(speobstacle_t *chest)
     particles_t *node = NULL;
 
     if (chest->type == 2 && chest->artific == NULL) {
-        node = creat_particles(1, chest->object->position, 21,
+        node = creat_particles(1, chest->object->position, 20,
         (sfVector2f){0, 20});
         chest->artific = add_particle_to_list(chest->artific, node,
         (sfVector2f){0, 0});

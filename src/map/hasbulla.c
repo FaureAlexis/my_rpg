@@ -7,34 +7,47 @@
 
 #include "rpg.h"
 
-void limit_hasbulla(mobe_t *mob)
+static void limit_hasbulla(mobe_t *mob, player_t *player)
 {
-    if (mob->object->rect.left >= 1920) {
-        mob->object->rect.left = 30;
-        mob->object->position.x -= 18;
+    if (!mob || !player)
+        return;
+    if ((mob->object->rect.left >= 1760 && mob->object->rect.top != 106) ||
+    mob->object->rect.left >= 2720) {
+        mob->object->rect.left = 0;
+        mob->object->rect.top = 0;
     }
 }
 
-void display_hasbulla(mobe_t *mob, main_game_t *game)
+
+static mobe_t *dead_hasbulla_animation(mobe_t *mob)
 {
-    limit_hasbulla(mob);
-    mob->attack_clock->time = sfClock_getElapsedTime(mob->my_clock->clock);
-    mob->attack_clock->seconds = mob->my_clock->time.microseconds / 1000000.0;
-    mob->my_clock->time = sfClock_getElapsedTime(mob->my_clock->clock);
-    mob->my_clock->seconds = mob->my_clock->time.microseconds / 1000000.0;
-    if (mob->attack == true && mob->attack_clock->seconds >= 0.08) {
-        mob_action_move(mob, game->player);
+    if (!mob->dead) {
+        mob->dead = 1;
+        mob->object->rect.top = 318;
+        mob->object->rect.left = 0;
+    } else if (mob->dead && mob->object->rect.left >= 1600) {
+        mob->object->rect.top = 318;
+        mob->object->rect.left = 1760;
+    } else {
+        mob->object->rect.left += 160;
+    }
+    return mob;
+}
+
+void hasbulla_attack(mobe_t *mob, player_t *player)
+{
+    limit_hasbulla(mob, player);
+    if (mob->hp > 0 && mob->attack == true) {
+        mob_action_move(mob, player);
         sfRectangleShape_setPosition(mob->hitbox_shape,
         (sfVector2f){mob->object->position.x - 30,
         mob->object->position.y - 20});
-        sfClock_restart(mob->attack_clock->clock);
+    } else {
+        if (mob->hp <= 0) {
+            mob->attack = 0;
+            mob = dead_hasbulla_animation(mob);
+        }
     }
-    if (mob->my_clock->seconds >= 0.1){
-        mob->object->rect.left += 106;
-        mob->object->position.x += 1;
-        sfClock_restart(mob->my_clock->clock);
-    }
-    sfSprite_setTextureRect(mob->object->sprite, mob->object->rect);
-    sfSprite_setPosition(mob->object->sprite, mob->object->position);
-    sfRenderWindow_drawSprite(game->w, mob->object->sprite, NULL);
+    if (mob->object->rect.top >= 0)
+        mob->attack = false;
 }

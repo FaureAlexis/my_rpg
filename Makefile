@@ -137,21 +137,22 @@ SRC_MENU				=	menu/init_menus.c \
 							menu/display_menu.c \
 							menu/display_game.c
 
-SRC_MAP					=	map/game_test.c \
-							map/node.c \
-							map/obstacle.c \
-							map/set_tree_hitbox.c \
-							map/open_file.c \
-							map/pos.c \
-							map/tab.c \
-							map/mob.c \
-							map/display_skeleton.c \
-							map/skeleton.c \
-							map/display_slime.c \
-							map/slime.c \
-							map/spe_obstacle.c \
-							map/move.c			\
-							map/hasbulla.c
+SRC_MAP					=	map/game_test.c 		\
+							map/node.c 				\
+							map/obstacle.c 			\
+							map/set_tree_hitbox.c 	\
+							map/open_file.c 		\
+							map/pos.c 				\
+							map/tab.c 				\
+							map/mob.c 				\
+							map/slime.c 			\
+							map/skeleton.c 			\
+							map/hasbulla.c			\
+							map/display_slime.c 	\
+							map/display_skeleton.c 	\
+							map/display_hasbulla.c	\
+							map/spe_obstacle.c 		\
+							map/move.c
 
 SRC_SAVE				=	save/saving/open_file.c \
 							save/saving/save_settings.c \
