@@ -20,8 +20,8 @@ bool shape_is_clicked(sfRenderWindow *win, sfRectangleShape *shape,
 sfVector2i mouse_pos)
 {
     sfFloatRect rect = sfRectangleShape_getGlobalBounds(shape);
-    float win_x = 1920;
-    float win_y = 1080;
+    float win_x = MAX_W_X;
+    float win_y = MAX_W_Y;
     sfVector2u size = sfRenderWindow_getSize(win);
 
     rect.left = rect.left * ((float){size.x} / win_x);

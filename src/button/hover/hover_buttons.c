@@ -10,28 +10,28 @@
 static void hover_scale(button_t *button)
 {
     if (button->bsize == SMALL)
-        sfSprite_setScale(button->sprite, (sfVector2f){0.62, 0.62});
+        sfSprite_setScale(button->sprite, SML_HOVER_SCALE);
     if (button->bsize == MEDIUM)
-        sfSprite_setScale(button->sprite, (sfVector2f){0.68, 0.68});
+        sfSprite_setScale(button->sprite, MID_HOVER_SCALE);
     if (button->bsize == LARGE)
-        sfSprite_setScale(button->sprite, (sfVector2f){1.03, 1.03});
+        sfSprite_setScale(button->sprite, BIG_HOVER_SCALE);
 }
 
 static void base_scale(button_t *button)
 {
     if (button->bsize == SMALL)
-        sfSprite_setScale(button->sprite, (sfVector2f){0.6, 0.6});
+        sfSprite_setScale(button->sprite, SML_IDLE_SCALE);
     if (button->bsize == MEDIUM)
-        sfSprite_setScale(button->sprite, (sfVector2f){0.65, 0.65});
+        sfSprite_setScale(button->sprite, MID_IDLE_SCALE);
     if (button->bsize == LARGE)
-        sfSprite_setScale(button->sprite, (sfVector2f){1, 1});
+        sfSprite_setScale(button->sprite, BIG_IDLE_SCALE);
 }
 
 int manage_hover(button_t *button, sfVector2i mouse_pos)
 {
     sfFloatRect rect = sfRectangleShape_getGlobalBounds(button->shape);
-    sfVector2f tmp = {(button->sprite_pos.x + 5),
-    (button->sprite_pos.y + 5)};
+    sfVector2f tmp = {(button->sprite_pos.x + OFFSET_HOVER),
+    (button->sprite_pos.y + OFFSET_HOVER)};
 
     if (sfFloatRect_contains(&rect, mouse_pos.x, mouse_pos.y)) {
         sfSprite_setPosition(button->sprite, tmp);

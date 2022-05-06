@@ -7,21 +7,6 @@
 
 #ifndef RPG_H_
     #define RPG_H_
-    #define EPITECH_ERROR 84
-    #define ASSET 0
-    #define CORD_X 1
-    #define CORD_Y 2
-    #define REC_LEFT 3
-    #define REC_TOP 4
-    #define REC_WIDTH 5
-    #define REC_HEIGHT 6
-    #define HP 7
-    #define POWER 8
-    #define TYPE 9
-    #define MAP_X_MIN -3098
-    #define MAP_X_MAX 922
-    #define MAP_Y_MIN -3403
-    #define MAP_Y_MAX 607
 
     #include <math.h>
     #include "lib.h"
@@ -31,14 +16,7 @@
     #include "csfml.h"
     #include "assets.h"
     #include "keys.h"
-
-    #define INV_CASE_MAX_X 3550
-    #define INV_CASE_MAX_Y 2445
-    #define INV_CASE_X 2540
-    #define INV_CASE_Y 795
-    #define INV_CASE_OFFSET 310
-    #define INV_CASE_SPACE 20
-    #define INV_CASE_NB 15
+    #include "values.h"
 
     typedef struct volume_s {
         float volume;
@@ -285,10 +263,10 @@
     int set_big_tree_hitbox(obstacle_t *tmp);
     int set_long_tree_hitbox(obstacle_t *tmp);
     int set_small_tree_hitbox(obstacle_t *tmp);
+    int set_log_hitbox(obstacle_t *tmp);
     bool player_obstacle_collision(main_game_t *game, sfVector2f next);
     bool all_player_obstacle_collision(main_game_t *game);
     bool mob_obstacle_collision(main_game_t *game, sfVector2f next);
-    bool all_mob_obstacle_collision(main_game_t *game);
 
     /*Animations*/
 

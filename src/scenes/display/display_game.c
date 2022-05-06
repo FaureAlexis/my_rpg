@@ -20,10 +20,8 @@ int display_game(main_game_t *game)
     display_speobstacle(game);
     sfRenderWindow_drawSprite(game->w, game->btn->mid->pause_b->sprite, NULL);
     if (game->inv_open == true) {
-        sfSprite_setScale(game->mnu->gameplay->object->sprite,
-        (sfVector2f){0.3, 0.3});
-        sfSprite_setPosition(game->mnu->gameplay->object->sprite,
-        (sfVector2f){80, 100});
+        sfSprite_setScale(game->mnu->gameplay->object->sprite, INV_SIZE);
+        sfSprite_setPosition(game->mnu->gameplay->object->sprite, INV_POS);
         sfRenderWindow_drawSprite(game->w, game->mnu->gameplay->object->sprite,
         NULL);
     }

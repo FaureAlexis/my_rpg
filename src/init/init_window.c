@@ -20,7 +20,7 @@ sfView *init_view(sfRenderWindow *window, sfFloatRect size)
 sfRenderWindow *init_window(void)
 {
     sfRenderWindow *window = NULL;
-    sfVideoMode mode = {1920, 1080, 32};
+    sfVideoMode mode = {MAX_W_X, MAX_W_Y, 32};
     sfImage *favicon = NULL;
 
     window = sfRenderWindow_create(mode, "Hasbullah Quest", sfClose | sfResize,
@@ -31,7 +31,8 @@ sfRenderWindow *init_window(void)
     favicon = sfImage_createFromFile("./assets/window/favicon.png");
     if (!favicon)
         return NULL;
-    sfRenderWindow_setIcon(window, 514, 528, sfImage_getPixelsPtr(favicon));
+    sfRenderWindow_setIcon(window, ICON_WIDTH, ICON_HEIGHT,
+    sfImage_getPixelsPtr(favicon));
     sfImage_destroy(favicon);
     return window;
 }

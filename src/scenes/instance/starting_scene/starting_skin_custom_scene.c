@@ -15,6 +15,6 @@ int starting_skin_scene(main_game_t *game)
     sfMusic_play(game->btn->big->play_b->sound);
     shape_red_clicked(game);
     set_rgb_shape(&game->skin);
-    sfSprite_setScale(game->player->object->sprite, (sfVector2f){8, 8});
+    sfSprite_setScale(game->player->object->sprite, PLAYER_SCALE_GAME);
     return EXIT_SUCCESS;
 }

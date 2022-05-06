@@ -26,7 +26,7 @@ int init_help(main_game_t *game)
     sfText_setColor(game->help->help_text, sfWhite);
     sfText_setCharacterSize(game->help->goal_text, 54);
     sfText_setCharacterSize(game->help->help_text, 34);
-    sfText_setPosition(game->help->goal_text, (sfVector2f){550, 20});
-    sfText_setPosition(game->help->help_text, (sfVector2f){940, 150});
+    sfText_setPosition(game->help->goal_text, GOAL_TXT_POS);
+    sfText_setPosition(game->help->help_text, HELP_TXT_POS);
     return EXIT_SUCCESS;
 }

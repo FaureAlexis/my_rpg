@@ -31,7 +31,7 @@ static mobe_t *set_info_mob(mobe_t *node, char ***tab, int i)
     (sfVector2f){node->object->position.x - 30,
     node->object->position.y - 20});
     sfRectangleShape_setFillColor(node->hitbox_shape,
-    sfColor_fromRGBA(255, 0, 0, 100));
+    sfColor_fromRGBA(RED_HITBOX));
     return node;
 }
 

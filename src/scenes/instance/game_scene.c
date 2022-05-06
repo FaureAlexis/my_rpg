@@ -20,8 +20,7 @@ static int game_scene_event(main_game_t *game)
         return event->events(game);
     if (game->event.key.code == game->keys->pause
     && game->event.type == sfEvtKeyPressed) {
-        clicked_state_game(game, game->btn->mid->pause_b->shape,
-        (sfVector2f){10, 10});
+        clicked_state_game(game, game->btn->mid->pause_b->shape, POS_HELP);
         game->player->next_scene = PAUSE_SCENE;
         return game->player->next_scene;
     }
@@ -33,8 +32,7 @@ static int game_scene_event(main_game_t *game)
 static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->mid->pause_b, mouse_pos) == true) {
-        clicked_state_game(game, game->btn->mid->pause_b->shape,
-        (sfVector2f){10, 10});
+        clicked_state_game(game, game->btn->mid->pause_b->shape, POS_HELP);
         game->player->next_scene = PAUSE_SCENE;
         return game->player->next_scene;
     }
@@ -64,7 +62,7 @@ int game_scene(main_game_t *game)
     while (sfRenderWindow_isOpen(game->w)) {
         sfRenderWindow_setView(game->w, game->game_view);
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
-        sfRenderWindow_clear(game->w, sfColor_fromRGB(80,155,102));
+        sfRenderWindow_clear(game->w, sfColor_fromRGB(GAME_BG_COLOR));
         manage_all_hover(game, mouse_pos);
         if (game_check_events(game, mouse_pos)
         != game->player->current_scene) {

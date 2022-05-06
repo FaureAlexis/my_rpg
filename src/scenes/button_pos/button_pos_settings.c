@@ -50,31 +50,31 @@ static void pos_screen(main_game_t *game, float x, float y)
 
 void change_button_pos(main_game_t *game)
 {
-    game->btn->mid->help_b->position = (sfVector2f){10, 10};
-    game->btn->sml->right_b->position = (sfVector2f){1000, 360};
-    game->btn->sml->left_b->position = (sfVector2f){750, 360};
-    game->btn->big->exit_b->position = (sfVector2f){1000, 780};
-    game->btn->big->return_b->position = (sfVector2f){520, 780};
-    game->btn->mid->keybind_b->position = (sfVector2f){1500, 600};
-    game->btn->mid->mute_b->position = (sfVector2f){1500, 200};
-    game->btn->mid->unmute_b->position = (sfVector2f){1500, 400};
-    game->btn->sml->plus_b->position = (sfVector2f){1200, 600};
-    game->btn->sml->minus_b->position = (sfVector2f){950, 600};
-    game->btn->sml->plus_r_b->position = (sfVector2f){1200, 440};
-    game->btn->sml->minus_r_b->position = (sfVector2f){950, 440};
+    game->btn->mid->help_b->position = POS_HELP;
+    game->btn->sml->right_b->position = POS_RIGHT;
+    game->btn->sml->left_b->position = POS_LEFT;
+    game->btn->big->exit_b->position = POS_EXIT3;
+    game->btn->big->return_b->position = POS_RETURN3;
+    game->btn->mid->keybind_b->position = POS_KEYBIND;
+    game->btn->mid->mute_b->position = POS_MUTE;
+    game->btn->mid->unmute_b->position = POS_UNMUTE;
+    game->btn->sml->plus_b->position = POS_PLUS;
+    game->btn->sml->minus_b->position = POS_MINUS;
+    game->btn->sml->plus_r_b->position = POS_PLUS_R;
+    game->btn->sml->minus_r_b->position = POS_MINUS_R;
 }
 
 void pos_button_settings(main_game_t *game)
 {
-    float win_x = 1920;
-    float win_y = 1080;
+    float win_x = MAX_W_X;
+    float win_y = MAX_W_Y;
     sfVector2u size = sfRenderWindow_getSize(game->w);
 
     change_button_pos(game);
     set_big_buttons_sprite_pos(game);
     set_mid_buttons_sprite_pos(game);
     set_sml_buttons_sprite_pos(game);
-    if (size.x == 1920 && size.y == 1080)
+    if (size.x == MAX_W_X && size.y == MAX_W_Y)
         pos_fullscreen(game);
     else
         pos_screen(game, ((float){size.x} / win_x), ((float){size.y} / win_y));

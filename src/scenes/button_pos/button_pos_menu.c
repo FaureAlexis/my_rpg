@@ -21,17 +21,17 @@ static void pos_fullscreen(main_game_t *game)
 
 void pos_button_main(main_game_t *game)
 {
-    float win_x = 1920;
-    float win_y = 1080;
+    float win_x = MAX_W_X;
+    float win_y = MAX_W_Y;
     sfVector2u size = sfRenderWindow_getSize(game->w);
 
-    game->btn->big->exit_b->position = (sfVector2f){750, 700};
-    game->btn->big->play_b->position = (sfVector2f){540, 450};
-    game->btn->big->settings_b->position = (sfVector2f){960, 450};
-    game->btn->mid->help_b->position = (sfVector2f){10, 10};
+    game->btn->big->exit_b->position = INIT_BTN_POS;
+    game->btn->big->play_b->position = POS_GAME;
+    game->btn->big->settings_b->position = POS_SETTINGS;
+    game->btn->mid->help_b->position = POS_HELP;
     set_mid_buttons_sprite_pos(game);
     set_big_buttons_sprite_pos(game);
-    if (size.x == 1920 && size.y == 1080)
+    if (size.x == MAX_W_X && size.y == MAX_W_Y)
         pos_fullscreen(game);
     else {
         resize_all_buttons(game, ((float){size.x} / win_x),

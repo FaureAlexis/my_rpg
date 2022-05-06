@@ -10,15 +10,15 @@
 int zoom_event(main_game_t *game)
 {
     if (game->event.key.code == game->keys->zoom
-    && game->event.type == sfEvtKeyPressed && game->view_zoom >= 0.5) {
-        sfView_zoom(game->game_view, 0.9);
-        game->view_zoom -= 0.1;
+    && game->event.type == sfEvtKeyPressed && game->view_zoom >= MAX_ZOOM) {
+        sfView_zoom(game->game_view, ZOOM);
+        game->view_zoom -= ZOOM_OFFSET;
         return game->player->current_scene;
     }
     if (game->event.key.code == game->keys->unzoom
-    && game->event.type == sfEvtKeyPressed && game->view_zoom <= 1.2) {
-        sfView_zoom(game->game_view, 1.1);
-        game->view_zoom += 0.1;
+    && game->event.type == sfEvtKeyPressed && game->view_zoom <= MIN_ZOOM) {
+        sfView_zoom(game->game_view, UNZOOM);
+        game->view_zoom += ZOOM_OFFSET;
         return game->player->current_scene;
     }
     return game->player->current_scene;

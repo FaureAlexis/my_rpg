@@ -34,10 +34,10 @@ int init_skin_custom(cus_t **cus)
     (*cus)->red_c = 255;
     (*cus)->green_c = 255;
     (*cus)->blue_c = 255;
-    (*cus)->size = (sfVector2f){400, 30};
-    (*cus)->pos_red = (sfVector2f){850, 400};
-    (*cus)->pos_green = (sfVector2f){850, 460};
-    (*cus)->pos_blue = (sfVector2f){850, 520};
+    (*cus)->size = CUS_RECT_SIZE;
+    (*cus)->pos_red = RED_POS;
+    (*cus)->pos_green = GREEN_POS;
+    (*cus)->pos_blue = BLUE_POS;
     (*cus)->red = sfRectangleShape_create();
     (*cus)->green = sfRectangleShape_create();
     (*cus)->blue = sfRectangleShape_create();

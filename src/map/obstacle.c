@@ -21,6 +21,7 @@ void display_obstacle(main_game_t *game)
         set_small_tree_hitbox(tmp);
         set_long_tree_hitbox(tmp);
         set_big_tree_hitbox(tmp);
+        set_log_hitbox(tmp);
         tmp->hitbox = sfRectangleShape_getGlobalBounds(tmp->hitbox_shape);
         sfRenderWindow_drawSprite(game->w, tmp->object->sprite, NULL);
         tmp = tmp->next;

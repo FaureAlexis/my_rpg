@@ -27,7 +27,7 @@ speobstacle_t *spe)
 
     while (part && spe->object->rect.left != 0) {
         part->timer->time = sfClock_getElapsedTime(part->timer->clock);
-        part->timer->seconds = part->timer->time.microseconds / 1000000.0;
+        part->timer->seconds = part->timer->time.microseconds / SECONDS;
         if (part->timer->seconds > 0.1 && part->end <= 10) {
             part->cord.y -= 1;
             part->end += 1;

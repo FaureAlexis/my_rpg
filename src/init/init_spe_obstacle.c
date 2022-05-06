@@ -25,7 +25,7 @@ static int set_texture_speobstacle(speobstacle_t *node, char ***tab, int i)
     sfRectangleShape_setPosition(node->hitbox_shape,
     (sfVector2f){node->object->position.x - 40, node->object->position.y + 5});
     sfRectangleShape_setFillColor(node->hitbox_shape,
-    sfColor_fromRGBA(0, 220, 200, 100));
+    sfColor_fromRGBA(SPEOBS_COLOR));
     return EXIT_SUCCESS;
 }
 

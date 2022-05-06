@@ -11,19 +11,13 @@ static int create_small_buttons(main_game_t *game)
 {
     char **tab = init_button_rsc2(BUTTON_SOUND, BUTTON_SS);
 
-    if (init_button(&(game->btn->sml->plus_b), (sfVector2f){750, 700},
+    if (init_button(&(game->btn->sml->plus_b), INIT_BTN_POS,
     SMALL, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
-    if (init_button(&(game->btn->sml->minus_b), (sfVector2f){750, 700},
+    if (init_button(&(game->btn->sml->minus_b), INIT_BTN_POS,
     SMALL, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
-    if (init_button(&(game->btn->sml->talk_b), (sfVector2f){750, 700},
-    SMALL, tab) == EPITECH_ERROR)
-        return EPITECH_ERROR;
-    if (init_button(&(game->btn->sml->accept_b), (sfVector2f){750, 700},
-    SMALL, tab) == EPITECH_ERROR)
-        return EPITECH_ERROR;
-    if (init_button(&(game->btn->sml->deny_b), (sfVector2f){750, 700},
+    if (init_button(&(game->btn->sml->talk_b), INIT_BTN_POS,
     SMALL, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
     return EXIT_SUCCESS;
@@ -32,22 +26,16 @@ static int create_small_buttons(main_game_t *game)
 static int create_small_buttons2(main_game_t *game)
 {
     char **tab = init_button_rsc2(BUTTON_SOUND, BUTTON_SS);
-    if (init_button(&(game->btn->sml->left_b), (sfVector2f){750, 700},
+    if (init_button(&(game->btn->sml->left_b), INIT_BTN_POS,
     SMALL, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
-    if (init_button(&(game->btn->sml->right_b), (sfVector2f){750, 700},
+    if (init_button(&(game->btn->sml->right_b), INIT_BTN_POS,
     SMALL, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
-    if (init_button(&(game->btn->sml->top_b), (sfVector2f){750, 700},
+    if (init_button(&(game->btn->sml->plus_r_b), INIT_BTN_POS,
     SMALL, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
-    if (init_button(&(game->btn->sml->bot_b), (sfVector2f){750, 700},
-    SMALL, tab) == EPITECH_ERROR)
-        return EPITECH_ERROR;
-    if (init_button(&(game->btn->sml->plus_r_b), (sfVector2f){750, 700},
-    SMALL, tab) == EPITECH_ERROR)
-        return EPITECH_ERROR;
-    if (init_button(&(game->btn->sml->minus_r_b), (sfVector2f){750, 700},
+    if (init_button(&(game->btn->sml->minus_r_b), INIT_BTN_POS,
     SMALL, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
     return EXIT_SUCCESS;

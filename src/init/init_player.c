@@ -15,9 +15,9 @@ static player_t *set_player_stats(player_t *player)
     player->attack = 5;
     player->attack_action = 0;
     player->dust = NULL;
-    player->object->position = (sfVector2f){960, 600};
-    player->object->scale = (sfVector2f){4, 4};
-    player->object->rect = (sfIntRect){0, 0, 48, 48};
+    player->object->position = PLAYER_POS;
+    player->object->scale = PLAYER_SCALE;
+    player->object->rect = PLAYER_RECT;
     return player;
 }
 
@@ -38,7 +38,7 @@ static int set_sprite(player_t *player)
 {
     if (!player || set_sound_effect(player) == EPITECH_ERROR)
         return EPITECH_ERROR;
-    sfSprite_setOrigin(player->object->sprite, (sfVector2f){24, 24});
+    sfSprite_setOrigin(player->object->sprite, PLAYER_ORIGIN);
     sfSprite_setTexture(player->object->sprite, player->object->texture,
     sfTrue);
     sfSprite_setTextureRect(player->object->sprite, player->object->rect);
@@ -49,12 +49,12 @@ static int set_sprite(player_t *player)
     if (!player->hitbox_shape)
         return EPITECH_ERROR;
     sfRectangleShape_setSize(player->hitbox_shape,
-    (sfVector2f){player->hitbox.width / 2.5, player->hitbox.height / 2.5});
+    (sfVector2f){player->hitbox.width / 2.8, player->hitbox.height / 2.5});
     sfRectangleShape_setPosition(player->hitbox_shape,
-    (sfVector2f){player->object->position.x - 40,
+    (sfVector2f){player->object->position.x - 35,
     player->object->position.y - 5});
     sfRectangleShape_setFillColor(player->hitbox_shape,
-    sfColor_fromRGBA(0, 0, 255, 100));
+    sfColor_fromRGBA(BLUE_HITBOX));
     return EXIT_SUCCESS;
 }
 

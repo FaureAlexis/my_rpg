@@ -35,7 +35,7 @@ int offset, case_inventory_t *case_inventory, int i)
     int x = inventory->case_inventory_x + inventory->space_case;
 
     for (int j = x; j < inventory->case_inventory_max_x; j += offset) {
-        if (add_node(&case_inventory, j, i) == 84)
+        if (add_node(&case_inventory, j, i) == EPITECH_ERROR)
             return NULL;
     }
     return case_inventory;

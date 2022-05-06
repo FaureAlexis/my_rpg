@@ -38,16 +38,10 @@
 
     typedef struct medium_button_s {
         button_t *main_b;
-        button_t *top_sc_b;
-        button_t *save_b;
         button_t *pause_b;
-        button_t *right_b;
         button_t *mute_b;
         button_t *help_b;
-        button_t *settings_b;
         button_t *exit_b;
-        button_t *resume_b;
-        button_t *left_b;
         button_t *unmute_b;
         button_t *keybind_b;
     } mid_btn_t;
@@ -56,12 +50,8 @@
         button_t *plus_b;
         button_t *minus_b;
         button_t *talk_b;
-        button_t *accept_b;
-        button_t *deny_b;
         button_t *left_b;
         button_t *right_b;
-        button_t *top_b;
-        button_t *bot_b;
         button_t *plus_r_b;
         button_t *minus_r_b;
     } sml_btn_t;

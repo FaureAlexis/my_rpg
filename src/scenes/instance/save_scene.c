@@ -24,18 +24,16 @@ static int save_scene_event(main_game_t *game)
 static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->big->newsave_b, mouse_pos) == true) {
-        clicked_state_save(game, game->btn->big->newsave_b->shape,
-        (sfVector2f){540, 450});
+        clicked_state_save(game, game->btn->big->newsave_b->shape, POS_GAME);
         return game->player->next_scene = SKIN_SCENE;
     }
     if (button_is_clicked(game->btn->big->load_b, mouse_pos) == true) {
-        clicked_state_save(game, game->btn->big->load_b->shape,
-        (sfVector2f){960, 450});
+        clicked_state_save(game, game->btn->big->load_b->shape, POS_SETTINGS);
         return game->player->next_scene = GAME_SCENE;
     }
     if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
         clicked_state_save(game, game->btn->big->return_b->shape,
-        (sfVector2f){750, 700});
+        INIT_BTN_POS);
         return game->player->next_scene = MENU_SCENE;
     }
     return game->player->current_scene;
@@ -47,8 +45,7 @@ static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
     != game->player->current_scene)
         return game->player->next_scene;
     if (button_is_clicked(game->btn->big->exit_b, mouse_pos) == true) {
-        clicked_state_save(game, game->btn->big->exit_b->shape,
-        (sfVector2f){750, 700});
+        clicked_state_save(game, game->btn->big->exit_b->shape, INIT_BTN_POS);
         return close_window(game);
     }
     return game->player->current_scene;
@@ -75,7 +72,7 @@ int save_scene(main_game_t *game)
 
     starting_save_scene(game);
     while (sfRenderWindow_isOpen(game->w)) {
-        sfView_reset(game->basic_view, (sfFloatRect){0, 0, 1920, 1080});
+        sfView_reset(game->basic_view, VIEW_SIZE);
         sfRenderWindow_setView(game->w, game->basic_view);
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);

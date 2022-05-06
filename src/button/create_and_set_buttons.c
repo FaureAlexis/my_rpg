@@ -11,7 +11,6 @@ void set_rect_all_buttons(main_game_t *game)
 {
     set_rect_big_buttons(game);
     set_rect_mid_buttons(game);
-    set_rect_mid_buttons2(game);
     set_rect_small_buttons(game);
 }
 

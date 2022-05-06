@@ -11,8 +11,8 @@ static int red_right(main_game_t *g)
 {
     sfVector2f size = sfRectangleShape_getSize(g->skin->red);
 
-    if (size.x < 400 && g->skin->red_c < 242.25) {
-        g->skin->red_c += 12.75;
+    if (size.x < 400 && g->skin->red_c < MAX_COLOR) {
+        g->skin->red_c += OFFSET_COLOR;
         sfRectangleShape_setSize(g->skin->red,
         (sfVector2f){size.x + 20, size.y});
     }
@@ -25,8 +25,8 @@ static int green_right(main_game_t *g)
 {
     sfVector2f size = sfRectangleShape_getSize(g->skin->green);
 
-    if (size.x < 400 && g->skin->green_c < 242.25) {
-        g->skin->green_c += 12.75;
+    if (size.x < 400 && g->skin->green_c < MAX_COLOR) {
+        g->skin->green_c += OFFSET_COLOR;
         sfRectangleShape_setSize(g->skin->green,
         (sfVector2f){size.x + 20, size.y});
     }
@@ -39,8 +39,8 @@ static int blue_right(main_game_t *g)
 {
     sfVector2f size = sfRectangleShape_getSize(g->skin->blue);
 
-    if (size.x < 400 && g->skin->blue_c < 242.25) {
-        g->skin->blue_c += 12.75;
+    if (size.x < 400 && g->skin->blue_c < MAX_COLOR) {
+        g->skin->blue_c += OFFSET_COLOR;
         sfRectangleShape_setSize(g->skin->blue,
         (sfVector2f){size.x + 20, size.y});
     }

@@ -31,7 +31,7 @@ particles_t *create_dust(sfVector2f cord, int size, sfVector2f direction)
     sfRectangleShape_setSize(node->shape, (sfVector2f){node->size + 2,
     node->size + 2});
     node->pixels = malloc(((node->size + 2) * (node->size + 2)) * 4);
-    draw_circle(node, (node->size / 2), (sfColor){153, 150, 146, 180});
+    draw_circle(node, (node->size / 2), DUST_COLOR);
     node->texture = sfTexture_create(node->size + 2, node->size + 2);
     sfTexture_updateFromPixels(node->texture, node->pixels, node->size + 2,
     node->size + 2, 0, 0);

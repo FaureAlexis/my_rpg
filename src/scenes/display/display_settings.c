@@ -46,10 +46,8 @@ int display_settings2(main_game_t *gme)
 
 int display_settings(main_game_t *game)
 {
-    sfSprite_setScale(game->mnu->settings->object->sprite,
-    (sfVector2f){0.28, 0.28});
-    sfSprite_setPosition(game->mnu->settings->object->sprite,
-    (sfVector2f){100, 10});
+    sfSprite_setScale(game->mnu->settings->object->sprite, MENU_BG_SIZE);
+    sfSprite_setPosition(game->mnu->settings->object->sprite, SETTINGS_BG_POS);
     pos_button_settings(game);
     sfRenderWindow_drawSprite(game->w, game->mnu->settings->bg_object->sprite,
     NULL);

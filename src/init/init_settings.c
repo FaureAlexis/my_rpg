@@ -11,11 +11,11 @@ static int set_text_settings(main_game_t *game, sfFont *gravity)
 {
     if (!game || !gravity)
         return EPITECH_ERROR;
-    sfText_setPosition(game->settings->res_text, (sfVector2f){1060, 450});
+    sfText_setPosition(game->settings->res_text, RES_TXT);
     sfText_setCharacterSize(game->settings->res_text, 34);
     sfText_setColor(game->settings->res_text, sfWhite);
     sfText_setFont(game->settings->res_text, gravity);
-    sfText_setPosition(game->settings->fps_text, (sfVector2f){1100, 600});
+    sfText_setPosition(game->settings->fps_text, FPS_TXT);
     sfText_setCharacterSize(game->settings->fps_text, 58);
     sfText_setColor(game->settings->fps_text, sfWhite);
     sfText_setFont(game->settings->fps_text, gravity);
@@ -32,13 +32,13 @@ int init_settings(main_game_t *game)
     if (!game->settings)
         return EPITECH_ERROR;
     if (load_settings(game) == EPITECH_ERROR) {
-        game->settings->res_x = 1920;
-        game->settings->res_y = 1080;
+        game->settings->res_x = MAX_W_X;
+        game->settings->res_y = MAX_W_Y;
         game->settings->fps = 60;
     }
     game->settings->res_text = sfText_create();
     game->settings->fps_text = sfText_create();
-    gravity = sfFont_createFromFile("./assets/font/fs-gravity.ttf");
+    gravity = sfFont_createFromFile(TEXT_FONT);
     if (!game->settings->res_text || !game->settings->fps_text || !gravity)
         return EPITECH_ERROR;
     if (set_text_settings(game, gravity) == EPITECH_ERROR)

@@ -73,7 +73,7 @@ particles_t *anim_dust(particles_t *head, sfRenderWindow *w)
 
     while (part) {
         part->timer->time = sfClock_getElapsedTime(part->timer->clock);
-        part->timer->seconds = part->timer->time.microseconds / 1000000.0;
+        part->timer->seconds = part->timer->time.microseconds / SECONDS;
         if (part->direction.x == 6)
             part->y = part->cord.y;
         if (part->timer->seconds > 0.01) {

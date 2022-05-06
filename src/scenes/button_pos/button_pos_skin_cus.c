@@ -33,18 +33,18 @@ static void pos_fullscreen(main_game_t *game)
 
 void pos_button_skin_cus(main_game_t *game)
 {
-    float win_x = 1920;
-    float win_y = 1080;
+    float win_x = MAX_W_X;
+    float win_y = MAX_W_Y;
     sfVector2u size = sfRenderWindow_getSize(game->w);
 
-    game->btn->mid->exit_b->position = (sfVector2f){10, 10};
-    game->btn->big->play_b->position = (sfVector2f){960, 780};
-    game->btn->big->return_b->position = (sfVector2f){540, 780};
-    game->skin->pos_red = (sfVector2f){850, 400};
-    game->skin->pos_green = (sfVector2f){850, 460};
-    game->skin->pos_blue = (sfVector2f){850, 520};
+    game->btn->mid->exit_b->position = POS_HELP;
+    game->btn->big->play_b->position = POS_PLAY;
+    game->btn->big->return_b->position = POS_RETURN4;
+    game->skin->pos_red = RED_POS;
+    game->skin->pos_green = GREEN_POS;
+    game->skin->pos_blue = BLUE_POS;
     set_sprite_pos(game);
-    if (size.x == 1920 && size.y == 1080)
+    if (size.x == MAX_W_X && size.y == MAX_W_Y)
         pos_fullscreen(game);
     else {
         resize_all_buttons(game, ((float){size.x} / win_x),

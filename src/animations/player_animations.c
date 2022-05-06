@@ -98,7 +98,7 @@ int player_animations(player_t *player, mobe_t *mob)
         return EPITECH_ERROR;
     player->p_clock->time = sfClock_getElapsedTime(player->p_clock->clock);
     player->p_clock->seconds =
-        player->p_clock->time.microseconds / 1000000.0;
+        player->p_clock->time.microseconds / SECONDS;
     if (player->attack_action)
         return player_attack_animations(player, mob);
     if (player->p_clock->seconds >= 0.15) {

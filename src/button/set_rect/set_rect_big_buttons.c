@@ -9,18 +9,11 @@
 
 void set_rect_big_buttons(main_game_t *game)
 {
-    sfSprite_setTextureRect(game->btn->big->help_b->sprite,
-    (sfIntRect){35, 195, 330, 170});
-    sfSprite_setTextureRect(game->btn->big->settings_b->sprite,
-    (sfIntRect){365, 195, 330, 180});
-    sfSprite_setTextureRect(game->btn->big->return_b->sprite,
-    (sfIntRect){705, 195, 330, 180});
-    sfSprite_setTextureRect(game->btn->big->play_b->sprite,
-    (sfIntRect){35, 390, 330, 170});
-    sfSprite_setTextureRect(game->btn->big->exit_b->sprite,
-    (sfIntRect){365, 390, 330, 170});
-    sfSprite_setTextureRect(game->btn->big->newsave_b->sprite,
-    (sfIntRect){710, 390, 330, 170});
-    sfSprite_setTextureRect(game->btn->big->load_b->sprite,
-    (sfIntRect){1040, 10, 330, 170});
+    sfSprite_setTextureRect(game->btn->big->help_b->sprite, BIG_HELP);
+    sfSprite_setTextureRect(game->btn->big->settings_b->sprite, BIG_SETTINGS);
+    sfSprite_setTextureRect(game->btn->big->return_b->sprite, BIG_RETURN);
+    sfSprite_setTextureRect(game->btn->big->play_b->sprite, BIG_PLAY);
+    sfSprite_setTextureRect(game->btn->big->exit_b->sprite, BIG_EXIT);
+    sfSprite_setTextureRect(game->btn->big->newsave_b->sprite, BIG_NEWSAVE);
+    sfSprite_setTextureRect(game->btn->big->load_b->sprite, BIG_LOAD);
 }

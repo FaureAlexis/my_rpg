@@ -10,15 +10,15 @@
 static int set_button_size(button_t **button, int size)
 {
     if (size == SMALL) {
-        (*button)->size = (sfVector2f){80, 80};
+        (*button)->size = SML_BTN_SIZE;
         sfRectangleShape_setSize((*button)->shape, (*button)->size);
     }
     if (size == MEDIUM) {
-        (*button)->size = (sfVector2f){110, 110};
+        (*button)->size = MID_BTN_SIZE;
         sfRectangleShape_setSize((*button)->shape, (*button)->size);
     }
     if (size == LARGE) {
-        (*button)->size = (sfVector2f){305, 170};
+        (*button)->size = BIG_BTN_SIZE;
         sfRectangleShape_setSize((*button)->shape, (*button)->size);
     }
     return EXIT_SUCCESS;

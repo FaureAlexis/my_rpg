@@ -52,3 +52,18 @@ int set_long_tree_hitbox(obstacle_t *tmp)
     }
     return EXIT_SUCCESS;
 }
+
+int set_log_hitbox(obstacle_t *tmp)
+{
+    if (!tmp)
+        return EPITECH_ERROR;
+    if (tmp->object->rect.left == 96 && tmp->object->rect.top == 80
+    && tmp->object->rect.width == 32 && tmp->object->rect.height == 16) {
+        sfRectangleShape_setSize(tmp->hitbox_shape,
+        (sfVector2f){tmp->hitbox.width / 1.1, tmp->hitbox.height / 1.35});
+        sfRectangleShape_setPosition(tmp->hitbox_shape,
+        (sfVector2f){tmp->object->position.x - 80, tmp->object->position.y
+        - 25});
+    }
+    return EXIT_SUCCESS;
+}

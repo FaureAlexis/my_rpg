@@ -24,7 +24,7 @@ static int set_texture_obstacle(obstacle_t *node, char ***tab, int i)
     sfRectangleShape_setPosition(node->hitbox_shape,
     (sfVector2f){node->object->position.x - 40, node->object->position.y + 5});
     sfRectangleShape_setFillColor(node->hitbox_shape,
-    sfColor_fromRGBA(0, 255, 0, 100));
+    sfColor_fromRGBA(GREEN_HITBOX));
     return EXIT_SUCCESS;
 }
 

@@ -18,7 +18,6 @@ static void limit_hasbulla(mobe_t *mob, player_t *player)
     }
 }
 
-
 static mobe_t *dead_hasbulla_animation(mobe_t *mob)
 {
     if (!mob->dead) {
