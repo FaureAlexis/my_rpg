@@ -7,6 +7,23 @@
 
 #include "rpg.h"
 
+static int set_button_size(button_t **button, int size)
+{
+    if (size == SMALL) {
+        (*button)->size = (sfVector2f){80, 80};
+        sfRectangleShape_setSize((*button)->shape, (*button)->size);
+    }
+    if (size == MEDIUM) {
+        (*button)->size = (sfVector2f){110, 110};
+        sfRectangleShape_setSize((*button)->shape, (*button)->size);
+    }
+    if (size == LARGE) {
+        (*button)->size = (sfVector2f){305, 170};
+        sfRectangleShape_setSize((*button)->shape, (*button)->size);
+    }
+    return EXIT_SUCCESS;
+}
+
 int init_button_shape(button_t **button, sfVector2f position, int size,
 char **tab)
 {
@@ -16,12 +33,7 @@ char **tab)
     (*button)->shape = sfRectangleShape_create();
     if ((*button)->shape == NULL)
         return EPITECH_ERROR;
-    if (size == SMALL)
-        sfRectangleShape_setSize((*button)->shape, (sfVector2f){80, 80});
-    if (size == MEDIUM)
-        sfRectangleShape_setSize((*button)->shape, (sfVector2f){110, 110});
-    if (size == LARGE)
-        sfRectangleShape_setSize((*button)->shape, (sfVector2f){305, 170});
+    set_button_size(button, size);
     sfRectangleShape_setPosition((*button)->shape, position);
     sfRectangleShape_setFillColor((*button)->shape,
     sfColor_fromRGBA(0, 0, 0, 120));

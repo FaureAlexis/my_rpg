@@ -11,9 +11,9 @@ int set_big_tree_hitbox(obstacle_t *tmp)
 {
     if (!tmp)
         return EPITECH_ERROR;
-    if ((tmp->object->rect.left == 0 || tmp->object->rect.left == 48 )
-    && tmp->object->rect.top == 79 && tmp->object->rect.width == 48
-    && tmp->object->rect.height == 64) {
+    if ((tmp->object->rect.left == 0 || tmp->object->rect.left == 48)
+    && (tmp->object->rect.top == 80 || tmp->object->rect.top == 144)
+    && tmp->object->rect.width == 48 && tmp->object->rect.height == 64) {
         sfRectangleShape_setSize(tmp->hitbox_shape,
         (sfVector2f){tmp->hitbox.width / 1.5, tmp->hitbox.height / 4});
         sfRectangleShape_setPosition(tmp->hitbox_shape,

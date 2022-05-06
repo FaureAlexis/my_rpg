@@ -18,8 +18,6 @@ static void destroy_button(button_t *button)
 
 static void destroy_big(main_game_t *game)
 {
-    destroy_button(game->btn->big->score_b);
-    destroy_button(game->btn->big->resume_b);
     destroy_button(game->btn->big->help_b);
     destroy_button(game->btn->big->settings_b);
     destroy_button(game->btn->big->return_b);

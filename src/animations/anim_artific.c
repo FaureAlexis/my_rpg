@@ -7,43 +7,36 @@
 
 #include "rpg.h"
 
-// particles_t *free_a_artific(particles_t *head)
-// {
-//     particles_t *tmp = NULL;
+void free_a_artific(speobstacle_t *spe)
+{
+    particles_t *tmp = NULL;
 
-//     if (head && head->end > 1) {
-//         tmp = head->next;
-//         free(head->timer);
-//         free(head->pixels);
-//         sfSprite_destroy(head->sprite);
-//         sfTexture_destroy(head->texture);
-//         free(head);
-//         head = tmp;
-//     }
-//     return head;
-// }
+    if (spe->artific && spe->object->rect.left == 0) {
+        tmp = spe->artific->next;
+        free(spe->artific->timer);
+        free(spe->artific->pixels);
+        free(spe->artific);
+        spe->artific = tmp;
+    }
+}
 
-// particles_t *anim_artific(particles_t *head, sfRenderWindow *w)
-// {
-//     particles_t *part = head;
-//     sfVector2i pos = sfMouse_getPositionRenderWindow(w);
+particles_t *anim_artific(particles_t *head, sfRenderWindow *w,
+speobstacle_t *spe)
+{
+    particles_t *part = head;
 
-//     while (part) {
-//         part->cord.x = pos.x;
-//         part->cord.y = pos.y;
-//         part->timer->time = sfClock_getElapsedTime(part->timer->clock);
-//         part->timer->seconds = part->timer->time.microseconds / 1000000.0;
-//         if (part->timer->seconds > 0.01) {
-//             part->end += 0.01;
-//             my_put_pixel(part, part->direction.x / 2, part->direction.y / 2);
-//             sfTexture_updateFromPixels(part->texture, part->pixels, part->size,
-//             part->size, 0, 0);
-//             sfSprite_setTexture(part->sprite, part->texture, sfFalse);
-//         }
-//         sfSprite_setPosition(part->sprite, part->cord);
-//         sfRenderWindow_drawSprite(w, part->sprite, NULL);
-//         part = part->next;
-//     }
-//     head = free_a_artific(head);
-//     return head;
-// }
+    while (part && spe->object->rect.left != 0) {
+        part->timer->time = sfClock_getElapsedTime(part->timer->clock);
+        part->timer->seconds = part->timer->time.microseconds / 1000000.0;
+        if (part->timer->seconds > 0.1 && part->end <= 10) {
+            part->cord.y -= 1;
+            part->end += 1;
+            sfClock_restart(part->timer->clock);
+        }
+        sfRectangleShape_setPosition(part->shape, part->cord);
+        sfRenderWindow_drawRectangleShape(w, part->shape, NULL);
+        part = part->next;
+    }
+    free_a_artific(spe);
+    return head;
+}

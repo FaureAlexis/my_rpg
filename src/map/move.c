@@ -7,13 +7,13 @@
 
 #include "rpg.h"
 
-void move_obstacle(map_t *map, player_t *player, sfVector2f move)
+void move_obstacle(map_t *map, sfVector2f move)
 {
     obstacle_t *obstacle = map->obstacle;
 
     while (obstacle != NULL) {
-        if (map->map->position.x >= MAP_X_MIN && map->map->position.x <= \
-        MAP_X_MAX && map->map->position.y >= MAP_Y_MIN && map->map->position.y\
+        if (map->map->position.x >= MAP_X_MIN && map->map->position.x <=
+        MAP_X_MAX && map->map->position.y >= MAP_Y_MIN && map->map->position.y
         <= MAP_Y_MAX) {
             obstacle->object->position.x += move.x;
             obstacle->object->position.y += move.y;
@@ -27,13 +27,13 @@ void move_obstacle(map_t *map, player_t *player, sfVector2f move)
     }
 }
 
-void move_speobstacle(map_t *map, player_t *player, sfVector2f move)
+void move_speobstacle(map_t *map, sfVector2f move)
 {
     speobstacle_t *speobstacle = map->speobstacle;
 
     while (speobstacle != NULL) {
-        if (map->map->position.x >= MAP_X_MIN && map->map->position.x <= \
-        MAP_X_MAX && map->map->position.y >= MAP_Y_MIN && map->map->position.y\
+        if (map->map->position.x >= MAP_X_MIN && map->map->position.x <=
+        MAP_X_MAX && map->map->position.y >= MAP_Y_MIN && map->map->position.y
         <= MAP_Y_MAX) {
             speobstacle->object->position.x += move.x;
             speobstacle->object->position.y += move.y;
@@ -47,13 +47,13 @@ void move_speobstacle(map_t *map, player_t *player, sfVector2f move)
     }
 }
 
-void move_mob(map_t *map, player_t *player, sfVector2f move)
+void move_mob(map_t *map, sfVector2f move)
 {
     mobe_t *mobe = map->mobe;
 
     while (mobe != NULL) {
-        if (map->map->position.x >= MAP_X_MIN && map->map->position.x <= \
-        MAP_X_MAX && map->map->position.y >= MAP_Y_MIN && map->map->position.y\
+        if (map->map->position.x >= MAP_X_MIN && map->map->position.x <=
+        MAP_X_MAX && map->map->position.y >= MAP_Y_MIN && map->map->position.y
         <= MAP_Y_MAX) {
             mobe->object->position.x += move.x;
             mobe->object->position.y += move.y;

@@ -12,12 +12,13 @@ If the line get 7 words:
     The first is an asset.
     The second and the theard is the position x and y of the sprite.
     The four next caractère is the frame of the asset.
-If the line get 8 words:
+If the line get 9 words:
     Its a special obstacle. The player can interact with it.
     The first is an asset.
     The second and the theard is the position x and y of the sprite.
     The four next caractère is the frame of the asset.
-    THe last characters is HP;
+    The next characters is HP;
+    The last characters is type;
 If the line get 10 words:
     Its a mob. You can kill I'm and he attack you
     The first is an asset.

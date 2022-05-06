@@ -13,6 +13,7 @@ static player_t *set_player_stats(player_t *player)
         return NULL;
     player->life = 20;
     player->attack = 5;
+    player->attack_action = 0;
     player->dust = NULL;
     player->object->position = (sfVector2f){960, 600};
     player->object->scale = (sfVector2f){4, 4};
@@ -20,9 +21,22 @@ static player_t *set_player_stats(player_t *player)
     return player;
 }
 
-static int set_sprite(player_t *player)
+static int set_sound_effect(player_t *player)
 {
     if (!player)
+        return EPITECH_ERROR;
+    player->walk = sfMusic_createFromFile(WALK_SOUND);
+    player->death = sfMusic_createFromFile(DEATH_SOUND);
+    player->sword = sfMusic_createFromFile(SWORD_USING_SOUND);
+    if (player->walk == NULL || player->death == NULL || player->sword == NULL)
+        return EPITECH_ERROR;
+    sfMusic_setLoop(player->walk, true);
+    return EXIT_SUCCESS;
+}
+
+static int set_sprite(player_t *player)
+{
+    if (!player || set_sound_effect(player) == EPITECH_ERROR)
         return EPITECH_ERROR;
     sfSprite_setOrigin(player->object->sprite, (sfVector2f){24, 24});
     sfSprite_setTexture(player->object->sprite, player->object->texture,
@@ -50,7 +64,6 @@ player_t *init_player(void)
 
     if (!player)
         return NULL;
-    player->attack_action = 0;
     player->object = malloc(sizeof(game_object_t));
     if (!player->object)
         return NULL;

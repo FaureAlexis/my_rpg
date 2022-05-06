@@ -16,6 +16,7 @@ int starting_help_scene(main_game_t *game)
         game->menu_depth = 2;
     else
         game->menu_depth = 7;
-    sfMusic_stop(game->btn->big->help_b->sound);
-    return 0;
+    sfMusic_pause(game->mnu->gameplay->theme);
+    sfMusic_play(game->btn->mid->help_b->sound);
+    return EXIT_SUCCESS;
 }

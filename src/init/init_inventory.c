@@ -29,18 +29,29 @@ static int add_node(case_inventory_t **case_inventory, int x, int y)
     return 0;
 }
 
+static case_inventory_t *init_case_x_inventory(inventory_t *inventory,
+int offset, case_inventory_t *case_inventory, int i)
+{
+    int x = inventory->case_inventory_x + inventory->space_case;
+
+    for (int j = x; j < inventory->case_inventory_max_x; j += offset) {
+        if (add_node(&case_inventory, j, i) == 84)
+            return NULL;
+    }
+    return case_inventory;
+}
+
 static case_inventory_t *init_case_inventory(inventory_t *inventory)
 {
     case_inventory_t *case_inventory = NULL;
-    int x = inventory->case_inventory_x + inventory->space_case;
     int y = inventory->case_inventory_y + inventory->space_case;
     int offset = inventory->offset_case_inventory + inventory->space_case;
 
     for (int i = y; i < inventory->case_inventory_max_y; i += offset) {
-        for (int j = x; j < inventory->case_inventory_max_x; j += offset) {
-            if (add_node(&case_inventory, j, i) == 84)
-                return NULL;
-        }
+        case_inventory = init_case_x_inventory(inventory,
+        offset, case_inventory, i);
+        if (case_inventory == NULL)
+            return NULL;
     }
     return case_inventory;
 }
@@ -63,6 +74,5 @@ int init_inventory(main_game_t *game)
     game->inventory->case_inventory = init_case_inventory(game->inventory);
     if (!game->inventory->case_inventory)
         return 84;
-    // game->armor = init_case_inventory(game);
     return 0;
 }

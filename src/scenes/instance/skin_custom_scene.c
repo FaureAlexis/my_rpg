@@ -8,8 +8,8 @@
 #include "rpg.h"
 
 static const event_t event_array[] = {
-    {.type = sfEvtClosed, .events = &close_window},
-    {.type = -1, .events = NULL}
+    {.type = sfEvtClosed, .events = &close_window, .index = 0},
+    {.type = -1, .events = NULL, .index = -1}
 };
 
 static int skin_scene_event(main_game_t *game)
@@ -63,7 +63,7 @@ static int skin_check_events(main_game_t *game, sfVector2i mouse_pos)
             return manage_button_action(game, mouse_pos);
         if (skin_scene_event(game) != game->player->current_scene)
             return game->player->next_scene;
-        if (game->event.key.code == sfKeyQ && game->event.type
+        if (game->event.key.code == game->keys->quit && game->event.type
         == sfEvtKeyPressed)
             return close_window(game);
     }
@@ -76,14 +76,19 @@ int skin_scene(main_game_t *game)
 
     starting_skin_scene(game);
     while (sfRenderWindow_isOpen(game->w)) {
+        sfView_reset(game->basic_view, (sfFloatRect){0, 0, 1920, 1080});
+        sfRenderWindow_setView(game->w, game->basic_view);
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);
         player_animations(game->player, game->map->mobe);
-        if (skin_check_events(game, mouse_pos) != game->player->current_scene)
+        if (skin_check_events(game, mouse_pos)
+        != game->player->current_scene) {
+            sfMusic_stop(game->btn->big->play_b->sound);
             return game->player->next_scene;
+        }
         display_skin_cus(game);
         sfRenderWindow_display(game->w);
     }
-    return 0;
+    return EXIT_SUCCESS;
 }

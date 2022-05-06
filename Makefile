@@ -45,7 +45,11 @@ SRC_SCENES_BUTTON_POS	=	scenes/button_pos/button_pos_menu.c \
 							scenes/button_pos/button_pos_pause.c \
 							scenes/button_pos/button_pos_keybind.c \
 							scenes/button_pos/button_pos_settings.c \
-							scenes/button_pos/button_pos_skin_cus.c
+							scenes/button_pos/button_pos_skin_cus.c \
+							scenes/button_pos/resize_all_buttons.c \
+							scenes/button_pos/resize_big_buttons.c \
+							scenes/button_pos/resize_mid_buttons.c \
+							scenes/button_pos/resize_sml_buttons.c
 
 SRC_SCENES_CREATE		=	scenes/create/create_scenes.c \
 							scenes/create/init_scenes.c
@@ -53,41 +57,43 @@ SRC_SCENES_CREATE		=	scenes/create/create_scenes.c \
 SRC_SCENES_SETTINGS 	=	scenes/instance/settings/volume_settings.c \
 							scenes/instance/settings/screen_settings.c
 
-SRC_SCENES_STARTING		=	scenes/instance/starting_scene/starting_game_scene.c \
-							scenes/instance/starting_scene/starting_help_scene.c \
-							scenes/instance/starting_scene/starting_keybind_scene.c \
-							scenes/instance/starting_scene/starting_main_menu_scene.c \
-							scenes/instance/starting_scene/starting_pause_scene.c \
-							scenes/instance/starting_scene/starting_save_scene.c \
-							scenes/instance/starting_scene/starting_settings_scene.c \
-							scenes/instance/starting_scene/starting_skin_custom_scene.c
+SRC_SCN_START			=	starting_scene/starting_game_scene.c \
+							starting_scene/starting_help_scene.c \
+							starting_scene/starting_keybind_scene.c \
+							starting_scene/starting_main_menu_scene.c \
+							starting_scene/starting_pause_scene.c \
+							starting_scene/starting_save_scene.c \
+							starting_scene/starting_settings_scene.c \
+							starting_scene/starting_skin_custom_scene.c
 
-SRC_SCENES_INSTANCE		=	scenes/instance/manage_scenes.c \
-							scenes/instance/pause_scene.c \
-							scenes/instance/game_scene.c \
-							scenes/instance/save_scene.c \
-							scenes/instance/keybind_scene.c \
-							scenes/instance/settings_scene.c \
-							scenes/instance/skin_custom_scene.c \
-							scenes/instance/help_scene.c \
-							scenes/instance/main_menu_scene.c
+SRC_SCN_INST			=	manage_scenes.c \
+							pause_scene.c \
+							game_scene.c \
+							save_scene.c \
+							keybind_scene.c \
+							settings_scene.c \
+							skin_custom_scene.c \
+							help_scene.c \
+							main_menu_scene.c
 
 SRC_SCENES 				=	$(SRC_SCENES_DISPLAY) \
 							$(SRC_SCENES_BUTTON_POS) \
 							$(SRC_SCENES_CREATE) \
 							$(SRC_SCENES_SETTINGS) \
-							$(SRC_SCENES_STARTING) \
-							$(SRC_SCENES_INSTANCE)
+							$(addprefix scenes/instance/, $(SRC_SCN_START)) \
+							$(addprefix scenes/instance/, $(SRC_SCN_INST))
 
 SRC_ANIMATIONS			=	animations/player_animations.c \
 							animations/change_color_skin_left.c \
 							animations/change_color_skin_right.c \
-							animations/env_move.c \
+							animations/move_player.c \
 							animations/anim_particle.c \
 							animations/anim_artific.c
 
 SRC_EVENT				=	events/get_event.c \
 							events/player_collision.c \
+							events/event_inventory.c \
+							events/event_zoom.c \
 							events/event_close.c \
 							events/event_skin_choice.c
 
@@ -100,15 +106,21 @@ SRC_INIT				=	init/init_clock.c \
 							init/init_skin_custom.c \
 							init/init_map.c \
 							init/init_player.c \
+							init/create_dust.c \
+							init/init_mob.c \
+							init/init_spe_obstacle.c \
+							init/init_obstacle.c \
 							init/init_window.c \
-							init/creat_particle.c \
+							init/create_particle.c \
 							init/init_keys.c
 
 SRC_ERROR 				=	error/error.c \
 							error/help.c
 
 SRC_FREE				=	free/free_game_struct.c \
+							free/free_player.c \
 							free/free_button.c \
+							free/free_a_particle.c \
 							free/free_menu.c	\
 							free/free_text.c
 
@@ -133,10 +145,13 @@ SRC_MAP					=	map/game_test.c \
 							map/pos.c \
 							map/tab.c \
 							map/mob.c \
+							map/display_skeleton.c \
 							map/skeleton.c \
+							map/display_slime.c \
 							map/slime.c \
 							map/spe_obstacle.c \
-							map/move.c
+							map/move.c			\
+							map/hasbulla.c
 
 SRC_SAVE				=	save/saving/open_file.c \
 							save/saving/save_settings.c \
@@ -160,9 +175,9 @@ OBJ						=	$(addprefix src/, $(SRC:.c=.o))
 
 NAME					=	my_rpg
 
-CPPFLAGS				=	-I ./include -g
+CPPFLAGS				=	-I ./include -g -Werror -Wall -Wextra
 
-CSFML					=	-l csfml-graphics -l csfml-audio -l csfml-system  \
+CSFML					=	-l csfml-graphics -l csfml-audio -l csfml-system \
 							-l csfml-window
 
 LDFLAGS					=	-L ./lib/ -lmy

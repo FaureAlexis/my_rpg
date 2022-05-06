@@ -9,10 +9,6 @@
 
 void set_rect_big_buttons(main_game_t *game)
 {
-    sfSprite_setTextureRect(game->btn->big->score_b->sprite,
-    (sfIntRect){35, 10, 330, 170});
-    sfSprite_setTextureRect(game->btn->big->resume_b->sprite,
-    (sfIntRect){330, 10, 330, 170});
     sfSprite_setTextureRect(game->btn->big->help_b->sprite,
     (sfIntRect){35, 195, 330, 170});
     sfSprite_setTextureRect(game->btn->big->settings_b->sprite,

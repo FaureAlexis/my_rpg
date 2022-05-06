@@ -27,8 +27,6 @@
     } button_t;
 
     typedef struct big_button_s {
-        button_t *score_b;
-        button_t *resume_b;
         button_t *help_b;
         button_t *settings_b;
         button_t *return_b;

@@ -26,8 +26,17 @@ int init_all(main_game_t *game)
     if (init_inventory(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (init_keys(game) == EPITECH_ERROR)
-        return EPITECH_ERROR;   
+        return EPITECH_ERROR;
     return EXIT_SUCCESS;
+}
+
+static main_game_t *set_info_game(main_game_t *game)
+{
+    game->view_zoom = 1;
+    game->menu_depth = 0;
+    game->inv_open = false;
+    game->view_pos = (sfVector2f){960, 600};
+    return game;
 }
 
 main_game_t *init_game(void)
@@ -49,10 +58,7 @@ main_game_t *init_game(void)
     game->btn->sml = malloc(sizeof(sml_btn_t));
     if (!game->btn->big || !game->btn->mid || !game->btn->sml)
         return NULL;
-    game->view_zoom = 1;
-    game->menu_depth = 0;
-    game->inv_open = false;
-    game->view_pos = (sfVector2f){960, 600};
+    game = set_info_game(game);
     game->player = init_player();
     return game;
 }

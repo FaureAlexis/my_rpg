@@ -20,12 +20,6 @@ static int create_big_buttons(main_game_t *game)
 {
     char **tab = init_button_rsc2(BUTTON_SOUND, BUTTON_SS);
 
-    if (init_button(&(game->btn->big->score_b), (sfVector2f){750, 700},
-    LARGE, tab) == EPITECH_ERROR)
-        return EPITECH_ERROR;
-    if (init_button(&(game->btn->big->resume_b), (sfVector2f){750, 700},
-    LARGE, tab) == EPITECH_ERROR)
-        return EPITECH_ERROR;
     if (init_button(&(game->btn->big->help_b), (sfVector2f){750, 700},
     LARGE, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;

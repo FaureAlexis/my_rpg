@@ -14,6 +14,7 @@ int free_settings(char *fps, char *x, char *y)
     free(fps);
     free(x);
     free(y);
+    return EXIT_SUCCESS;
 }
 
 int write_data(char *key, char *value, FILE *file)

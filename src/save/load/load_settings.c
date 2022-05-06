@@ -10,6 +10,7 @@
 static void apply_settings(main_game_t *game, char *key, char *value)
 {
     int value_nb = 0;
+
     if (!game || !key || !value)
         return;
     value_nb = my_atoi(value);
@@ -30,6 +31,7 @@ static int parse_settings(main_game_t * game, char buffer[41])
     char **lines = buffer_to_array(buffer);
     char *key = NULL;
     char *value = NULL;
+
     if (!lines)
         return EPITECH_ERROR;
     for (int i = 0; i < 3; i += 1) {
@@ -44,11 +46,12 @@ static int parse_settings(main_game_t * game, char buffer[41])
 
 int load_settings(main_game_t *game)
 {
-    char *buffer = malloc(41);
+    char *buffer = malloc(sizeof(char) * 41);
     FILE *file = fopen(".settings.rpg", "r");
+
     if (!file)
         return EPITECH_ERROR;
-    if (fread(buffer, 41, 1, file) == -1)
+    if (fread(buffer, 41, 1, file) == 1)
         return EPITECH_ERROR;
     buffer[41 + 1] = 0;
     if (fclose(file) == EOF)

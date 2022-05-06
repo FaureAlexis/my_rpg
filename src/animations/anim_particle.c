@@ -19,35 +19,30 @@ sfColor color)
     particle->pixels[open + 3] = color.a;
 }
 
-int draw_circle(particles_t *particle, int radius)
+static int random_put_pixel(particles_t *particle, sfColor color, int start_x,
+int radius)
 {
-    int end_x = particle->size + 1;
-    int end_y = particle->size + 1;
+    int end_y = particle->size;
 
-    for (int start_x = 1; start_x <= end_x; start_x += 1) {
-        for (int start_y = 1; start_y <= end_y; start_y += 1) {
-            if ((pow(start_x - (particle->size / 2 + 1), 2) + pow(start_y -
-            (particle->size / 2 + 1), 2)) <= pow(radius, 2))
-                my_put_pixel(particle, start_y, start_x, (sfColor){153, 150,
-                146, 180});
+    for (int start_y = 0; start_y <= end_y; start_y += 1) {
+        if ((pow(start_x - (particle->size / 2), 2) + pow(start_y -
+        (particle->size / 2), 2)) <= pow(radius, 2))
+            my_put_pixel(particle, start_y, start_x, color);
+        else
+            my_put_pixel(particle, start_y, start_x,
+            (sfColor){0, 0, 0, 0});
         }
-    }
-    return 0;
+    return start_x;
 }
 
-particles_t *free_a_particule(particles_t *head)
+int draw_circle(particles_t *particle, int radius, sfColor color)
 {
-    particles_t *tmp = NULL;
+    int end_x = particle->size;
 
-    if (head && head->end > 0.75) {
-        tmp = head->next;
-        free(head->timer);
-        free(head->pixels);
-        sfRectangleShape_destroy(head->shape);
-        free(head);
-        head = tmp;
+    for (int start_x = 0; start_x <= end_x; start_x += 1) {
+        start_x = random_put_pixel(particle, color, start_x, radius);
     }
-    return head;
+    return EXIT_SUCCESS;
 }
 
 particles_t *add_particle_to_list(particles_t *head, particles_t *node,

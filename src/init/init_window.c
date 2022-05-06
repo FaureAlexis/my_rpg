@@ -7,9 +7,9 @@
 
 #include "rpg.h"
 
-sfView *init_view(sfRenderWindow *window)
+sfView *init_view(sfRenderWindow *window, sfFloatRect size)
 {
-    sfView *view = sfView_createFromRect((sfFloatRect){0, 0, 1920, 1080});
+    sfView *view = sfView_createFromRect(size);
 
     if (window == NULL || view == NULL)
         return NULL;
@@ -23,7 +23,8 @@ sfRenderWindow *init_window(void)
     sfVideoMode mode = {1920, 1080, 32};
     sfImage *favicon = NULL;
 
-    window = sfRenderWindow_create(mode, "Hasbullah Quest", sfClose, NULL);
+    window = sfRenderWindow_create(mode, "Hasbullah Quest", sfClose | sfResize,
+    NULL);
     if (!window)
         return NULL;
     sfRenderWindow_setFramerateLimit(window, 60);

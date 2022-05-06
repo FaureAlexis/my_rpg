@@ -14,5 +14,9 @@ int starting_keybind_scene(main_game_t *game)
         game->menu_depth = 5;
     else
         game->menu_depth = 1;
-    return 0;
+    sfMusic_pause(game->mnu->gameplay->theme);
+    sfMusic_play(game->btn->mid->keybind_b->sound);
+    // sfView_reset(game->basic_view, (sfFloatRect){0, 0, 1920, 1080});
+    //sfRenderWindow_setView(game->w, game->basic_view);
+    return EXIT_SUCCESS;
 }
