@@ -62,6 +62,7 @@ int game_scene(main_game_t *game)
 
     starting_game_scene(game);
     while (sfRenderWindow_isOpen(game->w)) {
+        sfRenderWindow_setView(game->w, game->game_view);
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfColor_fromRGB(80,155,102));
         manage_all_hover(game, mouse_pos);
@@ -74,5 +75,5 @@ int game_scene(main_game_t *game)
         display_game(game);
         sfRenderWindow_display(game->w);
     }
-    return 0;
+    return EXIT_SUCCESS;
 }

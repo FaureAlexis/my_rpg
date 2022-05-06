@@ -16,7 +16,7 @@ int starting_skin_scene(main_game_t *game)
     shape_red_clicked(game);
     set_rgb_shape(&game->skin);
     sfSprite_setScale(game->player->object->sprite, (sfVector2f){8, 8});
-    sfView_reset(game->basic_view, (sfFloatRect){0, 0, 1920, 1080});
-    sfRenderWindow_setView(game->w, game->basic_view);
-    return 0;
+    // sfView_reset(game->basic_view, (sfFloatRect){0, 0, 1920, 1080});
+    //sfRenderWindow_setView(game->w, game->basic_view);
+    return EXIT_SUCCESS;
 }

@@ -87,6 +87,8 @@ int pause_scene(main_game_t *game)
 
     starting_pause_scene(game);
     while (sfRenderWindow_isOpen(game->w)) {
+        sfView_reset(game->basic_view, (sfFloatRect){0, 0, 1920, 1080});
+        sfRenderWindow_setView(game->w, game->basic_view);
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);
@@ -98,5 +100,5 @@ int pause_scene(main_game_t *game)
         display_pause(game);
         sfRenderWindow_display(game->w);
     }
-    return 0;
+    return EXIT_SUCCESS;
 }
