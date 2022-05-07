@@ -278,7 +278,10 @@
     int player_animations(player_t *player, mobe_t *mob);
     int player_check_key(sfKeyCode key);
     int set_player_movements(main_game_t *game, player_t *player,
-    sfEvent event);
+    sfEvent *event);
+    int detect_animations(movements_t movements_array[]);
+    int modify_animations(main_game_t *game, player_t *player, sfEvent event,
+    movements_t movements_array[]);
     void move_obstacle(map_t *map, sfVector2f move);
     void move_speobstacle(map_t *map, sfVector2f move);
     void move_mob(map_t *map, sfVector2f move);

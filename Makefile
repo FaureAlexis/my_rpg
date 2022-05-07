@@ -84,6 +84,7 @@ SRC_SCENES 				=	$(SRC_SCENES_DISPLAY) \
 							$(addprefix scenes/instance/, $(SRC_SCN_INST))
 
 SRC_ANIMATIONS			=	animations/player_animations.c \
+							animations/player_animations_features.c \
 							animations/change_color_skin_left.c \
 							animations/change_color_skin_right.c \
 							animations/move_player.c \

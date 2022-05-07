@@ -7,46 +7,22 @@
 
 #include "rpg.h"
 
-static const movements_t movements_array[] = {
-    {.key = sfKeyUp, .height_ss = 48, .flip = 0},
-    {.key = sfKeyLeft, .height_ss = 48, .flip = -4},
-    {.key = sfKeyDown, .height_ss = 48, .flip = 0},
-    {.key = sfKeyRight, .height_ss = 48, .flip = 4},
-    {.key = sfKeyA, .height_ss = 96, .flip = 0},
-    {.key = sfKeyUnknown, .height_ss = 0, .flip = 0}
-};
-
-static const movements_t *get_animations(player_t *player, sfEvent event)
+int set_player_movements(main_game_t *game, player_t *player, sfEvent *event)
 {
-    for (int i = 0; movements_array[i].key != sfKeyUnknown; i++) {
-        if (movements_array[i].key == event.key.code)
-            return &movements_array[i];
-    }
-    player->object->rect.top = 0;
-    return NULL;
-}
+    movements_t movements_array[] = {
+        {.key = game->keys->up, .height_ss = 48, .flip = 0},
+        {.key = game->keys->left, .height_ss = 48, .flip = -4},
+        {.key = game->keys->down, .height_ss = 48, .flip = 0},
+        {.key = game->keys->right, .height_ss = 48, .flip = 4},
+        {.key = game->keys->attack, .height_ss = 96, .flip = 0},
+        {.key = sfKeyUnknown, .height_ss = 0, .flip = 0}
+    };
+    bool pressed = detect_animations(movements_array);
 
-int set_player_movements(main_game_t *game, player_t *player, sfEvent event)
-{
-    const movements_t *movements = NULL;
-
-    if (event.type != sfEvtKeyPressed) {
+    if (pressed)
+        modify_animations(game, player, *event, movements_array);
+    else
         player->object->rect.top = 0;
-        return player->current_scene;
-    }
-    movements = get_animations(player, event);
-    if (!movements)
-        return player->current_scene;
-    if (movements->flip != 0)
-        player->object->scale.x = movements->flip;
-    if (movements->height_ss == 96 && !player->attack_action) {
-        player->attack_action = 1;
-        player->object->rect.left = 0;
-    }
-    player->hitbox = sfRectangleShape_getGlobalBounds(player->hitbox_shape);
-    move_player(game, movements);
-    player->object->rect.top = movements->height_ss;
-    sfSprite_setScale(player->object->sprite, player->object->scale);
     return player->current_scene;
 }
 
