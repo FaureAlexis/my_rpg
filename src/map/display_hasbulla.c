@@ -41,7 +41,6 @@ void display_hasbulla(mobe_t *mob, main_game_t *game)
     }
     if (!mob->dead && rng < 10) {
         mob->object->rect.top = 212;
-        mob->attack = true;
     }
     hasbulla_attack_animation(mob, game);
     dead_hasbulla_animation(mob);

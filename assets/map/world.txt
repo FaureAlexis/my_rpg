@@ -1,6 +1,7 @@
 assets/map/map_B.png
 assets/map/map_F.png 1088 1463
 assets/map/objects/objects.png 115 807 0 0 16 16
+assets/sprites/characters/npc.png -45 727 0 0 48 48 1 1 2
 assets/map/objects/objects.png -165 987 128 96 32 48
 assets/map/objects/objects.png -245 1747 128 96 32 48
 assets/map/objects/objects.png -5 1787 128 96 32 48

@@ -24,7 +24,7 @@ int radius)
 {
     int end_y = particle->size;
 
-    for (int start_y = 0; start_y <= end_y; start_y += 1) {
+    for (int start_y = 0; start_y <= (end_y + 1); start_y += 1) {
         if ((pow(start_x - (particle->size / 2), 2) + pow(start_y -
         (particle->size / 2), 2)) <= pow(radius, 2))
             my_put_pixel(particle, start_y, start_x, color);
@@ -39,7 +39,7 @@ int draw_circle(particles_t *particle, int radius, sfColor color)
 {
     int end_x = particle->size;
 
-    for (int start_x = 0; start_x <= end_x; start_x += 1) {
+    for (int start_x = 0; start_x <= (end_x + 1); start_x += 1) {
         start_x = random_put_pixel(particle, color, start_x, radius);
     }
     return EXIT_SUCCESS;
