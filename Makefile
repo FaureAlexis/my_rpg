@@ -113,7 +113,8 @@ SRC_INIT				=	init/init_clock.c \
 							init/init_obstacle.c \
 							init/init_window.c \
 							init/create_particle.c \
-							init/init_keys.c
+							init/init_keys.c		\
+							init/init_help_keys.c 	\
 
 SRC_ERROR 				=	error/error.c \
 							error/help.c

@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-static int set_help_pos(help_t *help)
+static int set_help_pos(help_t *help, sfFont *gravity)
 {
     if (!help)
         return EPITECH_ERROR;
@@ -17,10 +17,10 @@ static int set_help_pos(help_t *help)
     sfText_setPosition(help->left, HELP_LEFT);
     sfText_setPosition(help->inventory, HELP_INVENTORY);
     sfText_setPosition(help->attack, HELP_ATTACK);
-    return EXIT_SUCCESS;
+    return init_help_keys(help, gravity);
 }
 
-static int set_help_text(help_t *help)
+static int set_help_text(help_t *help, sfFont *gravity)
 {
     if (!help)
         return EPITECH_ERROR;
@@ -36,7 +36,7 @@ static int set_help_text(help_t *help)
     sfText_setString(help->left, "Left : ");
     sfText_setString(help->inventory, "Inventory : ");
     sfText_setString(help->attack, "Attack : ");
-    return set_help_pos(help);
+    return set_help_pos(help, gravity);
 }
 
 static int init_help_text(help_t *help, sfFont *gravity)
@@ -58,7 +58,7 @@ static int init_help_text(help_t *help, sfFont *gravity)
     if (!help->up || !help->down || !help->right || !help->left ||
     !help->inventory || !help->attack)
         return EPITECH_ERROR;
-    return set_help_text(help);
+    return set_help_text(help, gravity);
 }
 
 int init_help(main_game_t *game)

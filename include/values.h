@@ -88,11 +88,17 @@
     #define MAX_FPS 120
     #define FPS_OFFSET 30
     #define VIEW_SIZE (sfFloatRect){0, 0, 1920, 1080}
-    #define HELP_UP (sfVector2f){650, 300}
-    #define HELP_DOWN (sfVector2f){650, 400}
-    #define HELP_ATTACK (sfVector2f){650, 500}
+    #define HELP_UP (sfVector2f){600, 300}
+    #define HELP_DOWN (sfVector2f){600, 400}
+    #define HELP_ATTACK (sfVector2f){600, 500}
     #define HELP_RIGHT (sfVector2f){1050, 300}
     #define HELP_LEFT (sfVector2f){1050, 400}
     #define HELP_INVENTORY (sfVector2f){1050, 500}
+    #define TOUCH_UP (sfVector2f){800, 300}
+    #define TOUCH_DOWN (sfVector2f){800, 400}
+    #define TOUCH_ATTACK (sfVector2f){800, 500}
+    #define TOUCH_RIGHT (sfVector2f){1300, 300}
+    #define TOUCH_LEFT (sfVector2f){1300, 400}
+    #define TOUCH_INVENTORY (sfVector2f){1300, 500}
 
 #endif /* !VALUES_H_ */

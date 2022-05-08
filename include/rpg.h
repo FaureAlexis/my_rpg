@@ -249,6 +249,7 @@
     int draw_circle(particles_t *particle, int radius, sfColor color);
     void gen_artific(speobstacle_t *speobstacle);
     int init_keys(main_game_t *game);
+    int init_help_keys(help_t *help, sfFont *gravity);
 
         /*Map Management*/
 

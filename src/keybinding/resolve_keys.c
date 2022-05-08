@@ -22,7 +22,7 @@ static char *special_keys(sfKeyCode key)
             return "Up Arrow";
         case sfKeyDown:
             return "Down Arrow";
-        default: 
+        default:
             return "undefined";
     }
 }

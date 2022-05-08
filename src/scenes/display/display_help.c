@@ -11,6 +11,21 @@ static int display_help_touch_text(main_game_t *game)
 {
     if (!game || !game->help)
         return EPITECH_ERROR;
+    sfText_setString(game->help->h_touch->up, resolve_key(game->keys->up));
+    sfText_setString(game->help->h_touch->down, resolve_key(game->keys->down));
+    sfText_setString(game->help->h_touch->right,
+    resolve_key(game->keys->right));
+    sfText_setString(game->help->h_touch->left, resolve_key(game->keys->left));
+    sfText_setString(game->help->h_touch->inventory,
+    resolve_key(game->keys->inventory));
+    sfText_setString(game->help->h_touch->attack,
+    resolve_key(game->keys->attack));
+    sfRenderWindow_drawText(game->w, game->help->h_touch->up, NULL);
+    sfRenderWindow_drawText(game->w, game->help->h_touch->down, NULL);
+    sfRenderWindow_drawText(game->w, game->help->h_touch->right, NULL);
+    sfRenderWindow_drawText(game->w, game->help->h_touch->left, NULL);
+    sfRenderWindow_drawText(game->w, game->help->h_touch->inventory, NULL);
+    sfRenderWindow_drawText(game->w, game->help->h_touch->attack, NULL);
     return EXIT_SUCCESS;
 }
 
