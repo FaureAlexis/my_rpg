@@ -19,7 +19,6 @@ particles_t *create_artific(sfVector2f cord, int size, sfVector2f direction)
     node->cord.x = cord.x - (size / 2) - 1;
     node->cord.y = cord.y - 20;
     node->direction.x = direction.x;
-    node->direction.y = direction.y;
     node->shape = sfRectangleShape_create();
     sfRectangleShape_setSize(node->shape, (sfVector2f){node->size + 2,
     node->size + 2});
