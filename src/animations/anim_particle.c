@@ -31,7 +31,7 @@ int radius)
         else
             my_put_pixel(particle, start_y, start_x,
             (sfColor){0, 0, 0, 0});
-        }
+    }
     return start_x;
 }
 
