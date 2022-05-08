@@ -7,7 +7,6 @@
 
 #include "rpg.h"
 
-
 static const movements_t *get_animations(movements_t movements_array[],
 sfEvent event)
 {
