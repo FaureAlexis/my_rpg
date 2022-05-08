@@ -12,9 +12,9 @@ void move_obstacle(map_t *map, sfVector2f move)
     obstacle_t *obstacle = map->obstacle;
 
     while (obstacle != NULL) {
-        if (map->map->position.x >= MAP_X_MIN && map->map->position.x <=
-        MAP_X_MAX && map->map->position.y >= MAP_Y_MIN && map->map->position.y
-        <= MAP_Y_MAX) {
+        if (map->map->position.x >= MAP_X_MIN && map->map->position.x <= \
+        MAP_X_MAX && map->map->position.y >= MAP_Y_MIN && \
+        map->map->position.y <= MAP_Y_MAX) {
             obstacle->object->position.x += move.x;
             obstacle->object->position.y += move.y;
             sfSprite_setPosition(obstacle->object->sprite, \
