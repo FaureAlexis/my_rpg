@@ -23,7 +23,7 @@ static int create_menu2(main_game_t *game)
     if (init_menu(&game->mnu->skin_m, MAIN_THEME, SKIN_CUS_SS,
     INIT_RECT_MENU) == EPITECH_ERROR)
         return EPITECH_ERROR;
-    if (init_menu(&game->mnu->keybind_m, MAIN_THEME, MENU_BG,
+    if (init_menu(&game->mnu->keybind_m, MAIN_THEME, KEYBINDING_SS,
     INIT_RECT_MENU) == EPITECH_ERROR)
         return EPITECH_ERROR;
     return EXIT_SUCCESS;

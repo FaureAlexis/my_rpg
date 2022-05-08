@@ -12,6 +12,7 @@
     #define GAME_EX "assets/menu/game_example.jpg"
     #define SETTINGS_BG "assets/menu/settings_menu.png"
     #define SETTINGS_SS "assets/window/settings_sprite.png"
+    #define KEYBINDING_SS "assets/window/key-sprite.png"
     #define SKIN_CUS_SS "assets/window/custom_menu.png"
     #define PLAYER_SS "assets/player/player.png"
     #define MAP_TXT "assets/map/world.txt"
