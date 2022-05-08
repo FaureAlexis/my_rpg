@@ -10,7 +10,6 @@
 particles_t *create_artific(sfVector2f cord, int size, sfVector2f direction)
 {
     particles_t *node = malloc(sizeof(particles_t));
-
     node->next = NULL;
     node->size = size;
     node->timer = malloc(sizeof(my_clock_t));
