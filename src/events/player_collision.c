@@ -38,8 +38,8 @@ sfVector2f next)
         hitbox = spetmp->hitbox;
         hitbox.left = spetmp->hitbox.left + next.x;
         hitbox.top = spetmp->hitbox.top + next.y;
-        if (sfFloatRect_intersects(&hitbox, &game->player->hitbox, NULL) &&
-        spetmp->hp > 0)
+        if (sfFloatRect_intersects(&hitbox, &game->player->hitbox, NULL)
+            && spetmp->hp > 0)
             return 1;
         spetmp = spetmp->next;
     }

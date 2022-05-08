@@ -43,7 +43,7 @@ static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
 
 static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 {
-    if (manage_button_action_scene(game, mouse_pos) \
+    if (manage_button_action_scene(game, mouse_pos)
     != game->player->current_scene)
         return game->player->next_scene;
     manage_volume_right(game, mouse_pos);
@@ -78,7 +78,7 @@ int keybind_scene(main_game_t *game)
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);
-        if (keybind_check_events(game, mouse_pos) \
+        if (keybind_check_events(game, mouse_pos)
         != game->player->current_scene) {
             sfMusic_stop(game->btn->mid->keybind_b->sound);
             return game->player->next_scene;

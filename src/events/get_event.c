@@ -16,7 +16,7 @@ bool button_is_clicked(button_t *button, sfVector2i mouse_pos)
     return false;
 }
 
-bool shape_is_clicked(sfRenderWindow *win, sfRectangleShape *shape, \
+bool shape_is_clicked(sfRenderWindow *win, sfRectangleShape *shape,
 sfVector2i mouse_pos)
 {
     sfFloatRect rect = sfRectangleShape_getGlobalBounds(shape);

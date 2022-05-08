@@ -24,7 +24,7 @@ static int settings_scene_event(main_game_t *game)
 static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
-        clicked_state_settings(game, game->btn->big->return_b->shape, \
+        clicked_state_settings(game, game->btn->big->return_b->shape,
         POS_RETURN);
         if (game->menu_depth == 1)
             game->player->next_scene = MENU_SCENE;
@@ -33,7 +33,7 @@ static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
         return game->player->next_scene;
     }
     if (button_is_clicked(game->btn->mid->keybind_b, mouse_pos) == true) {
-        clicked_state_settings(game, game->btn->mid->keybind_b->shape, \
+        clicked_state_settings(game, game->btn->mid->keybind_b->shape,
         POS_KEYBIND);
         return game->player->next_scene = KEYBIND_SCENE;
     }
@@ -46,8 +46,8 @@ static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
 
 static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 {
-    if (manage_button_action_scene(game, mouse_pos) \
-    != game->player->current_scene)
+    if (manage_button_action_scene(game, mouse_pos)
+        != game->player->current_scene)
         return game->player->next_scene;
     if (button_is_clicked(game->btn->big->exit_b, mouse_pos) == true) {
         clicked_state_settings(game, game->btn->big->exit_b->shape, POS_EXIT);
@@ -68,8 +68,8 @@ static int settings_check_events(main_game_t *game, sfVector2i mouse_pos)
             return manage_button_action(game, mouse_pos);
         if (settings_scene_event(game) != game->player->current_scene)
             return game->player->next_scene;
-        if (game->event.type == sfEvtClosed || (game->event.key.code \
-        == game->keys->quit && game->event.type == sfEvtKeyPressed)) {
+        if (game->event.type == sfEvtClosed || (game->event.key.code
+            == game->keys->quit && game->event.type == sfEvtKeyPressed)) {
             return close_window(game);
         }
     }
@@ -87,7 +87,7 @@ int settings_scene(main_game_t *game)
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);
-        if (settings_check_events(game, mouse_pos) \
+        if (settings_check_events(game, mouse_pos)
         != game->player->current_scene) {
             sfMusic_stop(game->btn->big->settings_b->sound);
             return game->player->next_scene;

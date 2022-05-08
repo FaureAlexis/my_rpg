@@ -10,15 +10,15 @@
 static bool error_ressources(void)
 {
     if (open(BUTTON_SS, O_RDONLY) == -1
-    || open(MENU_BG, O_RDONLY) == -1
-    || open(DEATH_MENU, O_RDONLY) == -1
-    || open(SETTINGS_BG, O_RDONLY) == -1
-    || open(SETTINGS_SS, O_RDONLY) == -1
-    || open(KEYBINDING_SS, O_RDONLY) == -1
-    || open(SKIN_CUS_SS, O_RDONLY) == -1
-    || open(PLAYER_SS, O_RDONLY) == -1
-    || open(WIN_MENU, O_RDONLY) == -1
-    || open(TEXT_FONT, O_RDONLY) == -1)
+        || open(MENU_BG, O_RDONLY) == -1
+        || open(DEATH_MENU, O_RDONLY) == -1
+        || open(SETTINGS_BG, O_RDONLY) == -1
+        || open(SETTINGS_SS, O_RDONLY) == -1
+        || open(KEYBINDING_SS, O_RDONLY) == -1
+        || open(SKIN_CUS_SS, O_RDONLY) == -1
+        || open(PLAYER_SS, O_RDONLY) == -1
+        || open(WIN_MENU, O_RDONLY) == -1
+        || open(TEXT_FONT, O_RDONLY) == -1)
         return true;
     return false;
 }
@@ -26,16 +26,16 @@ static bool error_ressources(void)
 static bool error_ressources2(void)
 {
     if (open(INV_SS, O_RDONLY) == -1
-    || open(BUTTON_SOUND, O_RDONLY) == -1
-    || open(WALK_SOUND, O_RDONLY) == -1
-    || open(DEATH_SOUND, O_RDONLY) == -1
-    || open(SWORD_USING_SOUND, O_RDONLY) == -1
-    || open(GAME_THEME, O_RDONLY) == -1
-    || open(MAIN_THEME, O_RDONLY) == -1
-    || open(BOSS_THEME, O_RDONLY) == -1
-    || open(DEATH_THEME, O_RDONLY) == -1
-    || open(WIN_THEME, O_RDONLY) == -1
-    || open(MAP_TXT, O_RDONLY) == -1)
+        || open(BUTTON_SOUND, O_RDONLY) == -1
+        || open(WALK_SOUND, O_RDONLY) == -1
+        || open(DEATH_SOUND, O_RDONLY) == -1
+        || open(SWORD_USING_SOUND, O_RDONLY) == -1
+        || open(GAME_THEME, O_RDONLY) == -1
+        || open(MAIN_THEME, O_RDONLY) == -1
+        || open(BOSS_THEME, O_RDONLY) == -1
+        || open(DEATH_THEME, O_RDONLY) == -1
+        || open(WIN_THEME, O_RDONLY) == -1
+        || open(MAP_TXT, O_RDONLY) == -1)
         return true;
     return false;
 }

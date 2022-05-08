@@ -18,6 +18,30 @@ void display_interaction(main_game_t *game)
         sfText_setString(game->player->interaction_text, "");
 }
 
+static int check_inventory(main_game_t *game)
+{
+    if (game->inv_open == true) {
+        sfSprite_setScale(game->mnu->gameplay->object->sprite, INV_SIZE);
+        sfSprite_setPosition(game->mnu->gameplay->object->sprite, INV_POS);
+        sfRenderWindow_drawSprite(game->w,
+        game->mnu->gameplay->object->sprite, NULL);
+    }
+    return EXIT_SUCCESS;
+}
+
+static int display_inventory(main_game_t *game)
+{
+    if (game->inv_open == true && game->player->life > 0) {
+        sfSprite_setScale(game->mnu->gameplay->object->sprite, INV_SIZE);
+        sfSprite_setPosition(game->mnu->gameplay->object->sprite, INV_POS);
+        sfRenderWindow_drawSprite(game->w, game->mnu->gameplay->object->sprite,
+        NULL);
+        sfRenderWindow_drawText(game->w, game->player->life_txt, NULL);
+        sfRenderWindow_drawText(game->w, game->player->atk_txt, NULL);
+    }
+    return EXIT_SUCCESS;
+}
+
 int display_game(main_game_t *game)
 {
     pos_button_game(game);
@@ -33,20 +57,8 @@ int display_game(main_game_t *game)
     sfRenderWindow_drawText(game->w, game->player->interaction_text, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->mid->pause_b->sprite, NULL);
     sfRenderWindow_drawText(game->w, game->player->interaction_text, NULL);
-    if (game->inv_open == true) {
-        sfSprite_setScale(game->mnu->gameplay->object->sprite, INV_SIZE);
-        sfSprite_setPosition(game->mnu->gameplay->object->sprite, INV_POS);
-        sfRenderWindow_drawSprite(game->w, \
-        game->mnu->gameplay->object->sprite, NULL);
-    }
+    check_inventory(game);
     sfRenderWindow_drawRectangleShape(game->w, game->player->life_bar, NULL);
-    if (game->inv_open == true && game->player->life > 0) {
-        sfSprite_setScale(game->mnu->gameplay->object->sprite, INV_SIZE);
-        sfSprite_setPosition(game->mnu->gameplay->object->sprite, INV_POS);
-        sfRenderWindow_drawSprite(game->w, game->mnu->gameplay->object->sprite,
-        NULL);
-        sfRenderWindow_drawText(game->w, game->player->life_txt, NULL);
-        sfRenderWindow_drawText(game->w, game->player->atk_txt, NULL);
-    }
+    display_inventory(game);
     return EXIT_SUCCESS;
 }

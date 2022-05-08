@@ -12,15 +12,15 @@ void move_obstacle(map_t *map, sfVector2f move)
     obstacle_t *obstacle = map->obstacle;
 
     while (obstacle != NULL) {
-        if (map->map->position.x >= MAP_X_MIN && map->map->position.x <= \
-        MAP_X_MAX && map->map->position.y >= MAP_Y_MIN && \
+        if (map->map->position.x >= MAP_X_MIN && map->map->position.x <=
+        MAP_X_MAX && map->map->position.y >= MAP_Y_MIN &&
         map->map->position.y <= MAP_Y_MAX) {
             obstacle->object->position.x += move.x;
             obstacle->object->position.y += move.y;
-            sfSprite_setPosition(obstacle->object->sprite, \
+            sfSprite_setPosition(obstacle->object->sprite,
             obstacle->object->position);
-            sfRectangleShape_setPosition(obstacle->hitbox_shape, \
-            (sfVector2f){obstacle->object->position.x - 30, \
+            sfRectangleShape_setPosition(obstacle->hitbox_shape,
+            (sfVector2f){obstacle->object->position.x - 30,
             obstacle->object->position.y - 20});
         }
         obstacle = obstacle->next;
@@ -43,8 +43,8 @@ void move_speobstacle(map_t *map, sfVector2f move)
             speobstacle->object->position.y += move.y;
             sfSprite_setPosition(speobstacle->object->sprite,
             speobstacle->object->position);
-            sfRectangleShape_setPosition(speobstacle->hitbox_shape, \
-            (sfVector2f){speobstacle->object->position.x - 30, \
+            sfRectangleShape_setPosition(speobstacle->hitbox_shape,
+            (sfVector2f){speobstacle->object->position.x - 30,
             speobstacle->object->position.y - 20});
         }
         speobstacle = speobstacle->next;
@@ -63,8 +63,8 @@ void move_mob(map_t *map, sfVector2f move)
             mob->object->position.y += move.y;
             sfSprite_setPosition(mob->object->sprite,
             mob->object->position);
-            sfRectangleShape_setPosition(mob->hitbox_shape, \
-            (sfVector2f){mob->object->position.x - 30, \
+            sfRectangleShape_setPosition(mob->hitbox_shape,
+            (sfVector2f){mob->object->position.x - 30,
             mob->object->position.y - 20});
             sfText_setString(mob->life_txt, mob->life_str);
             sfText_setPosition(mob->life_txt,

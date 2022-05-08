@@ -15,7 +15,7 @@ int starting_game_scene(main_game_t *game)
     sfMusic_play(game->mnu->gameplay->theme);
     sfMusic_play(game->btn->big->play_b->sound);
     sfSprite_setScale(game->player->object->sprite, (sfVector2f){4, 4});
-    sfSprite_setPosition(game->player->object->sprite, \
+    sfSprite_setPosition(game->player->object->sprite,
     game->player->object->position);
     display_mob_life(game->map);
     return EXIT_SUCCESS;

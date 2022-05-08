@@ -9,33 +9,33 @@
 
 static void pos_fullscreen2(main_game_t *game)
 {
-    sfRectangleShape_setPosition(game->btn->sml->minus_b->shape, \
+    sfRectangleShape_setPosition(game->btn->sml->minus_b->shape,
     game->btn->mid->mute_b->position);
-    sfRectangleShape_setPosition(game->btn->sml->plus_r_b->shape, \
+    sfRectangleShape_setPosition(game->btn->sml->plus_r_b->shape,
     game->btn->mid->unmute_b->position);
-    sfRectangleShape_setPosition(game->btn->sml->minus_r_b->shape, \
+    sfRectangleShape_setPosition(game->btn->sml->minus_r_b->shape,
     game->btn->sml->plus_b->position);
-    sfRectangleShape_setPosition(game->btn->mid->keybind_b->shape, \
+    sfRectangleShape_setPosition(game->btn->mid->keybind_b->shape,
     game->btn->sml->minus_b->position);
-    sfRectangleShape_setPosition(game->btn->mid->mute_b->shape, \
+    sfRectangleShape_setPosition(game->btn->mid->mute_b->shape,
     game->btn->sml->plus_r_b->position);
-    sfRectangleShape_setPosition(game->btn->mid->unmute_b->shape, \
+    sfRectangleShape_setPosition(game->btn->mid->unmute_b->shape,
     game->btn->sml->minus_r_b->position);
 }
 
 static void pos_fullscreen(main_game_t *game)
 {
-    sfRectangleShape_setPosition(game->btn->mid->help_b->shape, \
+    sfRectangleShape_setPosition(game->btn->mid->help_b->shape,
     game->btn->mid->help_b->position);
-    sfRectangleShape_setPosition(game->btn->sml->right_b->shape, \
+    sfRectangleShape_setPosition(game->btn->sml->right_b->shape,
     game->btn->sml->right_b->position);
-    sfRectangleShape_setPosition(game->btn->sml->left_b->shape, \
+    sfRectangleShape_setPosition(game->btn->sml->left_b->shape,
     game->btn->sml->left_b->position);
-    sfRectangleShape_setPosition(game->btn->big->exit_b->shape, \
+    sfRectangleShape_setPosition(game->btn->big->exit_b->shape,
     game->btn->big->exit_b->position);
-    sfRectangleShape_setPosition(game->btn->big->return_b->shape, \
+    sfRectangleShape_setPosition(game->btn->big->return_b->shape,
     game->btn->big->return_b->position);
-    sfRectangleShape_setPosition(game->btn->sml->plus_b->shape, \
+    sfRectangleShape_setPosition(game->btn->sml->plus_b->shape,
     game->btn->mid->keybind_b->position);
     pos_fullscreen2(game);
 }
@@ -43,8 +43,8 @@ static void pos_fullscreen(main_game_t *game)
 static void pos_screen(main_game_t *game, float x, float y)
 {
     resize_all_buttons(game, x, y);
-    game->btn->big->return_b->position = \
-    (sfVector2f){game->btn->big->return_b->position.x * x, \
+    game->btn->big->return_b->position =
+    (sfVector2f){game->btn->big->return_b->position.x * x,
     game->btn->big->return_b->position.y * y};
 }
 

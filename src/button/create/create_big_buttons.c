@@ -21,13 +21,13 @@ static int create_big_buttons(main_game_t *game)
     char **tab = init_button_rsc2(BUTTON_SOUND, BUTTON_SS);
 
     if (init_button(&(game->btn->big->help_b), INIT_BTN_POS,
-    LARGE, tab) == EPITECH_ERROR)
+        LARGE, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (init_button(&(game->btn->big->settings_b), INIT_BTN_POS,
-    LARGE, tab) == EPITECH_ERROR)
+        LARGE, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (init_button(&(game->btn->big->return_b), INIT_BTN_POS,
-    LARGE, tab) == EPITECH_ERROR)
+        LARGE, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
     return EXIT_SUCCESS;
 }
@@ -37,24 +37,24 @@ static int create_big_buttons2(main_game_t *game)
     char **tab = init_button_rsc2(BUTTON_SOUND, BUTTON_SS);
 
     if (init_button(&(game->btn->big->play_b), INIT_BTN_POS,
-    LARGE, tab) == EPITECH_ERROR)
+        LARGE, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (init_button(&(game->btn->big->exit_b), INIT_BTN_POS,
-    LARGE, tab) == EPITECH_ERROR)
+        LARGE, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (init_button(&(game->btn->big->newsave_b), INIT_BTN_POS,
-    LARGE, tab) == EPITECH_ERROR)
+        LARGE, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (init_button(&(game->btn->big->load_b), INIT_BTN_POS,
-    LARGE, tab) == EPITECH_ERROR)
+        LARGE, tab) == EPITECH_ERROR)
         return EPITECH_ERROR;
     return EXIT_SUCCESS;
 }
 
 int create_all_big_buttons(main_game_t *game)
 {
-    if (create_big_buttons(game) == EPITECH_ERROR ||
-    create_big_buttons2(game) == EPITECH_ERROR)
+    if (create_big_buttons(game) == EPITECH_ERROR
+        || create_big_buttons2(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
     return EXIT_SUCCESS;
 }

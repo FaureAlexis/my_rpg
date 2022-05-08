@@ -20,7 +20,7 @@ void free_a_artific(speobstacle_t *spe)
     }
 }
 
-particles_t *anim_artific(particles_t *head, sfRenderWindow *w, \
+particles_t *anim_artific(particles_t *head, sfRenderWindow *w,
 speobstacle_t *spe)
 {
     particles_t *part = head;

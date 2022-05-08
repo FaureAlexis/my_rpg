@@ -104,12 +104,12 @@ Strength and Honor to you in your brand new aventure !!!
 | KEY       | ACTION        |
 | --------- | --------------|
 | Q_KEY     | Quit the game |
-| A_KEY     |  Attack |
+| SPACE_KEY     |  Attack |
 | E_KEY     | Interact |
-| UP_KEY    | Move forwards |
-| DOWN_KEY  | Move backwards |
-| RIGHT_KEY | Move to the right |
-| LEFT_KEY  | Move to the left |
+| Z_KEY    | Move forwards |
+| S_KEY  | Move backwards |
+| D_KEY | Move to the right |
+| Q_KEY  | Move to the left |
 | P_KEY  | Zoom up |
 | M_KEY  | Zoom down |
 | ESCAPE_KEY | Pause the game |

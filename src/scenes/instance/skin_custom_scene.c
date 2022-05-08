@@ -24,19 +24,19 @@ static int skin_scene_event(main_game_t *game)
 static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
-        clicked_state_custom_skin(game, game->btn->big->return_b->shape, \
+        clicked_state_custom_skin(game, game->btn->big->return_b->shape,
         POS_RETURN3);
-        sfSprite_setColor(game->player->object->sprite, \
+        sfSprite_setColor(game->player->object->sprite,
         sfColor_fromRGB(255, 255, 255));
         return game->player->next_scene = SAVE_SCENE;
     }
     if (button_is_clicked(game->btn->big->play_b, mouse_pos) == true) {
-        clicked_state_custom_skin(game, game->btn->big->play_b->shape, \
+        clicked_state_custom_skin(game, game->btn->big->play_b->shape,
         POS_PLAY);
         return game->player->next_scene = GAME_SCENE;
     }
     if (button_is_clicked(game->btn->mid->exit_b, mouse_pos) == true) {
-        clicked_state_custom_skin(game, game->btn->mid->exit_b->shape, \
+        clicked_state_custom_skin(game, game->btn->mid->exit_b->shape,
         POS_HELP);
         return close_window(game);
     }
@@ -46,8 +46,8 @@ static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
 static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 {
     event_skin_choice(game, mouse_pos);
-    if (manage_button_action_scene(game, mouse_pos) \
-    != game->player->current_scene)
+    if (manage_button_action_scene(game, mouse_pos)
+        != game->player->current_scene)
         return game->player->next_scene;
     if (button_is_clicked(game->btn->sml->right_b, mouse_pos) == true)
         set_rgb_right(game);
@@ -63,8 +63,8 @@ static int skin_check_events(main_game_t *game, sfVector2i mouse_pos)
             return manage_button_action(game, mouse_pos);
         if (skin_scene_event(game) != game->player->current_scene)
             return game->player->next_scene;
-        if (game->event.key.code == game->keys->quit && game->event.type \
-        == sfEvtKeyPressed)
+        if (game->event.key.code == game->keys->quit && game->event.type
+            == sfEvtKeyPressed)
             return close_window(game);
     }
     return game->player->current_scene;
@@ -82,8 +82,8 @@ int skin_scene(main_game_t *game)
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);
         player_animations(game->player, game->map->mobe);
-        if (skin_check_events(game, mouse_pos) \
-        != game->player->current_scene) {
+        if (skin_check_events(game, mouse_pos)
+            != game->player->current_scene) {
             sfMusic_stop(game->btn->big->play_b->sound);
             return game->player->next_scene;
         }

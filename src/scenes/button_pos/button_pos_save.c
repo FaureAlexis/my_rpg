@@ -9,11 +9,11 @@
 
 static void pos_fullscreen(main_game_t *game)
 {
-    sfRectangleShape_setPosition(game->btn->big->return_b->shape, \
+    sfRectangleShape_setPosition(game->btn->big->return_b->shape,
     game->btn->big->return_b->position);
-    sfRectangleShape_setPosition(game->btn->big->newsave_b->shape, \
+    sfRectangleShape_setPosition(game->btn->big->newsave_b->shape,
     game->btn->big->newsave_b->position);
-    sfRectangleShape_setPosition(game->btn->big->load_b->shape, \
+    sfRectangleShape_setPosition(game->btn->big->load_b->shape,
     game->btn->big->load_b->position);
 }
 
@@ -30,7 +30,7 @@ void pos_button_save(main_game_t *game)
     if (size.x == MAX_W_X && size.y == MAX_W_Y)
         pos_fullscreen(game);
     else {
-        resize_all_big_buttons(game, ((float){size.x} / win_x), \
+        resize_all_big_buttons(game, ((float){size.x} / win_x),
         ((float){size.y} / win_y));
     }
 }

@@ -7,26 +7,6 @@
 
 #include "rpg.h"
 
-int set_player_movements(main_game_t *game, player_t *player, sfEvent *event)
-{
-    movements_t movements_array[] = {
-        {.key = game->keys->up, .height_ss = 48, .flip = 0},
-        {.key = game->keys->left, .height_ss = 48, .flip = -4},
-        {.key = game->keys->down, .height_ss = 48, .flip = 0},
-        {.key = game->keys->right, .height_ss = 48, .flip = 4},
-        {.key = game->keys->attack, .height_ss = 96, .flip = 0},
-        {.key = game->keys->interact, .height_ss = 0, .flip = 0},
-        {.key = sfKeyUnknown, .height_ss = 0, .flip = 0}
-    };
-    bool pressed = detect_animations(movements_array);
-
-    if (pressed)
-        modify_animations(game, player, *event, movements_array);
-    else
-        player->object->rect.top = 0;
-    return player->current_scene;
-}
-
 static int fight_enemy(player_t *player, mobe_t *mob)
 {
     mobe_t *tmp = NULL;
@@ -93,6 +73,15 @@ int detect_interactions(player_t *player, mobe_t *mob)
     return 0;
 }
 
+static int set_detect_interaction(player_t *player, mobe_t *mob)
+{
+    if (detect_interactions(player, mob) == 1)
+        player->interaction = 1;
+    else
+        player->interaction = 0;
+    return EXIT_SUCCESS;
+}
+
 int player_animations(player_t *player, mobe_t *mob)
 {
     if (!player || !mob)
@@ -100,10 +89,7 @@ int player_animations(player_t *player, mobe_t *mob)
     player->p_clock->time = sfClock_getElapsedTime(player->p_clock->clock);
     player->p_clock->seconds =
         player->p_clock->time.microseconds / SECONDS;
-    if (detect_interactions(player, mob) == 1)
-        player->interaction = 1;
-    else
-        player->interaction = 0;
+    set_detect_interaction(player, mob);
     if (player->attack_action)
         return player_attack_animations(player, mob);
     if (player->p_clock->seconds >= 0.15) {

@@ -7,8 +7,8 @@
 
 #include "rpg.h"
 
-static particles_t *set_info_dust(particles_t *node, sfVector2f cord, int \
-size, sfVector2f direction)
+static particles_t *set_info_dust(particles_t *node, sfVector2f cord,
+int size, sfVector2f direction)
 {
     node->next = NULL;
     node->size = size;

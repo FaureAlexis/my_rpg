@@ -7,6 +7,26 @@
 
 #include "rpg.h"
 
+int set_player_movements(main_game_t *game, player_t *player, sfEvent *event)
+{
+    movements_t movements_array[] = {
+        {.key = game->keys->up, .height_ss = 48, .flip = 0},
+        {.key = game->keys->left, .height_ss = 48, .flip = -4},
+        {.key = game->keys->down, .height_ss = 48, .flip = 0},
+        {.key = game->keys->right, .height_ss = 48, .flip = 4},
+        {.key = game->keys->attack, .height_ss = 96, .flip = 0},
+        {.key = game->keys->interact, .height_ss = 0, .flip = 0},
+        {.key = sfKeyUnknown, .height_ss = 0, .flip = 0}
+    };
+    bool pressed = detect_animations(movements_array);
+
+    if (pressed)
+        modify_animations(game, player, *event, movements_array);
+    else
+        player->object->rect.top = 0;
+    return player->current_scene;
+}
+
 static const movements_t *get_animations(movements_t movements_array[],
 sfEvent event)
 {
@@ -26,6 +46,15 @@ int detect_animations(movements_t movements_array[])
     return 0;
 }
 
+static int set_player_interactions_in_func(player_t *player)
+{
+    if (player->interaction && player->nb_interactions < 3)
+        player->nb_interactions++;
+    else
+        player->nb_interactions = 0;
+    return EXIT_SUCCESS;
+}
+
 int modify_animations(main_game_t *game, player_t *player, sfEvent event,
 movements_t movements_array[])
 {
@@ -34,13 +63,8 @@ movements_t movements_array[])
     movements = get_animations(movements_array, event);
     if (!movements)
         return player->current_scene;
-    if (sfKeyboard_isKeyPressed(game->keys->interact)) {
-        if (player->interaction && player->nb_interactions < 3)
-            player->nb_interactions++;
-        else
-            player->nb_interactions = 0;
-        return EXIT_SUCCESS;
-    }
+    if (sfKeyboard_isKeyPressed(game->keys->interact))
+        return set_player_interactions_in_func(player);
     if (movements->flip != 0)
         player->object->scale.x = movements->flip;
     if (movements->height_ss == 96 && !player->attack_action) {

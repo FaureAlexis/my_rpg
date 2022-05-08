@@ -13,6 +13,7 @@ int starting_main_menu_scene(main_game_t *game)
     game->menu_depth = 0;
     game->player->boss_defeated = false;
     game->player->life = 200;
+    sfMusic_play(game->mnu->main->theme);
     sfMusic_stop(game->mnu->lose_m->theme);
     sfMusic_stop(game->mnu->win_m->theme);
     if (sfMusic_getStatus(game->mnu->gameplay->theme) == sfPaused) {

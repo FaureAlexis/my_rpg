@@ -49,7 +49,7 @@ static mobe_t *set_info_mob(mobe_t *node, char ***tab, int i)
     node->my_clock->clock = sfClock_create();
     node->attack_clock->clock = sfClock_create();
     node = next_info_mob(node);
-    sfRectangleShape_setFillColor(node->hitbox_shape, \
+    sfRectangleShape_setFillColor(node->hitbox_shape,
     sfColor_fromRGBA(RED_HITBOX));
     node->dead = 0;
     node->attack = false;

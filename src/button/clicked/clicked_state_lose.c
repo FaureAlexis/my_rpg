@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-void clicked_state_lose(main_game_t *game, sfRectangleShape *shape, \
+void clicked_state_lose(main_game_t *game, sfRectangleShape *shape,
 sfVector2f position)
 {
     sfClock *clock = sfClock_create();
