@@ -29,7 +29,7 @@ static int add_node(case_inventory_t **case_inventory, int x, int y)
     return EXIT_SUCCESS;
 }
 
-static case_inventory_t *init_case_x_inventory(inventory_t *inventory, \
+static case_inventory_t *init_case_x_inventory(inventory_t *inventory,
 int offset, case_inventory_t *case_inventory, int i)
 {
     int x = inventory->case_inventory_x + inventory->space_case;

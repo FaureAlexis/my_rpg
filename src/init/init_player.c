@@ -102,6 +102,8 @@ static int init_text_interaction(player_t *player)
 {
     sfFont *gravity = sfFont_createFromFile("./assets/font/fs-gravity.ttf");
 
+    player->interaction = 0;
+    player->nb_interactions = 0;
     if (!gravity)
         return EPITECH_ERROR;
     player->interaction_text = sfText_create();
@@ -132,12 +134,6 @@ player_t *init_player(void)
     p->p_clock = init_clock();
     if (!p->p_clock)
         return NULL;
-    p->interaction = 0;
-    p->nb_interactions = 0;
-    init_text_interaction(p);
-    if (!p->interaction_text)
-        return NULL;
-    p->interaction = 0;
     init_text_interaction(p);
     if (!p->object->texture || !p->object->sprite || !p->interaction_text)
         return NULL;
