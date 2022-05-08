@@ -56,7 +56,7 @@
     #define SPEOBS_COLOR 0, 220, 200, 100
     #define GOAL_TXT_POS (sfVector2f){550, 20}
     #define HELP_TXT_POS (sfVector2f){940, 150}
-    #define INTERACT_TXT_POS (sfVector2f){700, 1000}
+    #define INTERACT_TXT_POS (sfVector2f){700, 900}
     #define RED_HITBOX 255, 0, 0, 100
     #define GREEN_HITBOX 0, 255, 0, 100
     #define BLUE_HITBOX 0, 0, 255, 100

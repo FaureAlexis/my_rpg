@@ -68,10 +68,9 @@ static int init_text_interaction(player_t *player)
     if (!player->interaction_text)
         return EPITECH_ERROR;
     sfText_setFont(player->interaction_text, gravity);
-    sfText_setColor(player->interaction_text, sfWhite);
     sfText_setCharacterSize(player->interaction_text, 40);
+    sfText_setColor(player->interaction_text, sfWhite);
     sfText_setPosition(player->interaction_text, INTERACT_TXT_POS);
-    sfText_setString(player->interaction_text, "Press E to interact with Mr Hood");
     return EXIT_SUCCESS;
 }
 
@@ -90,6 +89,7 @@ player_t *init_player(void)
     player->p_clock = init_clock();
     if (!player->p_clock)
         return NULL;
+    player->interaction = 0;
     init_text_interaction(player);
     if (!player->interaction_text)
         return NULL;

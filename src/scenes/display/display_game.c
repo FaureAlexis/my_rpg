@@ -18,14 +18,18 @@ int display_game(main_game_t *game)
     sfRenderWindow_drawSprite(game->w, game->player->object->sprite, NULL);
     display_speobstacle(game);
     display_obstacle(game);
+    sfRenderWindow_drawText(game->w, game->player->interaction_text, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->mid->pause_b->sprite, NULL);
+    if (game->player->interaction)
+        sfText_setString(game->player->interaction_text, "Press E to interact with Mr Hood");
+    else
+        sfText_setString(game->player->interaction_text, "");
+    sfRenderWindow_drawText(game->w, game->player->interaction_text, NULL);
     if (game->inv_open == true) {
         sfSprite_setScale(game->mnu->gameplay->object->sprite, INV_SIZE);
         sfSprite_setPosition(game->mnu->gameplay->object->sprite, INV_POS);
         sfRenderWindow_drawSprite(game->w, \
         game->mnu->gameplay->object->sprite, NULL);
     }
-    if (game->player->interaction)
-        sfRenderWindow_drawText(game->w, game->player->interaction_text, NULL);
     return EXIT_SUCCESS;
 }
