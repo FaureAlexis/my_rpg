@@ -7,6 +7,17 @@
 
 #include "rpg.h"
 
+void display_interaction(main_game_t *game)
+{
+    int index = game->player->nb_interactions;
+    char *sentence = my_strdup(game->player->scenario[index]);
+
+    if (game->player->interaction)
+        sfText_setString(game->player->interaction_text, sentence);
+    else
+        sfText_setString(game->player->interaction_text, "");
+}
+
 int display_game(main_game_t *game)
 {
     pos_button_game(game);
@@ -18,12 +29,9 @@ int display_game(main_game_t *game)
     sfRenderWindow_drawSprite(game->w, game->player->object->sprite, NULL);
     display_speobstacle(game);
     display_obstacle(game);
+    display_interaction(game);
     sfRenderWindow_drawText(game->w, game->player->interaction_text, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->mid->pause_b->sprite, NULL);
-    if (game->player->interaction)
-        sfText_setString(game->player->interaction_text, "Press E to interact with Mr Hood");
-    else
-        sfText_setString(game->player->interaction_text, "");
     sfRenderWindow_drawText(game->w, game->player->interaction_text, NULL);
     if (game->inv_open == true) {
         sfSprite_setScale(game->mnu->gameplay->object->sprite, INV_SIZE);

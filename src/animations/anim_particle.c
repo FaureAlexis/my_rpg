@@ -54,7 +54,7 @@ sfVector2f move)
     if (head == NULL) {
         head = node;
     } else {
-        while (tmp->next != NULL){
+        while (tmp->next != NULL) {
             tmp->cord.x += move.x;
             tmp->cord.y += move.y;
             tmp = tmp->next;

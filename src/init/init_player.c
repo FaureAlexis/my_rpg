@@ -76,6 +76,28 @@ static int set_sprite(player_t *player)
     return EXIT_SUCCESS;
 }
 
+static char **init_scenario(void)
+{
+    char **scenario = malloc(sizeof(char *) * 5);
+    char *sentence1 =
+        "Bienvenue dans ce monde ou votre\nquete sera de battre Hasbullah";
+    char *sentence2 =
+        "Pour le combattre vous devrez\nd'abord trouver la cle d'un \
+        \ncoffre dans un squelette";
+    char *sentence3 =
+        "Puis chasser un slime rouge pour\ntrouver la cle qui vous menera \
+        \na hasbullah";
+
+    if (!scenario)
+        return NULL;
+    scenario[0] = my_strdup("Press E to interact with Mr Hood");
+    scenario[1] = my_strdup(sentence1);
+    scenario[2] = my_strdup(sentence2);
+    scenario[3] = my_strdup(sentence3);
+    scenario[4] = NULL;
+    return scenario;
+}
+
 static int init_text_interaction(player_t *player)
 {
     sfFont *gravity = sfFont_createFromFile("./assets/font/fs-gravity.ttf");
@@ -86,11 +108,12 @@ static int init_text_interaction(player_t *player)
     if (!player->interaction_text)
         return EPITECH_ERROR;
     sfText_setFont(player->interaction_text, gravity);
-    sfText_setCharacterSize(player->interaction_text, 40);
+    sfText_setCharacterSize(player->interaction_text, 35);
     sfText_setColor(player->interaction_text, sfWhite);
     sfText_setPosition(player->interaction_text, INTERACT_TXT_POS);
     player->object->texture = sfTexture_createFromFile(PLAYER_SS, NULL);
     player->object->sprite = sfSprite_create();
+    player->scenario = init_scenario();
     return EXIT_SUCCESS;
 }
 
@@ -108,6 +131,11 @@ player_t *init_player(void)
         return NULL;
     p->p_clock = init_clock();
     if (!p->p_clock)
+        return NULL;
+    p->interaction = 0;
+    p->nb_interactions = 0;
+    init_text_interaction(p);
+    if (!p->interaction_text)
         return NULL;
     p->interaction = 0;
     init_text_interaction(p);

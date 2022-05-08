@@ -34,6 +34,13 @@ movements_t movements_array[])
     movements = get_animations(movements_array, event);
     if (!movements)
         return player->current_scene;
+    if (sfKeyboard_isKeyPressed(game->keys->interact)) {
+        if (player->interaction && player->nb_interactions < 3)
+            player->nb_interactions++;
+        else
+            player->nb_interactions = 0;
+        return EXIT_SUCCESS;
+    }
     if (movements->flip != 0)
         player->object->scale.x = movements->flip;
     if (movements->height_ss == 96 && !player->attack_action) {

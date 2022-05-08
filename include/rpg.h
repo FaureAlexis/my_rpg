@@ -127,6 +127,8 @@
         sfMusic *walk;
         sfMusic *death;
         sfMusic *sword;
+        char **scenario;
+        int nb_interactions;
     } player_t;
 
     typedef struct settings_s {

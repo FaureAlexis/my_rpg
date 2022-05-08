@@ -15,6 +15,7 @@ int set_player_movements(main_game_t *game, player_t *player, sfEvent *event)
         {.key = game->keys->down, .height_ss = 48, .flip = 0},
         {.key = game->keys->right, .height_ss = 48, .flip = 4},
         {.key = game->keys->attack, .height_ss = 96, .flip = 0},
+        {.key = game->keys->interact, .height_ss = 0, .flip = 0},
         {.key = sfKeyUnknown, .height_ss = 0, .flip = 0}
     };
     bool pressed = detect_animations(movements_array);

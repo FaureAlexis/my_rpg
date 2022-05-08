@@ -49,6 +49,9 @@ static mobe_t *set_info_mob(mobe_t *node, char ***tab, int i)
     node->my_clock->clock = sfClock_create();
     node->attack_clock->clock = sfClock_create();
     node = next_info_mob(node);
+    sfRectangleShape_setFillColor(node->hitbox_shape, \
+    sfColor_fromRGBA(RED_HITBOX));
+    node->dead = 0;
     node->attack = false;
     return node;
 }
@@ -70,6 +73,8 @@ int init_mob(map_t *map, char ***tab, int i)
     nde->object->texture = sfTexture_createFromFile(tab[i][ASSET], NULL);
     nde->object->sprite = sfSprite_create();
     nde = set_info_mob(nde, tab, i);
+    nde->my_clock->clock = sfClock_create();
+    nde->attack_clock->clock = sfClock_create();
     if (!nde->my_clock->clock || !nde->attack_clock->clock
         || !nde->object->texture || !nde->object->sprite)
         return EPITECH_ERROR;
