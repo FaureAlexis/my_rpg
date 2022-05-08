@@ -43,7 +43,5 @@ int init_skin_custom(cus_t **cus)
     (*cus)->blue = sfRectangleShape_create();
     if ((*cus)->red == NULL || (*cus)->green == NULL || (*cus)->blue == NULL)
         return EPITECH_ERROR;
-    if (set_rgb_shape(cus) == EPITECH_ERROR)
-        return EPITECH_ERROR;
-    return EXIT_SUCCESS;
+    return set_rgb_shape(cus);
 }
