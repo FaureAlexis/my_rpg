@@ -24,6 +24,7 @@ int rpg(void)
     main_game_t *game = init_game();
     scenes_name change_scene = MENU_SCENE;
     const scenes_t *scene = NULL;
+
     if (game == NULL)
         return EPITECH_ERROR;
     if (init_all(game) == EPITECH_ERROR || launch_win(game) == EPITECH_ERROR)

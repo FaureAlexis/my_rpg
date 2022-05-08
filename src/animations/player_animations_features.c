@@ -44,5 +44,5 @@ movements_t movements_array[])
     move_player(game, movements);
     player->object->rect.top = movements->height_ss;
     sfSprite_setScale(player->object->sprite, player->object->scale);
-    return 0;
+    return EXIT_SUCCESS;
 }

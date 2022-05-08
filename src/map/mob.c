@@ -24,7 +24,7 @@ static void dead_npc_animation(mobe_t *tmp)
 {
     tmp->my_clock->time = sfClock_getElapsedTime(tmp->my_clock->clock);
     tmp->my_clock->seconds = tmp->my_clock->time.microseconds / SECONDS;
-    if ((tmp->dead && tmp->object->rect.left <= 144 && tmp->my_clock->seconds \
+    if ((tmp->dead && tmp->object->rect.left <= 144 && tmp->my_clock->seconds
     >= 0.1) || (!tmp->dead && tmp->my_clock->seconds >= 0.1)) {
         tmp->object->rect.left += 48;
         sfClock_restart(tmp->my_clock->clock);
@@ -37,8 +37,8 @@ static void dead_npc_animation(mobe_t *tmp)
 void display_npc(mobe_t *tmp, main_game_t *game)
 {
     sfSprite_setScale(tmp->object->sprite, (sfVector2f){3, 3});
-    if (!tmp->dead && sqrt(pow(game->player->object->position.x - \
-    tmp->object->position.x, 2) + pow(game->player->object->position.y - \
+    if (!tmp->dead && sqrt(pow(game->player->object->position.x -
+    tmp->object->position.x, 2) + pow(game->player->object->position.y -
     tmp->object->position.y, 2)) < 80 * 3) {
         tmp->attack = true;
     } else {
