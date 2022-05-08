@@ -11,7 +11,6 @@ static int display_help_touch_text(main_game_t *game)
 {
     if (!game || !game->help)
         return EPITECH_ERROR;
-    
     return EXIT_SUCCESS;
 }
 

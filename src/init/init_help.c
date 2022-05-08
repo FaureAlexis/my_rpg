@@ -58,7 +58,6 @@ static int init_help_text(help_t *help, sfFont *gravity)
     if (!help->up || !help->down || !help->right || !help->left ||
     !help->inventory || !help->attack)
         return EPITECH_ERROR;
-    sfFont_destroy(gravity);
     return set_help_text(help);
 }
 
