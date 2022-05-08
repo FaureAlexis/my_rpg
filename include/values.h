@@ -88,5 +88,11 @@
     #define MAX_FPS 120
     #define FPS_OFFSET 30
     #define VIEW_SIZE (sfFloatRect){0, 0, 1920, 1080}
+    #define HELP_UP (sfVector2f){650, 300}
+    #define HELP_DOWN (sfVector2f){650, 400}
+    #define HELP_ATTACK (sfVector2f){650, 500}
+    #define HELP_RIGHT (sfVector2f){1050, 300}
+    #define HELP_LEFT (sfVector2f){1050, 400}
+    #define HELP_INVENTORY (sfVector2f){1050, 500}
 
 #endif /* !VALUES_H_ */

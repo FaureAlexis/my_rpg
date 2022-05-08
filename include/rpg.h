@@ -129,9 +129,25 @@
         sfText *res_text;
     } settings_t;
 
+    typedef struct help_touch_s {
+        sfText *up;
+        sfText *down;
+        sfText *right;
+        sfText *left;
+        sfText *inventory;
+        sfText *attack;
+    } help_touch_t;
+
     typedef struct help_s {
         sfText *goal_text;
         sfText *help_text;
+        sfText *up;
+        sfText *down;
+        sfText *right;
+        sfText *left;
+        sfText *inventory;
+        sfText *attack;
+        help_touch_t *h_touch;
     } help_t;
 
     typedef struct armor_s {
