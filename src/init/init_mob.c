@@ -7,6 +7,21 @@
 
 #include "rpg.h"
 
+static mobe_t *texture_sprite_mob(mobe_t *node, char ***tab, int i)
+{
+    sfSprite_setTexture(node->object->sprite, node->object->texture, sfFalse);
+    sfSprite_setTextureRect(node->object->sprite, node->object->rect);
+    node->hitbox = sfSprite_getGlobalBounds(node->object->sprite);
+    node->hitbox_shape = sfRectangleShape_create();
+    if (!node->hitbox_shape)
+        return NULL;
+    sfRectangleShape_setSize(node->hitbox_shape,
+    (sfVector2f){node->hitbox.width / 2.2, node->hitbox.height / 2.4});
+    sfRectangleShape_setPosition(node->hitbox_shape,
+    (sfVector2f){node->object->position.x - 30,
+    node->object->position.y - 20});
+}
+
 static mobe_t *set_info_mob(mobe_t *node, char ***tab, int i)
 {
     node->object->position.x = my_atoi(tab[i][CORD_X]);
@@ -19,17 +34,7 @@ static mobe_t *set_info_mob(mobe_t *node, char ***tab, int i)
     sfSprite_setOrigin(node->object->sprite,
     (sfVector2f){my_atoi(tab[i][REC_WIDTH]) / 2,
     my_atoi(tab[i][REC_HEIGHT]) / 2});
-    sfSprite_setTexture(node->object->sprite, node->object->texture, sfFalse);
-    sfSprite_setTextureRect(node->object->sprite, node->object->rect);
-    node->hitbox = sfSprite_getGlobalBounds(node->object->sprite);
-    node->hitbox_shape = sfRectangleShape_create();
-    if (!node->hitbox_shape)
-        return NULL;
-    sfRectangleShape_setSize(node->hitbox_shape,
-    (sfVector2f){node->hitbox.width / 2.2, node->hitbox.height / 2.4});
-    sfRectangleShape_setPosition(node->hitbox_shape,
-    (sfVector2f){node->object->position.x - 30,
-    node->object->position.y - 20});
+    node = texture_sprite_mob(node, tab, i);
     sfRectangleShape_setFillColor(node->hitbox_shape,
     sfColor_fromRGBA(RED_HITBOX));
     return node;

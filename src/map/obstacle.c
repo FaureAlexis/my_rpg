@@ -15,8 +15,8 @@ void display_obstacle(main_game_t *game)
         sfSprite_setTextureRect(tmp->object->sprite, tmp->object->rect);
         sfSprite_setPosition(tmp->object->sprite, tmp->object->position);
         tmp->hitbox = sfSprite_getGlobalBounds(tmp->object->sprite);
-        sfRectangleShape_setPosition(tmp->hitbox_shape,
-        (sfVector2f){tmp->object->position.x - 40, tmp->object->position.y +
+        sfRectangleShape_setPosition(tmp->hitbox_shape, \
+        (sfVector2f){tmp->object->position.x - 40, tmp->object->position.y + \
         5});
         set_small_tree_hitbox(tmp);
         set_long_tree_hitbox(tmp);

@@ -25,7 +25,7 @@ int get_nb_words_pos(char const *str, char pos, int idx)
     if (str == NULL)
         return EXIT_SUCCESS;
     while (str[i] != '\n') {
-        if (my_isalphanum_pos(str[i], pos) == 1 &&
+        if (my_isalphanum_pos(str[i], pos) == 1 && \
             my_isalphanum_pos(str[i + 1], pos) == 0) {
             nb_words += 1;
         }
