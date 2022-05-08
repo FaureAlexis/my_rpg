@@ -52,19 +52,6 @@ static player_t *set_player_stats(player_t *player)
     return player;
 }
 
-static int set_sound_effect(player_t *player)
-{
-    if (!player)
-        return EPITECH_ERROR;
-    player->walk = sfMusic_createFromFile(WALK_SOUND);
-    player->death = sfMusic_createFromFile(DEATH_SOUND);
-    player->sword = sfMusic_createFromFile(SWORD_USING_SOUND);
-    if (player->walk == NULL || player->death == NULL || player->sword == NULL)
-        return EPITECH_ERROR;
-    sfMusic_setLoop(player->walk, true);
-    return EXIT_SUCCESS;
-}
-
 static int set_sprite(player_t *player)
 {
     if (!player || set_sound_effect(player) == EPITECH_ERROR)
@@ -102,33 +89,31 @@ static int init_text_interaction(player_t *player)
     sfText_setCharacterSize(player->interaction_text, 40);
     sfText_setColor(player->interaction_text, sfWhite);
     sfText_setPosition(player->interaction_text, INTERACT_TXT_POS);
+    player->object->texture = sfTexture_createFromFile(PLAYER_SS, NULL);
+    player->object->sprite = sfSprite_create();
     return EXIT_SUCCESS;
 }
 
 player_t *init_player(void)
 {
-    player_t *player = malloc(sizeof(player_t));
+    player_t *p = malloc(sizeof(player_t));
 
-    if (!player)
+    if (!p)
         return NULL;
-    player->object = malloc(sizeof(game_object_t));
-    if (!player->object)
+    p->object = malloc(sizeof(game_object_t));
+    if (!p->object)
         return NULL;
-    player = set_player_stats(player);
-    if (!player)
+    p = set_player_stats(p);
+    if (!p)
         return NULL;
-    player->p_clock = init_clock();
-    if (!player->p_clock)
+    p->p_clock = init_clock();
+    if (!p->p_clock)
         return NULL;
-    player->interaction = 0;
-    init_text_interaction(player);
-    if (!player->interaction_text)
+    p->interaction = 0;
+    init_text_interaction(p);
+    if (!p->object->texture || !p->object->sprite || !p->interaction_text)
         return NULL;
-    player->object->texture = sfTexture_createFromFile(PLAYER_SS, NULL);
-    player->object->sprite = sfSprite_create();
-    if (!player->object->texture || !player->object->sprite)
+    if (set_sprite(p) == EPITECH_ERROR)
         return NULL;
-    if (set_sprite(player) == EPITECH_ERROR)
-        return NULL;
-    return player;
+    return p;
 }

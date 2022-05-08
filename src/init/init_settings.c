@@ -22,6 +22,19 @@ static int set_text_settings(main_game_t *game, sfFont *gravity)
     return EXIT_SUCCESS;
 }
 
+int set_sound_effect(player_t *player)
+{
+    if (!player)
+        return EPITECH_ERROR;
+    player->walk = sfMusic_createFromFile(WALK_SOUND);
+    player->death = sfMusic_createFromFile(DEATH_SOUND);
+    player->sword = sfMusic_createFromFile(SWORD_USING_SOUND);
+    if (player->walk == NULL || player->death == NULL || player->sword == NULL)
+        return EPITECH_ERROR;
+    sfMusic_setLoop(player->walk, true);
+    return EXIT_SUCCESS;
+}
+
 int init_settings(main_game_t *game)
 {
     sfFont *gravity = NULL;

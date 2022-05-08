@@ -16,9 +16,9 @@ void set_rect_all_buttons(main_game_t *game)
 
 int create_all_buttons(main_game_t *game)
 {
-    if (create_all_big_buttons(game) == EPITECH_ERROR \
-    || create_all_medium_buttons(game) == EPITECH_ERROR \
-    || create_all_small_buttons(game) == EPITECH_ERROR)
+    if (create_all_big_buttons(game) == EPITECH_ERROR ||
+    create_all_medium_buttons(game) == EPITECH_ERROR ||
+    create_all_small_buttons(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
     return EXIT_SUCCESS;
 }

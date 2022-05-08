@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-void clicked_state_settings(main_game_t *game, sfRectangleShape *shape, \
+void clicked_state_settings(main_game_t *game, sfRectangleShape *shape,
 sfVector2f position)
 {
     sfClock *clock = sfClock_create();
@@ -26,7 +26,7 @@ sfVector2f position)
     sfClock_destroy(clock);
 }
 
-void clicked_state_custom_skin(main_game_t *game, sfRectangleShape *shape, \
+void clicked_state_custom_skin(main_game_t *game, sfRectangleShape *shape,
 sfVector2f position)
 {
     sfClock *clock = sfClock_create();

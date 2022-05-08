@@ -29,6 +29,15 @@ static void dead_hasbulla_animation(mobe_t *tmp)
     }
 }
 
+static void hasbulla_anim(mobe_t *mob, main_game_t *game)
+{
+    sfText_setString(mob->life_txt, mob->life_str);
+    sfText_setPosition(mob->life_txt,
+    (sfVector2f){mob->object->position.x - 150,
+    mob->object->position.y - 130});
+    sfRenderWindow_drawText(game->w, mob->life_txt, NULL);
+}
+
 void display_hasbulla(mobe_t *mob, main_game_t *game)
 {
     float rng = sqrt(pow(game->player->object->position.x -
@@ -46,11 +55,7 @@ void display_hasbulla(mobe_t *mob, main_game_t *game)
     hasbulla_attack_animation(mob, game);
     dead_hasbulla_animation(mob);
     if (mob->hp > 0) {
-        sfText_setString(mob->life_txt, mob->life_str);
-        sfText_setPosition(mob->life_txt,
-        (sfVector2f){mob->object->position.x - 150,
-        mob->object->position.y - 130});
-        sfRenderWindow_drawText(game->w, mob->life_txt, NULL);
+        hasbulla_anim(mob, game);
     }
     sfSprite_setTextureRect(mob->object->sprite, mob->object->rect);
     sfSprite_setPosition(mob->object->sprite, mob->object->position);

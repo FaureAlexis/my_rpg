@@ -37,8 +37,8 @@ int rpg(void)
         if (scene)
             change_scene = scene->go_scene(game);
     }
-    if (save_settings(game) == EPITECH_ERROR
-        || free_game_struct(game) == EPITECH_ERROR)
+    if (save_settings(game) == EPITECH_ERROR ||
+    free_game_struct(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (change_scene == EPITECH_ERROR)
         return change_scene;

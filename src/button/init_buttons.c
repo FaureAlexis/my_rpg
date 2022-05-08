@@ -24,7 +24,7 @@ static int set_button_size(button_t **button, int size)
     return EXIT_SUCCESS;
 }
 
-int init_button_shape(button_t **button, sfVector2f position, int size, \
+int init_button_shape(button_t **button, sfVector2f position, int size,
 char **tab)
 {
     (*button)->sound = sfMusic_createFromFile(tab[0]);
@@ -40,7 +40,7 @@ char **tab)
     return EXIT_SUCCESS;
 }
 
-int init_button(button_t **button, sfVector2f position, int size, \
+int init_button(button_t **button, sfVector2f position, int size,
 char **tab)
 {
     (*button) = malloc(sizeof(button_t));

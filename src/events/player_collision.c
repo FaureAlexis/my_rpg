@@ -26,8 +26,8 @@ sfVector2f next)
     return EXIT_SUCCESS;
 }
 
-static bool detect_speobstacle_collision(main_game_t *game, sfFloatRect \
-hitbox, sfVector2f next)
+static bool detect_speobstacle_collision(main_game_t *game, sfFloatRect hitbox,
+sfVector2f next)
 {
     speobstacle_t *spetmp = NULL;
 

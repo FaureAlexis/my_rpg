@@ -234,6 +234,7 @@
     /* Inits */
 
     player_t *init_player(void);
+    int set_sound_effect(player_t *player);
     int init_life_bar_player(player_t *player);
     main_game_t *init_game(void);
     map_t *init_map(void);
