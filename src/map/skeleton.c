@@ -34,16 +34,16 @@ static mobe_t *dead_skeleton_animation(mobe_t *mob)
 
 void attack_skeleton(mobe_t *mob, player_t *player)
 {
-    if (sqrt(pow(player->object->position.x - mob->object->position.x, \
+    if (sqrt(pow(player->object->position.x - mob->object->position.x,
     2) + pow(player->object->position.y - mob->object->position.y, 2)) < 10)
         mob->object->rect.top += 64;
-    sfSprite_setOrigin(mob->object->sprite, \
+    sfSprite_setOrigin(mob->object->sprite,
     (sfVector2f){mob->object->rect.width / 3, mob->object->rect.height / 2});
     limit_skeleton(mob, player);
     if (mob->hp > 0 && mob->attack == true) {
         mob_action_move(mob, player);
-        sfRectangleShape_setPosition(mob->hitbox_shape, \
-        (sfVector2f){mob->object->position.x - 30, \
+        sfRectangleShape_setPosition(mob->hitbox_shape,
+        (sfVector2f){mob->object->position.x - 30,
         mob->object->position.y - 20});
     } else {
         if (mob->hp <= 0) {

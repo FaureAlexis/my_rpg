@@ -9,8 +9,6 @@
 
 static int set_texture_obstacle(obstacle_t *node, char ***tab, int i)
 {
-    node->object->texture = sfTexture_createFromFile(tab[i][ASSET], NULL);
-    node->object->sprite = sfSprite_create();
     sfSprite_setScale(node->object->sprite, node->object->scale);
     sfSprite_setOrigin(node->object->sprite,
     (sfVector2f){my_atoi(tab[i][REC_WIDTH]) / 2, my_atoi(tab[i][REC_HEIGHT])
@@ -35,13 +33,18 @@ int init_obstacle(map_t *map, char ***tab, int i)
     obstacle_t *node = malloc(sizeof(obstacle_t));
     sfIntRect rec = {my_atoi(tab[i][REC_LEFT]), my_atoi(tab[i][REC_TOP]),
     my_atoi(tab[i][REC_WIDTH]), my_atoi(tab[i][REC_HEIGHT])};
+
     if (!node)
         return EPITECH_ERROR;
     node->object = malloc(sizeof(game_object_t));
+    if (!node->object)
+        return EPITECH_ERROR;
     node->object->scale = (sfVector2f){5, 5};
     node->object->rect = rec;
     node->object->position.x = my_atoi(tab[i][CORD_X]);
     node->object->position.y = my_atoi(tab[i][CORD_Y]);
+    node->object->texture = sfTexture_createFromFile(tab[i][ASSET], NULL);
+    node->object->sprite = sfSprite_create();
     if (!node->object->texture || !node->object->sprite)
         return EPITECH_ERROR;
     node->next = NULL;

@@ -116,6 +116,8 @@
         my_clock_t *p_clock;
         particles_t *dust;
         bool attack_action;
+        bool interaction;
+        sfText *interaction_text;
         sfMusic *walk;
         sfMusic *death;
         sfMusic *sword;
