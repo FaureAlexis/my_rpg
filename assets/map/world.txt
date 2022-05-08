@@ -1,7 +1,7 @@
 assets/map/map_B.png
 assets/map/map_F.png 1088 1463
 assets/map/objects/objects.png 115 807 0 0 16 16
-assets/sprites/characters/npc.png -45 727 0 0 48 48 1 1 2
+assets/sprites/characters/npc.png -45 727 0 0 48 48 10 1 2
 assets/map/objects/objects.png -165 987 128 96 32 48
 assets/map/objects/objects.png -245 1747 128 96 32 48
 assets/map/objects/objects.png -5 1787 128 96 32 48
@@ -133,18 +133,18 @@ assets/sprites/characters/slime.png 650 -200 0 0 32 32 10 10 0
 assets/sprites/characters/slime.png 500 -400 0 0 32 32 10 10 0
 assets/sprites/characters/slime.png 800 -600 0 0 32 32 10 10 0
 assets/sprites/characters/slime.png -300 -1200 0 0 32 32 10 10 0
-assets/sprites/characters/slimered.png -700 -1100 0 0 32 32 10 10 0
-assets/sprites/characters/slimered.png 2195 2280 0 0 32 32 10 10 0
+assets/sprites/characters/slimered.png -700 -1100 0 0 32 32 30 10 0
+assets/sprites/characters/slimered.png 2195 2280 0 0 32 32 30 10 0
 assets/sprites/characters/slime.png 0 -900 0 0 32 32 10 10 0
 assets/sprites/characters/slime.png -400 750 0 0 32 32 10 10 0
 assets/sprites/characters/slime.png 1700 1300 0 0 32 32 10 10 0
-assets/sprites/characters/slimered.png 2000 -800 0 0 32 32 10 10 0
-assets/sprites/characters/skeleton.png 2360 710 16 16 48 48 20 20 1
-assets/sprites/characters/skeleton.png -585 1167 16 16 48 48 20 20 1
+assets/sprites/characters/slimered.png 2000 -800 0 0 32 32 30 10 0
+assets/sprites/characters/skeleton.png 2360 710 16 16 48 48 40 20 1
+assets/sprites/characters/skeleton.png -585 1167 16 16 48 48 40 20 1
 assets/map/tilesets/walls/wooden_door.png 576 2205 0 0 16 16 1 1
-assets/sprites/characters/skeleton.png 476 2205 16 16 48 48 20 20 1
-assets/sprites/characters/skeleton.png 376 2205 16 16 48 48 20 20 1
-assets/sprites/characters/skeleton.png 426 2155 16 16 48 48 20 20 1
+assets/sprites/characters/skeleton.png 476 2205 16 16 48 48 40 20 1
+assets/sprites/characters/skeleton.png 376 2205 16 16 48 48 40 20 1
+assets/sprites/characters/skeleton.png 426 2155 16 16 48 48 40 20 1
 assets/map/tilesets/walls/walls.png -1041 34 16 48 16 16
 assets/map/tilesets/walls/walls.png -1041 114 16 64 16 16
 assets/map/tilesets/walls/walls.png -961 34 32 48 16 16
@@ -176,7 +176,7 @@ assets/map/tilesets/walls/walls.png -576 502 48 80 16 16
 assets/map/tilesets/walls/wooden_door.png -721 502 0 0 16 16 1 1
 assets/map/objects/chest_01.png -881 194 0 0 16 16 1 2
 assets/map/objects/chest_01.png -721 194 0 0 16 16 1 2
-assets/sprites/characters/hasbulla.png 991 2164 0 0 160 106 40 100 10
+assets/sprites/characters/hasbulla.png 991 2164 0 0 160 106 250 100 10
 assets/map/tilesets/plains.png -1048 2573 32 144 16 16
 assets/map/tilesets/plains.png -968 2573 32 144 16 16
 assets/map/tilesets/plains.png -888 2573 32 144 16 16

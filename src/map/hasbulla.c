@@ -45,6 +45,7 @@ void hasbulla_attack(mobe_t *mob, player_t *player)
         if (mob->hp <= 0) {
             mob->attack = 0;
             mob = dead_hasbulla_animation(mob);
+            player->boss_defeated = true;
         }
     }
     if (mob->object->rect.top >= 0)

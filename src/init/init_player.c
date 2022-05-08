@@ -7,17 +7,48 @@
 
 #include "rpg.h"
 
+static int set_text_settings(player_t *player, sfFont *gravity)
+{
+    char *atk_str = my_int_to_str(player->attack);
+    char *life_str = my_int_to_str(player->life);
+
+    if (!player || !gravity)
+        return EPITECH_ERROR;
+    sfText_setPosition(player->life_txt, LIFE_TXT);
+    sfText_setCharacterSize(player->life_txt, 58);
+    sfText_setColor(player->life_txt, sfWhite);
+    sfText_setFont(player->life_txt, gravity);
+    sfText_setString(player->life_txt, life_str);
+    sfText_setPosition(player->atk_txt, ATK_TXT);
+    sfText_setCharacterSize(player->atk_txt, 58);
+    sfText_setColor(player->atk_txt, sfWhite);
+    sfText_setFont(player->atk_txt, gravity);
+    sfText_setString(player->atk_txt, atk_str);
+    if (init_life_bar_player(player) == EPITECH_ERROR)
+        return EPITECH_ERROR;
+    return EXIT_SUCCESS;
+}
+
 static player_t *set_player_stats(player_t *player)
 {
+    sfFont *gravity = NULL;
+
     if (!player)
         return NULL;
-    player->life = 20;
+    player->life = 200;
     player->attack = 5;
     player->attack_action = 0;
     player->dust = NULL;
+    player->boss_defeated = false;
     player->object->position = PLAYER_POS;
     player->object->scale = PLAYER_SCALE;
     player->object->rect = PLAYER_RECT;
+    player->life_txt = sfText_create();
+    player->atk_txt = sfText_create();
+    gravity = sfFont_createFromFile(TEXT_FONT);
+    if (!player->life_txt || !player->atk_txt || !gravity)
+        return NULL;
+    set_text_settings(player, gravity);
     return player;
 }
 

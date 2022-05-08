@@ -31,5 +31,14 @@ int display_game(main_game_t *game)
         sfRenderWindow_drawSprite(game->w, \
         game->mnu->gameplay->object->sprite, NULL);
     }
+    sfRenderWindow_drawRectangleShape(game->w, game->player->life_bar, NULL);
+    if (game->inv_open == true && game->player->life > 0) {
+        sfSprite_setScale(game->mnu->gameplay->object->sprite, INV_SIZE);
+        sfSprite_setPosition(game->mnu->gameplay->object->sprite, INV_POS);
+        sfRenderWindow_drawSprite(game->w, game->mnu->gameplay->object->sprite,
+        NULL);
+        sfRenderWindow_drawText(game->w, game->player->life_txt, NULL);
+        sfRenderWindow_drawText(game->w, game->player->atk_txt, NULL);
+    }
     return EXIT_SUCCESS;
 }

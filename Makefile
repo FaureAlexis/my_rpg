@@ -36,6 +36,8 @@ SRC_SCENES_DISPLAY 		=	scenes/display/display_main_menu.c \
 							scenes/display/display_pause.c \
 							scenes/display/display_skin_cus.c \
 							scenes/display/display_keybind.c \
+							scenes/display/display_lose.c \
+							scenes/display/display_win.c \
 							scenes/display/display_settings.c
 
 SRC_SCENES_BUTTON_POS	=	scenes/button_pos/button_pos_menu.c \
@@ -64,6 +66,8 @@ SRC_SCN_START			=	starting_scene/starting_game_scene.c \
 							starting_scene/starting_pause_scene.c \
 							starting_scene/starting_save_scene.c \
 							starting_scene/starting_settings_scene.c \
+							starting_scene/starting_lose_scene.c \
+							starting_scene/starting_win_scene.c \
 							starting_scene/starting_skin_custom_scene.c
 
 SRC_SCN_INST			=	manage_scenes.c \
@@ -73,6 +77,8 @@ SRC_SCN_INST			=	manage_scenes.c \
 							keybind_scene.c \
 							settings_scene.c \
 							skin_custom_scene.c \
+							lose_scene.c \
+							win_scene.c \
 							help_scene.c \
 							main_menu_scene.c
 
@@ -107,6 +113,7 @@ SRC_INIT				=	init/init_clock.c \
 							init/init_skin_custom.c \
 							init/init_map.c \
 							init/init_player.c \
+							init/init_life_bar_player.c \
 							init/create_dust.c \
 							init/init_mob.c \
 							init/init_spe_obstacle.c \
@@ -142,6 +149,8 @@ SRC_MENU				=	menu/init_menus.c \
 SRC_MAP					=	map/game_test.c 		\
 							map/node.c 				\
 							map/obstacle.c 			\
+							map/player_damage.c 	\
+							map/display_mob_life.c	\
 							map/set_tree_hitbox.c 	\
 							map/open_file.c 		\
 							map/pos.c 				\

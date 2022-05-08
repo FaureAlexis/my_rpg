@@ -19,11 +19,11 @@ int init_keys(main_game_t *game)
     game->keys->interact = sfKeyE;
     game->keys->zoom = sfKeyP;
     game->keys->unzoom = sfKeyM;
-    game->keys->up = sfKeyUp;
-    game->keys->down = sfKeyDown;
-    game->keys->right = sfKeyRight;
-    game->keys->left = sfKeyLeft;
-    game->keys->attack = sfKeyA;
+    game->keys->up = sfKeyZ;
+    game->keys->down = sfKeyS;
+    game->keys->right = sfKeyD;
+    game->keys->left = sfKeyQ;
+    game->keys->attack = sfKeySpace;
     game->keys->inventory = sfKeyI;
     return EXIT_SUCCESS;
 }

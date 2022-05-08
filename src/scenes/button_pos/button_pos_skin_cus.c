@@ -39,7 +39,7 @@ void pos_button_skin_cus(main_game_t *game)
 
     game->btn->mid->exit_b->position = POS_HELP;
     game->btn->big->play_b->position = POS_PLAY;
-    game->btn->big->return_b->position = POS_RETURN4;
+    game->btn->big->return_b->position = POS_RETURN3;
     game->skin->pos_red = RED_POS;
     game->skin->pos_green = GREEN_POS;
     game->skin->pos_blue = BLUE_POS;

@@ -42,6 +42,8 @@ static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 static int game_check_events(main_game_t *game, sfVector2i mouse_pos)
 {
     while (sfRenderWindow_pollEvent(game->w, &game->event)) {
+        if (game->player->life <= 0)
+            return game->player->next_scene = LOSE_SCENE;
         set_player_movements(game, game->player, &game->event);
         if (game->event.type == sfEvtMouseButtonPressed)
             return manage_button_action(game, mouse_pos);
@@ -72,6 +74,10 @@ int game_scene(main_game_t *game)
         player_animations(game->player, game->map->mobe);
         display_game(game);
         sfRenderWindow_display(game->w);
+        if (game->player->life <= 0)
+            return game->player->next_scene = LOSE_SCENE;
+        if (game->player->boss_defeated == true)
+            return game->player->next_scene = WIN_SCENE;
     }
     return EXIT_SUCCESS;
 }

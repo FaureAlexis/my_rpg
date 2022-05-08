@@ -17,5 +17,6 @@ int starting_game_scene(main_game_t *game)
     sfSprite_setScale(game->player->object->sprite, (sfVector2f){4, 4});
     sfSprite_setPosition(game->player->object->sprite, \
     game->player->object->position);
+    display_mob_life(game->map);
     return EXIT_SUCCESS;
 }

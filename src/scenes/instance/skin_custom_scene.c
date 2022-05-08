@@ -25,7 +25,7 @@ static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
         clicked_state_custom_skin(game, game->btn->big->return_b->shape, \
-        POS_RETURN4);
+        POS_RETURN3);
         sfSprite_setColor(game->player->object->sprite, \
         sfColor_fromRGB(255, 255, 255));
         return game->player->next_scene = SAVE_SCENE;

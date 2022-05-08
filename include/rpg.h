@@ -88,6 +88,8 @@
         my_clock_t *attack_clock;
         bool attack;
         int hp;
+        sfText *life_txt;
+        char *life_str;
         int power;
         int obj;
         int type;
@@ -110,14 +112,18 @@
         scenes_name next_scene;
         int life;
         int attack;
+        sfText *life_txt;
+        sfText *atk_txt;
         sfFloatRect hitbox;
         sfRectangleShape *hitbox_shape;
+        sfRectangleShape *life_bar;
         game_object_t *object;
         my_clock_t *p_clock;
         particles_t *dust;
         bool attack_action;
         bool interaction;
         sfText *interaction_text;
+        bool boss_defeated;
         sfMusic *walk;
         sfMusic *death;
         sfMusic *sword;
@@ -228,6 +234,7 @@
     /* Inits */
 
     player_t *init_player(void);
+    int init_life_bar_player(player_t *player);
     main_game_t *init_game(void);
     map_t *init_map(void);
     int init_inventory(main_game_t *game);
@@ -279,6 +286,8 @@
     void attack_slime(mobe_t *mob, player_t *player);
     void attack_skeleton(mobe_t *mob, player_t *player);
     void hasbulla_attack(mobe_t *mob, player_t *player);
+    int player_lose_health(player_t *player, int amount);
+    void display_mob_life(map_t *map);
         /*Collision*/
     int set_big_tree_hitbox(obstacle_t *tmp);
     int set_long_tree_hitbox(obstacle_t *tmp);
@@ -345,7 +354,9 @@
     int display_help(main_game_t *game);
     int display_save(main_game_t *game);
     int display_keybind(main_game_t *game);
-    int change_menu(main_game_t *game, sfRenderWindow *window, sfVector2i \
+    int display_lose(main_game_t *game);
+    int display_win(main_game_t *game);
+    int change_menu(main_game_t *game, sfRenderWindow *window, sfVector2i
     mouse_pos);
     void change_volume(main_game_t *game);
     int manage_volume_right(main_game_t *game, sfVector2i mouse_pos);
@@ -448,6 +459,8 @@
     int starting_save_scene(main_game_t *game);
     int starting_help_scene(main_game_t *game);
     int starting_skin_scene(main_game_t *game);
+    int starting_lose_scene(main_game_t *game);
+    int starting_win_scene(main_game_t *game);
     int starting_create_menus(main_game_t *game);
     const scenes_t *manage_scenes(sfKeyCode key, scenes_name name);
     int pause_scene(main_game_t *game);
@@ -458,6 +471,8 @@
     int save_scene(main_game_t *game);
     int help_scene(main_game_t *game);
     int skin_scene(main_game_t *game);
+    int lose_scene(main_game_t *game);
+    int win_scene(main_game_t *game);
 
     /* Free data */
 

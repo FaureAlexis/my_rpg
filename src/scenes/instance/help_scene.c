@@ -24,8 +24,7 @@ static int help_scene_event(main_game_t *game)
 static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
-        clicked_state_help(game, game->btn->big->return_b->shape, \
-        (sfVector2f){520, 760});
+        clicked_state_help(game, game->btn->big->return_b->shape, POS_RETURN);
         if (game->menu_depth == 1)
             game->player->next_scene = MENU_SCENE;
         else
@@ -33,8 +32,7 @@ static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
         return game->player->next_scene;
     }
     if (button_is_clicked(game->btn->big->exit_b, mouse_pos) == true) {
-        clicked_state_help(game, game->btn->big->exit_b->shape, \
-        (sfVector2f){1000, 760});
+        clicked_state_help(game, game->btn->big->exit_b->shape, POS_EXIT);
         return close_window(game);
     }
     return game->player->current_scene;

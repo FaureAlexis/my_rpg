@@ -29,13 +29,14 @@ int set_player_movements(main_game_t *game, player_t *player, sfEvent *event)
 static int fight_enemy(player_t *player, mobe_t *mob)
 {
     mobe_t *tmp = NULL;
-    sfVector2f player_pos = sfSprite_getPosition(player->object->sprite);
+    sfVector2f player_pos;
     sfVector2f mob_pos;
     int offset = 0;
 
     if (!player || !mob)
         return EPITECH_ERROR;
     tmp = mob;
+    player_pos = sfSprite_getPosition(player->object->sprite);
     while (tmp) {
         if (tmp->hp > 0) {
             mob_pos = sfSprite_getPosition(tmp->object->sprite);

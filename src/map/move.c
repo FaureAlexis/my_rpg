@@ -53,20 +53,24 @@ void move_speobstacle(map_t *map, sfVector2f move)
 
 void move_mob(map_t *map, sfVector2f move)
 {
-    mobe_t *mobe = map->mobe;
+    mobe_t *mob = map->mobe;
 
-    while (mobe != NULL) {
+    while (mob != NULL) {
         if (map->map->position.x >= MAP_X_MIN && map->map->position.x <=
         MAP_X_MAX && map->map->position.y >= MAP_Y_MIN && map->map->position.y
         <= MAP_Y_MAX) {
-            mobe->object->position.x += move.x;
-            mobe->object->position.y += move.y;
-            sfSprite_setPosition(mobe->object->sprite,
-            mobe->object->position);
-            sfRectangleShape_setPosition(mobe->hitbox_shape, \
-            (sfVector2f){mobe->object->position.x - 30, \
-            mobe->object->position.y - 20});
+            mob->object->position.x += move.x;
+            mob->object->position.y += move.y;
+            sfSprite_setPosition(mob->object->sprite,
+            mob->object->position);
+            sfRectangleShape_setPosition(mob->hitbox_shape, \
+            (sfVector2f){mob->object->position.x - 30, \
+            mob->object->position.y - 20});
+            sfText_setString(mob->life_txt, mob->life_str);
+            sfText_setPosition(mob->life_txt,
+            (sfVector2f){mob->object->position.x - 50,
+            mob->object->position.y - 30});
         }
-        mobe = mobe->next;
+        mob = mob->next;
     }
 }

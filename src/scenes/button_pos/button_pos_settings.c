@@ -53,8 +53,8 @@ void change_button_pos(main_game_t *game)
     game->btn->mid->help_b->position = POS_HELP;
     game->btn->sml->right_b->position = POS_RIGHT;
     game->btn->sml->left_b->position = POS_LEFT;
-    game->btn->big->exit_b->position = POS_EXIT3;
-    game->btn->big->return_b->position = POS_RETURN3;
+    game->btn->big->exit_b->position = POS_EXIT;
+    game->btn->big->return_b->position = POS_RETURN;
     game->btn->mid->keybind_b->position = POS_KEYBIND;
     game->btn->mid->mute_b->position = POS_MUTE;
     game->btn->mid->unmute_b->position = POS_UNMUTE;

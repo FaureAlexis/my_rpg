@@ -40,6 +40,8 @@ void display_skeleton(mobe_t *tmp, main_game_t *game)
     }
     skeleton_attack_animation(tmp, game);
     dead_skeleton_animation(tmp);
+    if (tmp->hp > 0)
+        sfRenderWindow_drawText(game->w, tmp->life_txt, NULL);
     sfSprite_setTextureRect(tmp->object->sprite, tmp->object->rect);
     sfSprite_setPosition(tmp->object->sprite, tmp->object->position);
     sfRenderWindow_drawSprite(game->w, tmp->object->sprite, NULL);

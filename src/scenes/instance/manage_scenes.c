@@ -16,6 +16,8 @@ static const scenes_t scenes_array[] = {
     {.key = sfKeyNum5, .name = SKIN_SCENE, .go_scene = &skin_scene},
     {.key = sfKeyNum6, .name = SAVE_SCENE, .go_scene = &save_scene},
     {.key = sfKeyNum7, .name = KEYBIND_SCENE, .go_scene = &keybind_scene},
+    {.key = sfKeyNum8, .name = LOSE_SCENE, .go_scene = &lose_scene},
+    {.key = sfKeyNum9, .name = WIN_SCENE, .go_scene = &win_scene},
     {.key = sfKeyUnknown, .name = UNKNOWN_SCENE, .go_scene = NULL}
 };
 

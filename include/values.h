@@ -37,6 +37,7 @@
     #define SECONDS 1000000.0
     #define CLOCK_LIMIT 0.2
     #define CLOCK_LIMIT_ATK 0.08
+    #define CLOCK_DMG 2
     #define MIN_COLOR 12.75
     #define MAX_COLOR 242.25
     #define OFFSET_COLOR 12.75
@@ -57,6 +58,7 @@
     #define GOAL_TXT_POS (sfVector2f){550, 20}
     #define HELP_TXT_POS (sfVector2f){940, 150}
     #define INTERACT_TXT_POS (sfVector2f){700, 900}
+    #define RED 255, 0, 0
     #define RED_HITBOX 255, 0, 0, 100
     #define GREEN_HITBOX 0, 255, 0, 100
     #define BLUE_HITBOX 0, 0, 255, 100
@@ -65,9 +67,13 @@
     #define PLAYER_SCALE (sfVector2f){4, 4}
     #define PLAYER_SCALE_GAME (sfVector2f){8, 8}
     #define PLAYER_RECT (sfIntRect){0, 0, 48, 48}
+    #define LIFE_BAR_SIZE (sfVector2f){600, 30}
+    #define LIFE_BAR_POS (sfVector2f){650, 1000}
     #define PLAYER_ORIGIN (sfVector2f){24, 24}
     #define RES_TXT (sfVector2f){1060, 450}
     #define FPS_TXT (sfVector2f){1100, 600}
+    #define LIFE_TXT (sfVector2f){780, 505}
+    #define ATK_TXT (sfVector2f){780, 665}
     #define CUS_RECT_SIZE (sfVector2f){400, 30}
     #define RED_POS (sfVector2f){850, 400}
     #define GREEN_POS (sfVector2f){850, 460}
@@ -82,6 +88,8 @@
     #define INV_SIZE (sfVector2f){0.3, 0.3}
     #define INV_POS (sfVector2f){80, 100}
     #define MENU_BG_SIZE (sfVector2f){0.28, 0.28}
+    #define KEYBIND_SIZE (sfVector2f){0.9, 0.9}
+    #define KEYBIND_POS (sfVector2f){65, -120}
     #define SETTINGS_BG_POS (sfVector2f){100, 10}
     #define SKIN_CUS_BG_POS  (sfVector2f){100, -10}
     #define PLAYER_POS_SKIN_CUS (sfVector2f){600, 435}

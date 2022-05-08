@@ -35,7 +35,7 @@ static main_game_t *set_info_game(main_game_t *game)
     game->view_zoom = 1;
     game->menu_depth = 0;
     game->inv_open = false;
-    game->view_pos = (sfVector2f){960, 600};
+    game->view_pos = PLAYER_POS;
     return game;
 }
 

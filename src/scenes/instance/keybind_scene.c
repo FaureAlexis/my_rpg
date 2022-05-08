@@ -25,12 +25,12 @@ static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->big->return_b, mouse_pos) == true) {
         clicked_state_keybind(game, game->btn->big->return_b->shape,
-        POS_RETURN3);
+        POS_RETURN);
         game->player->next_scene = SETTINGS_SCENE;
         return game->player->next_scene;
     }
     if (button_is_clicked(game->btn->big->exit_b, mouse_pos) == true) {
-        clicked_state_keybind(game, game->btn->big->exit_b->shape, POS_EXIT3);
+        clicked_state_keybind(game, game->btn->big->exit_b->shape, POS_EXIT);
         return close_window(game);
     }
     if (button_is_clicked(game->btn->mid->help_b, mouse_pos) == true) {

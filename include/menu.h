@@ -20,7 +20,9 @@
         EXIT_SCENE,
         HELP_SCENE,
         GAME_SCENE,
-        PAUSE_SCENE
+        PAUSE_SCENE,
+        LOSE_SCENE,
+        WIN_SCENE
     } scenes_name;
 
     typedef struct menu_s {

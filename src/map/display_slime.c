@@ -39,6 +39,8 @@ void display_slime(mobe_t *tmp, main_game_t *game)
     }
     slime_attack_animation(tmp, game);
     dead_slime_animation(tmp);
+    if (tmp->hp > 0)
+        sfRenderWindow_drawText(game->w, tmp->life_txt, NULL);
     sfSprite_setTextureRect(tmp->object->sprite, tmp->object->rect);
     sfSprite_setPosition(tmp->object->sprite, tmp->object->position);
     sfRenderWindow_drawSprite(game->w, tmp->object->sprite, NULL);

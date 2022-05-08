@@ -41,13 +41,11 @@
     #define SML_BTN_SIZE (sfVector2f){80, 80}
     #define POS_PAUSE (sfVector2f){10, 10}
     #define POS_HELP (sfVector2f){10, 10}
-    #define POS_EXIT (sfVector2f){1000, 700}
+    #define POS_EXIT (sfVector2f){1000, 800}
     #define POS_EXIT2 (sfVector2f){750, 650}
-    #define POS_EXIT3 (sfVector2f){1000, 780}
-    #define POS_RETURN (sfVector2f){520, 700}
+    #define POS_RETURN (sfVector2f){520, 800}
     #define POS_RETURN2 (sfVector2f){500, 330}
-    #define POS_RETURN3 (sfVector2f){520, 780}
-    #define POS_RETURN4 (sfVector2f){540, 780}
+    #define POS_RETURN3 (sfVector2f){540, 780}
     #define POS_GAME (sfVector2f){540, 450}
     #define POS_SETTINGS (sfVector2f){960, 450}
     #define POS_SETTINGS2 (sfVector2f){1010, 330}
