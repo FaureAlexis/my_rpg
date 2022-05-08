@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-static const movements_t *get_animations(movements_t movements_array[],
+static const movements_t *get_animations(movements_t movements_array[], \
 sfEvent event)
 {
     for (int i = 0; movements_array[i].key != sfKeyUnknown; i++) {
@@ -26,7 +26,7 @@ int detect_animations(movements_t movements_array[])
     return 0;
 }
 
-int modify_animations(main_game_t *game, player_t *player, sfEvent event,
+int modify_animations(main_game_t *game, player_t *player, sfEvent event, \
 movements_t movements_array[])
 {
     const movements_t *movements = NULL;

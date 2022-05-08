@@ -18,7 +18,7 @@ static int game_scene_event(main_game_t *game)
 
     if (event)
         return event->events(game);
-    if (game->event.key.code == game->keys->pause
+    if (game->event.key.code == game->keys->pause \
     && game->event.type == sfEvtKeyPressed) {
         clicked_state_game(game, game->btn->mid->pause_b->shape, POS_HELP);
         game->player->next_scene = PAUSE_SCENE;
@@ -47,7 +47,7 @@ static int game_check_events(main_game_t *game, sfVector2i mouse_pos)
             return manage_button_action(game, mouse_pos);
         if (game_scene_event(game) != game->player->current_scene)
             return game->player->next_scene;
-        if (game->event.key.code == game->keys->quit && game->event.type
+        if (game->event.key.code == game->keys->quit && game->event.type \
         == sfEvtKeyPressed)
             return close_window(game);
     }

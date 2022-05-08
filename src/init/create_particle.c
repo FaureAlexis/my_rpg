@@ -25,13 +25,13 @@ particles_t *create_artific(sfVector2f cord, int size, sfVector2f direction)
     node->pixels = malloc(((node->size + 2) * (node->size + 2)) * 4);
     draw_circle(node, (node->size / 2), sfYellow);
     node->texture = sfTexture_create(node->size + 2, node->size + 2);
-    sfTexture_updateFromPixels(node->texture, node->pixels, node->size + 2,
+    sfTexture_updateFromPixels(node->texture, node->pixels, node->size + 2, \
     node->size + 2, 0, 0);
     sfRectangleShape_setTexture(node->shape, node->texture, false);
     return node;
 }
 
-particles_t *creat_particles(int enuma, sfVector2f cord, int size,
+particles_t *creat_particles(int enuma, sfVector2f cord, int size, \
 sfVector2f direction)
 {
     particles_t *node = NULL;
@@ -48,9 +48,9 @@ void gen_artific(speobstacle_t *chest)
     particles_t *node = NULL;
 
     if (chest->type == 2 && chest->artific == NULL) {
-        node = creat_particles(1, chest->object->position, 20,
+        node = creat_particles(1, chest->object->position, 20, \
         (sfVector2f){0, 20});
-        chest->artific = add_particle_to_list(chest->artific, node,
+        chest->artific = add_particle_to_list(chest->artific, node, \
         (sfVector2f){0, 0});
     }
 }

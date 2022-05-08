@@ -41,7 +41,7 @@ int mute_all(main_game_t *game, sfVector2i mouse_pos)
 int unmute_all(main_game_t *game, sfVector2i mouse_pos)
 {
     if (button_is_clicked(game->btn->mid->unmute_b, mouse_pos) == true) {
-        clicked_state_settings(game, game->btn->mid->keybind_b->shape,
+        clicked_state_settings(game, game->btn->mid->keybind_b->shape, \
         POS_UNMUTE);
         sfMusic_stop(game->btn->sml->right_b->sound);
         sfMusic_play(game->btn->sml->left_b->sound);
@@ -56,7 +56,7 @@ int unmute_all(main_game_t *game, sfVector2i mouse_pos)
 
 int manage_volume_left(main_game_t *game, sfVector2i mouse_pos)
 {
-    if (button_is_clicked(game->btn->sml->left_b, mouse_pos) == true
+    if (button_is_clicked(game->btn->sml->left_b, mouse_pos) == true \
     && game->vol->volume > 0) {
         game->vol->volume -= 5;
         sfMusic_stop(game->btn->sml->right_b->sound);
@@ -71,7 +71,7 @@ int manage_volume_left(main_game_t *game, sfVector2i mouse_pos)
 
 int manage_volume_right(main_game_t *game, sfVector2i mouse_pos)
 {
-    if (button_is_clicked(game->btn->sml->right_b, mouse_pos) == true
+    if (button_is_clicked(game->btn->sml->right_b, mouse_pos) == true \
     && game->vol->volume < 100) {
         game->vol->volume += 5;
         sfMusic_stop(game->btn->sml->left_b->sound);

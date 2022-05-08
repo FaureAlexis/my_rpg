@@ -13,10 +13,10 @@ static int red_left(main_game_t *g)
 
     if (size.x > 0 && g->skin->red_c > MIN_COLOR) {
         g->skin->red_c -= OFFSET_COLOR;
-        sfRectangleShape_setSize(g->skin->red,
+        sfRectangleShape_setSize(g->skin->red, \
         (sfVector2f){size.x - 20, size.y});
     }
-    sfSprite_setColor(g->player->object->sprite,
+    sfSprite_setColor(g->player->object->sprite, \
     sfColor_fromRGBA(g->skin->red_c, g->skin->green_c, g->skin->blue_c, 255));
     return EXIT_SUCCESS;
 }
@@ -27,10 +27,10 @@ static int green_left(main_game_t *g)
 
     if (size.x > 0 && g->skin->green_c > MIN_COLOR) {
         g->skin->green_c -= OFFSET_COLOR;
-        sfRectangleShape_setSize(g->skin->green,
+        sfRectangleShape_setSize(g->skin->green, \
         (sfVector2f){size.x - 20, size.y});
     }
-    sfSprite_setColor(g->player->object->sprite,
+    sfSprite_setColor(g->player->object->sprite, \
     sfColor_fromRGBA(g->skin->red_c, g->skin->green_c, g->skin->blue_c, 255));
     return EXIT_SUCCESS;
 }

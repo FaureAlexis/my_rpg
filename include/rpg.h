@@ -235,16 +235,16 @@
     sfView *init_view(sfRenderWindow *window, sfFloatRect size);
     my_clock_t *init_clock(void);
     int init_all(main_game_t *game);
-    int init_button(button_t **button, sfVector2f position, int size,
+    int init_button(button_t **button, sfVector2f position, int size, \
     char **tab);
     int init_all_buttons(main_game_t *game);
-    int init_button_shape(button_t **button, sfVector2f position, int size,
+    int init_button_shape(button_t **button, sfVector2f position, int size, \
     char **tab);
     int init_skin_custom(cus_t **cus);
     int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect);
     int init_volume(vol_t **vol);
     int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect);
-    particles_t *creat_particles(int enum_type, sfVector2f cord, int size,
+    particles_t *creat_particles(int enum_type, sfVector2f cord, int size, \
     sfVector2f direction);
     int draw_circle(particles_t *particle, int radius, sfColor color);
     void gen_artific(speobstacle_t *speobstacle);
@@ -267,7 +267,7 @@
     void display_skeleton(mobe_t *tmp, main_game_t *game);
     void display_slime(mobe_t *tmp, main_game_t *game);
     void display_hasbulla(mobe_t *hasbulla, main_game_t *game);
-    speobstacle_t *add_node_to_speobstacle(speobstacle_t *head,
+    speobstacle_t *add_node_to_speobstacle(speobstacle_t *head, \
     speobstacle_t *node);
     obstacle_t *add_node_to_obstacle(obstacle_t *head, obstacle_t *node);
     mobe_t *add_node_to_mobe(mobe_t *head, mobe_t *node);
@@ -287,17 +287,17 @@
 
     /*Animations*/
 
-    particles_t *anim_artific(particles_t *head, sfRenderWindow *w,
+    particles_t *anim_artific(particles_t *head, sfRenderWindow *w, \
     speobstacle_t *spe);
-    void my_put_pixel(particles_t *particle, unsigned int x, unsigned int y,
+    void my_put_pixel(particles_t *particle, unsigned int x, unsigned int y, \
     sfColor color);
     /*Player animations*/
     int player_animations(player_t *player, mobe_t *mob);
     int player_check_key(sfKeyCode key);
-    int set_player_movements(main_game_t *game, player_t *player,
+    int set_player_movements(main_game_t *game, player_t *player, \
     sfEvent *event);
     int detect_animations(movements_t movements_array[]);
-    int modify_animations(main_game_t *game, player_t *player, sfEvent event,
+    int modify_animations(main_game_t *game, player_t *player, sfEvent event, \
     movements_t movements_array[]);
     void move_obstacle(map_t *map, sfVector2f move);
     void move_speobstacle(map_t *map, sfVector2f move);
@@ -309,7 +309,7 @@
     int move_player(main_game_t *game, const movements_t *movements);
     particles_t *create_dust(sfVector2f cord, int size, sfVector2f direction);
     particles_t *anim_dust(particles_t *head, sfRenderWindow *w);
-    particles_t *add_particle_to_list(particles_t *head, particles_t *node,
+    particles_t *add_particle_to_list(particles_t *head, particles_t *node, \
     sfVector2f move);
 
     /*Menu management*/
@@ -342,7 +342,7 @@
     int display_help(main_game_t *game);
     int display_save(main_game_t *game);
     int display_keybind(main_game_t *game);
-    int change_menu(main_game_t *game, sfRenderWindow *window, sfVector2i
+    int change_menu(main_game_t *game, sfRenderWindow *window, sfVector2i \
     mouse_pos);
     void change_volume(main_game_t *game);
     int manage_volume_right(main_game_t *game, sfVector2i mouse_pos);
@@ -373,17 +373,17 @@
     int manage_hover_medium_buttons(main_game_t *game, sfVector2i mouse_pos);
     int manage_hover_small_buttons(main_game_t *game, sfVector2i mouse_pos);
     void manage_all_hover(main_game_t *game, sfVector2i mouse_pos);
-    int button_action_menu(sfRenderWindow *window, main_game_t *game,
+    int button_action_menu(sfRenderWindow *window, main_game_t *game, \
     sfVector2i mouse_pos);
-    int button_action_game(sfRenderWindow *window, main_game_t *game,
+    int button_action_game(sfRenderWindow *window, main_game_t *game, \
     sfVector2i mouse_pos);
-    int button_action_pause(sfRenderWindow *window, main_game_t *game,
+    int button_action_pause(sfRenderWindow *window, main_game_t *game, \
     sfVector2i mouse_pos);
-    int button_action_help(sfRenderWindow *window, main_game_t *game,
+    int button_action_help(sfRenderWindow *window, main_game_t *game, \
     sfVector2i mouse_pos);
-    int button_action_settings(sfRenderWindow *window, main_game_t *game,
+    int button_action_settings(sfRenderWindow *window, main_game_t *game, \
     sfVector2i mouse_pos);
-    int button_action_scoreboard(sfRenderWindow *window, main_game_t *game,
+    int button_action_scoreboard(sfRenderWindow *window, main_game_t *game, \
     sfVector2i mouse_pos);
     int manage_hover_buttons(main_game_t *game, sfVector2i mouse_pos);
     int manage_hover(button_t *button, sfVector2i mouse_pos);
@@ -405,26 +405,26 @@
     /* Events */
 
     bool button_is_clicked(button_t *button, sfVector2i mouse_pos);
-    bool shape_is_clicked(sfRenderWindow *win, sfRectangleShape *shape,
+    bool shape_is_clicked(sfRenderWindow *win, sfRectangleShape *shape, \
     sfVector2i mouse_pos);
     void shape_red_clicked(main_game_t *game);
     void shape_green_clicked(main_game_t *game);
     void shape_blue_clicked(main_game_t *game);
-    void clicked_state_game(main_game_t *game, sfRectangleShape *shape,
+    void clicked_state_game(main_game_t *game, sfRectangleShape *shape, \
     sfVector2f position);
-    void clicked_state_pause(main_game_t *game, sfRectangleShape *shape,
+    void clicked_state_pause(main_game_t *game, sfRectangleShape *shape, \
     sfVector2f position);
-    void clicked_state_settings(main_game_t *game, sfRectangleShape *shape,
+    void clicked_state_settings(main_game_t *game, sfRectangleShape *shape, \
     sfVector2f position);
-    void clicked_state_help(main_game_t *game, sfRectangleShape *shape,
+    void clicked_state_help(main_game_t *game, sfRectangleShape *shape, \
     sfVector2f position);
-    void clicked_state_main(main_game_t *game, sfRectangleShape *shape,
+    void clicked_state_main(main_game_t *game, sfRectangleShape *shape, \
     sfVector2f position);
-    void clicked_state_custom_skin(main_game_t *game, sfRectangleShape *shape,
+    void clicked_state_custom_skin(main_game_t *game, sfRectangleShape \
+    *shape, sfVector2f position);
+    void clicked_state_keybind(main_game_t *game, sfRectangleShape *shape, \
     sfVector2f position);
-    void clicked_state_keybind(main_game_t *game, sfRectangleShape *shape,
-    sfVector2f position);
-    void clicked_state_save(main_game_t *game, sfRectangleShape *shape,
+    void clicked_state_save(main_game_t *game, sfRectangleShape *shape, \
     sfVector2f position);
     const event_t *get_event(sfEventType type, const event_t event_array[]);
     int zoom_event(main_game_t *game);

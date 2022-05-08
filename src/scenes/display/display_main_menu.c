@@ -14,7 +14,7 @@ int display_menu(main_game_t *game)
     pos_button_main(game);
     sfRenderWindow_drawSprite(game->w, game->mnu->main->object->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->big->play_b->sprite, NULL);
-    sfRenderWindow_drawSprite(game->w,
+    sfRenderWindow_drawSprite(game->w, \
     game->btn->big->settings_b->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->big->exit_b->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->mid->help_b->sprite, NULL);

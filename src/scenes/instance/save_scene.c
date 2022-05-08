@@ -41,7 +41,7 @@ static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
 
 static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
 {
-    if (manage_button_action_scene(game, mouse_pos)
+    if (manage_button_action_scene(game, mouse_pos) \
     != game->player->current_scene)
         return game->player->next_scene;
     if (button_is_clicked(game->btn->big->exit_b, mouse_pos) == true) {
@@ -77,7 +77,7 @@ int save_scene(main_game_t *game)
         mouse_pos = sfMouse_getPositionRenderWindow(game->w);
         sfRenderWindow_clear(game->w, sfWhite);
         manage_all_hover(game, mouse_pos);
-        if (save_check_events(game, mouse_pos)
+        if (save_check_events(game, mouse_pos) \
         != game->player->current_scene) {
             sfMusic_stop(game->btn->big->play_b->sound);
             return game->player->next_scene;

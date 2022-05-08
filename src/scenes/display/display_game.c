@@ -22,8 +22,8 @@ int display_game(main_game_t *game)
     if (game->inv_open == true) {
         sfSprite_setScale(game->mnu->gameplay->object->sprite, INV_SIZE);
         sfSprite_setPosition(game->mnu->gameplay->object->sprite, INV_POS);
-        sfRenderWindow_drawSprite(game->w, game->mnu->gameplay->object->sprite,
-        NULL);
+        sfRenderWindow_drawSprite(game->w, \
+        game->mnu->gameplay->object->sprite, NULL);
     }
     return EXIT_SUCCESS;
 }

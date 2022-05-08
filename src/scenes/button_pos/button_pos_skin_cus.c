@@ -9,22 +9,22 @@
 
 static int set_sprite_pos(main_game_t *game)
 {
-    sfSprite_setPosition(game->btn->mid->exit_b->sprite,
+    sfSprite_setPosition(game->btn->mid->exit_b->sprite, \
     game->btn->mid->exit_b->position);
-    sfSprite_setPosition(game->btn->big->play_b->sprite,
+    sfSprite_setPosition(game->btn->big->play_b->sprite, \
     game->btn->big->play_b->position);
-    sfSprite_setPosition(game->btn->big->return_b->sprite,
+    sfSprite_setPosition(game->btn->big->return_b->sprite, \
     game->btn->big->return_b->position);
     return EXIT_SUCCESS;
 }
 
 static void pos_fullscreen(main_game_t *game)
 {
-    sfRectangleShape_setPosition(game->btn->mid->exit_b->shape,
+    sfRectangleShape_setPosition(game->btn->mid->exit_b->shape, \
     game->btn->mid->exit_b->position);
-    sfRectangleShape_setPosition(game->btn->big->play_b->shape,
+    sfRectangleShape_setPosition(game->btn->big->play_b->shape, \
     game->btn->big->play_b->position);
-    sfRectangleShape_setPosition(game->btn->big->return_b->shape,
+    sfRectangleShape_setPosition(game->btn->big->return_b->shape, \
     game->btn->big->return_b->position);
     sfRectangleShape_setPosition(game->skin->red, game->skin->pos_red);
     sfRectangleShape_setPosition(game->skin->green, game->skin->pos_green);
@@ -47,7 +47,7 @@ void pos_button_skin_cus(main_game_t *game)
     if (size.x == MAX_W_X && size.y == MAX_W_Y)
         pos_fullscreen(game);
     else {
-        resize_all_buttons(game, ((float){size.x} / win_x),
+        resize_all_buttons(game, ((float){size.x} / win_x), \
         ((float){size.y} / win_y));
     }
 }

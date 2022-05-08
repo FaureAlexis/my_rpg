@@ -15,9 +15,9 @@ static int init_menu_sprite(menu_t **menu)
     (*menu)->bg_object->sprite = sfSprite_create();
     if ((*menu)->bg_object->sprite == NULL || (*menu)->object->sprite == NULL)
         return EPITECH_ERROR;
-    sfSprite_setTexture((*menu)->object->sprite,
+    sfSprite_setTexture((*menu)->object->sprite, \
     (*menu)->object->texture, sfTrue);
-    sfSprite_setTexture((*menu)->bg_object->sprite,
+    sfSprite_setTexture((*menu)->bg_object->sprite, \
     (*menu)->bg_object->texture, sfTrue);
     return EXIT_SUCCESS;
 }
@@ -37,7 +37,7 @@ int init_menu(menu_t **menu, char *theme, char *texture, sfIntRect rect)
     (*menu)->theme = sfMusic_createFromFile(theme);
     (*menu)->bg_object->texture = sfTexture_createFromFile(SETTINGS_BG, NULL);
     (*menu)->object->texture = sfTexture_createFromFile(texture, NULL);
-    if ((*menu)->bg_object->texture == NULL || (*menu)->theme == NULL
+    if ((*menu)->bg_object->texture == NULL || (*menu)->theme == NULL \
     || (*menu)->object->texture == NULL)
         return EPITECH_ERROR;
     sfMusic_setLoop((*menu)->theme, true);

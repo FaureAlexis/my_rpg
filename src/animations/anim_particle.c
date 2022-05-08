@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-void my_put_pixel(particles_t *particle, unsigned int x, unsigned int y,
+void my_put_pixel(particles_t *particle, unsigned int x, unsigned int y, \
 sfColor color)
 {
     int open = 0;
@@ -19,18 +19,17 @@ sfColor color)
     particle->pixels[open + 3] = color.a;
 }
 
-static int random_put_pixel(particles_t *particle, sfColor color, int start_x,
-int radius)
+static int random_put_pixel(particles_t *particle, sfColor color, \
+int start_x, int radius)
 {
     int end_y = particle->size;
 
     for (int start_y = 0; start_y <= (end_y + 1); start_y += 1) {
-        if ((pow(start_x - (particle->size / 2), 2) + pow(start_y -
+        if ((pow(start_x - (particle->size / 2), 2) + pow(start_y - \
         (particle->size / 2), 2)) <= pow(radius, 2))
             my_put_pixel(particle, start_y, start_x, color);
         else
-            my_put_pixel(particle, start_y, start_x,
-            (sfColor){0, 0, 0, 0});
+            my_put_pixel(particle, start_y, start_x, (sfColor){0, 0, 0, 0});
         }
     return start_x;
 }
@@ -45,7 +44,7 @@ int draw_circle(particles_t *particle, int radius, sfColor color)
     return EXIT_SUCCESS;
 }
 
-particles_t *add_particle_to_list(particles_t *head, particles_t *node,
+particles_t *add_particle_to_list(particles_t *head, particles_t *node, \
 sfVector2f move)
 {
     particles_t *tmp = head;
@@ -78,8 +77,8 @@ particles_t *anim_dust(particles_t *head, sfRenderWindow *w)
             part->y = part->cord.y;
         if (part->timer->seconds > 0.01) {
             part->end += 0.01;
-            part->cord.y = part->y + (part->direction.y /
-            sqrt(pow(part->direction.y, 2))) * ((8 - part->direction.x)
+            part->cord.y = part->y + (part->direction.y / \
+            sqrt(pow(part->direction.y, 2))) * ((8 - part->direction.x) \
             * sqrt(pow(cos((part->direction.y) * part->end), 2)));
             sfClock_restart(part->timer->clock);
         }

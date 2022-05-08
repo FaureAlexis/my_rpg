@@ -33,7 +33,7 @@ int display_settings2(main_game_t *gme)
     sfRenderWindow_drawSprite(gme->w, gme->btn->sml->plus_r_b->sprite, NULL);
     sfRenderWindow_drawSprite(gme->w, gme->btn->sml->minus_r_b->sprite, NULL);
     sfRenderWindow_drawSprite(gme->w, gme->btn->mid->help_b->sprite, NULL);
-    sfRenderWindow_drawSprite(gme->w, gme->btn->mid->keybind_b->sprite,
+    sfRenderWindow_drawSprite(gme->w, gme->btn->mid->keybind_b->sprite, \
     NULL);
     sfRenderWindow_drawSprite(gme->w, gme->btn->mid->mute_b->sprite, NULL);
     sfRenderWindow_drawSprite(gme->w, gme->btn->mid->unmute_b->sprite, NULL);
@@ -49,9 +49,9 @@ int display_settings(main_game_t *game)
     sfSprite_setScale(game->mnu->settings->object->sprite, MENU_BG_SIZE);
     sfSprite_setPosition(game->mnu->settings->object->sprite, SETTINGS_BG_POS);
     pos_button_settings(game);
-    sfRenderWindow_drawSprite(game->w, game->mnu->settings->bg_object->sprite,
-    NULL);
-    sfRenderWindow_drawSprite(game->w, game->mnu->settings->object->sprite,
+    sfRenderWindow_drawSprite(game->w, \
+    game->mnu->settings->bg_object->sprite, NULL);
+    sfRenderWindow_drawSprite(game->w, game->mnu->settings->object->sprite, \
     NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->sml->right_b->sprite, NULL);
     sfRenderWindow_drawSprite(game->w, game->btn->sml->left_b->sprite, NULL);

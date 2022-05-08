@@ -29,7 +29,7 @@ static int add_node(case_inventory_t **case_inventory, int x, int y)
     return EXIT_SUCCESS;
 }
 
-static case_inventory_t *init_case_x_inventory(inventory_t *inventory,
+static case_inventory_t *init_case_x_inventory(inventory_t *inventory, \
 int offset, case_inventory_t *case_inventory, int i)
 {
     int x = inventory->case_inventory_x + inventory->space_case;
@@ -48,7 +48,7 @@ static case_inventory_t *init_case_inventory(inventory_t *inventory)
     int offset = inventory->offset_case_inventory + inventory->space_case;
 
     for (int i = y; i < inventory->case_inventory_max_y; i += offset) {
-        case_inventory = init_case_x_inventory(inventory,
+        case_inventory = init_case_x_inventory(inventory, \
         offset, case_inventory, i);
         if (case_inventory == NULL)
             return NULL;

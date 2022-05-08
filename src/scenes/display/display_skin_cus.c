@@ -15,17 +15,17 @@ void shape_red_clicked(main_game_t *game)
 
     game->btn->sml->right_b->position = (sfVector2f){1250, 375};
     game->btn->sml->left_b->position = (sfVector2f){760, 375};
-    sfSprite_setPosition(game->btn->sml->right_b->sprite,
+    sfSprite_setPosition(game->btn->sml->right_b->sprite, \
     game->btn->sml->right_b->position);
-    sfRectangleShape_setPosition(game->btn->sml->right_b->shape,
-    (sfVector2f){(game->btn->sml->right_b->position.x *
-    ((float){size.x} / win_x)), (game->btn->sml->right_b->position.y *
+    sfRectangleShape_setPosition(game->btn->sml->right_b->shape, \
+    (sfVector2f){(game->btn->sml->right_b->position.x * \
+    ((float){size.x} / win_x)), (game->btn->sml->right_b->position.y * \
     ((float){size.y} / win_y))});
-    sfSprite_setPosition(game->btn->sml->left_b->sprite,
+    sfSprite_setPosition(game->btn->sml->left_b->sprite, \
     game->btn->sml->left_b->position);
-    sfRectangleShape_setPosition(game->btn->sml->left_b->shape,
-    (sfVector2f){(game->btn->sml->left_b->position.x *
-    ((float){size.x} / win_x)), (game->btn->sml->left_b->position.y *
+    sfRectangleShape_setPosition(game->btn->sml->left_b->shape, \
+    (sfVector2f){(game->btn->sml->left_b->position.x * \
+    ((float){size.x} / win_x)), (game->btn->sml->left_b->position.y * \
     ((float){size.y} / win_y))});
 }
 
@@ -37,17 +37,17 @@ void shape_green_clicked(main_game_t *game)
 
     game->btn->sml->right_b->position = (sfVector2f){1250, 435};
     game->btn->sml->left_b->position = (sfVector2f){760, 435};
-    sfSprite_setPosition(game->btn->sml->right_b->sprite,
+    sfSprite_setPosition(game->btn->sml->right_b->sprite, \
     game->btn->sml->right_b->position);
-    sfRectangleShape_setPosition(game->btn->sml->right_b->shape,
-    (sfVector2f){(game->btn->sml->right_b->position.x *
-    ((float){size.x} / win_x)), (game->btn->sml->right_b->position.y *
+    sfRectangleShape_setPosition(game->btn->sml->right_b->shape, \
+    (sfVector2f){(game->btn->sml->right_b->position.x * \
+    ((float){size.x} / win_x)), (game->btn->sml->right_b->position.y * \
     ((float){size.y} / win_y))});
-    sfSprite_setPosition(game->btn->sml->left_b->sprite,
+    sfSprite_setPosition(game->btn->sml->left_b->sprite, \
     game->btn->sml->left_b->position);
-    sfRectangleShape_setPosition(game->btn->sml->left_b->shape,
-    (sfVector2f){(game->btn->sml->left_b->position.x *
-    ((float){size.x} / win_x)), (game->btn->sml->left_b->position.y *
+    sfRectangleShape_setPosition(game->btn->sml->left_b->shape, \
+    (sfVector2f){(game->btn->sml->left_b->position.x * \
+    ((float){size.x} / win_x)), (game->btn->sml->left_b->position.y * \
     ((float){size.y} / win_y))});
 }
 
@@ -59,17 +59,17 @@ void shape_blue_clicked(main_game_t *game)
 
     game->btn->sml->right_b->position = (sfVector2f){1250, 495};
     game->btn->sml->left_b->position = (sfVector2f){760, 495};
-    sfSprite_setPosition(game->btn->sml->right_b->sprite,
+    sfSprite_setPosition(game->btn->sml->right_b->sprite, \
     game->btn->sml->right_b->position);
-    sfRectangleShape_setPosition(game->btn->sml->right_b->shape,
-    (sfVector2f){(game->btn->sml->right_b->position.x *
-    ((float){size.x} / win_x)), (game->btn->sml->right_b->position.y *
+    sfRectangleShape_setPosition(game->btn->sml->right_b->shape, \
+    (sfVector2f){(game->btn->sml->right_b->position.x * \
+    ((float){size.x} / win_x)), (game->btn->sml->right_b->position.y * \
     ((float){size.y} / win_y))});
-    sfSprite_setPosition(game->btn->sml->left_b->sprite,
+    sfSprite_setPosition(game->btn->sml->left_b->sprite, \
     game->btn->sml->left_b->position);
-    sfRectangleShape_setPosition(game->btn->sml->left_b->shape,
-    (sfVector2f){(game->btn->sml->left_b->position.x *
-    ((float){size.x} / win_x)), (game->btn->sml->left_b->position.y *
+    sfRectangleShape_setPosition(game->btn->sml->left_b->shape, \
+    (sfVector2f){(game->btn->sml->left_b->position.x * \
+    ((float){size.x} / win_x)), (game->btn->sml->left_b->position.y * \
     ((float){size.y} / win_y))});
 }
 

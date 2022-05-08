@@ -9,15 +9,15 @@
 
 static bool error_ressources(void)
 {
-    if (open(BUTTON_SOUND, O_RDONLY) == -1
-    || open(BUTTON_SS, O_RDONLY) == -1
-    || open(MENU_BG, O_RDONLY) == -1
-    || open(SETTINGS_BG, O_RDONLY) == -1
-    || open(SETTINGS_SS, O_RDONLY) == -1
-    || open(BUTTON_SOUND, O_RDONLY) == -1
-    || open(SKIN_CUS_SS, O_RDONLY) == -1
-    || open(PLAYER_SS, O_RDONLY) == -1
-    || open(INV_SS, O_RDONLY) == -1
+    if (open(BUTTON_SOUND, O_RDONLY) == -1 \
+    || open(BUTTON_SS, O_RDONLY) == -1 \
+    || open(MENU_BG, O_RDONLY) == -1 \
+    || open(SETTINGS_BG, O_RDONLY) == -1 \
+    || open(SETTINGS_SS, O_RDONLY) == -1 \
+    || open(BUTTON_SOUND, O_RDONLY) == -1 \
+    || open(SKIN_CUS_SS, O_RDONLY) == -1 \
+    || open(PLAYER_SS, O_RDONLY) == -1 \
+    || open(INV_SS, O_RDONLY) == -1 \
     || open(MAP_TXT, O_RDONLY) == -1)
         return true;
     return false;
