@@ -160,6 +160,8 @@ SRC_SAVE				=	save/saving/open_file.c \
 							save/load/load_settings.c \
 							save/load/load_tools.c
 
+SRC_KEYS				=	keybinding/resolve_keys.c 	\
+
 SRC 					=	$(SRC_BUTTON) \
 							$(SRC_INIT) \
 							$(SRC_FREE) \
@@ -168,6 +170,7 @@ SRC 					=	$(SRC_BUTTON) \
 							$(SRC_ANIMATIONS) \
 							$(SRC_MAP) \
 							$(SRC_SAVE) \
+							$(SRC_KEYS) 	\
 							sys/check_env.c \
 							sys/check_ressources.c \
 							main.c	\

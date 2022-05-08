@@ -476,6 +476,8 @@
 
     /* KeyBinding */
 
+    char *resolve_key(sfKeyCode key);
+
     /* Main function */
 
     int rpg(void);
