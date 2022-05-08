@@ -20,6 +20,9 @@ static mobe_t *texture_sprite_mob(mobe_t *node)
     sfRectangleShape_setPosition(node->hitbox_shape, \
     (sfVector2f){node->object->position.x - 30, \
     node->object->position.y - 20});
+    node->my_clock->clock = sfClock_create();
+    node->attack_clock->clock = sfClock_create();
+    node->next = NULL;
     return node;
 }
 
@@ -38,6 +41,8 @@ static mobe_t *set_info_mob(mobe_t *node, char ***tab, int i)
     node = texture_sprite_mob(node);
     sfRectangleShape_setFillColor(node->hitbox_shape, \
     sfColor_fromRGBA(RED_HITBOX));
+    node->attack = false;
+    node->dead = 0;
     return node;
 }
 
@@ -54,17 +59,12 @@ int init_mob(map_t *map, char ***tab, int i)
     nde->attack_clock = malloc(sizeof(my_clock_t));
     if (!nde->object || !nde->my_clock || !nde->attack_clock)
         return EPITECH_ERROR;
-    nde->my_clock->clock = sfClock_create();
-    nde->attack_clock->clock = sfClock_create();
     nde->object->rect = rec;
-    nde->attack = false;
     nde->object->texture = sfTexture_createFromFile(tab[i][ASSET], NULL);
     nde->object->sprite = sfSprite_create();
     if (!nde->my_clock->clock || !nde->attack_clock->clock
         || !nde->object->texture || !nde->object->sprite)
         return EPITECH_ERROR;
-    nde->dead = 0;
-    nde->next = NULL;
     nde = set_info_mob(nde, tab, i);
     map->mobe = add_node_to_mobe(map->mobe, nde);
     return EXIT_SUCCESS;
