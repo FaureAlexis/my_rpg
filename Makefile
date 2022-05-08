@@ -27,6 +27,8 @@ SRC_BUTTON				=	button/init_buttons.c \
 							button/clicked/clicked_state_help.c \
 							button/clicked/clicked_state_settings.c \
 							button/clicked/clicked_state_main.c \
+							button/clicked/clicked_state_lose.c \
+							button/clicked/clicked_state_win.c \
 							button/clicked/clicked_state_pause.c
 
 SRC_SCENES_DISPLAY 		=	scenes/display/display_main_menu.c \
@@ -45,6 +47,7 @@ SRC_SCENES_BUTTON_POS	=	scenes/button_pos/button_pos_menu.c \
 							scenes/button_pos/button_pos_save.c \
 							scenes/button_pos/button_pos_help.c \
 							scenes/button_pos/button_pos_pause.c \
+							scenes/button_pos/button_pos_lose.c \
 							scenes/button_pos/button_pos_keybind.c \
 							scenes/button_pos/button_pos_settings.c \
 							scenes/button_pos/button_pos_skin_cus.c \

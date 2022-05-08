@@ -23,18 +23,9 @@ static int lose_scene_event(main_game_t *game)
 
 static int manage_button_action_scene(main_game_t *game, sfVector2i mouse_pos)
 {
-    if (button_is_clicked(game->btn->big->settings_b, mouse_pos) == true) {
-        clicked_state_main(game, game->btn->big->settings_b->shape,
-        POS_SETTINGS);
-        return game->player->next_scene = SETTINGS_SCENE;
-    }
-    if (button_is_clicked(game->btn->big->play_b, mouse_pos) == true) {
-        clicked_state_main(game, game->btn->big->play_b->shape, POS_GAME);
-        return game->player->next_scene = SAVE_SCENE;
-    }
-    if (button_is_clicked(game->btn->mid->help_b, mouse_pos) == true) {
-        clicked_state_main(game, game->btn->mid->help_b->shape, POS_HELP);
-        return game->player->next_scene = HELP_SCENE;
+    if (button_is_clicked(game->btn->mid->main_b, mouse_pos) == true) {
+        clicked_state_lose(game, game->btn->mid->main_b->shape, POS_MAIN);
+        return game->player->next_scene = MENU_SCENE;
     }
     return game->player->current_scene;
 }
@@ -44,9 +35,8 @@ static int manage_button_action(main_game_t *game, sfVector2i mouse_pos)
     if (manage_button_action_scene(game, mouse_pos)
     != game->player->current_scene)
         return game->player->next_scene;
-    if (button_is_clicked(game->btn->big->exit_b, mouse_pos) == true) {
-        clicked_state_main(game, game->btn->big->exit_b->shape,
-        INIT_BTN_POS);
+    if (button_is_clicked(game->btn->mid->exit_b, mouse_pos) == true) {
+        clicked_state_lose(game, game->btn->mid->exit_b->shape, POS_HELP);
         return close_window(game);
     }
     return game->player->current_scene;

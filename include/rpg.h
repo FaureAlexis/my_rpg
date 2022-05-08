@@ -346,6 +346,8 @@
     void pos_button_scoreboard(main_game_t *game);
     void pos_button_save(main_game_t *game);
     void pos_button_keybind(main_game_t *game);
+    void pos_button_lose(main_game_t *game);
+    void pos_button_win(main_game_t *game);
 
     /*Display*/
 
@@ -442,6 +444,10 @@
     void clicked_state_keybind(main_game_t *game, sfRectangleShape *shape, \
     sfVector2f position);
     void clicked_state_save(main_game_t *game, sfRectangleShape *shape, \
+    sfVector2f position);
+    void clicked_state_lose(main_game_t *game, sfRectangleShape *shape, \
+    sfVector2f position);
+    void clicked_state_win(main_game_t *game, sfRectangleShape *shape, \
     sfVector2f position);
     const event_t *get_event(sfEventType type, const event_t event_array[]);
     int zoom_event(main_game_t *game);

@@ -42,6 +42,12 @@ int create_menus(main_game_t *game)
     if (init_menu(&game->mnu->save_m, MAIN_THEME, MENU_BG, \
     INIT_RECT_MENU) == EPITECH_ERROR)
         return EPITECH_ERROR;
+    if (init_menu(&game->mnu->lose_m, DEATH_THEME, DEATH_MENU, \
+    INIT_RECT_MENU) == EPITECH_ERROR)
+        return EPITECH_ERROR;
+    if (init_menu(&game->mnu->win_m, WIN_THEME, WIN_MENU, \
+    INIT_RECT_MENU) == EPITECH_ERROR)
+        return EPITECH_ERROR;
     if (create_menu2(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
     return EXIT_SUCCESS;

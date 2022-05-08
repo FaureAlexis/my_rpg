@@ -49,7 +49,7 @@
     #define POS_GAME (sfVector2f){540, 450}
     #define POS_SETTINGS (sfVector2f){960, 450}
     #define POS_SETTINGS2 (sfVector2f){1010, 330}
-    #define POS_MAIN (sfVector2f){1800, 0}
+    #define POS_MAIN (sfVector2f){1800, 10}
     #define POS_RIGHT (sfVector2f){1000, 360}
     #define POS_LEFT (sfVector2f){750, 360}
     #define POS_KEYBIND (sfVector2f){1500, 600}

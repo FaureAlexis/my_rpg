@@ -17,6 +17,8 @@ static void destroy_music_menu(main_game_t *game)
     sfMusic_stop(game->mnu->skin_m->theme);
     sfMusic_stop(game->mnu->save_m->theme);
     sfMusic_stop(game->mnu->keybind_m->theme);
+    sfMusic_stop(game->mnu->lose_m->theme);
+    sfMusic_stop(game->mnu->win_m->theme);
     sfMusic_destroy(game->mnu->main->theme);
     sfMusic_destroy(game->mnu->gameplay->theme);
     sfMusic_destroy(game->mnu->settings->theme);
@@ -25,6 +27,8 @@ static void destroy_music_menu(main_game_t *game)
     sfMusic_destroy(game->mnu->skin_m->theme);
     sfMusic_destroy(game->mnu->save_m->theme);
     sfMusic_destroy(game->mnu->keybind_m->theme);
+    sfMusic_destroy(game->mnu->lose_m->theme);
+    sfMusic_destroy(game->mnu->win_m->theme);
 }
 
 static void destroy_menu(menu_t *menu)
@@ -46,4 +50,6 @@ void destroy_all_menu(main_game_t *game)
     destroy_menu(game->mnu->skin_m);
     destroy_menu(game->mnu->save_m);
     destroy_menu(game->mnu->keybind_m);
+    destroy_menu(game->mnu->lose_m);
+    destroy_menu(game->mnu->win_m);
 }

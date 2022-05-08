@@ -41,6 +41,8 @@
         menu_t *help_play;
         menu_t *pause_m;
         menu_t *skin_m;
+        menu_t *lose_m;
+        menu_t *win_m;
     } mnu_t;
 
 #endif /* !MENU_H_ */

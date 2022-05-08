@@ -10,6 +10,8 @@
 void change_volume(main_game_t *game)
 {
     sfMusic_setVolume(game->mnu->main->theme, game->vol->volume);
+    sfMusic_setVolume(game->mnu->lose_m->theme, game->vol->volume);
+    sfMusic_setVolume(game->mnu->win_m->theme, game->vol->volume);
     sfMusic_setVolume(game->mnu->gameplay->theme, game->vol->volume);
     sfMusic_setVolume(game->btn->big->play_b->sound, game->vol->volume);
     sfMusic_setVolume(game->btn->mid->help_b->sound, game->vol->volume);
