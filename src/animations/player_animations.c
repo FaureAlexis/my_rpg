@@ -68,6 +68,29 @@ static int player_attack_animations(player_t *player, mobe_t *mob)
     return EXIT_SUCCESS;
 }
 
+int detect_interactions(player_t *player, mobe_t *mob)
+{
+    mobe_t *tmp = NULL;
+    sfVector2f player_pos = sfSprite_getPosition(player->object->sprite);
+    sfVector2f mob_pos;
+    int offset = 0;
+
+    if (!player || !mob)
+        return EPITECH_ERROR;
+    tmp = mob;
+    while (tmp) {
+        if (tmp->hp > 0 && tmp->type == 2) {
+            mob_pos = sfSprite_getPosition(tmp->object->sprite);
+            offset = sqrt(pow(player_pos.x - mob_pos.x, 2)
+            + pow(player_pos.y - mob_pos.y, 2));
+            if (offset <= 100)
+                return 1;
+        }
+        tmp = tmp->next;
+    }
+    return 0;
+}
+
 int player_animations(player_t *player, mobe_t *mob)
 {
     if (!player || !mob)
@@ -75,6 +98,10 @@ int player_animations(player_t *player, mobe_t *mob)
     player->p_clock->time = sfClock_getElapsedTime(player->p_clock->clock);
     player->p_clock->seconds =
         player->p_clock->time.microseconds / SECONDS;
+    if (detect_interactions(player, mob) == 1)
+        player->interaction = 1;
+    else
+        player->interaction = 0;
     if (player->attack_action)
         return player_attack_animations(player, mob);
     if (player->p_clock->seconds >= 0.15) {

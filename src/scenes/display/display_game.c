@@ -25,5 +25,7 @@ int display_game(main_game_t *game)
         sfRenderWindow_drawSprite(game->w, game->mnu->gameplay->object->sprite,
         NULL);
     }
+    if (game->player->interaction)
+        sfRenderWindow_drawText(game->w, game->player->interaction_text, NULL);
     return EXIT_SUCCESS;
 }

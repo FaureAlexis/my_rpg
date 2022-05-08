@@ -58,6 +58,23 @@ static int set_sprite(player_t *player)
     return EXIT_SUCCESS;
 }
 
+static int init_text_interaction(player_t *player)
+{
+    sfFont *gravity = sfFont_createFromFile("./assets/font/fs-gravity.ttf");
+
+    if (!gravity)
+        return EPITECH_ERROR;
+    player->interaction_text = sfText_create();
+    if (!player->interaction_text)
+        return EPITECH_ERROR;
+    sfText_setFont(player->interaction_text, gravity);
+    sfText_setColor(player->interaction_text, sfWhite);
+    sfText_setCharacterSize(player->interaction_text, 40);
+    sfText_setPosition(player->interaction_text, INTERACT_TXT_POS);
+    sfText_setString(player->interaction_text, "Press E to interact with Mr Hood");
+    return EXIT_SUCCESS;
+}
+
 player_t *init_player(void)
 {
     player_t *player = malloc(sizeof(player_t));
@@ -72,6 +89,9 @@ player_t *init_player(void)
         return NULL;
     player->p_clock = init_clock();
     if (!player->p_clock)
+        return NULL;
+    init_text_interaction(player);
+    if (!player->interaction_text)
         return NULL;
     player->object->texture = sfTexture_createFromFile(PLAYER_SS, NULL);
     player->object->sprite = sfSprite_create();
