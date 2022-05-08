@@ -27,7 +27,8 @@ int rpg(void)
 
     if (game == NULL)
         return EPITECH_ERROR;
-    if (init_all(game) == EPITECH_ERROR || launch_win(game) == EPITECH_ERROR)
+    if (init_all(game) == EPITECH_ERROR || launch_win(game) == EPITECH_ERROR
+        || check_game_assets(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
     change_volume(game);
     sfMusic_play(game->mnu->main->theme);
@@ -36,8 +37,8 @@ int rpg(void)
         if (scene)
             change_scene = scene->go_scene(game);
     }
-    if (save_settings(game) == EPITECH_ERROR \
-    || free_game_struct(game) == EPITECH_ERROR)
+    if (save_settings(game) == EPITECH_ERROR
+        || free_game_struct(game) == EPITECH_ERROR)
         return EPITECH_ERROR;
     if (change_scene == EPITECH_ERROR)
         return change_scene;

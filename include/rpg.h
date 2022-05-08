@@ -252,6 +252,7 @@
     void gen_artific(speobstacle_t *speobstacle);
     int init_keys(main_game_t *game);
     int init_help_keys(help_t *help, sfFont *gravity);
+    int check_game_assets(main_game_t *game);
 
         /*Map Management*/
 

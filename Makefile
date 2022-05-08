@@ -163,6 +163,11 @@ SRC_SAVE				=	save/saving/open_file.c \
 
 SRC_KEYS				=	keybinding/resolve_keys.c 	\
 
+
+SRC_SYS					=	sys/check_env.c \
+							sys/check_ressources.c \
+							sys/check_game_assets.c
+
 SRC 					=	$(SRC_BUTTON) \
 							$(SRC_INIT) \
 							$(SRC_FREE) \
@@ -171,9 +176,8 @@ SRC 					=	$(SRC_BUTTON) \
 							$(SRC_ANIMATIONS) \
 							$(SRC_MAP) \
 							$(SRC_SAVE) \
-							$(SRC_KEYS) 	\
-							sys/check_env.c \
-							sys/check_ressources.c \
+							$(SRC_KEYS)	\
+							$(SRC_SYS)	\
 							main.c	\
 							rpg.c
 
